@@ -33,10 +33,12 @@ jobs:
         uses: actions/cache@v4
         with:
           path: resources
-          key: hugo-resources-${{ hashFiles('hugo.yaml') }}
+          key: hugo-resources-${{ hashFiles('hugo.yaml', 'assets/**', 'layouts/**') }}
           restore-keys: hugo-resources-
 
       - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
         run: hugo --minify
 
       - name: Setup Pages

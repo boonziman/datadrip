@@ -3,6 +3,7 @@ languageCode: 'en-us'
 title: 'Datadrip'
 theme: 'PaperMod'
 paginate: 6
+enableRobotsTXT: true
 
 outputs:
   home:
@@ -10,7 +11,7 @@ outputs:
     - RSS
     - JSON
 
-copyright: "© 2026 Datadrip. All rights reserved."   # ← This appears in footer
+copyright: "© 2026 Datadrip. All rights reserved."
 
 params:
   description: "Datadrip — Daily original insights on AI, Crypto & Tech. Smart analysis, zero fluff."
