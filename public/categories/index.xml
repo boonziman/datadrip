@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Categories on Datadrip</title>
+    <link>http://localhost:1313/datadrip/categories/</link>
+    <description>Recent content in Categories on Datadrip</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/datadrip/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI News</title>
+      <link>http://localhost:1313/datadrip/categories/ai/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/categories/ai/</guid>
+      <description>&lt;h1 id=&#34;ai-news&#34;&gt;AI News&lt;/h1&gt;
+&lt;p&gt;Stay ahead with the latest developments in artificial intelligence, machine learning, and emerging tech tools.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Crypto Trends</title>
+      <link>http://localhost:1313/datadrip/categories/crypto/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/categories/crypto/</guid>
+      <description>&lt;h1 id=&#34;crypto-trends&#34;&gt;Crypto Trends&lt;/h1&gt;
+&lt;p&gt;Daily market moves, blockchain updates, DeFi, NFTs, and the future of digital assets.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Tech Innovations</title>
+      <link>http://localhost:1313/datadrip/categories/tech/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/categories/tech/</guid>
+      <description>&lt;h1 id=&#34;tech-innovations&#34;&gt;Tech Innovations&lt;/h1&gt;
+&lt;p&gt;Breaking news on gadgets, software, hardware, startups, and the technologies shaping tomorrow.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

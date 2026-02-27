@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Datadrip</title>
+    <link>http://localhost:1313/datadrip/</link>
+    <description>Recent content on Datadrip</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 26 Feb 2026 20:23:35 -0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/datadrip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Post</title>
+      <link>http://localhost:1313/datadrip/posts/test-post/</link>
+      <pubDate>Thu, 26 Feb 2026 20:23:35 -0800</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/test-post/</guid>
+      <description>&lt;p&gt;Welcome to Datadrip! This is just a test. Our AI bot will soon fill this with real daily news.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Apple Unveils Next-Gen AR Glasses at WWDC 2026</title>
+      <link>http://localhost:1313/datadrip/posts/tech-placeholder/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/tech-placeholder/</guid>
+      <description>&lt;p&gt;This is a placeholder for the &lt;strong&gt;Tech Innovations&lt;/strong&gt; category. Your smart daily bot will soon publish real, valuable, original posts here every day.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Bitcoin ETF Inflows Hit Record High – Market Analysis</title>
+      <link>http://localhost:1313/datadrip/posts/crypto-placeholder/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/crypto-placeholder/</guid>
+      <description>&lt;p&gt;This is a placeholder for the &lt;strong&gt;Crypto Trends&lt;/strong&gt; category. Your smart daily bot will soon publish real, valuable, original posts here every day.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenAI Launches New Reasoning Model – What It Means for Developers</title>
+      <link>http://localhost:1313/datadrip/posts/ai-placeholder/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/ai-placeholder/</guid>
+      <description>&lt;p&gt;This is a placeholder for the &lt;strong&gt;AI News&lt;/strong&gt; category. Your smart daily bot will soon publish real, valuable, original posts here every day.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About Datadrip</title>
+      <link>http://localhost:1313/datadrip/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/about/</guid>
+      <description>&lt;h1 id=&#34;about-datadrip&#34;&gt;About Datadrip&lt;/h1&gt;
+&lt;p&gt;Datadrip is a modern news platform dedicated to delivering &lt;strong&gt;original, timely, and insightful coverage&lt;/strong&gt; of the most important developments in Artificial Intelligence, Cryptocurrency, and Cutting-Edge Technology.&lt;/p&gt;
+&lt;p&gt;We cut through the hype and noise to bring you smart analysis that actually matters — whether you&amp;rsquo;re an investor, developer, executive, or simply curious about the future.&lt;/p&gt;
+&lt;h3 id=&#34;our-mission&#34;&gt;Our Mission&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Daily freshness&lt;/strong&gt;: New high-quality articles every day.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reader-first&lt;/strong&gt;: Free access, zero fluff, maximum value.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Efficiency with standards&lt;/strong&gt;: We use advanced research tools to deliver fresh insights quickly while maintaining strict editorial guidelines for accuracy, originality, and usefulness.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;why-datadrip&#34;&gt;Why Datadrip?&lt;/h3&gt;
+&lt;p&gt;Big media moves slow. We move fast with smart processes while keeping the highest standards of quality. Our goal is simple: become your trusted daily read that helps you stay ahead in the AI-crypto-tech revolution.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>http://localhost:1313/datadrip/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/contact/</guid>
+      <description>&lt;h1 id=&#34;get-in-touch&#34;&gt;Get in Touch&lt;/h1&gt;
+&lt;p&gt;Have a tip, partnership idea, or feedback? We&amp;rsquo;d love to hear from you.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:hello@datadrip.co&#34;&gt;hello@datadrip.co&lt;/a&gt; (or use the form below once we add it in a later phase)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;X (Twitter):&lt;/strong&gt; @Datadrip (coming in Phase 5)&lt;/p&gt;
+&lt;p&gt;We typically reply within 24 hours.&lt;/p&gt;
+&lt;p&gt;Thank you for being part of the Datadrip community!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Editorial Standards &amp; Transparency</title>
+      <link>http://localhost:1313/datadrip/editorial-standards/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/editorial-standards/</guid>
+      <description>&lt;h1 id=&#34;editorial-standards--transparency&#34;&gt;Editorial Standards &amp;amp; Transparency&lt;/h1&gt;
+&lt;p&gt;Last updated: February 27, 2026&lt;/p&gt;
+&lt;p&gt;At Datadrip, our promise is simple: deliver &lt;strong&gt;original, accurate, and valuable&lt;/strong&gt; content every day.&lt;/p&gt;
+&lt;p&gt;We use advanced research tools to stay on top of fast-moving topics in AI, crypto, and tech. Every article is carefully structured, fact-checked against multiple sources, and written to give you real insights you can use.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All content follows strict editorial guidelines for clarity, usefulness, and originality.&lt;/li&gt;
+&lt;li&gt;Sources are cited wherever possible.&lt;/li&gt;
+&lt;li&gt;We never publish misleading or low-value material.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This approach lets us publish daily at a high standard while keeping everything transparent and reader-focused.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Privacy Policy</title>
+      <link>http://localhost:1313/datadrip/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/privacy/</guid>
+      <description>&lt;h1 id=&#34;privacy-policy&#34;&gt;Privacy Policy&lt;/h1&gt;
+&lt;p&gt;Last updated: February 27, 2026&lt;/p&gt;
+&lt;p&gt;Datadrip (&amp;ldquo;we&amp;rdquo;, &amp;ldquo;us&amp;rdquo;) respects your privacy. This policy explains how we collect and use data.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We use Google Analytics to understand traffic patterns — no personal information is collected or sold.&lt;/li&gt;
+&lt;li&gt;Cookies are used only for basic site functionality.&lt;/li&gt;
+&lt;li&gt;We do not share your data with third parties except as required by law.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For questions: &lt;a href=&#34;mailto:hello@datadrip.co&#34;&gt;hello@datadrip.co&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We comply with GDPR, CCPA, and all applicable privacy laws.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Terms of Service</title>
+      <link>http://localhost:1313/datadrip/terms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/terms/</guid>
+      <description>&lt;h1 id=&#34;terms-of-service&#34;&gt;Terms of Service&lt;/h1&gt;
+&lt;p&gt;Last updated: February 27, 2026&lt;/p&gt;
+&lt;p&gt;Welcome to Datadrip. By using this site you agree to these terms.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Content is for informational and educational purposes only — not financial, investment, or legal advice.&lt;/li&gt;
+&lt;li&gt;We are not liable for any decisions or losses based on our articles.&lt;/li&gt;
+&lt;li&gt;You may not republish or redistribute our content without written permission.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thank you for respecting our work and being part of the Datadrip community.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

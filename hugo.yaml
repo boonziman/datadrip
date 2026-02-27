@@ -1,0 +1,78 @@
+baseURL: 'https://boonziman.github.io/datadrip/'
+languageCode: 'en-us'
+title: 'Datadrip'
+theme: 'PaperMod'
+paginate: 6
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+copyright: "© 2026 Datadrip. All rights reserved."   # ← This appears in footer
+
+params:
+  description: "Datadrip — Daily original insights on AI, Crypto & Tech. Smart analysis, zero fluff."
+  author: "Datadrip Team"
+  defaultTheme: light
+  disableThemeToggle: true
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: false
+  ShowSearch: true
+
+  homeInfoParams:
+    Title: "Datadrip"
+    Content: "Your daily source for original, high-value insights on Artificial Intelligence, Cryptocurrency, and Emerging Technology. Fresh news. Real analysis. Built for forward-thinkers who want to stay ahead."
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/boonziman/datadrip"
+    - name: x
+      url: "https://x.com/"   # we'll update in Phase 5
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+    - name: AI News
+      url: /categories/ai/
+      weight: 2
+    - name: Crypto Trends
+      url: /categories/crypto/
+      weight: 3
+    - name: Tech Innovations
+      url: /categories/tech/
+      weight: 4
+    - name: About
+      url: /about/
+      weight: 5
+    - name: Contact
+      url: /contact/
+      weight: 6
+    - name: Search
+      url: /search/
+      weight: 7
+
+  # New footer menu — appears at bottom of every page
+  footer:
+    - name: About
+      url: /about/
+      weight: 1
+    - name: Contact
+      url: /contact/
+      weight: 2
+    - name: Privacy Policy
+      url: /privacy/
+      weight: 3
+    - name: Terms of Service
+      url: /terms/
+      weight: 4
+    - name: Editorial Standards
+      url: /editorial-standards/
+      weight: 5
