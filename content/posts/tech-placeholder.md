@@ -1,7 +1,7 @@
 ---
 title: "Apple Unveils Next-Gen AR Glasses at WWDC 2026"
 date: 2026-02-27
-draft: false
+draft: true
 categories:
   - Tech
 tags:
