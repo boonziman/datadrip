@@ -1,7 +1,7 @@
 ---
 title: "OpenAI Launches New Reasoning Model – What It Means for Developers"
 date: 2026-02-27
-draft: false
+draft: true
 categories:
   - AI
 tags:
