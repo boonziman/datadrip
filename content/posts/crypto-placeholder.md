@@ -1,7 +1,7 @@
 ---
 title: "Bitcoin ETF Inflows Hit Record High – Market Analysis"
 date: 2026-02-27
-draft: false
+draft: true
 categories:
   - Crypto
 tags:
