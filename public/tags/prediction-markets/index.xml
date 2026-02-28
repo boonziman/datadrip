@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Prediction Markets on Datadrip</title>
+    <link>http://localhost:1313/datadrip/tags/prediction-markets/</link>
+    <description>Recent content in Prediction Markets on Datadrip</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/datadrip/tags/prediction-markets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Hype Fuels Market Mayhem: Insider Trades to Crypto Crashes</title>
+      <link>http://localhost:1313/datadrip/posts/2026-02-27-1237-/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/2026-02-27-1237-/</guid>
+      <description>Explore how AI-driven hype is shaking Wall Street and crypto markets, from OpenAI&amp;#39;s insider trading scandal to Bitcoin&amp;#39;s stalled rebound in 2026.</description>
+    </item>
+  </channel>
+</rss>

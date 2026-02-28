@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI Ethics on Datadrip</title>
+    <link>http://localhost:1313/datadrip/tags/ai-ethics/</link>
+    <description>Recent content in AI Ethics on Datadrip</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/datadrip/tags/ai-ethics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Ethics Clash: Anthropic&#39;s Pentagon Feud and OpenAI&#39;s Insider Scandal</title>
+      <link>http://localhost:1313/datadrip/posts/2026-02-27-1942-ai-ethics-clash-anthropics-pentagon-feud-and-opena/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/2026-02-27-1942-ai-ethics-clash-anthropics-pentagon-feud-and-opena/</guid>
+      <description>Dive into the chaos as Anthropic battles a Pentagon blacklist over ethical boundaries, while OpenAI deals with an insider trading mess—uncovering the raw tensions shaping AI&amp;#39;s future.</description>
+    </item>
+  </channel>
+</rss>

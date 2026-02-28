@@ -10,24 +10,24 @@
     <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/datadrip/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Apple</title>
-      <link>http://localhost:1313/datadrip/tags/apple/</link>
+      <title>Ai</title>
+      <link>http://localhost:1313/datadrip/tags/ai/</link>
       <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/datadrip/tags/apple/</guid>
+      <guid>http://localhost:1313/datadrip/tags/ai/</guid>
       <description></description>
     </item>
     <item>
-      <title>Ar-Vr</title>
-      <link>http://localhost:1313/datadrip/tags/ar-vr/</link>
+      <title>AI Ethics</title>
+      <link>http://localhost:1313/datadrip/tags/ai-ethics/</link>
       <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/datadrip/tags/ar-vr/</guid>
+      <guid>http://localhost:1313/datadrip/tags/ai-ethics/</guid>
       <description></description>
     </item>
     <item>
-      <title>Artificial-Intelligence</title>
-      <link>http://localhost:1313/datadrip/tags/artificial-intelligence/</link>
+      <title>Anthropic</title>
+      <link>http://localhost:1313/datadrip/tags/anthropic/</link>
       <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/datadrip/tags/artificial-intelligence/</guid>
+      <guid>http://localhost:1313/datadrip/tags/anthropic/</guid>
       <description></description>
     </item>
     <item>
@@ -38,10 +38,31 @@
       <description></description>
     </item>
     <item>
-      <title>Etf</title>
-      <link>http://localhost:1313/datadrip/tags/etf/</link>
+      <title>Crypto Regulation</title>
+      <link>http://localhost:1313/datadrip/tags/crypto-regulation/</link>
       <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/datadrip/tags/etf/</guid>
+      <guid>http://localhost:1313/datadrip/tags/crypto-regulation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ethereum</title>
+      <link>http://localhost:1313/datadrip/tags/ethereum/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/tags/ethereum/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Military AI</title>
+      <link>http://localhost:1313/datadrip/tags/military-ai/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/tags/military-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>National Security</title>
+      <link>http://localhost:1313/datadrip/tags/national-security/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/tags/national-security/</guid>
       <description></description>
     </item>
     <item>

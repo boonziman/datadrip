@@ -7,35 +7,28 @@
     <generator>Hugo -- 0.157.0</generator>
     <language>en-us</language>
     <copyright>2026 Datadrip. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 26 Feb 2026 20:23:35 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/datadrip/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test Post</title>
-      <link>http://localhost:1313/datadrip/posts/test-post/</link>
-      <pubDate>Thu, 26 Feb 2026 20:23:35 -0800</pubDate>
-      <guid>http://localhost:1313/datadrip/posts/test-post/</guid>
-      <description>&lt;p&gt;Welcome to Datadrip! This is just a test. Our AI bot will soon fill this with real daily news.&lt;/p&gt;</description>
+      <title>AI Ethics Clash: Anthropic&#39;s Pentagon Feud and OpenAI&#39;s Insider Scandal</title>
+      <link>http://localhost:1313/datadrip/posts/2026-02-27-1942-ai-ethics-clash-anthropics-pentagon-feud-and-opena/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/2026-02-27-1942-ai-ethics-clash-anthropics-pentagon-feud-and-opena/</guid>
+      <description>Dive into the chaos as Anthropic battles a Pentagon blacklist over ethical boundaries, while OpenAI deals with an insider trading mess—uncovering the raw tensions shaping AI&amp;#39;s future.</description>
     </item>
     <item>
-      <title>Apple Unveils Next-Gen AR Glasses at WWDC 2026</title>
-      <link>http://localhost:1313/datadrip/posts/tech-placeholder/</link>
+      <title>AI Wars Heat Up: Pentagon vs Anthropic, Musk&#39;s Jabs, and OpenAI&#39;s Boom</title>
+      <link>http://localhost:1313/datadrip/posts/2026-02-27-1947-ai-wars-heat-up-pentagon-vs-anthropic-musks-jabs-a/</link>
       <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/datadrip/posts/tech-placeholder/</guid>
-      <description>&lt;p&gt;This is a placeholder for the &lt;strong&gt;Tech Innovations&lt;/strong&gt; category. Your smart daily bot will soon publish real, valuable, original posts here every day.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/datadrip/posts/2026-02-27-1947-ai-wars-heat-up-pentagon-vs-anthropic-musks-jabs-a/</guid>
+      <description>With the Pentagon blacklisting Anthropic, Elon Musk throwing shade at OpenAI, and ChatGPT surging to 900 million users, we&amp;#39;re diving into the wild intersection of AI breakthroughs, ethical dilemmas, and government muscle.</description>
     </item>
     <item>
-      <title>Bitcoin ETF Inflows Hit Record High – Market Analysis</title>
-      <link>http://localhost:1313/datadrip/posts/crypto-placeholder/</link>
+      <title>Wall Street&#39;s Crypto Rush Meets VC Pivot to AI</title>
+      <link>http://localhost:1313/datadrip/posts/2026-02-27-1944-wall-streets-crypto-rush-meets-vc-pivot-to-ai/</link>
       <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/datadrip/posts/crypto-placeholder/</guid>
-      <description>&lt;p&gt;This is a placeholder for the &lt;strong&gt;Crypto Trends&lt;/strong&gt; category. Your smart daily bot will soon publish real, valuable, original posts here every day.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenAI Launches New Reasoning Model – What It Means for Developers</title>
-      <link>http://localhost:1313/datadrip/posts/ai-placeholder/</link>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/datadrip/posts/ai-placeholder/</guid>
-      <description>&lt;p&gt;This is a placeholder for the &lt;strong&gt;AI News&lt;/strong&gt; category. Your smart daily bot will soon publish real, valuable, original posts here every day.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/datadrip/posts/2026-02-27-1944-wall-streets-crypto-rush-meets-vc-pivot-to-ai/</guid>
+      <description>With Wall Street giants like Morgan Stanley and Citi pushing deeper into crypto custody and trading, while VCs like Paradigm chase AI opportunities, Bitcoin&amp;#39;s facing fresh turmoil—let&amp;#39;s explore what this means for the market&amp;#39;s future.</description>
     </item>
   </channel>
 </rss>

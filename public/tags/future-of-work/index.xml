@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Future of Work on Datadrip</title>
+    <link>http://localhost:1313/datadrip/tags/future-of-work/</link>
+    <description>Recent content in Future of Work on Datadrip</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 01 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/datadrip/tags/future-of-work/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Agents Are Here: Security Risks and the New &#39;Agentic&#39; Skill Set</title>
+      <link>http://localhost:1313/datadrip/posts/2026-02-26-/</link>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/2026-02-26-/</guid>
+      <description>Explore how AI agents are transforming jobs, the rise of &amp;#39;agentic&amp;#39; skills, and why new security tools like IronCurtain are crucial in 2024.</description>
+    </item>
+  </channel>
+</rss>

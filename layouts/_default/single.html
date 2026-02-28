@@ -1,0 +1,51 @@
+{{- define "main" }}
+
+<article class="post-single">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="post-title">
+      {{ .Title }}
+      {{- if .Draft }}<sup><span class="entry-hint" title="Draft">DRAFT</span></sup>{{- end }}
+    </h1>
+    {{- if .Params.description }}
+    <div class="post-description">
+      {{ .Params.description }}
+    </div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    <div class="post-meta">
+      {{- partial "post_meta.html" . -}}
+    </div>
+    {{- end }}
+  </header>
+
+  {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+  {{- $coverImage := or .Params.featuredImage .Params.cover.image }}
+  {{- if (and $coverImage (not $isHidden)) }}
+  <figure class="post-cover">
+    <img src="{{ $coverImage }}" alt="{{ .Title }}" loading="eager" />
+  </figure>
+  {{- end }}
+
+  <div class="post-content">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end }}
+  </div>
+
+  <footer class="post-footer">
+    {{- if not (.Param "hidePostNavLinks") }}
+    {{- partial "post_nav_links.html" . }}
+    {{- end }}
+
+    {{- if (.Param "ShowShareButtons") }}
+    {{- partial "share_icons.html" . }}
+    {{- end }}
+  </footer>
+
+  {{- if (.Param "ShowComments") }}
+  {{- partial "comments.html" . }}
+  {{- end }}
+</article>
+
+{{- end }}{{- /* end main */ -}}

@@ -2,55 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/datadrip/</loc>
-    <lastmod>2026-02-26T20:23:35-08:00</lastmod>
+    <loc>http://localhost:1313/datadrip/tags/ai/</loc>
+    <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/datadrip/posts/</loc>
-    <lastmod>2026-02-26T20:23:35-08:00</lastmod>
+    <loc>http://localhost:1313/datadrip/tags/ai-ethics/</loc>
+    <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/datadrip/posts/test-post/</loc>
-    <lastmod>2026-02-26T20:23:35-08:00</lastmod>
+    <loc>http://localhost:1313/datadrip/posts/2026-02-27-1942-ai-ethics-clash-anthropics-pentagon-feud-and-opena/</loc>
+    <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/datadrip/categories/ai/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/datadrip/tags/apple/</loc>
+    <loc>http://localhost:1313/datadrip/posts/2026-02-27-1947-ai-wars-heat-up-pentagon-vs-anthropic-musks-jabs-a/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/datadrip/posts/tech-placeholder/</loc>
-    <lastmod>2026-02-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/datadrip/tags/ar-vr/</loc>
-    <lastmod>2026-02-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/datadrip/tags/artificial-intelligence/</loc>
+    <loc>http://localhost:1313/datadrip/tags/anthropic/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/datadrip/tags/bitcoin/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/datadrip/posts/crypto-placeholder/</loc>
+    <loc>http://localhost:1313/datadrip/categories/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/datadrip/categories/</loc>
+    <loc>http://localhost:1313/datadrip/tags/crypto-regulation/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/datadrip/categories/crypto/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/datadrip/tags/etf/</loc>
+    <loc>http://localhost:1313/datadrip/</loc>
+    <lastmod>2026-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/datadrip/tags/ethereum/</loc>
+    <lastmod>2026-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/datadrip/tags/military-ai/</loc>
+    <lastmod>2026-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/datadrip/tags/national-security/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/datadrip/tags/openai/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/datadrip/posts/ai-placeholder/</loc>
+    <loc>http://localhost:1313/datadrip/posts/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/datadrip/tags/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/datadrip/categories/tech/</loc>
+    <lastmod>2026-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/datadrip/posts/2026-02-27-1944-wall-streets-crypto-rush-meets-vc-pivot-to-ai/</loc>
     <lastmod>2026-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/datadrip/about/</loc>

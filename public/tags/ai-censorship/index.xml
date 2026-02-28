@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ai Censorship on Datadrip</title>
+    <link>http://localhost:1313/datadrip/tags/ai-censorship/</link>
+    <description>Recent content in Ai Censorship on Datadrip</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 28 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/datadrip/tags/ai-censorship/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Agents Revolution: Security, Censorship, and Human Agency</title>
+      <link>http://localhost:1313/datadrip/posts/2026-02-26-/</link>
+      <pubDate>Wed, 28 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/2026-02-26-/</guid>
+      <description>Dive into the latest AI agent breakthroughs, from rogue-proof designs to global censorship trends, and what it means for the future of work.</description>
+    </item>
+  </channel>
+</rss>

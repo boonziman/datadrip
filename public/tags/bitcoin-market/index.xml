@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Bitcoin Market on Datadrip</title>
+    <link>http://localhost:1313/datadrip/tags/bitcoin-market/</link>
+    <description>Recent content in Bitcoin Market on Datadrip</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/datadrip/tags/bitcoin-market/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Banks Charge into Crypto Custody Amid Market Turbulence</title>
+      <link>http://localhost:1313/datadrip/posts/2026-02-27-1911-banks-charge-into-crypto-custody-amid-market-turbu/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/2026-02-27-1911-banks-charge-into-crypto-custody-amid-market-turbu/</guid>
+      <description>With Bitcoin stumbling and gold on a tear, major banks like Morgan Stanley and Citi are pushing deeper into crypto custody and tokenization, while VC firm Paradigm eyes AI opportunities. Let&amp;#39;s unpack what this means for the evolving landscape.</description>
+    </item>
+  </channel>
+</rss>
