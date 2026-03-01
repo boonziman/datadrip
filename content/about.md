@@ -3,8 +3,6 @@ title: "About Datadrip"
 layout: "single"
 ---
 
-# About Datadrip
-
 Datadrip is a modern news platform dedicated to delivering **original, timely, and insightful coverage** of the most important developments in Artificial Intelligence, Cryptocurrency, and Cutting-Edge Technology.
 
 We cut through the hype and noise to bring you smart analysis that actually matters — whether you're an investor, developer, executive, or simply curious about the future.

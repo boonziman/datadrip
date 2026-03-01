@@ -7,31 +7,28 @@
     <generator>Hugo -- 0.157.0</generator>
     <language>en-us</language>
     <copyright>2026 Datadrip. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/datadrip/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI News</title>
       <link>http://localhost:1313/datadrip/categories/ai/</link>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/datadrip/categories/ai/</guid>
-      <description>&lt;h1 id=&#34;ai-news&#34;&gt;AI News&lt;/h1&gt;
-&lt;p&gt;Stay ahead with the latest developments in artificial intelligence, machine learning, and emerging tech tools.&lt;/p&gt;</description>
+      <description>Stay ahead with the latest developments in artificial intelligence, machine learning, and emerging tech tools.</description>
     </item>
     <item>
       <title>Crypto Trends</title>
       <link>http://localhost:1313/datadrip/categories/crypto/</link>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/datadrip/categories/crypto/</guid>
-      <description>&lt;h1 id=&#34;crypto-trends&#34;&gt;Crypto Trends&lt;/h1&gt;
-&lt;p&gt;Daily market moves, blockchain updates, DeFi, NFTs, and the future of digital assets.&lt;/p&gt;</description>
+      <description>Daily market moves, blockchain updates, DeFi, NFTs, and the future of digital assets.</description>
     </item>
     <item>
       <title>Tech Innovations</title>
       <link>http://localhost:1313/datadrip/categories/tech/</link>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/datadrip/categories/tech/</guid>
-      <description>&lt;h1 id=&#34;tech-innovations&#34;&gt;Tech Innovations&lt;/h1&gt;
-&lt;p&gt;Breaking news on gadgets, software, hardware, startups, and the technologies shaping tomorrow.&lt;/p&gt;</description>
+      <description>Breaking news on gadgets, software, hardware, startups, and the technologies shaping tomorrow.</description>
     </item>
   </channel>
 </rss>
