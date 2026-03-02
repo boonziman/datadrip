@@ -58,7 +58,8 @@ def count_words(text):
     body = re.split(r'---\s*', text, maxsplit=2)[-1] if '---' in text else text
     return len(re.findall(r'\b\w+\b', body))
 
-def generate_image(image_prompt):
+def generate_image(image_prompt, slug="post"):
+    """Generate an image via Grok Imagine, download it locally, return the local path."""
     url = "https://api.x.ai/v1/images/generations"
     headers = {
         "Authorization": f"Bearer {GROK_API_KEY}",
@@ -74,12 +75,42 @@ def generate_image(image_prompt):
     try:
         response = requests.post(url, headers=headers, json=payload, timeout=60)
         if response.status_code == 200:
-            return response.json()["data"][0]["url"]
+            temp_url = response.json()["data"][0]["url"]
+            # Download the image to static/images/posts/ so it's permanent
+            return download_image(temp_url, slug)
         else:
             print(f"❌ Image generation error: {response.status_code} - {response.text}")
             return None
     except requests.exceptions.RequestException as e:
         print(f"❌ Image generation network error: {e}")
+        return None
+
+
+def download_image(image_url, slug="post"):
+    """Download an image from a URL and save it to static/images/posts/. Returns the Hugo-relative path."""
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    images_dir = os.path.join(project_root, "static", "images", "posts")
+    os.makedirs(images_dir, exist_ok=True)
+
+    today = datetime.now().strftime("%Y-%m-%d")
+    time_str = datetime.now().strftime("%H%M")
+    filename = f"{today}-{time_str}-{slug[:40]}.jpg"
+    filepath = os.path.join(images_dir, filename)
+
+    try:
+        print(f"📥 Downloading image to static/images/posts/{filename}...")
+        img_response = requests.get(image_url, timeout=30)
+        if img_response.status_code == 200:
+            with open(filepath, "wb") as f:
+                f.write(img_response.content)
+            print(f"✅ Image saved: {filepath}")
+            # Return the Hugo-relative path (Hugo serves static/ at root)
+            return f"/images/posts/{filename}"
+        else:
+            print(f"❌ Image download failed: {img_response.status_code}")
+            return None
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Image download error: {e}")
         return None
 
 # === TOPIC MEMORY SYSTEM ===
@@ -312,7 +343,11 @@ Opening: {body_start}"""
         # Fallback: build a specific prompt from the title
         image_prompt = f"Editorial photo-realistic image for a news article titled '{raw_title}'. Professional lighting, clean composition, magazine quality."
 
-    image_url = generate_image(image_prompt)
+    # Build slug early so we can use it for the image filename
+    slug = re.sub(r'[^a-z0-9\s-]', '', raw_title.lower().strip())
+    slug = re.sub(r'[\s-]+', '-', slug).strip('-')[:50]
+
+    image_url = generate_image(image_prompt, slug=slug)
 
     # Insert image after the first paragraph (end of intro) or first H2
     if image_url:
@@ -327,8 +362,6 @@ Opening: {body_start}"""
             body = parts[2]
             frontmatter = frontmatter.replace('\n---', f'\nfeaturedImage: "{image_url}"\n---')
             final_content = frontmatter + body
-    slug = re.sub(r'[^a-z0-9\s-]', '', raw_title.lower().strip())
-    slug = re.sub(r'[\s-]+', '-', slug).strip('-')[:50]
 
     time_str = datetime.now().strftime("%H%M")
     filename = f"{today}-{time_str}-{slug}.md"

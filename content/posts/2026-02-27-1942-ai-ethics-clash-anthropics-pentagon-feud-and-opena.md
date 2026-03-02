@@ -10,7 +10,7 @@ tags:
   - OpenAI
   - military AI
 description: "Dive into the chaos as Anthropic battles a Pentagon blacklist over ethical boundaries, while OpenAI deals with an insider trading mess—uncovering the raw tensions shaping AI's future."
-featuredImage: "https://imgen.x.ai/xai-imgen/xai-tmp-imgen-9c389995-a6a9-4745-9550-414080b35940.jpeg"
+featuredImage: "/images/posts/2026-02-27-1942-ai-ethics-clash-anthropics-pentagon-feud-and-opena.jpg"
 ---
 
 In the shadowy corridors of power where Silicon Valley meets the Pentagon, a storm is brewing that could redefine AI's role in global conflicts. Trump's executive order slapping a ban on Anthropic for government contracts has ignited a fierce debate, pitting the startup's commitment to safe AI against the military's insatiable appetite for cutting-edge tech. Hot on its trail, OpenAI's abrupt firing of an employee caught insider trading on prediction markets exposes the underbelly of greed within the industry. And let's not forget Wall Street's hysterical reaction to a simple AI thought experiment, where stock prices tumbled like dominoes over fears of job automation. These aren't just headlines; they're interconnected fault lines cracking open the AI world's facade of invincibility.
