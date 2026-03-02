@@ -9,7 +9,7 @@ tags:
   - Anthropic Claude
   - AI Infrastructure
 description: "Ever wondered how a heated dispute with the Pentagon could catapult an AI app to the top of the charts? Anthropic's clash is revealing the shaky foundations of AI self-regulation, while sparking massive app downloads and fueling a frenzy of billion-dollar infrastructure investments—let's unpack what this means for the future."
-featuredImage: "/images/posts/2026-02-28-1913-anthropics-pentagon-clash-ignites-ai-governance-cr.jpg"
+featuredImage: "images/posts/2026-02-28-1913-anthropics-pentagon-clash-ignites-ai-governance-cr.jpg"
 ---
 
 Anthropic's Claude app skyrocketed to the No. 2 spot on the App Store almost overnight, propelled by a high-stakes confrontation with the Pentagon. This isn't merely a fleeting tech headline; it's a stark revelation of the vulnerabilities baked into the AI industry's approach to self-governance. In an era where regulatory frameworks lag far behind technological leaps, companies like Anthropic are left navigating treacherous waters, balancing ethical commitments against government pressures, explosive consumer interest, and the relentless drive for infrastructure that powers it all. At Datadrip, we've tracked these tensions for years, and this moment feels like a tipping point—one that could reshape how AI is developed, deployed, and controlled.

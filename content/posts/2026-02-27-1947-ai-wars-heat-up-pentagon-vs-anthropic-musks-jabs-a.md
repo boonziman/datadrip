@@ -10,7 +10,7 @@ tags:
   - anthropic
   - national security
 description: "With the Pentagon blacklisting Anthropic, Elon Musk throwing shade at OpenAI, and ChatGPT surging to 900 million users, we're diving into the wild intersection of AI breakthroughs, ethical dilemmas, and government muscle."
-featuredImage: "/images/posts/2026-02-27-1947-ai-wars-heat-up-pentagon-vs-anthropic-musks-jabs-a.jpg"
+featuredImage: "images/posts/2026-02-27-1947-ai-wars-heat-up-pentagon-vs-anthropic-musks-jabs-a.jpg"
 ---
 
 OpenAI just shattered records with ChatGPT reaching 900 million weekly active users, a clear sign that AI isn't just tech—it's become the backbone of how we work, create, and connect. Yet, on the very same day, the Pentagon branded rival Anthropic a "supply-chain risk," and Elon Musk, in a fiery deposition, mocked OpenAI by claiming his xAI's Grok hasn't driven anyone to suicide. These aren't random blips; they're fault lines cracking open in the AI landscape, where unchecked ambition meets regulatory hammers and personal vendettas.

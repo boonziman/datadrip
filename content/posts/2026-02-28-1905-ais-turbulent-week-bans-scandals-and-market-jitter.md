@@ -10,7 +10,7 @@ tags:
   - OpenAI scandal
   - AI market volatility
 description: "Buckle up for a wild ride through AI's latest chaos—Trump's bold move to ban Anthropic from government deals, OpenAI's messy insider trading fallout, and Wall Street's panic over a simple thought experiment. We're breaking it all down and exploring what it signals for the tech world's future."
-featuredImage: "/images/posts/2026-02-28-1905-ais-turbulent-week-bans-scandals-and-market-jitter.jpg"
+featuredImage: "images/posts/2026-02-28-1905-ais-turbulent-week-bans-scandals-and-market-jitter.jpg"
 ---
 
 In a single whirlwind week, the AI landscape has been rocked by executive orders, corporate firings, and stock market spasms that expose the industry's fragile underbelly. President Trump's push to exclude Anthropic from U.S. government contracts has ignited debates on ethics versus national security, while OpenAI's swift dismissal of an employee for insider trading on prediction markets highlights the perils of blending cutting-edge tech with financial speculation. Add to that Wall Street's overreaction to a speculative blog post, and you've got a perfect storm signaling that AI's era of unchecked enthusiasm is giving way to scrutiny and realism.

@@ -9,7 +9,7 @@ tags:
   - Ethereum
   - Crypto Regulation
 description: "With Wall Street giants like Morgan Stanley and Citi pushing deeper into crypto custody and trading, while VCs like Paradigm chase AI opportunities, Bitcoin's facing fresh turmoil—let's explore what this means for the market's future."
-featuredImage: "/images/posts/2026-02-27-1944-wall-streets-crypto-rush-meets-vc-pivot-to-ai.jpg"
+featuredImage: "images/posts/2026-02-27-1944-wall-streets-crypto-rush-meets-vc-pivot-to-ai.jpg"
 ---
 
 Bitcoin's latest plunge feels like a gut punch, wiping out a short-lived rally as broader U.S. equities stumbled and gold prices soared to new heights. Yet, even as the crypto king grapples with these economic headwinds, the old guard of finance is doubling down, carving out bigger roles in the digital asset space. This paradox raises a compelling question: Could this influx of institutional muscle finally anchor crypto against its infamous volatility, or is it merely inflating another bubble set to burst under regulatory and market pressures?

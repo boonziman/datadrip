@@ -9,7 +9,7 @@ tags:
   - AI in healthcare
   - climate tech
 description: "Ever wonder how AI is stepping up to tackle our biggest planetary challenges? From optimizing rice farms in India to accelerating drug discoveries in labs, it's fueling a quiet revolution in sustainability and health that's backed by big investments and innovative tools."
-featuredImage: "/images/posts/2026-02-28-1917-ais-green-revolution-from-farms-to-pharma.jpg"
+featuredImage: "images/posts/2026-02-28-1917-ais-green-revolution-from-farms-to-pharma.jpg"
 ---
 
 In the whirlwind of tech headlines dominated by regulatory battles and corporate intrigue, a more profound shift is unfolding: AI is weaving itself into the fabric of environmental and health solutions. This week alone, a $25 million infusion into an AI-driven drug discovery firm and Meta's ambitious solar energy acquisition underscore how artificial intelligence is no longer confined to digital novelties. Instead, it's powering tangible advancements in combating climate change and disease, from methane-reducing algorithms in Asian farmlands to predictive models in pharmaceutical pipelines. As someone who's spent years dissecting these trends, I see this as the dawn of AI's green era—a movement that's equal parts promise and peril, demanding we look beyond the buzz to its real-world stakes.

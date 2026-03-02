@@ -104,8 +104,8 @@ def download_image(image_url, slug="post"):
             with open(filepath, "wb") as f:
                 f.write(img_response.content)
             print(f"✅ Image saved: {filepath}")
-            # Return the Hugo-relative path (Hugo serves static/ at root)
-            return f"/images/posts/{filename}"
+            # Return path without leading / so Hugo's absURL/relURL handles the base path
+            return f"images/posts/{filename}"
         else:
             print(f"❌ Image download failed: {img_response.status_code}")
             return None

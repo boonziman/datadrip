@@ -9,7 +9,7 @@ tags:
   - Tech Mergers
   - Political Influence
 description: "Ever wonder how a single phone call from a former president can upend billion-dollar deals? We're diving into Trump's role in derailing Netflix's Warner Bros. bid, the rise of Paramount's massive merger, and how AI giants are betting big on infrastructure amid global tensions—plus, why prediction markets like Polymarket are thriving on chaos."
-featuredImage: "/images/posts/2026-02-28-1923-politics-reshaping-tech-trumps-deal-influence-and-.jpg"
+featuredImage: "images/posts/2026-02-28-1923-politics-reshaping-tech-trumps-deal-influence-and-.jpg"
 ---
 
 In the high-stakes arena of 2026 tech and media, a leaked conversation between Netflix's co-CEO and former President Trump has exposed the raw interplay of political power and corporate strategy. By reportedly heeding Trump's advice, Netflix abandoned its pursuit of Warner Bros. Discovery, clearing the path for Paramount's audacious $111 billion acquisition. This drama unfolds against a backdrop of escalating geopolitical strife, including the recent U.S. military action against Iran, where platforms like Polymarket are not just observing but actively profiting from bets on conflict outcomes. Meanwhile, AI titans such as Meta and OpenAI are funneling billions into robust infrastructure to safeguard their operations. This convergence isn't random—it's a stark illustration of how political forces are reshaping the tech landscape, influencing everything from entertainment conglomerates to the foundational networks powering artificial intelligence.
