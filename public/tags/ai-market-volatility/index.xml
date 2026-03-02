@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AI Market Volatility on Datadrip</title><link>https://boonziman.github.io/datadrip/tags/ai-market-volatility/</link><description>Recent content in AI Market Volatility on Datadrip</description><generator>Hugo -- 0.157.0</generator><language>en-us</language><copyright>2026 Datadrip. All rights reserved.</copyright><lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://boonziman.github.io/datadrip/tags/ai-market-volatility/index.xml" rel="self" type="application/rss+xml"/><item><title>AI's Turbulent Week: Bans, Scandals, and Market Jitters</title><link>https://boonziman.github.io/datadrip/posts/2026-02-28-1905-ais-turbulent-week-bans-scandals-and-market-jitter/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate><guid>https://boonziman.github.io/datadrip/posts/2026-02-28-1905-ais-turbulent-week-bans-scandals-and-market-jitter/</guid><description>Buckle up for a wild ride through AI&amp;#39;s latest chaos—Trump&amp;#39;s bold move to ban Anthropic from government deals, OpenAI&amp;#39;s messy insider trading fallout, and Wall Street&amp;#39;s panic over a simple thought experiment. We&amp;#39;re breaking it all down and exploring what it signals for the tech world&amp;#39;s future.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI Market Volatility on Datadrip</title>
+    <link>http://localhost:1313/datadrip/tags/ai-market-volatility/</link>
+    <description>Recent content in AI Market Volatility on Datadrip</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/datadrip/tags/ai-market-volatility/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI&#39;s Turbulent Week: Bans, Scandals, and Market Jitters</title>
+      <link>http://localhost:1313/datadrip/posts/2026-02-28-1905-ais-turbulent-week-bans-scandals-and-market-jitter/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/posts/2026-02-28-1905-ais-turbulent-week-bans-scandals-and-market-jitter/</guid>
+      <description>Buckle up for a wild ride through AI&amp;#39;s latest chaos—Trump&amp;#39;s bold move to ban Anthropic from government deals, OpenAI&amp;#39;s messy insider trading fallout, and Wall Street&amp;#39;s panic over a simple thought experiment. We&amp;#39;re breaking it all down and exploring what it signals for the tech world&amp;#39;s future.</description>
+    </item>
+  </channel>
+</rss>

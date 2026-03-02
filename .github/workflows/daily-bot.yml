@@ -7,9 +7,15 @@ on:
 
 permissions:
   contents: write              # Needed to commit the new post
+  pages: write                 # Needed to deploy to GitHub Pages
+  id-token: write              # Needed for Pages deployment
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  generate-post:
+  generate-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -33,10 +39,43 @@ jobs:
         run: python scripts/generate_post.py --daily
 
       - name: Commit new posts (only if any were created)
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/posts/ static/images/
-          # Only commit if there are actual changes (prevents empty commits)
-          git diff --staged --quiet || git commit -m "chore(bot): daily automated post $(date +'%Y-%m-%d %H:%M UTC')"
-          git push
+          if git diff --staged --quiet; then
+            echo "new_posts=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "chore(bot): daily automated post $(date +'%Y-%m-%d %H:%M UTC')"
+            git push
+            echo "new_posts=true" >> $GITHUB_OUTPUT
+          fi
+
+      # === Build & Deploy Hugo (only if new posts were created) ===
+      - name: Setup Hugo
+        if: steps.commit.outputs.new_posts == 'true'
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.157.0'
+          extended: true
+
+      - name: Build with Hugo
+        if: steps.commit.outputs.new_posts == 'true'
+        env:
+          HUGO_ENVIRONMENT: production
+        run: hugo --minify
+
+      - name: Setup Pages
+        if: steps.commit.outputs.new_posts == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        if: steps.commit.outputs.new_posts == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+
+      - name: Deploy to GitHub Pages
+        if: steps.commit.outputs.new_posts == 'true'
+        uses: actions/deploy-pages@v4
