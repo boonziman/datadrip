@@ -67,7 +67,7 @@
   {{- $featuredImage := or .Params.featuredImage .Params.cover.image }}
   {{- if $featuredImage }}
   <div class="entry-image">
-    <img src="{{ $featuredImage }}" alt="{{ .Title }}" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px;" />
+    <img src="{{ $featuredImage | absURL }}" alt="{{ .Title }}" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px;" />
   </div>
   {{- end }}
   <header class="entry-header">

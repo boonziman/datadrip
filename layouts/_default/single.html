@@ -23,7 +23,7 @@
   {{- $coverImage := or .Params.featuredImage .Params.cover.image }}
   {{- if (and $coverImage (not $isHidden)) }}
   <figure class="post-cover">
-    <img src="{{ $coverImage }}" alt="{{ .Title }}" loading="eager" />
+    <img src="{{ $coverImage | absURL }}" alt="{{ .Title }}" loading="eager" />
   </figure>
   {{- end }}
 
