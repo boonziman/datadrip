@@ -7,8 +7,29 @@
     <generator>Hugo -- 0.157.0</generator>
     <language>en-us</language>
     <copyright>2026 Datadrip. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/datadrip/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Energy</title>
+      <link>http://localhost:1313/datadrip/tags/ai-energy/</link>
+      <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/tags/ai-energy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI Startups</title>
+      <link>http://localhost:1313/datadrip/tags/ai-startups/</link>
+      <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/tags/ai-startups/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Personalized AI</title>
+      <link>http://localhost:1313/datadrip/tags/personalized-ai/</link>
+      <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/datadrip/tags/personalized-ai/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Ai</title>
       <link>http://localhost:1313/datadrip/tags/ai/</link>
