@@ -43,7 +43,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/reply_log.json data/cost_log.json data/report.md
+          git add data/cost_log.json data/report.md || true
+          if [ -f data/reply_log.json ]; then git add data/reply_log.json; fi
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

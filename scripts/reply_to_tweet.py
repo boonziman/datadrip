@@ -208,7 +208,7 @@ def score_candidate(c):
     hours_old = c["hours_old"]
 
     # Skip tiny accounts — our reply won't get visibility
-    if followers < 2000:
+    if followers < 500:
         return -1
 
     # Account size: log scale normalized to 0–1 (caps at ~10M)
@@ -259,7 +259,7 @@ def find_best_tweet(tracker):
     for query in selected:
         short_query = query[:55] + "..."
         tracker.log_event(f"Searching X for: {short_query}")
-        results = search_tweets(query)
+        results = search_tweets(query, max_hours=6)
 
         if results is None:
             return None, "no_access"
@@ -285,11 +285,11 @@ def find_best_tweet(tracker):
         if c["tweet_id"] in replied_tweet_ids:
             continue
         # Skip tiny accounts
-        if c["followers"] < 2000:
+        if c["followers"] < 500:
             continue
-        # Skip zero-engagement tweets
+        # Skip zero-engagement tweets (1+ like/RT/reply is enough for fresh tweets)
         total_engagement = c["likes"] + c["retweets"] + c["replies"]
-        if total_engagement < 3:
+        if total_engagement < 1:
             continue
         # Skip tweets that are just links/media with no real text
         clean_text = re.sub(r'https?://\S+', '', c["text"]).strip()
