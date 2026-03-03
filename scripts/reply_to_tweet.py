@@ -42,17 +42,19 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPLY_LOG_PATH = os.path.join(PROJECT_ROOT, "data", "reply_log.json")
 
 # ====================== SEARCH QUERIES ======================
-# Query 0: Big-name accounts — max visibility, almost always have open replies.
-# Queries 1-3: Topic searches with min_faves:3 to cut out spam bots.
+# IMPORTANT: Only use Free-tier operators. min_faves/min_retweets require Premium.
+# Query 0: Individual people only — they have open replies far more than corporate accounts.
+# Queries 1-3: Keyword topic searches (broader net).
 SEARCH_QUERIES = [
-    # Big accounts — guaranteed quality, huge audiences
-    '(from:OpenAI OR from:AnthropicAI OR from:sama OR from:ylecun OR from:karpathy OR from:coinbase OR from:binance OR from:naval OR from:balajis OR from:VitalikButerin) -is:retweet lang:en',
-    # AI discussion — min_faves filters spam bots
-    '("AI" OR "ChatGPT" OR "Claude" OR "LLM" OR "Grok" OR "OpenAI") min_faves:3 -is:retweet -is:reply lang:en',
-    # Crypto with engagement filter
-    '("Bitcoin" OR "Ethereum" OR "crypto" OR "DeFi" OR "Web3") min_faves:3 -is:retweet -is:reply lang:en',
-    # Tech/founder discussion with engagement filter
-    '("machine learning" OR "Anthropic" OR "tech founder" OR "SaaS" OR "AI startup") min_faves:3 -is:retweet -is:reply lang:en',
+    # Individual AI/tech/crypto people — almost always have reply_settings:everyone
+    # DO NOT add corporate accounts (OpenAI, Binance, Coinbase) — they restrict replies
+    '(from:sama OR from:ylecun OR from:karpathy OR from:naval OR from:balajis OR from:VitalikButerin OR from:GaryMarcus OR from:emollick OR from:pmarca OR from:paulg OR from:fchollet OR from:drfeifei) -is:retweet lang:en',
+    # AI discussion — Free-tier safe operators only
+    '("AI" OR "ChatGPT" OR "Claude" OR "LLM" OR "Grok" OR "OpenAI") -is:retweet -is:reply lang:en',
+    # Crypto discussion
+    '("Bitcoin" OR "Ethereum" OR "crypto" OR "DeFi" OR "Web3") -is:retweet -is:reply lang:en',
+    # Tech/founder discussion
+    '("machine learning" OR "AI startup" OR "tech founder" OR "SaaS" OR "Anthropic") -is:retweet -is:reply lang:en',
 ]
 
 # ====================== VALIDATION ======================
@@ -90,6 +92,23 @@ def get_recently_replied_authors(days=7):
         for entry in log
         if entry.get("timestamp", "") > cutoff
     )
+
+def get_403_blocked_authors(days=30):
+    """Authors where we got 403 on posting — skip for 30 days (they restrict replies)."""
+    log = load_reply_log()
+    cutoff = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)).isoformat()
+    return set(
+        entry.get("blocked_author", "").lower()
+        for entry in log
+        if entry.get("type") == "403_blocked" and entry.get("timestamp", "") > cutoff
+    )
+
+def log_403_blocked(author):
+    """Remember that this author blocks our replies so we skip them in future runs."""
+    log = load_reply_log()
+    now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    log.append({"type": "403_blocked", "blocked_author": author, "timestamp": now})
+    save_reply_log(log)
 
 def get_recently_replied_tweet_ids():
     """Get tweet IDs we've already replied to — never reply to the same tweet."""
@@ -252,6 +271,10 @@ def find_best_tweet(tracker):
     seen_ids = set()
     replied_authors = get_recently_replied_authors(days=7)
     replied_tweet_ids = get_recently_replied_tweet_ids()
+    blocked_authors = get_403_blocked_authors(days=30)  # Authors that block our replies
+
+    if blocked_authors:
+        tracker.log_event(f"Skipping {len(blocked_authors)} authors with known 403 restrictions")
 
     for query in selected:
         short_query = query[:55] + "..."
@@ -274,10 +297,18 @@ def find_best_tweet(tracker):
 
     # Filter out: already replied, tiny accounts, no engagement, our own replies
     filtered = []
-    skipped = {"restricted_replies": 0, "already_replied": 0, "small_account": 0, "no_engagement": 0, "no_text": 0}
+    skipped = {"restricted_replies": 0, "403_blocked": 0, "already_replied": 0, "small_account": 0, "no_engagement": 0, "no_text": 0}
     for c in all_candidates:
-        # Skip if replies are restricted — saves Grok API calls (most common failure)
-        if c.get("reply_settings", "everyone") != "everyone":
+        # Skip authors where we already got 403 (they restrict replies from small accounts)
+        if c["username"].lower() in blocked_authors:
+            skipped["403_blocked"] += 1
+            continue
+        # Check reply_settings field — log the actual value for debugging
+        rs = c.get("reply_settings", None)
+        if rs is None:
+            # Field not returned by API — log it but allow through (we'll catch 403 if needed)
+            pass  # Will be logged in aggregate below
+        elif rs != "everyone":
             skipped["restricted_replies"] += 1
             continue
         # Skip if we replied to this author or tweet recently
@@ -285,7 +316,7 @@ def find_best_tweet(tracker):
             skipped["already_replied"] += 1
             continue
         # Skip tiny accounts
-        if c["followers"] < 500:
+        if c["followers"] < 1000:
             skipped["small_account"] += 1
             continue
         # Skip zero-engagement tweets
@@ -300,10 +331,16 @@ def find_best_tweet(tracker):
             continue
         filtered.append(c)
 
-    # Always log the filter breakdown so we can diagnose issues
+    # Log filter breakdown + reply_settings debug info
     breakdown_parts = [f"{v} {k.replace('_', ' ')}" for k, v in skipped.items() if v > 0]
     if breakdown_parts:
-        tracker.log_event(f"   ↳ Filtered out: {', '.join(breakdown_parts)}")
+        tracker.log_event(f"   ↳ Filtered: {', '.join(breakdown_parts)}")
+    # Log what reply_settings values we're actually seeing (debugging)
+    rs_values = [c.get("reply_settings", "[not returned]") for c in all_candidates]
+    rs_summary = {}
+    for v in rs_values:
+        rs_summary[str(v)] = rs_summary.get(str(v), 0) + 1
+    tracker.log_event(f"   ↳ reply_settings in API response: {rs_summary}")
 
     if not filtered:
         tracker.log_event("No suitable candidates after filtering.")
@@ -517,6 +554,9 @@ if __name__ == "__main__":
         if error:
             tracker.log_event(f"⚠️  Post failed: {error} — trying next candidate")
             print(f"   ⚠️  {error}")
+            if "403" in str(error):
+                log_403_blocked(candidate["username"])
+                tracker.log_event(f"   ↳ @{candidate['username']} added to 403-blocked list (skipped for 30 days)")
             continue  # Try next candidate
 
         # Success!
