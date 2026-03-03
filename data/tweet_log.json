@@ -12,5 +12,14 @@
     "use_image": true,
     "image_prompt": "A futuristic digital illustration of a quantum computer intertwined with AI neural networks and blockchain elements, glowing in neon blues and purples, symbolizing high-tech innovation in simulations, high detail, sci-fi vibe",
     "tweet_id": "2028680804700717554"
+  },
+  {
+    "timestamp": "2026-03-03 06:07 UTC",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Seeing a ton of users ditching ChatGPT for Claude lately\u2014turns out it's not just hype, Claude's nailing context better while Siri's eyeing a Google switch-up. Dug into why this shift matters for AI's future. Worth a read if you're tracking the space. https://datadripco.com/posts/2026-03-02-2231-ai-user-exodus-why-claudes-winning-as-siri-eyes-go/ #AI",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/2026-03-02-2231-ai-user-exodus-why-claudes-winning-as-siri-eyes-go/",
+    "tweet_id": "2028713908228198447"
   }
 ]
