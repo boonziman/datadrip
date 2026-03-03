@@ -2,11 +2,12 @@ name: Daily Datadrip Smart Tweets
 
 on:
   schedule:
-    - cron: '0 8 * * *'   # 08:00 UTC - Morning insight (Europe/US wake-up)
-    - cron: '10 13 * * *'  # 13:10 UTC - Peak news time (tied to blog post)
-    - cron: '0 17 * * *'  # 17:00 UTC - Afternoon hot take (US prime)
-    - cron: '0 21 * * *'  # 21:00 UTC - Evening engagement
-    - cron: '0 1 * * *'   # 01:00 UTC - Late-night trend catch (Asia + night owls)
+    - cron: '0 16 * * *'  # 08:00 AM PST / 16:00 UTC
+    - cron: '0 19 * * *'  # 11:00 AM PST / 19:00 UTC
+    - cron: '0 22 * * *'  # 02:00 PM PST / 22:00 UTC
+    - cron: '0 1 * * *'   # 05:00 PM PST / 01:00 UTC (next day)
+    - cron: '0 4 * * *'   # 08:00 PM PST / 04:00 UTC (next day)
+    - cron: '0 6 * * *'   # 10:00 PM PST / 06:00 UTC (next day)
   workflow_dispatch:      # Allows manual test anytime
 
 permissions:
