@@ -22,10 +22,12 @@ import json
 import datetime
 
 # ====================== PRICING (estimates — update if x.ai changes rates) ======================
+# grok-4 is a frontier model — pricing based on observed dashboard costs.
+# Check https://console.x.ai/ for current rates.
 PRICING = {
     "grok-4": {
-        "input_per_1m": 3.00,   # $ per 1M input tokens
-        "output_per_1m": 15.00,  # $ per 1M output tokens
+        "input_per_1m": 10.00,   # $ per 1M input tokens (conservative estimate)
+        "output_per_1m": 40.00,  # $ per 1M output tokens (conservative estimate)
     },
     "grok-imagine-image": {
         "per_image": 0.07,  # $ per image generated

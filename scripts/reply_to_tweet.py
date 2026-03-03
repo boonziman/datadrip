@@ -212,11 +212,8 @@ def score_candidate(c):
         return -1
 
     # Account size: log scale normalized to 0–1 (caps at ~10M)
+    # Big accounts = big visibility, no penalty for large followings
     size = min(math.log10(max(followers, 10)), 7) / 7
-
-    # Slight penalty for ultra-massive accounts (reply gets buried in thousands)
-    if followers > 2_000_000:
-        size *= 0.7
 
     # Engagement velocity: total weighted engagement / hours since posted
     engagement = likes + (retweets * 2) + (replies * 3)
@@ -229,11 +226,9 @@ def score_candidate(c):
     # Bonus: tweet asks a question → author wants replies, perfect for us
     question_bonus = 0.10 if "?" in c["text"] else 0
 
-    # Bonus: moderate engagement sweet spot (visible but not buried)
+    # Bonus: moderate engagement sweet spot
     if 10 <= likes <= 500:
         sweet_spot = 0.05
-    elif likes > 1000:
-        sweet_spot = -0.05  # our reply might get lost
     else:
         sweet_spot = 0
 
@@ -307,54 +302,44 @@ def find_best_tweet(tracker):
     scored = [(score_candidate(c), c) for c in filtered]
     scored.sort(key=lambda x: x[0], reverse=True)
 
-    # Return the best one
+    # Log the top pick
     best_score, best = scored[0]
     tracker.log_event(
         f"🎯 Best: @{best['username']} ({best['followers']:,} followers) — "
         f"{best['likes']}❤️ {best['retweets']}🔁 — "
         f"{best['hours_old']:.1f}h old — score {best_score:.3f}"
     )
+    if len(scored) > 1:
+        tracker.log_event(f"   + {len(scored) - 1} backup candidates ready")
 
-    return best, "found"
+    # Return ALL ranked candidates so main block can retry on 403
+    return scored, "found"
 
 # ====================== GROK REPLY GENERATION ======================
-REPLY_PROMPT = """You are replying to a tweet as the person behind @Datadripco on X/Twitter. You run an AI, Crypto & Tech blog and you're genuinely plugged into the space. You're a sharp tech person who engages in real conversations online.
+REPLY_PROMPT = """You're @Datadripco on X — sharp tech person in AI/Crypto/Tech. Reply to this tweet like a real person.
 
-═══ CRITICAL RULES ═══
-- Sound like a REAL PERSON having a conversation. Short, punchy, conversational.
-- Reference something SPECIFIC from their tweet. Your reply should NOT work as a generic response to any tweet — it must clearly respond to THIS one.
-- Add genuine value: a new angle, a smart question, relevant data, or a clear opinion.
-- NEVER mention your blog, website, brand, or link. This is about engaging, not promoting. Zero self-promotion.
-- NEVER use generic filler: "Great point!", "So true!", "This!", "Love this take!", "Couldn't agree more!", "Exactly!", "Well said!"
-- Keep it to 1-2 sentences. 3 max if you're making a complex point. Short replies get more engagement.
-- Use contractions (it's, don't, I'm, we've). Sound like you talk, not like you write an essay.
-- NEVER use: "game-changer", "mind-blowing", "paradigm shift", "buckle up", "let that sink in", "deep dive"
-- No hashtags in replies. They look spammy in a conversation.
-- No emojis overload. One at most, only if it feels natural.
+RULES:
+- 1-2 sentences max. Sound human, use contractions.
+- Reference something SPECIFIC from their tweet — no generic responses.
+- Add value: new angle, smart question, data point, or clear opinion.
+- ZERO self-promotion. No links, no mentioning your blog/brand.
+- No filler ("Great point!", "So true!", "This!"). No hashtags. Max 1 emoji.
+- Banned words: game-changer, mind-blowing, paradigm shift, buckle up, deep dive.
 
-═══ REPLY APPROACHES (pick the BEST one for THIS tweet) ═══
-1. "add_insight" — Drop a fact, angle, or connection they didn't mention. "Actually the bigger deal here is..."
-2. "ask_question" — Ask something thought-provoking that makes people want to reply. Drive conversation deeper.
-3. "take" — Share your opinion clearly. Agree with a reason, or respectfully push back. Debate drives engagement.
-4. "connect_dots" — Link their point to something else happening right now. "This + [other trend] = something wild"
-5. "experience" — Brief related observation: "Been seeing the same..." or "Tested this yesterday and..."
+APPROACHES (pick best for THIS tweet):
+- "add_insight": fact/angle they missed
+- "ask_question": thought-provoking question
+- "take": clear opinion, agree or push back
+- "connect_dots": link to another trend
+- "experience": brief personal observation
 
-═══ THE TWEET YOU'RE REPLYING TO ═══
-Author: @{username} ({followers:,} followers)
-Tweet: "{tweet_text}"
+TWEET: @{username} ({followers:,} followers): "{tweet_text}"
 
-═══ YOUR RECENT REPLIES (vary your approach — don't repeat the same style) ═══
-{recent_replies}
+YOUR RECENT REPLIES (vary style): {recent_replies}
 
-═══ OUTPUT ═══
 Reply with JSON only:
-{{
-  "reply_type": "add_insight" or "ask_question" or "take" or "connect_dots" or "experience" or "skip",
-  "reply_text": "your reply text (empty string if skip)"
-}}
-
-If the tweet is not interesting enough to add genuine value to, reply_type should be "skip".
-Remember: you're a real person in a real conversation. Reply like one."""
+{{"reply_type": "...", "reply_text": "..."}}
+Use "skip" if tweet isn't worth a genuine reply."""
 
 def parse_json_response(content):
     """Parse JSON from Grok response, handling code fences and malformed output."""
@@ -396,8 +381,8 @@ def generate_reply(candidate, tracker):
             {"role": "system", "content": prompt},
             {"role": "user", "content": "Write your reply to this tweet. Pick the best approach for maximum engagement."},
         ],
-        "temperature": 0.9,
-        "max_tokens": 200,
+        "temperature": 0.85,
+        "max_tokens": 100,
     }
     headers = {
         "Authorization": f"Bearer {GROK_API_KEY}",
@@ -427,7 +412,7 @@ def generate_reply(candidate, tracker):
 
 # ====================== POST REPLY ======================
 def post_reply(tweet_id, reply_text):
-    """Post a reply to a specific tweet. Returns the reply's tweet ID."""
+    """Post a reply to a specific tweet. Returns (reply_id, None) on success or (None, error_msg) on failure."""
     auth = OAuth1(X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET)
 
     url = "https://api.twitter.com/2/tweets"
@@ -439,10 +424,20 @@ def post_reply(tweet_id, reply_text):
     }
 
     r = requests.post(url, json=payload, auth=auth)
-    r.raise_for_status()
+
+    if r.status_code == 403:
+        # Tweet likely has restricted replies ("only people I follow can reply")
+        detail = r.json().get("detail", r.text[:200]) if r.text else "Forbidden"
+        return None, f"403 Forbidden — tweet has restricted replies ({detail})"
+
+    if r.status_code == 429:
+        return None, "429 Rate limited — hit posting limit"
+
+    if not r.ok:
+        return None, f"{r.status_code} Error: {r.text[:200]}"
 
     reply_id = r.json().get("data", {}).get("id", "unknown")
-    return reply_id
+    return reply_id, None
 
 # ====================== MAIN ======================
 if __name__ == "__main__":
@@ -457,94 +452,97 @@ if __name__ == "__main__":
     validate_keys()
     tracker.log_event("API keys validated")
 
-    # --- Step 1: Find the best tweet to reply to ---
-    best_tweet, status = find_best_tweet(tracker)
+    # --- Step 1: Find ranked candidates ---
+    result, status = find_best_tweet(tracker)
 
     if status == "no_access":
         tracker.log_error("X API search access denied — need Basic tier ($200/mo)")
-        tracker.set_detail("outcome", "Skipped — X API plan doesn't include search. Need to upgrade to Basic tier.")
+        tracker.set_detail("outcome", "Skipped — X API plan doesn't include search.")
         tracker.finish()
         print("\n⚠️  Reply bot needs X API Basic tier for search. Exiting gracefully.")
-        exit(0)  # Exit 0 so the workflow doesn't show as failed
+        exit(0)
 
-    if best_tweet is None:
+    if result is None:
         tracker.log_event(f"No suitable tweet found (reason: {status}). Skipping this run.")
         tracker.set_detail("outcome", f"Skipped — no good tweets to reply to ({status})")
         tracker.finish()
         print("\n⚠️  No good tweets found this run. Will try again next time.")
         exit(0)
 
-    # --- Step 2: Generate a reply with Grok ---
-    # Try up to 3 candidates if Grok says "skip" on the first
-    reply_data = None
-    candidates_tried = 0
-    max_tries = 3
+    # result is a list of (score, candidate) tuples, sorted best-first
+    ranked = result
+    MAX_ATTEMPTS = min(5, len(ranked))  # Try up to 5 candidates
 
-    # Re-do the search to have backup candidates
-    all_scored = []
-    replied_authors = get_recently_replied_authors(days=7)
-    replied_ids = get_recently_replied_tweet_ids()
+    # --- Step 2 & 3: Generate reply + post (with retry on 403) ---
+    reply_posted = False
 
-    # We already have the best one, let's try it first
-    reply_data = generate_reply(best_tweet, tracker)
-    candidates_tried += 1
-    target = best_tweet
+    for attempt_num, (score, candidate) in enumerate(ranked[:MAX_ATTEMPTS], 1):
+        tracker.log_event(f"Attempt {attempt_num}/{MAX_ATTEMPTS}: @{candidate['username']} ({candidate['followers']:,} followers, score {score:.3f})")
 
-    if reply_data is None:
-        tracker.log_event(f"Grok skipped @{best_tweet['username']}'s tweet — trying next candidate")
-        # If Grok skips, we don't have easy access to runner-up.
-        # Log and exit gracefully rather than making extra API calls.
-        tracker.log_event("No suitable reply generated. Skipping this run.")
-        tracker.set_detail("outcome", "Skipped — Grok didn't find the tweet worth replying to")
-        tracker.finish()
-        exit(0)
+        # Generate reply with Grok
+        reply_data = generate_reply(candidate, tracker)
 
-    reply_text = reply_data["reply_text"].strip()
-    reply_type = reply_data.get("reply_type", "unknown")
+        if reply_data is None:
+            tracker.log_event(f"Grok skipped @{candidate['username']}'s tweet — trying next")
+            continue
 
-    # Safety: enforce length limit
-    if len(reply_text) > 280:
-        reply_text = reply_text[:277] + "..."
+        reply_text = reply_data["reply_text"].strip()
+        reply_type = reply_data.get("reply_type", "unknown")
 
-    print(f"\n📋 Replying to @{target['username']}:")
-    print(f"   Original: \"{target['text'][:120]}...\"")
-    print(f"   Our reply ({reply_type}): \"{reply_text}\"")
+        # Safety: enforce length limit
+        if len(reply_text) > 280:
+            reply_text = reply_text[:277] + "..."
 
-    # --- Step 3: Post the reply ---
-    tracker.log_event(f"Posting reply to @{target['username']}...")
-    try:
-        reply_id = post_reply(target["tweet_id"], reply_text)
+        print(f"\n📋 Replying to @{candidate['username']}:")
+        print(f"   Original: \"{candidate['text'][:120]}...\"")
+        print(f"   Our reply ({reply_type}): \"{reply_text}\"")
+
+        # Try to post
+        tracker.log_event(f"Posting reply to @{candidate['username']}...")
+        reply_id, error = post_reply(candidate["tweet_id"], reply_text)
+
+        if error:
+            tracker.log_event(f"⚠️  Post failed: {error} — trying next candidate")
+            print(f"   ⚠️  {error}")
+            continue  # Try next candidate
+
+        # Success!
         tracker.log_event(f"✅ Reply posted! (ID: {reply_id})")
         print(f"\n✅ Reply posted! (ID: {reply_id})")
-    except requests.exceptions.HTTPError as e:
-        tracker.log_error(f"Failed to post reply: {e}")
-        tracker.set_detail("outcome", f"Failed to post reply: {e}")
-        tracker.finish()
-        exit(1)
 
-    # --- Step 4: Log everything ---
-    log = load_reply_log()
-    log.append({
-        "timestamp": now,
-        "replied_to_tweet_id": target["tweet_id"],
-        "replied_to_author": target["username"],
-        "replied_to_followers": target["followers"],
-        "replied_to_text": target["text"][:300],
-        "replied_to_engagement": f"{target['likes']}❤️ {target['retweets']}🔁 {target['replies']}💬",
-        "reply_type": reply_type,
-        "reply_text": reply_text,
-        "reply_tweet_id": reply_id,
-    })
-    save_reply_log(log)
-    print(f"💾 Reply logged ({len(log)} total in memory)")
+        # --- Step 4: Log everything ---
+        log = load_reply_log()
+        log.append({
+            "timestamp": now,
+            "replied_to_tweet_id": candidate["tweet_id"],
+            "replied_to_author": candidate["username"],
+            "replied_to_followers": candidate["followers"],
+            "replied_to_text": candidate["text"][:300],
+            "replied_to_engagement": f"{candidate['likes']}❤️ {candidate['retweets']}🔁 {candidate['replies']}💬",
+            "reply_type": reply_type,
+            "reply_text": reply_text,
+            "reply_tweet_id": reply_id,
+        })
+        save_reply_log(log)
+        print(f"💾 Reply logged ({len(log)} total in memory)")
 
-    # Store details for the readable report
-    tracker.set_detail("outcome", "Reply posted successfully")
-    tracker.set_detail("replied_to", f"@{target['username']} ({target['followers']:,} followers)")
-    tracker.set_detail("original_tweet", target["text"][:200])
-    tracker.set_detail("reply_text", reply_text)
-    tracker.set_detail("reply_type", reply_type)
-    tracker.set_detail("reply_tweet_id", reply_id)
+        # Store details for the readable report
+        tracker.set_detail("outcome", "Reply posted successfully")
+        tracker.set_detail("replied_to", f"@{candidate['username']} ({candidate['followers']:,} followers)")
+        tracker.set_detail("original_tweet", candidate["text"][:200])
+        tracker.set_detail("reply_text", reply_text)
+        tracker.set_detail("reply_type", reply_type)
+        tracker.set_detail("reply_tweet_id", reply_id)
+        if attempt_num > 1:
+            tracker.set_detail("retries", f"Succeeded on attempt {attempt_num} (previous had restricted replies)")
+
+        reply_posted = True
+        break
+
+    if not reply_posted:
+        tracker.log_event(f"Tried {MAX_ATTEMPTS} candidates, none worked. Skipping this run.")
+        tracker.set_detail("outcome", f"Skipped — tried {MAX_ATTEMPTS} tweets but all had restricted replies or Grok skipped them")
+        print(f"\n⚠️  Couldn't post to any of the {MAX_ATTEMPTS} candidates. Will try next run.")
 
     tracker.finish()
     print("\n✅ Done!")
