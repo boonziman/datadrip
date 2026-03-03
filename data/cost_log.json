@@ -416,5 +416,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0376
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-03",
+    "start_time": "2026-03-03T22:23:08.977423+00:00",
+    "end_time": "2026-03-03T22:23:44.168748+00:00",
+    "duration_seconds": 35.2,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3342,
+        "output_tokens": 138,
+        "cost": 0.03894
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "I've been mulling over how geopolitics is slamming crypto hard right now. Wars, sanctions, all that mess is tanking prices, but it could actually push Bitcoin toward $11M if adoption spikes in unstable regions. Feels counterintuitive, but the data lines up. What do you think?",
+      "tweet_type": "insight",
+      "tweet_id": "2028959534362820698",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3342,
+      "output_tokens": 138,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1089
+    }
   }
 ]
