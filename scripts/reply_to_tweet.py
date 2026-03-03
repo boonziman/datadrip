@@ -123,7 +123,7 @@ def search_tweets(query, max_hours=3):
         "query": query,
         "max_results": 25,
         "start_time": start_time,
-        "tweet.fields": "created_at,public_metrics,author_id",
+        "tweet.fields": "created_at,public_metrics,author_id,reply_settings",
         "expansions": "author_id",
         "user.fields": "public_metrics,username",
     }
@@ -182,6 +182,7 @@ def search_tweets(query, max_hours=3):
                 "retweets": retweets,
                 "replies": replies,
                 "hours_old": round(hours_old, 2),
+                "reply_settings": tweet.get("reply_settings", "everyone"),
             })
 
         return candidates
@@ -272,7 +273,12 @@ def find_best_tweet(tracker):
 
     # Filter out: already replied, tiny accounts, no engagement, our own replies
     filtered = []
+    restricted_count = 0
     for c in all_candidates:
+        # Skip if replies are restricted — saves Grok API calls (most common failure)
+        if c.get("reply_settings", "everyone") != "everyone":
+            restricted_count += 1
+            continue
         # Skip if we replied to this author recently
         if c["username"].lower() in replied_authors:
             continue
@@ -291,6 +297,9 @@ def find_best_tweet(tracker):
         if len(clean_text) < 20:
             continue
         filtered.append(c)
+
+    if restricted_count > 0:
+        tracker.log_event(f"   ↳ Skipped {restricted_count} tweets with restricted replies (saved {restricted_count} Grok calls)")
 
     if not filtered:
         tracker.log_event("No suitable candidates after filtering (already replied, too small, etc.)")
