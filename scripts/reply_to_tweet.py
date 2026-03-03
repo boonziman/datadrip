@@ -366,12 +366,13 @@ def find_best_tweet(tracker):
     return scored, "found"
 
 # ====================== GROK REPLY GENERATION ======================
-REPLY_PROMPT = """You're @Datadripco on X — sharp tech person in AI/Crypto/Tech. Reply to this tweet like a real person.
+REPLY_PROMPT = """You're @Datadripco on X — sharp tech person in AI/Crypto/Tech. You're writing a quote tweet commenting on someone's post.
 
 RULES:
 - 1-2 sentences max. Sound human, use contractions.
 - Reference something SPECIFIC from their tweet — no generic responses.
 - Add value: new angle, smart question, data point, or clear opinion.
+- Your text will appear ABOVE their quoted tweet, so it must be self-contained and clear.
 - ZERO self-promotion. No links, no mentioning your blog/brand.
 - No filler ("Great point!", "So true!", "This!"). No hashtags. Max 1 emoji.
 - Banned words: game-changer, mind-blowing, paradigm shift, buckle up, deep dive.
@@ -385,11 +386,11 @@ APPROACHES (pick best for THIS tweet):
 
 TWEET: @{username} ({followers:,} followers): "{tweet_text}"
 
-YOUR RECENT REPLIES (vary style): {recent_replies}
+YOUR RECENT QUOTE TWEETS (vary style): {recent_replies}
 
 Reply with JSON only:
 {{"reply_type": "...", "reply_text": "..."}}
-Use "skip" if tweet isn't worth a genuine reply."""
+Use "skip" if tweet isn't worth a genuine comment."""
 
 def parse_json_response(content):
     """Parse JSON from Grok response, handling code fences and malformed output."""
@@ -460,25 +461,28 @@ def generate_reply(candidate, tracker):
 
     return reply_data
 
-# ====================== POST REPLY ======================
+# ====================== POST QUOTE TWEET ======================
 def post_reply(tweet_id, reply_text):
-    """Post a reply to a specific tweet. Returns (reply_id, None) on success or (None, error_msg) on failure."""
+    """Post a quote tweet referencing tweet_id. Returns (tweet_id, None) on success or (None, error_msg) on failure.
+
+    NOTE: We use quote_tweet_id instead of reply.in_reply_to_tweet_id because X blocks
+    replies from accounts that haven't been previously mentioned/engaged by the author
+    (403: 'not been mentioned or otherwise engaged by the author').
+    Quote tweets have NO engagement requirement and always work.
+    """
     auth = OAuth1(X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET)
 
     url = "https://api.twitter.com/2/tweets"
     payload = {
         "text": reply_text,
-        "reply": {
-            "in_reply_to_tweet_id": tweet_id,
-        },
+        "quote_tweet_id": tweet_id,
     }
 
     r = requests.post(url, json=payload, auth=auth)
 
     if r.status_code == 403:
-        # Tweet likely has restricted replies ("only people I follow can reply")
         detail = r.json().get("detail", r.text[:200]) if r.text else "Forbidden"
-        return None, f"403 Forbidden — tweet has restricted replies ({detail})"
+        return None, f"403 Forbidden — {detail}"
 
     if r.status_code == 429:
         return None, "429 Rate limited — hit posting limit"
@@ -486,14 +490,14 @@ def post_reply(tweet_id, reply_text):
     if not r.ok:
         return None, f"{r.status_code} Error: {r.text[:200]}"
 
-    reply_id = r.json().get("data", {}).get("id", "unknown")
-    return reply_id, None
+    tweet_id_posted = r.json().get("data", {}).get("id", "unknown")
+    return tweet_id_posted, None
 
 # ====================== MAIN ======================
 if __name__ == "__main__":
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     print("=" * 60)
-    print(f"💬 Datadrip Reply Bot — {now}")
+    print(f"💬 Datadrip Quote Bot — {now}")
     print("=" * 60)
 
     tracker = Tracker("reply")
@@ -543,12 +547,12 @@ if __name__ == "__main__":
         if len(reply_text) > 280:
             reply_text = reply_text[:277] + "..."
 
-        print(f"\n📋 Replying to @{candidate['username']}:")
+        print(f"\n📋 Quote tweeting @{candidate['username']}:")
         print(f"   Original: \"{candidate['text'][:120]}...\"")
-        print(f"   Our reply ({reply_type}): \"{reply_text}\"")
+        print(f"   Our quote ({reply_type}): \"{reply_text}\"")
 
         # Try to post
-        tracker.log_event(f"Posting reply to @{candidate['username']}...")
+        tracker.log_event(f"Posting quote tweet of @{candidate['username']}...")
         reply_id, error = post_reply(candidate["tweet_id"], reply_text)
 
         if error:
@@ -560,41 +564,41 @@ if __name__ == "__main__":
             continue  # Try next candidate
 
         # Success!
-        tracker.log_event(f"✅ Reply posted! (ID: {reply_id})")
-        print(f"\n✅ Reply posted! (ID: {reply_id})")
+        tracker.log_event(f"✅ Quote tweet posted! (ID: {reply_id})")
+        print(f"\n✅ Quote tweet posted! (ID: {reply_id})")
 
         # --- Step 4: Log everything ---
         log = load_reply_log()
         log.append({
             "timestamp": now,
-            "replied_to_tweet_id": candidate["tweet_id"],
-            "replied_to_author": candidate["username"],
-            "replied_to_followers": candidate["followers"],
-            "replied_to_text": candidate["text"][:300],
-            "replied_to_engagement": f"{candidate['likes']}❤️ {candidate['retweets']}🔁 {candidate['replies']}💬",
+            "quoted_tweet_id": candidate["tweet_id"],
+            "quoted_author": candidate["username"],
+            "quoted_author_followers": candidate["followers"],
+            "quoted_tweet_text": candidate["text"][:300],
+            "quoted_tweet_engagement": f"{candidate['likes']}❤️ {candidate['retweets']}🔁 {candidate['replies']}💬",
             "reply_type": reply_type,
-            "reply_text": reply_text,
-            "reply_tweet_id": reply_id,
+            "our_comment": reply_text,
+            "our_tweet_id": reply_id,
         })
         save_reply_log(log)
         print(f"💾 Reply logged ({len(log)} total in memory)")
 
         # Store details for the readable report
-        tracker.set_detail("outcome", "Reply posted successfully")
-        tracker.set_detail("replied_to", f"@{candidate['username']} ({candidate['followers']:,} followers)")
+        tracker.set_detail("outcome", "Quote tweet posted successfully")
+        tracker.set_detail("quoted", f"@{candidate['username']} ({candidate['followers']:,} followers)")
         tracker.set_detail("original_tweet", candidate["text"][:200])
-        tracker.set_detail("reply_text", reply_text)
+        tracker.set_detail("our_comment", reply_text)
         tracker.set_detail("reply_type", reply_type)
-        tracker.set_detail("reply_tweet_id", reply_id)
+        tracker.set_detail("our_tweet_id", reply_id)
         if attempt_num > 1:
-            tracker.set_detail("retries", f"Succeeded on attempt {attempt_num} (previous had restricted replies)")
+            tracker.set_detail("retries", f"Succeeded on attempt {attempt_num}")
 
         reply_posted = True
         break
 
     if not reply_posted:
         tracker.log_event(f"Tried {MAX_ATTEMPTS} candidates, none worked. Skipping this run.")
-        tracker.set_detail("outcome", f"Skipped — tried {MAX_ATTEMPTS} tweets but all had restricted replies or Grok skipped them")
+        tracker.set_detail("outcome", f"Skipped — tried {MAX_ATTEMPTS} candidates but all failed or Grok skipped them")
         print(f"\n⚠️  Couldn't post to any of the {MAX_ATTEMPTS} candidates. Will try next run.")
 
     tracker.finish()
