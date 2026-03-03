@@ -64,5 +64,59 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.0804
     }
+  },
+  {
+    "bot": "reply",
+    "date": "2026-03-03",
+    "start_time": "2026-03-03T06:59:21.978555+00:00",
+    "end_time": "2026-03-03T07:00:40.689863+00:00",
+    "duration_seconds": 78.7,
+    "api_calls": [
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 1023,
+        "output_tokens": 47,
+        "cost": 0.01211
+      },
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 1039,
+        "output_tokens": 60,
+        "cost": 0.01279
+      },
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 1037,
+        "output_tokens": 40,
+        "cost": 0.01197
+      },
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 990,
+        "output_tokens": 49,
+        "cost": 0.01186
+      },
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 980,
+        "output_tokens": 47,
+        "cost": 0.01168
+      }
+    ],
+    "errors": [],
+    "details": {
+      "outcome": "Skipped \u2014 tried 5 tweets but all had restricted replies or Grok skipped them"
+    },
+    "totals": {
+      "input_tokens": 5069,
+      "output_tokens": 243,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0604
+    }
   }
 ]
