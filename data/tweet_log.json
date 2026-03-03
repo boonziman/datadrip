@@ -30,5 +30,14 @@
     "image_prompt": "Close-up photo of a financial analyst at a desk with multiple screens displaying fluctuating Bitcoin price charts and market data, modern office with soft overhead lighting and coffee mug nearby",
     "promoted_url": "",
     "tweet_id": "2028725380937314307"
+  },
+  {
+    "timestamp": "2026-03-03 16:34 UTC",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "OpenAI's facing some serious backlash right now, and it's opening doors for startups to swoop in with better alternatives. I dug into how this could reshape the AI landscape\u2014some wild opportunities ahead if the big players stumble. Check it out. https://datadripco.com/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups-cash-in/ #AI",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups-cash-in/",
+    "tweet_id": "2028871673488015623"
   }
 ]

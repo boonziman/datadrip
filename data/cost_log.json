@@ -386,5 +386,35 @@
       "images_generated": 2,
       "estimated_cost_usd": 1.3299
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-03",
+    "start_time": "2026-03-03T16:34:08.645402+00:00",
+    "end_time": "2026-03-03T16:34:36.382382+00:00",
+    "duration_seconds": 27.7,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3154,
+        "output_tokens": 152,
+        "cost": 0.03762
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "OpenAI's facing some serious backlash right now, and it's opening doors for startups to swoop in with better alternatives. I dug into how this could reshape the AI landscape\u2014some wild opportunities ahead if the big players stumble. Check it out. https://datadripco.com/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups-cash-in/ #AI",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2028871673488015623",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups-cash-in/"
+    },
+    "totals": {
+      "input_tokens": 3154,
+      "output_tokens": 152,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0376
+    }
   }
 ]
