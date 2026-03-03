@@ -42,16 +42,17 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPLY_LOG_PATH = os.path.join(PROJECT_ROOT, "data", "reply_log.json")
 
 # ====================== SEARCH QUERIES ======================
-# We rotate through these each run to stay varied.
-# AI queries appear twice → ~50% of searches are AI-focused (our strength).
+# Query 0: Big-name accounts — max visibility, almost always have open replies.
+# Queries 1-3: Topic searches with min_faves:3 to cut out spam bots.
 SEARCH_QUERIES = [
-    # AI — primary focus
-    '("AI" OR "GPT" OR "Claude" OR "LLM" OR "OpenAI") -is:retweet -is:reply lang:en',
-    '("artificial intelligence" OR "machine learning" OR "Gemini" OR "Copilot" OR "Anthropic") -is:retweet -is:reply lang:en',
-    # Crypto
-    '("Bitcoin" OR "Ethereum" OR "crypto" OR "DeFi" OR "Web3") -is:retweet -is:reply lang:en',
-    # Tech
-    '("tech startup" OR "SaaS" OR "cybersecurity" OR "Apple" OR "Google AI") -is:retweet -is:reply lang:en',
+    # Big accounts — guaranteed quality, huge audiences
+    '(from:OpenAI OR from:AnthropicAI OR from:sama OR from:ylecun OR from:karpathy OR from:coinbase OR from:binance OR from:naval OR from:balajis OR from:VitalikButerin) -is:retweet lang:en',
+    # AI discussion — min_faves filters spam bots
+    '("AI" OR "ChatGPT" OR "Claude" OR "LLM" OR "Grok" OR "OpenAI") min_faves:3 -is:retweet -is:reply lang:en',
+    # Crypto with engagement filter
+    '("Bitcoin" OR "Ethereum" OR "crypto" OR "DeFi" OR "Web3") min_faves:3 -is:retweet -is:reply lang:en',
+    # Tech/founder discussion with engagement filter
+    '("machine learning" OR "Anthropic" OR "tech founder" OR "SaaS" OR "AI startup") min_faves:3 -is:retweet -is:reply lang:en',
 ]
 
 # ====================== VALIDATION ======================
@@ -121,7 +122,7 @@ def search_tweets(query, max_hours=3):
     url = "https://api.twitter.com/2/tweets/search/recent"
     params = {
         "query": query,
-        "max_results": 25,
+        "max_results": 50,
         "start_time": start_time,
         "tweet.fields": "created_at,public_metrics,author_id,reply_settings",
         "expansions": "author_id",
@@ -241,10 +242,10 @@ def find_best_tweet(tracker):
     Search multiple topics and return the single best tweet to reply to.
     Returns (candidate_dict, status_string).
     """
-    # Always search 1 AI query + 1 other topic → stays varied
-    ai_queries = SEARCH_QUERIES[:2]
-    other_queries = SEARCH_QUERIES[2:]
-    selected = [random.choice(ai_queries), random.choice(other_queries)]
+    # Always include big-accounts query (guaranteed quality) + 1 random topic query
+    big_accounts_q = SEARCH_QUERIES[0]
+    topic_queries = SEARCH_QUERIES[1:]
+    selected = [big_accounts_q, random.choice(topic_queries)]
     random.shuffle(selected)
 
     all_candidates = []
@@ -273,36 +274,39 @@ def find_best_tweet(tracker):
 
     # Filter out: already replied, tiny accounts, no engagement, our own replies
     filtered = []
-    restricted_count = 0
+    skipped = {"restricted_replies": 0, "already_replied": 0, "small_account": 0, "no_engagement": 0, "no_text": 0}
     for c in all_candidates:
         # Skip if replies are restricted — saves Grok API calls (most common failure)
         if c.get("reply_settings", "everyone") != "everyone":
-            restricted_count += 1
+            skipped["restricted_replies"] += 1
             continue
-        # Skip if we replied to this author recently
-        if c["username"].lower() in replied_authors:
-            continue
-        # Skip if we replied to this exact tweet
-        if c["tweet_id"] in replied_tweet_ids:
+        # Skip if we replied to this author or tweet recently
+        if c["username"].lower() in replied_authors or c["tweet_id"] in replied_tweet_ids:
+            skipped["already_replied"] += 1
             continue
         # Skip tiny accounts
         if c["followers"] < 500:
+            skipped["small_account"] += 1
             continue
-        # Skip zero-engagement tweets (1+ like/RT/reply is enough for fresh tweets)
+        # Skip zero-engagement tweets
         total_engagement = c["likes"] + c["retweets"] + c["replies"]
         if total_engagement < 1:
+            skipped["no_engagement"] += 1
             continue
         # Skip tweets that are just links/media with no real text
         clean_text = re.sub(r'https?://\S+', '', c["text"]).strip()
         if len(clean_text) < 20:
+            skipped["no_text"] += 1
             continue
         filtered.append(c)
 
-    if restricted_count > 0:
-        tracker.log_event(f"   ↳ Skipped {restricted_count} tweets with restricted replies (saved {restricted_count} Grok calls)")
+    # Always log the filter breakdown so we can diagnose issues
+    breakdown_parts = [f"{v} {k.replace('_', ' ')}" for k, v in skipped.items() if v > 0]
+    if breakdown_parts:
+        tracker.log_event(f"   ↳ Filtered out: {', '.join(breakdown_parts)}")
 
     if not filtered:
-        tracker.log_event("No suitable candidates after filtering (already replied, too small, etc.)")
+        tracker.log_event("No suitable candidates after filtering.")
         return None, "filtered_out"
 
     tracker.log_event(f"{len(filtered)} tweets passed filters")
