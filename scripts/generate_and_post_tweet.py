@@ -156,36 +156,6 @@ def format_blog_context(posts, already_promoted):
         lines.append("\n  All recent posts have been promoted. Focus on value tweets instead.")
     return "\n".join(lines)
 
-# ====================== TIME-OF-DAY CONTEXT ======================
-def get_time_context():
-    """Return time-of-day guidance for tweet style."""
-    hour = datetime.datetime.now(datetime.timezone.utc).hour
-    if 6 <= hour < 12:
-        return {
-            "slot": "morning",
-            "guidance": "Morning slot — great for: breaking news reactions, fresh insights, 'good morning' energy. People are scrolling with coffee. Short, punchy, newsy."
-        }
-    elif 12 <= hour < 16:
-        return {
-            "slot": "midday",
-            "guidance": "Midday slot — peak engagement. Great for: blog teasers (if you have a post), hot takes, or a spicy opinion. People have a few minutes between meetings."
-        }
-    elif 16 <= hour < 20:
-        return {
-            "slot": "afternoon",
-            "guidance": "Afternoon slot — US prime time. Great for: bold opinions, engagement questions, 'what do you think?' polls. People are winding down and want to interact."
-        }
-    elif 20 <= hour or hour < 2:
-        return {
-            "slot": "evening",
-            "guidance": "Evening/night slot — chill vibes. Great for: thought-provoking questions, 'did you know' facts, quick value drops. More personal, conversational tone."
-        }
-    else:
-        return {
-            "slot": "late_night",
-            "guidance": "Late night slot — Asia/night owls. Great for: crypto observations (Asian markets), quick trend catches, curiosity-driven tweets."
-        }
-
 # ====================== IMAGE GENERATION ======================
 def generate_image(image_prompt):
     """Generate an image via Grok Imagine. Returns the image bytes or None."""
@@ -256,11 +226,15 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 - Keep it natural. How would you actually say this to a friend?
 
 ═══ X ALGORITHM OPTIMIZATION ═══
-- SHORTER tweets get MORE reach. Aim for 80-180 characters most of the time. Under 100 is fine.
+- Tweet length should be DYNAMIC. Match the length to the content:
+  * Quick hot takes, reactions, one-liners → short (under 120 chars). Punchy hits harder.
+  * Insights, opinions, mini-threads of thought → medium (120-200 chars). Room to make a point.
+  * Blog teasers with a compelling hook + link, or detailed value drops → longer (200-280 chars). Use the space when the content deserves it.
+  * Don't force a tweet to be short if it needs more words. Don't pad a tweet to be long if it's better short. Let the content decide.
 - Questions and opinions drive replies → replies boost reach. Ask things people actually want to answer.
 - Don't start every tweet with a statement. Mix up: questions, observations, opinions, one-liners, hot takes.
 - Tweets with images get ~2x engagement BUT only when the image adds real value.
-- Tweets with links get slightly suppressed by the algorithm, so when you DO include a blog link, make the text extra compelling.
+- Tweets with links get slightly suppressed by the algorithm, so when you DO include a blog link, make the text extra compelling to overcome that.
 - Thread-style tweets (tweet then reply) are NOT what we do. Single tweets only.
 
 ═══ CONTENT RULES ═══
@@ -272,9 +246,12 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 - NEVER promote a post that's already been promoted (check the list).
 
 ═══ HASHTAGS ═══
-- Use 0-1 hashtags. Most tweets should have ZERO.
-- Only add a hashtag if there's a genuinely trending one that fits (like #GPT5 on launch day).
-- Big accounts rarely use hashtags. We shouldn't either.
+- Hashtags are SEPARATE from your tweet content. Write the tweet first, then decide on hashtags. Hashtags should NOT eat into or shorten your actual message.
+- Most tweets (~60%) should have ZERO hashtags. Clean tweets look more human.
+- When you DO use hashtags, use 1-3 that are genuinely relevant or trending. Never force them.
+- Good hashtag use: a trending topic tag (#GPT5 on launch day), a broad niche tag (#AI, #Crypto), or an event tag.
+- Bad hashtag use: stuffing 5+ hashtags, using obscure tags nobody searches, adding them to every single tweet.
+- Place hashtags at the END of the tweet, never in the middle of a sentence.
 
 ═══ IMAGE RULES ═══
 - NEVER use an image on blog teaser tweets (the link preview card from our site already shows the article image — adding another image HIDES the link preview which kills click-through).
@@ -294,9 +271,7 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 5. "value_drop" — Quick fact, stat, or "did you know" that makes people go "huh, interesting."
 
 ═══ CONTEXT FOR THIS TWEET ═══
-Current time: {current_time}
-Time slot: {time_slot}
-{time_guidance}
+Current time (UTC): {current_time}
 
 {blog_context}
 
@@ -347,7 +322,6 @@ def parse_json_response(content):
 def generate_tweet():
     """Call Grok API to generate one tweet with full context awareness."""
     current_time = get_current_utc_time()
-    time_ctx = get_time_context()
     recent_posts = get_recent_posts(days=3)
     already_promoted = get_promoted_post_urls()
     blog_context = format_blog_context(recent_posts, already_promoted)
@@ -363,8 +337,6 @@ def generate_tweet():
 
     prompt = SYSTEM_PROMPT.format(
         current_time=current_time,
-        time_slot=time_ctx["slot"],
-        time_guidance=time_ctx["guidance"],
         blog_context=blog_context,
         recent_tweets=recent_tweets,
         recent_types=type_line
