@@ -20,6 +20,7 @@ X_ACCESS_TOKEN_SECRET = os.getenv("X_ACCESS_TOKEN_SECRET")
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TWEET_LOG_PATH = os.path.join(PROJECT_ROOT, "data", "tweet_log.json")
 POSTS_DIR = os.path.join(PROJECT_ROOT, "content", "posts")
+SITE_URL = "https://datadripco.com"
 
 # ====================== VALIDATION ======================
 def validate_keys():
@@ -74,11 +75,11 @@ def get_todays_posts():
                 continue
             filepath = os.path.join(POSTS_DIR, filename)
             title = extract_title(filepath)
-            # Build URL slug from filename: strip date prefix and .md extension
+            # Build full URL from filename for tweet links
             # e.g. "2026-03-02-2224-ais-arctic-power-grab-energy-wars-heat-up.md"
             # Hugo default: /posts/{filename-without-.md}/
             slug = filename.replace(".md", "")
-            url = f"posts/{slug}/"
+            url = f"{SITE_URL}/posts/{slug}/"
             posts.append({"title": title, "url": url, "filename": filename})
     except FileNotFoundError:
         pass
