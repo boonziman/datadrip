@@ -70,7 +70,7 @@ def generate_tweet():
     prompt = SYSTEM_PROMPT.format(current_time=current_time, new_post_today=new_post)
 
     payload = {
-        "model": "grok-4.1-fast",  # cheapest & fast
+        "model": "grok-4",
         "messages": [
             {"role": "system", "content": prompt},
             {"role": "user", "content": "Generate the perfect next tweet right now."}
