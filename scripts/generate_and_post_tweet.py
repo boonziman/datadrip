@@ -270,7 +270,8 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 - When you DO use hashtags, use 1-3 that are genuinely relevant or trending. Never force them.
 - Good hashtag use: a trending topic tag (#GPT5 on launch day), a broad niche tag (#AI, #Crypto), or an event tag.
 - Bad hashtag use: stuffing 5+ hashtags, using obscure tags nobody searches, adding them to every single tweet.
-- Place hashtags at the END of the tweet, never in the middle of a sentence.
+- CRITICAL for blog_teaser tweets: the URL MUST be the absolute last thing in the tweet — place any hashtags BEFORE the URL, never after. This is how Twitter hides the raw URL and shows only the clean card preview.
+- For all other tweet types: hashtags go at the END of the tweet.
 
 ═══ IMAGE RULES ═══
 - NEVER use an image on blog teaser tweets (the link preview card from our site already shows the article image — adding another image HIDES the link preview which kills click-through).
@@ -400,6 +401,30 @@ def generate_tweet():
 
     return tweet_data
 
+def ensure_url_is_last(tweet_text, url):
+    """
+    For blog_teaser tweets: guarantee the URL is the absolute last token.
+    Twitter/X only hides the URL and shows just the card when nothing follows the URL.
+    If Grok placed hashtags after the URL, this moves them before it.
+    """
+    if not url:
+        return tweet_text
+
+    if url not in tweet_text:
+        # URL missing from text entirely — append it
+        return tweet_text.rstrip() + "\n" + url
+
+    url_idx = tweet_text.find(url)
+    url_end = url_idx + len(url)
+    after = tweet_text[url_end:].strip()  # e.g. "#AI #Tech"
+
+    if not after:
+        return tweet_text  # already last — nothing to do
+
+    # Move the trailing content (hashtags etc) to before the URL
+    before_url = tweet_text[:url_idx].rstrip()
+    return f"{before_url} {after}\n{url}"
+
 def post_to_x(tweet_text, image_prompt="", use_image=False):
     """Post a tweet to X/Twitter, optionally with a generated image."""
     auth = OAuth1(
@@ -466,6 +491,10 @@ if __name__ == "__main__":
             tracker.log_error("Grok returned empty tweet text")
             tracker.finish()
         exit(1)
+
+    # For blog teasers: URL must be LAST so Twitter hides it and shows only the card preview
+    if tweet_type == "blog_teaser" and promoted_url and promoted_url in tweet_text:
+        tweet_text = ensure_url_is_last(tweet_text, promoted_url)
 
     print(f"\n📋 Generated tweet ({len(tweet_text)} chars, type: {tweet_type}):")
     print(f"   {tweet_text}")
