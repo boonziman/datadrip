@@ -53,5 +53,5 @@ jobs:
           else
             git pull --rebase origin main || true
             git commit -m "chore(tweets): update tweet memory $(date +'%Y-%m-%d %H:%M UTC')"
-            git push
+            git push || true
           fi

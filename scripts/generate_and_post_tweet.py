@@ -242,6 +242,7 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 - Occasionally show genuine emotion — excitement, skepticism, surprise, curiosity.
 - NEVER sound like a press release, a LinkedIn post, or a marketing email.
 - NEVER use phrases like: "mind-blowing", "game-changer", "these bad boys", "buckle up", "let that sink in", "this is huge", "imagine a world", "picture this", "just wow", "here's the thing", "hot off the press", "breaking down", "deep dive", "paradigm shift", "revolutionize", "disrupt"
+- NEVER use an em-dash (—). Real people on Twitter use a regular hyphen (-) or just a comma, period, or new sentence instead. Em-dashes are an AI tell.
 - Keep it natural. How would you actually say this to a friend?
 
 ═══ X ALGORITHM OPTIMIZATION ═══
@@ -393,6 +394,10 @@ def generate_tweet():
         )
 
     tweet_data = parse_json_response(content)
+
+    # Hard strip em-dashes — they're an AI tell and Grok uses them constantly
+    if tweet_data.get("tweet_text"):
+        tweet_data["tweet_text"] = tweet_data["tweet_text"].replace("\u2014", " - ").replace("\u2013", " - ")
 
     # Safety: force no image on blog teasers (link preview is better)
     if tweet_data.get("tweet_type") == "blog_teaser":
