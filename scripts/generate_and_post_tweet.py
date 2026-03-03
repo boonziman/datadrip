@@ -46,41 +46,70 @@ def load_tweet_log():
         return []
 
 def save_tweet_log(log):
-    """Save the tweet log, keeping the last 50 entries."""
+    """Save the tweet log, keeping the last 100 entries."""
     os.makedirs(os.path.dirname(TWEET_LOG_PATH), exist_ok=True)
-    # Keep only last 50 tweets to prevent the file from growing forever
-    log = log[-50:]
+    log = log[-100:]
     with open(TWEET_LOG_PATH, "w") as f:
         json.dump(log, f, indent=2)
 
-def get_recent_tweets_context(count=5):
-    """Return the last N tweets as context for the prompt."""
+def get_recent_tweets_context(count=8):
+    """Return the last N tweets with their type as context for the prompt."""
     log = load_tweet_log()
     recent = log[-count:] if log else []
     if not recent:
-        return "No previous tweets yet — this is your first one!"
+        return "No previous tweets yet — this is your first one! Make it count."
     lines = []
     for entry in recent:
-        lines.append(f"- [{entry.get('timestamp', '?')}] {entry.get('tweet_text', '?')}")
+        tweet_type = entry.get("tweet_type", "unknown")
+        lines.append(f"- [type: {tweet_type}] {entry.get('tweet_text', '?')}")
     return "\n".join(lines)
 
+def get_recent_tweet_types(count=8):
+    """Return just the types of recent tweets for variety tracking."""
+    log = load_tweet_log()
+    recent = log[-count:] if log else []
+    return [e.get("tweet_type", "unknown") for e in recent]
+
+def get_promoted_post_urls():
+    """Return URLs of blog posts already promoted in recent tweets."""
+    log = load_tweet_log()
+    promoted = set()
+    for entry in log[-20:]:  # Check last 20 tweets
+        if entry.get("tweet_type") == "blog_teaser":
+            url = entry.get("promoted_url", "")
+            if url:
+                promoted.add(url)
+    return promoted
+
 # ====================== BLOG POST AWARENESS ======================
-def get_todays_posts():
-    """Scan content/posts/ for posts created today. Returns list of {title, url}."""
-    today = datetime.date.today().isoformat()  # e.g. "2026-03-02"
+def get_recent_posts(days=3):
+    """Scan content/posts/ for posts from the last N days. Returns list of {title, url, date, filename}."""
     posts = []
+    today = datetime.date.today()
     try:
-        for filename in os.listdir(POSTS_DIR):
-            if today not in filename or not filename.endswith(".md"):
+        for filename in sorted(os.listdir(POSTS_DIR), reverse=True):
+            if not filename.endswith(".md"):
+                continue
+            # Extract date from filename (e.g. "2026-03-02-2224-...")
+            date_match = re.match(r'(\d{4}-\d{2}-\d{2})', filename)
+            if not date_match:
+                continue
+            post_date = datetime.date.fromisoformat(date_match.group(1))
+            if (today - post_date).days > days:
                 continue
             filepath = os.path.join(POSTS_DIR, filename)
             title = extract_title(filepath)
-            # Build full URL from filename for tweet links
-            # e.g. "2026-03-02-2224-ais-arctic-power-grab-energy-wars-heat-up.md"
-            # Hugo default: /posts/{filename-without-.md}/
+            category = extract_category(filepath)
             slug = filename.replace(".md", "")
             url = f"{SITE_URL}/posts/{slug}/"
-            posts.append({"title": title, "url": url, "filename": filename})
+            posts.append({
+                "title": title,
+                "url": url,
+                "date": post_date.isoformat(),
+                "category": category,
+                "filename": filename,
+                "is_today": post_date == today
+            })
     except FileNotFoundError:
         pass
     return posts
@@ -89,7 +118,7 @@ def extract_title(filepath):
     """Extract the title from a markdown file's frontmatter."""
     try:
         with open(filepath, "r") as f:
-            content = f.read(2000)  # Only need the frontmatter
+            content = f.read(2000)
         match = re.search(r'^title:\s*["\']?(.+?)["\']?\s*$', content, re.MULTILINE)
         if match:
             return match.group(1)
@@ -97,15 +126,65 @@ def extract_title(filepath):
         pass
     return "New post"
 
-def format_blog_context(posts):
-    """Format today's blog posts for the system prompt."""
+def extract_category(filepath):
+    """Extract the category from a markdown file's frontmatter."""
+    try:
+        with open(filepath, "r") as f:
+            content = f.read(2000)
+        match = re.search(r'categories:\s*\n\s*-\s*(.*)', content, re.IGNORECASE)
+        if match:
+            return match.group(1).strip()
+    except IOError:
+        pass
+    return "Tech"
+
+def format_blog_context(posts, already_promoted):
+    """Format recent blog posts for the system prompt, noting which are already promoted."""
     if not posts:
-        return "Did a new post drop today? No"
-    lines = ["Did a new post drop today? Yes! Here are today's posts:"]
+        return "Recent blog posts: None in the last 3 days."
+    lines = ["Recent Datadrip blog posts (last 3 days):"]
+    unpromoted = []
     for p in posts:
-        lines.append(f"  - \"{p['title']}\" → {p['url']}")
-    lines.append("You can use these titles and URLs in teaser tweets.")
+        status = "🆕 NEW TODAY" if p["is_today"] else f"📅 {p['date']}"
+        promoted = " (⚠️ ALREADY TWEETED)" if p["url"] in already_promoted else ""
+        lines.append(f"  - [{p['category']}] \"{p['title']}\" → {p['url']} {status}{promoted}")
+        if p["url"] not in already_promoted:
+            unpromoted.append(p)
+    if unpromoted:
+        lines.append(f"\n  {len(unpromoted)} post(s) haven't been promoted yet — consider a teaser if the timing feels right.")
+    else:
+        lines.append("\n  All recent posts have been promoted. Focus on value tweets instead.")
     return "\n".join(lines)
+
+# ====================== TIME-OF-DAY CONTEXT ======================
+def get_time_context():
+    """Return time-of-day guidance for tweet style."""
+    hour = datetime.datetime.now(datetime.timezone.utc).hour
+    if 6 <= hour < 12:
+        return {
+            "slot": "morning",
+            "guidance": "Morning slot — great for: breaking news reactions, fresh insights, 'good morning' energy. People are scrolling with coffee. Short, punchy, newsy."
+        }
+    elif 12 <= hour < 16:
+        return {
+            "slot": "midday",
+            "guidance": "Midday slot — peak engagement. Great for: blog teasers (if you have a post), hot takes, or a spicy opinion. People have a few minutes between meetings."
+        }
+    elif 16 <= hour < 20:
+        return {
+            "slot": "afternoon",
+            "guidance": "Afternoon slot — US prime time. Great for: bold opinions, engagement questions, 'what do you think?' polls. People are winding down and want to interact."
+        }
+    elif 20 <= hour or hour < 2:
+        return {
+            "slot": "evening",
+            "guidance": "Evening/night slot — chill vibes. Great for: thought-provoking questions, 'did you know' facts, quick value drops. More personal, conversational tone."
+        }
+    else:
+        return {
+            "slot": "late_night",
+            "guidance": "Late night slot — Asia/night owls. Great for: crypto observations (Asian markets), quick trend catches, curiosity-driven tweets."
+        }
 
 # ====================== IMAGE GENERATION ======================
 def generate_image(image_prompt):
@@ -126,7 +205,7 @@ def generate_image(image_prompt):
         response = requests.post(url, headers=headers, json=payload, timeout=60)
         if response.status_code == 200:
             temp_url = response.json()["data"][0]["url"]
-            print(f"✅ Image generated, downloading...")
+            print("✅ Image generated, downloading...")
             img_response = requests.get(temp_url, timeout=30)
             if img_response.status_code == 200:
                 return img_response.content
@@ -144,7 +223,6 @@ def upload_image_to_twitter(image_bytes, auth):
     """Upload an image to Twitter via v1.1 media upload. Returns media_id or None."""
     url = "https://upload.twitter.com/1.1/media/upload.json"
     try:
-        # Write image bytes to a temporary file for the upload
         with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
             tmp.write(image_bytes)
             tmp_path = tmp.name
@@ -153,7 +231,7 @@ def upload_image_to_twitter(image_bytes, auth):
             files = {"media": img_file}
             r = requests.post(url, files=files, auth=auth)
 
-        os.unlink(tmp_path)  # Clean up temp file
+        os.unlink(tmp_path)
 
         if r.status_code == 200:
             media_id = r.json()["media_id_string"]
@@ -167,42 +245,78 @@ def upload_image_to_twitter(image_bytes, auth):
         return None
 
 # ====================== GROK SYSTEM PROMPT ======================
-SYSTEM_PROMPT = """You are @Datadripco — a sharp, trusted voice in AI, Crypto & Tech. 
-You run the Datadrip blog. You sound like a real enthusiastic tech journalist who geeks out over breakthroughs but stays professional and helpful. 
+SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a real human who runs an AI, Crypto & Tech blog called Datadrip. You're knowledgeable, opinionated, and genuinely passionate — not a corporate account, not a bot, not a news aggregator. Think of yourself like a sharp tech founder who tweets between deep work sessions.
 
-Rules you ALWAYS follow:
-- 50%+ of tweets must focus on AI (your strongest niche)
-- Lean AI → Crypto → Tech crossover naturally
-- Never sound robotic. Use natural language, contractions, occasional excitement, 0-2 emojis max.
-- Catch and ride hot trends when they appear (Grok has real-time knowledge — use it).
-- Only 25-30% of tweets should link to a new blog post — the rest are pure value.
-- Hashtags: 0-2 max, only when they feel natural.
-- Image: Decide if a custom Grok Imagine image would help (yes for trends/insights, no for pure text questions).
-- Length: 100-280 characters, punchy and engaging.
-- End with subtle brand nudge when it fits.
-- DO NOT repeat or closely paraphrase any of your recent tweets listed below.
+═══ YOUR VOICE ═══
+- You sound like a REAL PERSON. Short sentences. Casual but smart. Like texting a friend who happens to be a tech expert.
+- Use contractions (it's, don't, can't, I'm). Say "I" and "we" naturally.
+- Occasionally show genuine emotion — excitement, skepticism, surprise, curiosity.
+- NEVER sound like a press release, a LinkedIn post, or a marketing email.
+- NEVER use phrases like: "mind-blowing", "game-changer", "these bad boys", "buckle up", "let that sink in", "this is huge", "imagine a world", "picture this", "just wow", "here's the thing", "hot off the press", "breaking down", "deep dive", "paradigm shift", "revolutionize", "disrupt"
+- Keep it natural. How would you actually say this to a friend?
 
-Tweet types to choose from (pick the BEST one for right now):
-1. Hot trend reaction (if something big is happening in AI/crypto/tech)
-2. Original AI insight or "quick thought"
-3. Engagement question or poll idea
-4. Blog teaser (only if a new post dropped today — include the full URL so readers can click through)
-5. Mini-value drop or "did you know" style
+═══ X ALGORITHM OPTIMIZATION ═══
+- SHORTER tweets get MORE reach. Aim for 80-180 characters most of the time. Under 100 is fine.
+- Questions and opinions drive replies → replies boost reach. Ask things people actually want to answer.
+- Don't start every tweet with a statement. Mix up: questions, observations, opinions, one-liners, hot takes.
+- Tweets with images get ~2x engagement BUT only when the image adds real value.
+- Tweets with links get slightly suppressed by the algorithm, so when you DO include a blog link, make the text extra compelling.
+- Thread-style tweets (tweet then reply) are NOT what we do. Single tweets only.
 
-Current time (UTC): {current_time}
+═══ CONTENT RULES ═══
+- 50%+ of tweets focus on AI (our strongest topic)
+- Mix in Crypto and Tech naturally — we cover all three
+- Ride REAL trending topics when they're hot (you have real-time knowledge — use it!)
+- Only ~25% of tweets should promote a blog post. The rest = pure value, opinion, engagement.
+- When promoting a blog post: DON'T just say "check out our new post." Tease the most interesting finding or hot take FROM the article, then drop the link. Make people WANT to click.
+- NEVER promote a post that's already been promoted (check the list).
+
+═══ HASHTAGS ═══
+- Use 0-1 hashtags. Most tweets should have ZERO.
+- Only add a hashtag if there's a genuinely trending one that fits (like #GPT5 on launch day).
+- Big accounts rarely use hashtags. We shouldn't either.
+
+═══ IMAGE RULES ═══
+- NEVER use an image on blog teaser tweets (the link preview card from our site already shows the article image — adding another image HIDES the link preview which kills click-through).
+- Use images on ~30-40% of NON-link tweets (insight tweets, data visualizations, trend reactions).
+- When you DO want an image, your prompt must follow these rules:
+  * Photo-realistic, editorial magazine quality — like a Reuters or Bloomberg photo
+  * SPECIFIC to THIS tweet's topic. Name real objects, settings, people's roles, lighting, camera angle.
+  * NEVER: neon, cyberpunk, glowing, holographic, futuristic purple/blue aesthetics, floating holograms, dark tech backgrounds
+  * GOOD examples: "Close-up of a trader's hands on a Bloomberg terminal with crypto charts, office lighting, shallow depth of field" or "Overhead shot of an AI chip fab cleanroom with workers in white suits, clinical fluorescent lighting"
+  * The image should look like it could appear in Wired, Bloomberg, or TechCrunch
+
+═══ TWEET TYPES (pick the best one for RIGHT NOW) ═══
+1. "hot_take" — React to something happening RIGHT NOW in AI/crypto/tech. Short, opinionated.
+2. "insight" — Share a genuine observation or prediction. "I've been thinking about..." energy.
+3. "engagement" — Ask a real question people want to answer. Polls, "which side are you on?", etc.
+4. "blog_teaser" — Promote a Datadrip article (ONLY if there's an unpromoted post, max ~25% of tweets).
+5. "value_drop" — Quick fact, stat, or "did you know" that makes people go "huh, interesting."
+
+═══ CONTEXT FOR THIS TWEET ═══
+Current time: {current_time}
+Time slot: {time_slot}
+{time_guidance}
+
 {blog_context}
 
-Your recent tweets (DO NOT repeat these — vary your topic, style, and angle):
+Your recent tweet types (VARY these — don't do the same type twice in a row):
+{recent_types}
+
+Your recent tweets (DON'T repeat topics, angles, or phrasing):
 {recent_tweets}
 
-Generate EXACTLY ONE tweet in JSON format:
+═══ OUTPUT ═══
+Generate EXACTLY ONE tweet as JSON:
 {{
-  "tweet_text": "the full tweet here",
+  "tweet_type": "hot_take" or "insight" or "engagement" or "blog_teaser" or "value_drop",
+  "tweet_text": "the tweet",
   "use_image": true or false,
-  "image_prompt": "detailed Grok Imagine prompt if use_image is true, else empty string"
+  "image_prompt": "detailed photo-realistic prompt if use_image is true, else empty string",
+  "promoted_url": "the blog post URL if tweet_type is blog_teaser, else empty string"
 }}
 
-Make it feel 100% human and brand-perfect for Datadrip."""
+Remember: you're a real person, not a bot. Tweet like one."""
 
 # ====================== HELPERS ======================
 def get_current_utc_time():
@@ -210,44 +324,60 @@ def get_current_utc_time():
 
 def parse_json_response(content):
     """Parse JSON from Grok, stripping markdown code fences if present."""
-    # Strip markdown code fences like ```json ... ```
     cleaned = re.sub(r'```(?:json)?\s*', '', content).strip()
     cleaned = cleaned.rstrip('`').strip()
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError:
-        # Last resort: try to find JSON object in the text
         match = re.search(r'\{[^{}]*\}', cleaned, re.DOTALL)
         if match:
             try:
                 return json.loads(match.group())
             except json.JSONDecodeError:
                 pass
-        # Ultimate fallback: use the raw text as tweet
         print("⚠️  Could not parse JSON from Grok — using raw text as tweet")
-        return {"tweet_text": content.strip()[:280], "use_image": False, "image_prompt": ""}
+        return {
+            "tweet_type": "insight",
+            "tweet_text": content.strip()[:280],
+            "use_image": False,
+            "image_prompt": "",
+            "promoted_url": ""
+        }
 
 def generate_tweet():
-    """Call Grok API to generate one tweet with memory and blog awareness."""
+    """Call Grok API to generate one tweet with full context awareness."""
     current_time = get_current_utc_time()
-    todays_posts = get_todays_posts()
-    blog_context = format_blog_context(todays_posts)
-    recent_tweets = get_recent_tweets_context(5)
+    time_ctx = get_time_context()
+    recent_posts = get_recent_posts(days=3)
+    already_promoted = get_promoted_post_urls()
+    blog_context = format_blog_context(recent_posts, already_promoted)
+    recent_tweets = get_recent_tweets_context(8)
+    recent_types = get_recent_tweet_types(8)
+
+    # Format type history
+    if recent_types:
+        type_summary = ", ".join(recent_types[-5:])
+        type_line = f"Last 5 tweet types: [{type_summary}] — pick something DIFFERENT from the last one."
+    else:
+        type_line = "No previous tweets — start strong with a hot take or insight."
 
     prompt = SYSTEM_PROMPT.format(
         current_time=current_time,
+        time_slot=time_ctx["slot"],
+        time_guidance=time_ctx["guidance"],
         blog_context=blog_context,
-        recent_tweets=recent_tweets
+        recent_tweets=recent_tweets,
+        recent_types=type_line
     )
 
     payload = {
         "model": "grok-4",
         "messages": [
             {"role": "system", "content": prompt},
-            {"role": "user", "content": "Generate the perfect next tweet right now."}
+            {"role": "user", "content": "What should we tweet right now? Pick the best type for this moment and write it."}
         ],
-        "temperature": 0.85,
-        "max_tokens": 300
+        "temperature": 0.9,
+        "max_tokens": 400
     }
 
     headers = {
@@ -262,6 +392,12 @@ def generate_tweet():
     content = data["choices"][0]["message"]["content"]
 
     tweet_data = parse_json_response(content)
+
+    # Safety: force no image on blog teasers (link preview is better)
+    if tweet_data.get("tweet_type") == "blog_teaser":
+        tweet_data["use_image"] = False
+        tweet_data["image_prompt"] = ""
+
     return tweet_data
 
 def post_to_x(tweet_text, image_prompt="", use_image=False):
@@ -312,29 +448,35 @@ if __name__ == "__main__":
     # Generate the tweet
     tweet = generate_tweet()
     tweet_text = tweet.get("tweet_text", "").strip()
+    tweet_type = tweet.get("tweet_type", "unknown")
     use_image = tweet.get("use_image", False)
     image_prompt = tweet.get("image_prompt", "")
+    promoted_url = tweet.get("promoted_url", "")
 
     if not tweet_text:
         print("❌ Grok returned empty tweet text. Aborting.")
         exit(1)
 
-    print(f"\n📋 Generated tweet ({len(tweet_text)} chars):")
+    print(f"\n📋 Generated tweet ({len(tweet_text)} chars, type: {tweet_type}):")
     print(f"   {tweet_text}")
     print(f"   Image: {'Yes' if use_image else 'No'}")
     if use_image and image_prompt:
-        print(f"   Image prompt: {image_prompt[:80]}...")
+        print(f"   Image prompt: {image_prompt[:100]}...")
+    if promoted_url:
+        print(f"   Promoting: {promoted_url}")
 
     # Post to Twitter
     tweet_id = post_to_x(tweet_text, image_prompt, use_image)
 
-    # Log the tweet for memory
+    # Log the tweet with full context for memory
     log = load_tweet_log()
     log.append({
         "timestamp": get_current_utc_time(),
+        "tweet_type": tweet_type,
         "tweet_text": tweet_text,
         "use_image": use_image,
         "image_prompt": image_prompt if use_image else "",
+        "promoted_url": promoted_url,
         "tweet_id": tweet_id
     })
     save_tweet_log(log)
