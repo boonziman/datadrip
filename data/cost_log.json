@@ -27,5 +27,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0109
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-03",
+    "start_time": "2026-03-03T06:52:43.386208+00:00",
+    "end_time": "2026-03-03T06:53:17.613350+00:00",
+    "duration_seconds": 34.2,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2923,
+        "output_tokens": 112,
+        "cost": 0.010449
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Bitcoin's hype from big institutions seems to be cooling off\u2014does that mean it's settling as digital gold, or could it evolve into something bigger? Curious what you all think is next for BTC in this shifting landscape.",
+      "tweet_type": "engagement",
+      "tweet_id": "2028725380937314307",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 2923,
+      "output_tokens": 112,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.0804
+    }
   }
 ]
