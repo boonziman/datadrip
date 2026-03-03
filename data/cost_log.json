@@ -223,5 +223,59 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0616
     }
+  },
+  {
+    "bot": "reply",
+    "date": "2026-03-03",
+    "start_time": "2026-03-03T07:52:51.596559+00:00",
+    "end_time": "2026-03-03T07:54:28.046803+00:00",
+    "duration_seconds": 96.5,
+    "api_calls": [
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 1039,
+        "output_tokens": 54,
+        "cost": 0.01255
+      },
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 1104,
+        "output_tokens": 42,
+        "cost": 0.01272
+      },
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 1072,
+        "output_tokens": 50,
+        "cost": 0.01272
+      },
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 1052,
+        "output_tokens": 61,
+        "cost": 0.01296
+      },
+      {
+        "label": "Reply Generation",
+        "model": "grok-4",
+        "input_tokens": 1061,
+        "output_tokens": 49,
+        "cost": 0.01257
+      }
+    ],
+    "errors": [],
+    "details": {
+      "outcome": "Skipped \u2014 tried 5 candidates but all failed or Grok skipped them"
+    },
+    "totals": {
+      "input_tokens": 5328,
+      "output_tokens": 256,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0635
+    }
   }
 ]
