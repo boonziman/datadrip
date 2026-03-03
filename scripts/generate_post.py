@@ -418,6 +418,7 @@ Opening: {body_start}"""
 
     if tracker:
         tracker.log_event(f"✅ {category} post saved: {filename}")
+        tracker.set_detail(f"post_{category.lower()}", f"[{category}] {raw_title}")
 
     return full_path
 
@@ -439,6 +440,8 @@ def generate_daily_posts():
             results[category] = "❌ failed"
             tracker.log_error(f"{category} post failed: {e}")
     print(f"\n📋 Daily summary: {results}")
+    success_count = sum(1 for v in results.values() if v == "✅")
+    tracker.set_detail("posts_generated", f"{success_count} of 3 posts generated successfully")
     tracker.finish()
 
 if __name__ == "__main__":

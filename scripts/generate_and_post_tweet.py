@@ -480,6 +480,14 @@ if __name__ == "__main__":
     save_tweet_log(log)
     print(f"💾 Tweet logged ({len(log)} total in memory)")
 
+    # Store details for the readable report
+    tracker.set_detail("tweet_text", tweet_text)
+    tracker.set_detail("tweet_type", tweet_type)
+    tracker.set_detail("tweet_id", tweet_id)
+    tracker.set_detail("had_image", use_image)
+    if promoted_url:
+        tracker.set_detail("promoted_url", promoted_url)
+
     tracker.log_event(f"Tweet posted and logged (type: {tweet_type}, ID: {tweet_id})")
     tracker.finish()
 
