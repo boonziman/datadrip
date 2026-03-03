@@ -1,11 +1,15 @@
 import os
 import re
+import sys
 import json
 import datetime
 import tempfile
 import requests
 from requests_oauthlib import OAuth1
 from dotenv import load_dotenv
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tracker import Tracker
 
 load_dotenv()
 
@@ -21,6 +25,9 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TWEET_LOG_PATH = os.path.join(PROJECT_ROOT, "data", "tweet_log.json")
 POSTS_DIR = os.path.join(PROJECT_ROOT, "content", "posts")
 SITE_URL = "https://datadripco.com"
+
+# Module-level tracker (created in __main__)
+tracker = None
 
 # ====================== VALIDATION ======================
 def validate_keys():
@@ -363,6 +370,15 @@ def generate_tweet():
     data = response.json()
     content = data["choices"][0]["message"]["content"]
 
+    # Track API usage (capture actual token counts from response)
+    if tracker:
+        usage = data.get("usage", {})
+        tracker.log_api_call(
+            "Tweet Generation", model="grok-4",
+            input_tokens=usage.get("prompt_tokens", tracker.estimate_tokens(prompt)),
+            output_tokens=usage.get("completion_tokens", tracker.estimate_tokens(content)),
+        )
+
     tweet_data = parse_json_response(content)
 
     # Safety: force no image on blog teasers (link preview is better)
@@ -386,6 +402,8 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
     # Generate and upload image if requested
     if use_image and image_prompt and image_prompt.strip():
         image_bytes = generate_image(image_prompt)
+        if tracker:
+            tracker.log_image(success=bool(image_bytes))
         if image_bytes:
             media_id = upload_image_to_twitter(image_bytes, auth)
         if not media_id:
@@ -414,8 +432,13 @@ if __name__ == "__main__":
     print(f"🚀 Datadrip Tweet Bot — {get_current_utc_time()}")
     print("=" * 60)
 
+    # Initialize cost & event tracker
+    tracker = Tracker("tweet")
+    tracker.log_event("Tweet bot started")
+
     # Validate all keys before starting
     validate_keys()
+    tracker.log_event("API keys validated")
 
     # Generate the tweet
     tweet = generate_tweet()
@@ -427,6 +450,9 @@ if __name__ == "__main__":
 
     if not tweet_text:
         print("❌ Grok returned empty tweet text. Aborting.")
+        if tracker:
+            tracker.log_error("Grok returned empty tweet text")
+            tracker.finish()
         exit(1)
 
     print(f"\n📋 Generated tweet ({len(tweet_text)} chars, type: {tweet_type}):")
@@ -453,5 +479,8 @@ if __name__ == "__main__":
     })
     save_tweet_log(log)
     print(f"💾 Tweet logged ({len(log)} total in memory)")
+
+    tracker.log_event(f"Tweet posted and logged (type: {tweet_type}, ID: {tweet_id})")
+    tracker.finish()
 
     print("\n✅ Done!")

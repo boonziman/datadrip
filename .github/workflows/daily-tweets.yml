@@ -47,7 +47,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/tweet_log.json
+          git add data/tweet_log.json data/cost_log.json
           if git diff --staged --quiet; then
             echo "No tweet log changes to commit"
           else

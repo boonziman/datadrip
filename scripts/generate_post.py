@@ -1,9 +1,13 @@
 import os
 import re
+import sys
 import feedparser
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tracker import Tracker
 
 load_dotenv()
 
@@ -11,6 +15,9 @@ GROK_API_KEY = os.getenv("GROK_API_KEY")
 if not GROK_API_KEY:
     print("❌ Please add your GROK_API_KEY to .env file")
     exit()
+
+# Module-level tracker (created in __main__ or generate_daily_posts)
+tracker = None
 
 RSS_FEEDS = {
     "AI": [
@@ -194,6 +201,8 @@ def call_api(url, headers, payload, timeout=300, retries=2):
 
 def generate_post(category="AI", test_mode=False):
     news = fetch_recent_news(category)
+    if tracker:
+        tracker.log_event(f"Fetched {len(news)} RSS articles for {category}")
     context = "\n\n".join([f"Title: {a['title']}\nLink: {a['link']}\nSummary: {a['summary']}" for a in news])
 
     system_prompt = f"""You are the lead editor and senior tech journalist at Datadrip — a respected, forward-thinking publication known for cutting through hype with sharp, original insights on AI, Crypto, and Tech that readers actually use to make better decisions.
@@ -261,9 +270,18 @@ Write one original, high-value Datadrip article that ties 2–4 of these togethe
     
     if response.status_code != 200:
         print(f"❌ API Error: {response.status_code} - {response.text}")
+        if tracker:
+            tracker.log_error(f"{category} Pass 1 failed (HTTP {response.status_code})")
         return None
     
     content = response.json()["choices"][0]["message"]["content"]
+
+    if tracker:
+        tracker.log_api_call(
+            f"{category} Draft (Pass 1)", model="grok-4",
+            input_tokens=tracker.estimate_tokens(system_prompt + user_prompt),
+            output_tokens=tracker.estimate_tokens(content),
+        )
 
     # === SELF-GRADING & IMPROVEMENT PASS ===
     print(f"🤖 Pass 2: Self-review & improving for {category}...")
@@ -293,9 +311,18 @@ Post to improve:
     
     if response2.status_code != 200:
         print(f"❌ API Error on Pass 2: {response2.status_code} - {response2.text}")
+        if tracker:
+            tracker.log_error(f"{category} Pass 2 failed (HTTP {response2.status_code})")
         return None
     
     final_content = response2.json()["choices"][0]["message"]["content"]
+
+    if tracker:
+        tracker.log_api_call(
+            f"{category} Review (Pass 2)", model="grok-4",
+            input_tokens=tracker.estimate_tokens(review_prompt),
+            output_tokens=tracker.estimate_tokens(final_content),
+        )
 
     # Strip any leaked metadata the AI might have left in the output
     final_content = re.sub(r'\n*\(Word count:.*?\)\s*$', '', final_content, flags=re.IGNORECASE | re.DOTALL)
@@ -339,15 +366,25 @@ Opening: {body_start}"""
     if prompt_response.status_code == 200:
         image_prompt = prompt_response.json()["choices"][0]["message"]["content"].strip()
         print(f"   Prompt: {image_prompt[:120]}...")
+        if tracker:
+            tracker.log_api_call(
+                f"{category} Image Prompt (Pass 3)", model="grok-4",
+                input_tokens=tracker.estimate_tokens(image_prompt_request),
+                output_tokens=tracker.estimate_tokens(image_prompt),
+            )
     else:
         # Fallback: build a specific prompt from the title
         image_prompt = f"Editorial photo-realistic image for a news article titled '{raw_title}'. Professional lighting, clean composition, magazine quality."
+        if tracker:
+            tracker.log_error(f"{category} Pass 3 failed (HTTP {prompt_response.status_code}), using fallback prompt")
 
     # Build slug early so we can use it for the image filename
     slug = re.sub(r'[^a-z0-9\s-]', '', raw_title.lower().strip())
     slug = re.sub(r'[\s-]+', '-', slug).strip('-')[:50]
 
     image_url = generate_image(image_prompt, slug=slug)
+    if tracker:
+        tracker.log_image(success=bool(image_url))
 
     # Insert image after the first paragraph (end of intro) or first H2
     if image_url:
@@ -379,28 +416,41 @@ Opening: {body_start}"""
     print(f"🧠 Memory: {len(past_topics)} past {category} posts will be avoided next run")
     print("Open it in VS Code and review!")
 
+    if tracker:
+        tracker.log_event(f"✅ {category} post saved: {filename}")
+
     return full_path
 
 def generate_daily_posts():
+    global tracker
+    tracker = Tracker("blog")
+    tracker.log_event("Blog bot started — generating 3 posts (AI, Crypto, Tech)")
     print("🚀 Starting daily generation — 3 unique posts (AI, Crypto, Tech)")
     results = {}
     for category in ["AI", "Crypto", "Tech"]:
         try:
+            tracker.log_event(f"Starting {category} post generation")
             result = generate_post(category=category)
             results[category] = "✅" if result else "⚠️ skipped"
+            if not result:
+                tracker.log_error(f"{category} post was skipped")
         except Exception as e:
             print(f"❌ {category} post failed: {e}")
             results[category] = "❌ failed"
+            tracker.log_error(f"{category} post failed: {e}")
     print(f"\n📋 Daily summary: {results}")
+    tracker.finish()
 
 if __name__ == "__main__":
-    import sys
     if len(sys.argv) > 1 and sys.argv[1] == "--test":
         generate_post(test_mode=True)
     elif len(sys.argv) > 1 and sys.argv[1] == "--daily":
         generate_daily_posts()
     else:
+        tracker = Tracker("blog")
+        tracker.log_event("Blog bot started — single post mode (AI)")
         generate_post()  # default: single post (AI)
+        tracker.finish()
 
 
 
