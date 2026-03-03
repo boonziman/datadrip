@@ -66,7 +66,9 @@ def count_words(text):
     return len(re.findall(r'\b\w+\b', body))
 
 def generate_image(image_prompt, slug="post"):
-    """Generate an image via Grok Imagine, download it locally, return the local path."""
+    """Generate an image via Grok Imagine, download it locally, return the local path.
+    Retries once on failure to handle transient API errors."""
+    import time
     url = "https://api.x.ai/v1/images/generations"
     headers = {
         "Authorization": f"Bearer {GROK_API_KEY}",
@@ -79,18 +81,22 @@ def generate_image(image_prompt, slug="post"):
         "aspectRatio": "16:9"
     }
     print("🎨 Generating custom image with Grok Imagine...")
-    try:
-        response = requests.post(url, headers=headers, json=payload, timeout=60)
-        if response.status_code == 200:
-            temp_url = response.json()["data"][0]["url"]
-            # Download the image to static/images/posts/ so it's permanent
-            return download_image(temp_url, slug)
-        else:
-            print(f"❌ Image generation error: {response.status_code} - {response.text}")
-            return None
-    except requests.exceptions.RequestException as e:
-        print(f"❌ Image generation network error: {e}")
-        return None
+    for attempt in range(2):  # try twice — transient failures are common
+        try:
+            response = requests.post(url, headers=headers, json=payload, timeout=90)
+            if response.status_code == 200:
+                temp_url = response.json()["data"][0]["url"]
+                # Download the image to static/images/posts/ so it's permanent
+                return download_image(temp_url, slug)
+            else:
+                print(f"{'⚠️ Attempt 1 failed, retrying...' if attempt == 0 else '❌ Image generation error'}: {response.status_code} - {response.text[:150]}")
+                if attempt == 0:
+                    time.sleep(5)
+        except requests.exceptions.RequestException as e:
+            print(f"{'⚠️ Attempt 1 network error, retrying...' if attempt == 0 else '❌ Image generation network error'}: {e}")
+            if attempt == 0:
+                time.sleep(5)
+    return None
 
 
 def download_image(image_url, slug="post"):
@@ -386,19 +392,22 @@ Opening: {body_start}"""
     if tracker:
         tracker.log_image(success=bool(image_url))
 
-    # Insert image after the first paragraph (end of intro) or first H2
-    if image_url:
-        # Strip any placeholder/inline image lines Grok may have left in the body
-        final_content = re.sub(r'!\[.*?\]\(image_url\)\n*', '', final_content)
-        final_content = re.sub(r'!\[.*?\]\(https?://placeholder.*?\)\n*', '', final_content)
-        final_content = re.sub(r'!\[.*?\]\(https?://.*?\)\n*', '', final_content)
-        # Add featuredImage to frontmatter only — the layout handles display
-        parts = final_content.split('---', 2)
-        if len(parts) == 3:
-            frontmatter = '---' + parts[1] + '---'
-            body = parts[2]
-            frontmatter = frontmatter.replace('\n---', f'\nfeaturedImage: "{image_url}"\n---')
-            final_content = frontmatter + body
+    # Strip any placeholder/inline image lines Grok may have left in the body
+    final_content = re.sub(r'!\[.*?\]\(image_url\)\n*', '', final_content)
+    final_content = re.sub(r'!\[.*?\]\(https?://placeholder.*?\)\n*', '', final_content)
+    final_content = re.sub(r'!\[.*?\]\(https?://.*?\)\n*', '', final_content)
+
+    # Inject slug + optional featuredImage into frontmatter
+    # slug: gives the post a clean title-only URL (no date prefix)
+    parts = final_content.split('---', 2)
+    if len(parts) == 3:
+        frontmatter = '---' + parts[1] + '---'
+        body = parts[2]
+        extra = f'\nslug: "{slug}"'
+        if image_url:
+            extra += f'\nfeaturedImage: "{image_url}"'
+        frontmatter = frontmatter.replace('\n---', extra + '\n---')
+        final_content = frontmatter + body
 
     time_str = datetime.now().strftime("%H%M")
     filename = f"{today}-{time_str}-{slug}.md"

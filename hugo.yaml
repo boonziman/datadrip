@@ -30,11 +30,17 @@ params:
     Title: "Datadrip"
     Content: "Your daily source for original, high-value insights on Artificial Intelligence, Cryptocurrency, and Emerging Technology. Fresh news. Real analysis. Built for forward-thinkers who want to stay ahead."
 
+  social:
+    twitter: "datadripco"
+
+  images:
+    - images/og-default.jpg
+
   socialIcons:
     - name: github
       url: "https://github.com/boonziman/datadrip"
     - name: x
-      url: "https://x.com/"   # we'll update in Phase 5
+      url: "https://x.com/datadripco"
 
 menu:
   main:

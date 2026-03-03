@@ -107,7 +107,7 @@ def get_recent_posts(days=3):
             filepath = os.path.join(POSTS_DIR, filename)
             title = extract_title(filepath)
             category = extract_category(filepath)
-            slug = filename.replace(".md", "")
+            slug = extract_slug(filepath) or filename.replace(".md", "")
             url = f"{SITE_URL}/posts/{slug}/"
             posts.append({
                 "title": title,
@@ -132,6 +132,18 @@ def extract_title(filepath):
     except IOError:
         pass
     return "New post"
+
+def extract_slug(filepath):
+    """Extract the slug from a markdown file's frontmatter (returns None if not set)."""
+    try:
+        with open(filepath, "r") as f:
+            content = f.read(2000)
+        match = re.search(r'^slug:\s*["\']?(.+?)["\']?\s*$', content, re.MULTILINE)
+        if match:
+            return match.group(1).strip('"\'')
+    except IOError:
+        pass
+    return None
 
 def extract_category(filepath):
     """Extract the category from a markdown file's frontmatter."""
