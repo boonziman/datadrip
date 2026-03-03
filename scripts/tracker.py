@@ -118,8 +118,8 @@ class Tracker:
         date_str = self.start_time.strftime("%B %d, %Y")  # "March 3, 2026"
         time_str = self.start_time.strftime("%I:%M %p UTC")  # "06:07 AM UTC"
         status = "✅ Everything ran successfully" if not self.errors else f"⚠️ {len(self.errors)} error(s) occurred"
-        bot_emoji = "🐦" if self.bot_name == "tweet" else "📝"
-        bot_label = "Tweet Bot" if self.bot_name == "tweet" else "Blog Bot"
+        bot_emoji = {"tweet": "🐦", "blog": "📝", "reply": "💬"}.get(self.bot_name, "🤖")
+        bot_label = {"tweet": "Tweet Bot", "blog": "Blog Bot", "reply": "Reply Bot"}.get(self.bot_name, f"{self.bot_name.title()} Bot")
 
         lines = []
         lines.append(f"## {bot_emoji} {bot_label} — {date_str} at {time_str}")
@@ -136,10 +136,17 @@ class Tracker:
             lines.append(f"{i}. **{event['time']}** — {event['message']}")
         lines.append("")
 
-        # ---- Details (tweet content, post titles, etc.) ----
+        # ---- Details (tweet content, post titles, reply info, etc.) ----
         if self.details:
             lines.append("### Details")
             lines.append("")
+
+            # Outcome (used by reply bot when skipping)
+            if "outcome" in self.details:
+                lines.append(f"**Outcome:** {self.details['outcome']}")
+                lines.append("")
+
+            # Tweet bot details
             if "tweet_text" in self.details:
                 lines.append(f"**Tweet posted:**")
                 lines.append(f"> {self.details['tweet_text']}")
@@ -152,6 +159,24 @@ class Tracker:
                 lines.append(f"**Blog post promoted:** {self.details['promoted_url']}")
             if "had_image" in self.details:
                 lines.append(f"**Image attached:** {'Yes' if self.details['had_image'] else 'No'}")
+
+            # Reply bot details
+            if "replied_to" in self.details:
+                lines.append(f"**Replied to:** {self.details['replied_to']}")
+            if "original_tweet" in self.details:
+                lines.append(f"**Their tweet:**")
+                lines.append(f"> {self.details['original_tweet']}")
+                lines.append("")
+            if "reply_text" in self.details:
+                lines.append(f"**Our reply:**")
+                lines.append(f"> {self.details['reply_text']}")
+                lines.append("")
+            if "reply_type" in self.details:
+                lines.append(f"**Reply style:** {self.details['reply_type']}")
+            if "reply_tweet_id" in self.details:
+                lines.append(f"**Reply ID:** {self.details['reply_tweet_id']}")
+
+            # Blog bot details
             if "posts_generated" in self.details:
                 lines.append(f"**Posts generated:** {self.details['posts_generated']}")
             for key, val in self.details.items():
@@ -301,7 +326,7 @@ class Tracker:
         end_time = datetime.datetime.now(datetime.timezone.utc)
         duration = round((end_time - self.start_time).total_seconds(), 1)
         status = "✅ No errors" if not self.errors else f"⚠️  {len(self.errors)} error(s)"
-        bot_label = "TWEET" if self.bot_name == "tweet" else "BLOG"
+        bot_label = {"tweet": "TWEET", "blog": "BLOG", "reply": "REPLY"}.get(self.bot_name, self.bot_name.upper())
 
         print("\n" + "=" * 60)
         print(f"📊 {bot_label} BOT — RUN REPORT")
