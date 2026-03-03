@@ -8,6 +8,7 @@ tags:
   - AI ethics
   - OpenAI backlash
 description: "OpenAI's latest deal with the Department of Defense has users ditching ChatGPT in droves, sending uninstalls skyrocketing and giving a huge boost to competitors like Claude. Meanwhile, startups like Cursor are hitting massive revenue milestones, and Stripe's turning AI expenses into smart profits. Let's dive into how this is shaking up the future of tech."
+featuredImage: "images/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups.jpg"
 ---
 
 ChatGPT's user base took a serious hit almost instantly—uninstalls jumped a staggering 295% right after the Department of Defense partnership news dropped. This isn't some minor glitch; it's a full-blown user uprising. People are switching to options like Claude in record numbers, while innovative startups such as Cursor are pulling in billions in revenue without breaking a sweat. On top of that, Stripe's rolling out tools that flip AI costs into actual earnings, and Google's pushing Gemini further into our everyday lives by making smart homes even smarter with real-time camera analysis. We're right in the middle of AI's turbulent evolution, where ethical dilemmas are colliding head-on with groundbreaking advancements, and the real winners are emerging from unexpected corners.
