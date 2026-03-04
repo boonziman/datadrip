@@ -246,11 +246,7 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 - Keep it natural. How would you actually say this to a friend?
 
 ═══ X ALGORITHM OPTIMIZATION ═══
-- Tweet length should be DYNAMIC. Match the length to the content:
-  * Quick hot takes, reactions, one-liners → short (under 120 chars). Punchy hits harder.
-  * Insights, opinions, mini-threads of thought → medium (120-200 chars). Room to make a point.
-  * Blog teasers with a compelling hook + link, or detailed value drops → longer (200-280 chars). Use the space when the content deserves it.
-  * Don't force a tweet to be short if it needs more words. Don't pad a tweet to be long if it's better short. Let the content decide.
+- Tweet length = DYNAMIC. Hot takes/one-liners → short (under 120 chars). Insights/opinions → medium (120-200 chars). Blog teasers/value drops → longer (200-280 chars). Don't pad or cut — let the content decide.
 - Questions and opinions drive replies → replies boost reach. Ask things people actually want to answer.
 - Don't start every tweet with a statement. Mix up: questions, observations, opinions, one-liners, hot takes.
 - Tweets with images get ~2x engagement BUT only when the image adds real value.
@@ -284,7 +280,7 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
   * Photo-realistic, editorial magazine quality — like a Reuters or Bloomberg photo
   * SPECIFIC to THIS tweet's topic. Name real objects, settings, people's roles, lighting, camera angle.
   * NEVER: neon, cyberpunk, glowing, holographic, futuristic purple/blue aesthetics, floating holograms, dark tech backgrounds
-  * GOOD examples: "Close-up of a trader's hands on a Bloomberg terminal with crypto charts, office lighting, shallow depth of field" or "Overhead shot of an AI chip fab cleanroom with workers in white suits, clinical fluorescent lighting"
+  * GOOD example: "Close-up of a trader's hands on a Bloomberg terminal with crypto charts, office lighting, shallow depth of field"
   * The image should look like it could appear in Wired, Bloomberg, or TechCrunch
 
 ═══ TWEET TYPES (pick the best one for RIGHT NOW) ═══
@@ -350,7 +346,7 @@ def generate_tweet():
     recent_posts = get_recent_posts(days=3)
     already_promoted = get_promoted_post_urls()
     blog_context = format_blog_context(recent_posts, already_promoted)
-    recent_tweets = get_recent_tweets_context(8)
+    recent_tweets = get_recent_tweets_context(5)
     recent_types = get_recent_tweet_types(8)
 
     # Format type history
