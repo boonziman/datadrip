@@ -4,6 +4,12 @@ title: 'Datadrip'
 theme: 'PaperMod'
 paginate: 6
 enableRobotsTXT: true
+enableGitInfo: true   # accurate lastmod dates for sitemap SEO
+
+sitemap:
+  changefreq: daily   # ideal for daily bot posts
+  priority: 0.8
+  filename: sitemap.xml
 
 outputs:
   home:
@@ -16,6 +22,7 @@ copyright: "© 2026 Datadrip. All rights reserved."
 params:
   description: "Datadrip — Daily original insights on AI, Crypto & Tech. Smart analysis, zero fluff."
   author: "Datadrip Team"
+  keywords: ["AI news", "crypto news", "tech news", "artificial intelligence", "machine learning", "bitcoin", "ethereum", "grok", "blockchain", "tech trends", "ai trends", "crypto trends"]
   defaultTheme: light
   disableThemeToggle: true
   ShowReadingTime: true
@@ -23,8 +30,10 @@ params:
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
-  ShowRssButtonInSectionTermList: false
+  ShowRssButtonInSectionTermList: true
   ShowSearch: true
+  ShowToc: true          # table of contents on every post — better on-page SEO & readability
+  ShowCanonicalLink: true  # prevents duplicate-content penalties
 
   homeInfoParams:
     Title: "Datadrip"
@@ -34,13 +43,15 @@ params:
     twitter: "datadripco"
 
   images:
-    - images/og-default.jpg
+    - /images/og-default.jpg
 
   socialIcons:
     - name: github
       url: "https://github.com/boonziman/datadrip"
     - name: x
       url: "https://x.com/datadripco"
+    - name: rss
+      url: "/index.xml"
 
 menu:
   main:
@@ -66,7 +77,6 @@ menu:
       url: /search/
       weight: 7
 
-  # New footer menu — appears at bottom of every page
   footer:
     - name: About
       url: /about/
