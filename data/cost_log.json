@@ -696,5 +696,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1094
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-04",
+    "start_time": "2026-03-04T19:40:48.871102+00:00",
+    "end_time": "2026-03-04T19:41:15.381315+00:00",
+    "duration_seconds": 26.5,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3392,
+        "output_tokens": 144,
+        "cost": 0.03968
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "US export bans on AI chips are forcing Europe to get creative with their own tech stacks, while everyone's chasing polar regions for cheap power. It's widening this global divide in AI development that could leave some players way behind. Broke it down with the latest moves. #AI https://datadripco.com/posts/ais-global-rift-us-bans-meet-euro-innovations-and-/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2029281033385050314",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-global-rift-us-bans-meet-euro-innovations-and-/"
+    },
+    "totals": {
+      "input_tokens": 3392,
+      "output_tokens": 144,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0397
+    }
   }
 ]

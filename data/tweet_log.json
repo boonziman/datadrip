@@ -84,5 +84,14 @@
     "image_prompt": "Photo-realistic image of a financial analyst's desk with multiple screens showing stablecoin yield charts and crypto market data, soft office lighting, coffee mug and notepad in the foreground, high-resolution like a Bloomberg terminal setup",
     "promoted_url": "",
     "tweet_id": "2029233175755399289"
+  },
+  {
+    "timestamp": "2026-03-04 19:41 UTC",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "US export bans on AI chips are forcing Europe to get creative with their own tech stacks, while everyone's chasing polar regions for cheap power. It's widening this global divide in AI development that could leave some players way behind. Broke it down with the latest moves. #AI https://datadripco.com/posts/ais-global-rift-us-bans-meet-euro-innovations-and-/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ais-global-rift-us-bans-meet-euro-innovations-and-/",
+    "tweet_id": "2029281033385050314"
   }
 ]
