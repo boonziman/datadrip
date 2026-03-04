@@ -550,5 +550,114 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0388
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-04",
+    "start_time": "2026-03-04T13:58:23.532077+00:00",
+    "end_time": "2026-03-04T14:12:25.287458+00:00",
+    "duration_seconds": 841.8,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2191,
+        "output_tokens": 3901,
+        "cost": 0.17795
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4250,
+        "output_tokens": 3916,
+        "cost": 0.19914
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 334,
+        "output_tokens": 260,
+        "cost": 0.01374
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2313,
+        "output_tokens": 4024,
+        "cost": 0.18409
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4373,
+        "output_tokens": 3934,
+        "cost": 0.20109
+      },
+      {
+        "label": "Crypto Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 330,
+        "output_tokens": 182,
+        "cost": 0.01058
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2371,
+        "output_tokens": 3642,
+        "cost": 0.16939
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3991,
+        "output_tokens": 3829,
+        "cost": 0.19307
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 338,
+        "output_tokens": 278,
+        "cost": 0.0145
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "post_ai": "[AI] AI's Global Rift: US Bans Meet Euro Innovations and Polar Power",
+      "post_crypto": "[Crypto] Yield-Bearing Stablecoins: Crypto's New Power Play",
+      "post_tech": "[Tech] AI Reliability Revolution: Crowdsourcing, Funding Hacks, and Floating Data Centers",
+      "posts_generated": "3 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 20491,
+      "output_tokens": 23966,
+      "images_generated": 3,
+      "estimated_cost_usd": 1.3736
+    }
   }
 ]
