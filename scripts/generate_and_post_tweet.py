@@ -140,7 +140,7 @@ def extract_slug(filepath):
             content = f.read(2000)
         match = re.search(r'^slug:\s*["\']?(.+?)["\']?\s*$', content, re.MULTILINE)
         if match:
-            return match.group(1).strip("'\"').strip('-')
+            return match.group(1).strip("'\"").strip('-')
     except IOError:
         pass
     return None

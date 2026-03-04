@@ -20,6 +20,9 @@ Pricing estimates (update PRICING dict if x.ai changes rates):
 import os
 import json
 import datetime
+from zoneinfo import ZoneInfo
+
+_PST = ZoneInfo("America/Los_Angeles")
 
 # ====================== PRICING (estimates — update if x.ai changes rates) ======================
 # grok-4 is a frontier model — pricing based on observed dashboard costs.
@@ -43,7 +46,7 @@ class Tracker:
         bot_name: "blog" or "tweet" — identifies which bot this run is for.
         """
         self.bot_name = bot_name
-        self.start_time = datetime.datetime.now(datetime.timezone.utc)
+        self.start_time = datetime.datetime.now(_PST)
         self.events = []
         self.api_calls = []
         self.errors = []
@@ -57,9 +60,7 @@ class Tracker:
 
     def log_event(self, message):
         """Log a key event with timestamp."""
-        timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M:%S UTC")
-        self.events.append({"time": timestamp, "message": message})
-        print(f"📋 {message}")
+        timestamp = datetime.datetime.now(_PST).strftime("%H:%M:%S PST")
 
     def log_api_call(self, label, model="grok-4", input_tokens=0, output_tokens=0):
         """Log a text API call with token counts and estimated cost."""
@@ -93,7 +94,7 @@ class Tracker:
 
     def log_error(self, message):
         """Log an error event."""
-        timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M:%S UTC")
+        timestamp = datetime.datetime.now(_PST).strftime("%H:%M:%S PST")
         self.events.append({"time": timestamp, "message": f"❌ ERROR: {message}"})
         self.errors.append(message)
         print(f"❌ TRACKER: {message}")
@@ -115,10 +116,10 @@ class Tracker:
 
     def _build_readable_report(self):
         """Build a clean, human-readable markdown report."""
-        end_time = datetime.datetime.now(datetime.timezone.utc)
+        end_time = datetime.datetime.now(_PST)
         duration = round((end_time - self.start_time).total_seconds(), 1)
-        date_str = self.start_time.strftime("%B %d, %Y")  # "March 3, 2026"
-        time_str = self.start_time.strftime("%I:%M %p UTC")  # "06:07 AM UTC"
+        date_str = self.start_time.strftime("%B %d, %Y")
+        time_str = self.start_time.strftime("%I:%M %p PST")
         status = "✅ Everything ran successfully" if not self.errors else f"⚠️ {len(self.errors)} error(s) occurred"
         bot_emoji = {"tweet": "🐦", "blog": "📝"}.get(self.bot_name, "🤖")
         bot_label = {"tweet": "Tweet Bot", "blog": "Blog Bot"}.get(self.bot_name, f"{self.bot_name.title()} Bot")
@@ -222,7 +223,7 @@ class Tracker:
             else:
                 log = []
 
-            end_time = datetime.datetime.now(datetime.timezone.utc)
+            end_time = datetime.datetime.now(_PST)
             log.append({
                 "bot": self.bot_name,
                 "date": self.start_time.strftime("%Y-%m-%d"),
@@ -309,14 +310,14 @@ class Tracker:
 
     def _print_console_summary(self):
         """Print a clean summary to the console."""
-        end_time = datetime.datetime.now(datetime.timezone.utc)
+        end_time = datetime.datetime.now(_PST)
         duration = round((end_time - self.start_time).total_seconds(), 1)
         status = "✅ No errors" if not self.errors else f"⚠️  {len(self.errors)} error(s)"
         bot_label = {"tweet": "TWEET", "blog": "BLOG"}.get(self.bot_name, self.bot_name.upper())
 
         print("\n" + "=" * 60)
         print(f"📊 {bot_label} BOT — RUN REPORT")
-        print(f"   Date: {self.start_time.strftime('%B %d, %Y at %I:%M %p UTC')}")
+        print(f"   Date: {self.start_time.strftime('%B %d, %Y at %I:%M %p PST')}")
         print(f"   Duration: {duration}s")
         print(f"   Status: {status}")
         print(f"   Estimated cost: ${self.total_cost:.4f}")
