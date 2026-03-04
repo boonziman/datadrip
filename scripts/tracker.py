@@ -138,12 +138,12 @@ class Tracker:
             lines.append(f"{i}. **{event['time']}** — {event['message']}")
         lines.append("")
 
-        # ---- Details (tweet content, post titles, reply info, etc.) ----
+        # ---- Details (tweet content, post titles, etc.) ----
         if self.details:
             lines.append("### Details")
             lines.append("")
 
-            # Outcome (used by reply bot when skipping)
+            # Outcome
             if "outcome" in self.details:
                 lines.append(f"**Outcome:** {self.details['outcome']}")
                 lines.append("")
