@@ -501,9 +501,12 @@ if __name__ == "__main__":
             tracker.finish()
         exit(1)
 
-    # For blog teasers: URL must be LAST so Twitter hides it and shows only the card preview
-    if tweet_type == "blog_teaser" and promoted_url and promoted_url in tweet_text:
-        tweet_text = ensure_url_is_last(tweet_text, promoted_url)
+    # For blog teasers: strip ANY url Grok may have written (it could be wrong,
+    # truncated, or slightly different) and append the exact promoted_url dead last.
+    # Twitter only collapses the URL into a card when it is the absolute last thing.
+    if tweet_type == "blog_teaser" and promoted_url:
+        tweet_text = re.sub(r'https?://\S+', '', tweet_text).strip()
+        tweet_text = tweet_text.rstrip() + "\n" + promoted_url
 
     print(f"\n📋 Generated tweet ({len(tweet_text)} chars, type: {tweet_type}):")
     print(f"   {tweet_text}")

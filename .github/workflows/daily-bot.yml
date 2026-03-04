@@ -2,7 +2,7 @@ name: Daily Datadrip Post Generator
 
 on:
   schedule:
-    - cron: '0 13 * * *'      # Every day at 13:00 UTC — optimal news time
+    - cron: '0 13 * * *'      # 5:00 AM PST — optimal news time
   workflow_dispatch:           # Allows you to test manually anytime
 
 permissions:

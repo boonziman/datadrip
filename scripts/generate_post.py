@@ -389,7 +389,7 @@ Opening: {body_start}"""
 
     # Build slug early so we can use it for the image filename
     slug = re.sub(r'[^a-z0-9\s-]', '', raw_title.lower().strip())
-    slug = re.sub(r'[\s-]+', '-', slug)[:50].strip('-')
+    slug = re.sub(r'[\s-]+', '-', slug).strip('-')
 
     image_url = generate_image(image_prompt, slug=slug)
     if tracker:
