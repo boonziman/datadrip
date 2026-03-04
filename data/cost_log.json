@@ -453,5 +453,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1089
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-04",
+    "start_time": "2026-03-04T03:24:11.068259+00:00",
+    "end_time": "2026-03-04T03:24:28.865277+00:00",
+    "duration_seconds": 17.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3048,
+        "output_tokens": 165,
+        "cost": 0.03708
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI is quietly slipping into everything from your phone calls to biotech labs, and it's changing how we interact with tech without us even noticing. I broke down the gadgets leading this shift and what it means for the next wave of innovation. Solid read if you're into where AI's heading next. #AI https://datadripco.com/posts/2026-03-03-1405-ais-stealth-invasion-gadgets-calls-and-biotech-bre/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2029035219878019343",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/2026-03-03-1405-ais-stealth-invasion-gadgets-calls-and-biotech-bre/"
+    },
+    "totals": {
+      "input_tokens": 3048,
+      "output_tokens": 165,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0371
+    }
   }
 ]
