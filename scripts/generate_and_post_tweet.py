@@ -298,7 +298,7 @@ Current time (PST): {current_time}
 Your recent tweet types (VARY these — don't do the same type twice in a row):
 {recent_types}
 
-Your recent tweets (DON'T repeat topics, angles, or phrasing):
+Your recent tweets — avoid identical angles or copy-pasted phrasing, but if a topic is hot/trending it's totally fine to revisit with a fresh take:
 {recent_tweets}
 
 ═══ OUTPUT ═══
