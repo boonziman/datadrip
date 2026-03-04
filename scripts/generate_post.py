@@ -4,6 +4,9 @@ import sys
 import feedparser
 import requests
 from datetime import datetime
+from zoneinfo import ZoneInfo
+
+_PST = ZoneInfo("America/Los_Angeles")
 from dotenv import load_dotenv
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -105,8 +108,8 @@ def download_image(image_url, slug="post"):
     images_dir = os.path.join(project_root, "static", "images", "posts")
     os.makedirs(images_dir, exist_ok=True)
 
-    today = datetime.now().strftime("%Y-%m-%d")
-    time_str = datetime.now().strftime("%H%M")
+    today = datetime.now(_PST).strftime("%Y-%m-%d")
+    time_str = datetime.now(_PST).strftime("%H%M")
     filename = f"{today}-{time_str}-{slug[:40]}.jpg"
     filepath = os.path.join(images_dir, filename)
 
@@ -341,7 +344,7 @@ Post to improve:
     print(f"📊 Actual body word count for {category}: {actual_words}")
 
     # Force correct frontmatter and date
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now(_PST).strftime("%Y-%m-%d")
     final_content = re.sub(r'date:\s*\d{4}-\d{2}-\d{2}', f'date: {today}', final_content)
     final_content = re.sub(r'draft:\s*true', 'draft: false', final_content, flags=re.IGNORECASE)
 
@@ -386,7 +389,7 @@ Opening: {body_start}"""
 
     # Build slug early so we can use it for the image filename
     slug = re.sub(r'[^a-z0-9\s-]', '', raw_title.lower().strip())
-    slug = re.sub(r'[\s-]+', '-', slug).strip('-')[:50]
+    slug = re.sub(r'[\s-]+', '-', slug)[:50].strip('-')
 
     image_url = generate_image(image_prompt, slug=slug)
     if tracker:
@@ -409,7 +412,7 @@ Opening: {body_start}"""
         frontmatter = frontmatter.replace('\n---', extra + '\n---')
         final_content = frontmatter + body
 
-    time_str = datetime.now().strftime("%H%M")
+    time_str = datetime.now(_PST).strftime("%H%M")
     filename = f"{today}-{time_str}-{slug}.md"
 
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

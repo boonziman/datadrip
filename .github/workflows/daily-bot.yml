@@ -47,7 +47,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "new_posts=false" >> $GITHUB_OUTPUT
           else
-            git commit -m "chore(bot): daily automated post $(date +'%Y-%m-%d %H:%M UTC')"
+            git commit -m "chore(bot): daily automated post $(TZ='America/Los_Angeles' date +'%Y-%m-%d %H:%M PST')"
             git push
             echo "new_posts=true" >> $GITHUB_OUTPUT
           fi

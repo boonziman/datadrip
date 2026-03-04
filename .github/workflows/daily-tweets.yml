@@ -52,6 +52,6 @@ jobs:
             echo "No tweet log changes to commit"
           else
             git pull --rebase origin main || true
-            git commit -m "chore(tweets): update tweet memory $(date +'%Y-%m-%d %H:%M UTC')"
+            git commit -m "chore(tweets): update tweet memory $(TZ='America/Los_Angeles' date +'%Y-%m-%d %H:%M PST')"
             git push || true
           fi

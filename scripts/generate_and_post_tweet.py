@@ -140,7 +140,7 @@ def extract_slug(filepath):
             content = f.read(2000)
         match = re.search(r'^slug:\s*["\']?(.+?)["\']?\s*$', content, re.MULTILINE)
         if match:
-            return match.group(1).strip('"\'')
+            return match.group(1).strip("'\"').strip('-')
     except IOError:
         pass
     return None
@@ -267,11 +267,14 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 
 ═══ HASHTAGS ═══
 - Hashtags are SEPARATE from your tweet content. Write the tweet first, then decide on hashtags. Hashtags should NOT eat into or shorten your actual message.
-- Most tweets (~60%) should have ZERO hashtags. Clean tweets look more human.
-- When you DO use hashtags, use 1-3 that are genuinely relevant or trending. Never force them.
-- Good hashtag use: a trending topic tag (#GPT5 on launch day), a broad niche tag (#AI, #Crypto), or an event tag.
-- Bad hashtag use: stuffing 5+ hashtags, using obscure tags nobody searches, adding them to every single tweet.
-- CRITICAL for blog_teaser tweets: the URL MUST be the absolute last thing in the tweet — place any hashtags BEFORE the URL, never after. This is how Twitter hides the raw URL and shows only the clean card preview.
+- Most tweets (~50%) should have ZERO hashtags. Clean tweets look more human.
+- When you DO use hashtags, use 3-5 that are smart and audience-targeted — tags people in your niche actually follow and search.
+- Smart hashtag strategy — pick from whichever category matches the tweet:
+  * AI posts: #AI #ArtificialIntelligence #ChatGPT #MachineLearning #OpenAI #Claude #LLM #Grok
+  * Crypto posts: #Bitcoin #Crypto #BTC #Ethereum #Blockchain #DeFi #CryptoNews #Web3
+  * Tech posts: #Tech #TechNews #Startups #SaaS #Innovation #Fintech #BigTech
+- Bad hashtag use: obscure tags nobody searches, irrelevant tags, generic spam tags.
+- CRITICAL for blog_teaser tweets: ALWAYS include 3-5 hashtags, AND the URL MUST be the absolute last thing — order is: tweet text → hashtags → URL. This is how Twitter hides the raw URL and shows only the clean card preview.
 - For all other tweet types: hashtags go at the END of the tweet.
 
 ═══ IMAGE RULES ═══
@@ -292,7 +295,7 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 5. "value_drop" — Quick fact, stat, or "did you know" that makes people go "huh, interesting."
 
 ═══ CONTEXT FOR THIS TWEET ═══
-Current time (UTC): {current_time}
+Current time (PST): {current_time}
 
 {blog_context}
 
@@ -315,8 +318,9 @@ Generate EXACTLY ONE tweet as JSON:
 Remember: you're a real person, not a bot. Tweet like one."""
 
 # ====================== HELPERS ======================
-def get_current_utc_time():
-    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+def get_current_pst_time():
+    from zoneinfo import ZoneInfo
+    return datetime.datetime.now(ZoneInfo("America/Los_Angeles")).strftime("%Y-%m-%d %H:%M PST")
 
 def parse_json_response(content):
     """Parse JSON from Grok, stripping markdown code fences if present."""
@@ -342,7 +346,7 @@ def parse_json_response(content):
 
 def generate_tweet():
     """Call Grok API to generate one tweet with full context awareness."""
-    current_time = get_current_utc_time()
+    current_time = get_current_pst_time()
     recent_posts = get_recent_posts(days=3)
     already_promoted = get_promoted_post_urls()
     blog_context = format_blog_context(recent_posts, already_promoted)
@@ -471,7 +475,7 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
 # ====================== MAIN ======================
 if __name__ == "__main__":
     print("=" * 60)
-    print(f"🚀 Datadrip Tweet Bot — {get_current_utc_time()}")
+    print(f"🚀 Datadrip Tweet Bot — {get_current_pst_time()}")
     print("=" * 60)
 
     # Initialize cost & event tracker
@@ -515,7 +519,7 @@ if __name__ == "__main__":
     # Log the tweet with full context for memory
     log = load_tweet_log()
     log.append({
-        "timestamp": get_current_utc_time(),
+        "timestamp": get_current_pst_time(),
         "tweet_type": tweet_type,
         "tweet_text": tweet_text,
         "use_image": use_image,
