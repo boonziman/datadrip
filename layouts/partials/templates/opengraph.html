@@ -51,6 +51,7 @@
   {{- else }}
     <meta property="og:image" content="{{ (path.Join .RelPermalink $image) | absURL }}">
   {{- end }}
+  <meta property="og:image:alt" content="{{ .Title | plainify }}">
 {{- else }}
   {{- with partial "_funcs/get-page-images" . }}
     {{- range . | first 6 }}
