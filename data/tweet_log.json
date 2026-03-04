@@ -93,5 +93,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/ais-global-rift-us-bans-meet-euro-innovations-and-/",
     "tweet_id": "2029281033385050314"
+  },
+  {
+    "timestamp": "2026-03-04 14:49 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "AI systems are getting more reliable through wild ideas like crowdsourcing fixes and even floating data centers on barges. What's the craziest AI infrastructure hack you've heard of that could actually work? Let's hear some thoughts.",
+    "use_image": true,
+    "image_prompt": "Photo-realistic overhead view of engineers working on a floating data center barge in calm ocean waters, with solar panels and server racks visible on deck, natural daylight and a clear blue sky, like a Wired magazine tech feature shot",
+    "promoted_url": "",
+    "tweet_id": "2029328306856759755"
   }
 ]
