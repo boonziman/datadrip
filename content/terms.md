@@ -19,10 +19,11 @@ Welcome to Datadrip. By accessing or using this website, you agree to these term
 
 ## Newsletter & Communications
 
-- By subscribing to our newsletter, you consent to receive periodic emails from Datadrip containing news, insights, and updates about AI, cryptocurrency, and technology.
+- By subscribing to our newsletter, you consent to receive emails from Datadrip including but not limited to: news and insights about AI, cryptocurrency, and technology; promotional content; product announcements; sponsored recommendations; and updates about Datadrip services and offerings.
 - You may unsubscribe at any time using the link provided in every email.
 - We process your data in accordance with our [Privacy Policy](/privacy/).
 - By subscribing, you confirm that you are at least 16 years of age.
+- We reserve the right to send commercial and promotional communications to active subscribers. All such emails will include an unsubscribe option.
 
 ## Intellectual Property
 
