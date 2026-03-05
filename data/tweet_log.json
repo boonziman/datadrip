@@ -102,5 +102,14 @@
     "image_prompt": "Photo-realistic overhead view of engineers working on a floating data center barge in calm ocean waters, with solar panels and server racks visible on deck, natural daylight and a clear blue sky, like a Wired magazine tech feature shot",
     "promoted_url": "",
     "tweet_id": "2029328306856759755"
+  },
+  {
+    "timestamp": "2026-03-04 19:27 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Crowdsourcing AI fixes from everyday users and hacking funding through crypto bonds, plus those wild floating data centers - it's all pushing AI reliability to new levels. Dug into how these tricks are solving real problems without waiting for big tech. #AI #ArtificialIntelligence #MachineLearning\nhttps://datadripco.com/posts/ai-reliability-revolution-crowdsourcing-funding-ha/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ai-reliability-revolution-crowdsourcing-funding-ha/",
+    "tweet_id": "2029398445048713395"
   }
 ]

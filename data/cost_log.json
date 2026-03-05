@@ -763,5 +763,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1095
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-04",
+    "start_time": "2026-03-04T19:27:21.230564-08:00",
+    "end_time": "2026-03-04T19:27:48.489824-08:00",
+    "duration_seconds": 27.3,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3122,
+        "output_tokens": 134,
+        "cost": 0.03658
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Crowdsourcing AI fixes from everyday users and hacking funding through crypto bonds, plus those wild floating data centers - it's all pushing AI reliability to new levels. Dug into how these tricks are solving real problems without waiting for big tech. #AI #ArtificialIntelligence #MachineLearning\nhttps://datadripco.com/posts/ai-reliability-revolution-crowdsourcing-funding-ha/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2029398445048713395",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ai-reliability-revolution-crowdsourcing-funding-ha/"
+    },
+    "totals": {
+      "input_tokens": 3122,
+      "output_tokens": 134,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0366
+    }
   }
 ]
