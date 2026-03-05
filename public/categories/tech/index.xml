@@ -1,1 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Tech Innovations on Datadrip</title><link>http://localhost:1313/categories/tech/</link><description>Recent content in Tech Innovations on Datadrip</description><image><title>Datadrip</title><url>http://localhost:1313/images/og-default.jpg</url><link>http://localhost:1313/images/og-default.jpg</link></image><generator>Hugo -- 0.157.0</generator><language>en-us</language><copyright>2026 Datadrip. All rights reserved.</copyright><atom:link href="http://localhost:1313/categories/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>AI Backlash Hits OpenAI Hard as Startups Cash In</title><link>http://localhost:1313/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups-cash-in/</link><pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups-cash-in/</guid><description>OpenAI&amp;#39;s latest deal with the Department of Defense has users ditching ChatGPT in droves, sending uninstalls skyrocketing and giving a huge boost to competitors like Claude. Meanwhile, startups like Cursor are hitting massive revenue milestones, and Stripe&amp;#39;s turning AI expenses into smart profits. Let&amp;#39;s dive into how this is shaking up the future of tech.</description></item><item><title>AI User Exodus: Why Claude's Winning as Siri Eyes Google</title><link>http://localhost:1313/posts/2026-03-02-2231-ai-user-exodus-why-claudes-winning-as-siri-eyes-go/</link><pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/2026-03-02-2231-ai-user-exodus-why-claudes-winning-as-siri-eyes-go/</guid><description>With ChatGPT users jumping ship to Claude over mounting scandals, and Apple eyeing a Google partnership to revamp Siri, the AI landscape is shifting fast—let&amp;#39;s break down what this means for you and the future of tech.</description></item><item><title>Anthropic's Pentagon Clash Ignites AI Governance Crisis</title><link>http://localhost:1313/posts/2026-02-28-1913-anthropics-pentagon-clash-ignites-ai-governance-cr/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/2026-02-28-1913-anthropics-pentagon-clash-ignites-ai-governance-cr/</guid><description>Ever wondered how a heated dispute with the Pentagon could catapult an AI app to the top of the charts? Anthropic&amp;#39;s clash is revealing the shaky foundations of AI self-regulation, while sparking massive app downloads and fueling a frenzy of billion-dollar infrastructure investments—let&amp;#39;s unpack what this means for the future.</description></item><item><title>Politics Reshaping Tech: Trump's Deal Influence and AI's Infra Surge</title><link>http://localhost:1313/posts/2026-02-28-1923-politics-reshaping-tech-trumps-deal-influence-and-/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/2026-02-28-1923-politics-reshaping-tech-trumps-deal-influence-and-/</guid><description>Ever wonder how a single phone call from a former president can upend billion-dollar deals? We&amp;#39;re diving into Trump&amp;#39;s role in derailing Netflix&amp;#39;s Warner Bros. bid, the rise of Paramount&amp;#39;s massive merger, and how AI giants are betting big on infrastructure amid global tensions—plus, why prediction markets like Polymarket are thriving on chaos.</description></item><item><title>AI Wars Heat Up: Pentagon vs Anthropic, Musk's Jabs, and OpenAI's Boom</title><link>http://localhost:1313/posts/2026-02-27-1947-ai-wars-heat-up-pentagon-vs-anthropic-musks-jabs-a/</link><pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/2026-02-27-1947-ai-wars-heat-up-pentagon-vs-anthropic-musks-jabs-a/</guid><description>With the Pentagon blacklisting Anthropic, Elon Musk throwing shade at OpenAI, and ChatGPT surging to 900 million users, we&amp;#39;re diving into the wild intersection of AI breakthroughs, ethical dilemmas, and government muscle.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tech Innovations on Datadrip</title>
+    <link>https://datadripco.com/categories/tech/</link>
+    <description>Recent content in Tech Innovations on Datadrip</description>
+    <image>
+      <title>Datadrip</title>
+      <url>https://datadripco.com/images/og-default.jpg</url>
+      <link>https://datadripco.com/images/og-default.jpg</link>
+    </image>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <atom:link href="https://datadripco.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Reliability Revolution: Crowdsourcing, Funding Hacks, and Floating Data Centers</title>
+      <link>https://datadripco.com/posts/ai-reliability-revolution-crowdsourcing-funding-ha/</link>
+      <pubDate>Wed, 04 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://datadripco.com/posts/ai-reliability-revolution-crowdsourcing-funding-ha/</guid>
+      <description>AI&amp;#39;s trust issues are getting a serious upgrade with startups like CollectivIQ crowdsourcing smarter answers from multiple models, while offshore data centers float new ideas for power and clever funding plays chase unicorn dreams—let&amp;#39;s dive into what this means for the future of tech.</description>
+    </item>
+    <item>
+      <title>AI Backlash Hits OpenAI Hard as Startups Cash In</title>
+      <link>https://datadripco.com/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups-cash-in/</link>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://datadripco.com/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups-cash-in/</guid>
+      <description>OpenAI&amp;#39;s latest deal with the Department of Defense has users ditching ChatGPT in droves, sending uninstalls skyrocketing and giving a huge boost to competitors like Claude. Meanwhile, startups like Cursor are hitting massive revenue milestones, and Stripe&amp;#39;s turning AI expenses into smart profits. Let&amp;#39;s dive into how this is shaking up the future of tech.</description>
+    </item>
+    <item>
+      <title>AI User Exodus: Why Claude&#39;s Winning as Siri Eyes Google</title>
+      <link>https://datadripco.com/posts/2026-03-02-2231-ai-user-exodus-why-claudes-winning-as-siri-eyes-go/</link>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://datadripco.com/posts/2026-03-02-2231-ai-user-exodus-why-claudes-winning-as-siri-eyes-go/</guid>
+      <description>With ChatGPT users jumping ship to Claude over mounting scandals, and Apple eyeing a Google partnership to revamp Siri, the AI landscape is shifting fast—let&amp;#39;s break down what this means for you and the future of tech.</description>
+    </item>
+    <item>
+      <title>Anthropic&#39;s Pentagon Clash Ignites AI Governance Crisis</title>
+      <link>https://datadripco.com/posts/2026-02-28-1913-anthropics-pentagon-clash-ignites-ai-governance-cr/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://datadripco.com/posts/2026-02-28-1913-anthropics-pentagon-clash-ignites-ai-governance-cr/</guid>
+      <description>Ever wondered how a heated dispute with the Pentagon could catapult an AI app to the top of the charts? Anthropic&amp;#39;s clash is revealing the shaky foundations of AI self-regulation, while sparking massive app downloads and fueling a frenzy of billion-dollar infrastructure investments—let&amp;#39;s unpack what this means for the future.</description>
+    </item>
+    <item>
+      <title>Politics Reshaping Tech: Trump&#39;s Deal Influence and AI&#39;s Infra Surge</title>
+      <link>https://datadripco.com/posts/2026-02-28-1923-politics-reshaping-tech-trumps-deal-influence-and-/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://datadripco.com/posts/2026-02-28-1923-politics-reshaping-tech-trumps-deal-influence-and-/</guid>
+      <description>Ever wonder how a single phone call from a former president can upend billion-dollar deals? We&amp;#39;re diving into Trump&amp;#39;s role in derailing Netflix&amp;#39;s Warner Bros. bid, the rise of Paramount&amp;#39;s massive merger, and how AI giants are betting big on infrastructure amid global tensions—plus, why prediction markets like Polymarket are thriving on chaos.</description>
+    </item>
+    <item>
+      <title>AI Wars Heat Up: Pentagon vs Anthropic, Musk&#39;s Jabs, and OpenAI&#39;s Boom</title>
+      <link>https://datadripco.com/posts/2026-02-27-1947-ai-wars-heat-up-pentagon-vs-anthropic-musks-jabs-a/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://datadripco.com/posts/2026-02-27-1947-ai-wars-heat-up-pentagon-vs-anthropic-musks-jabs-a/</guid>
+      <description>With the Pentagon blacklisting Anthropic, Elon Musk throwing shade at OpenAI, and ChatGPT surging to 900 million users, we&amp;#39;re diving into the wild intersection of AI breakthroughs, ethical dilemmas, and government muscle.</description>
+    </item>
+  </channel>
+</rss>

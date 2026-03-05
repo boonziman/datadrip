@@ -1,1 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AI Sustainability on Datadrip</title><link>http://localhost:1313/tags/ai-sustainability/</link><description>Recent content in AI Sustainability on Datadrip</description><image><title>Datadrip</title><url>http://localhost:1313/images/og-default.jpg</url><link>http://localhost:1313/images/og-default.jpg</link></image><generator>Hugo -- 0.157.0</generator><language>en-us</language><copyright>2026 Datadrip. All rights reserved.</copyright><lastBuildDate>Mon, 02 Mar 2026 12:42:23 -0800</lastBuildDate><atom:link href="http://localhost:1313/tags/ai-sustainability/index.xml" rel="self" type="application/rss+xml"/><item><title>AI's Green Revolution: From Farms to Pharma</title><link>http://localhost:1313/posts/2026-02-28-1917-ais-green-revolution-from-farms-to-pharma/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate><guid>http://localhost:1313/posts/2026-02-28-1917-ais-green-revolution-from-farms-to-pharma/</guid><description>Ever wonder how AI is stepping up to tackle our biggest planetary challenges? From optimizing rice farms in India to accelerating drug discoveries in labs, it&amp;#39;s fueling a quiet revolution in sustainability and health that&amp;#39;s backed by big investments and innovative tools.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI Sustainability on Datadrip</title>
+    <link>https://datadripco.com/tags/ai-sustainability/</link>
+    <description>Recent content in AI Sustainability on Datadrip</description>
+    <image>
+      <title>Datadrip</title>
+      <url>https://datadripco.com/images/og-default.jpg</url>
+      <link>https://datadripco.com/images/og-default.jpg</link>
+    </image>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>en-us</language>
+    <copyright>2026 Datadrip. All rights reserved.</copyright>
+    <lastBuildDate>Mon, 02 Mar 2026 12:42:23 -0800</lastBuildDate>
+    <atom:link href="https://datadripco.com/tags/ai-sustainability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI&#39;s Green Revolution: From Farms to Pharma</title>
+      <link>https://datadripco.com/posts/2026-02-28-1917-ais-green-revolution-from-farms-to-pharma/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://datadripco.com/posts/2026-02-28-1917-ais-green-revolution-from-farms-to-pharma/</guid>
+      <description>Ever wonder how AI is stepping up to tackle our biggest planetary challenges? From optimizing rice farms in India to accelerating drug discoveries in labs, it&amp;#39;s fueling a quiet revolution in sustainability and health that&amp;#39;s backed by big investments and innovative tools.</description>
+    </item>
+  </channel>
+</rss>
