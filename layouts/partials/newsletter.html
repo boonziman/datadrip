@@ -1,4 +1,4 @@
-<!-- Phase 6 Step 4: Mailchimp Newsletter Signup (reusable partial) -->
+<!-- Phase 6 Step 4: Mailchimp Newsletter Signup (footer version) -->
 <div class="newsletter-signup">
   <div class="newsletter-inner">
     <h3 class="newsletter-title">📬 Join Datadrip</h3>
@@ -17,6 +17,10 @@
                aria-label="Email address">
         <button type="submit" name="subscribe" class="newsletter-btn">Subscribe</button>
       </div>
+      <label class="newsletter-consent">
+        <input type="checkbox" required>
+        <span>I agree to the <a href="/privacy/" target="_blank">Privacy Policy</a> and <a href="/terms/" target="_blank">Terms of Service</a></span>
+      </label>
       <!-- Honeypot — prevents bot signups, do not remove -->
       <div aria-hidden="true" style="position: absolute; left: -5000px;">
         <input type="text" name="b_bef06fe2737e08e1c01ae0f28_b7103eb655" tabindex="-1" value="">

@@ -1,4 +1,6 @@
 /* Phase 6 Step 4: Newsletter signup form styles */
+
+/* ===== FOOTER VERSION (full box) ===== */
 .newsletter-signup {
     max-width: 680px;
     margin: 40px auto 0;
@@ -79,15 +81,120 @@
     opacity: 0.85;
 }
 
-/* In-article variant — slightly different spacing */
-.post-content + .newsletter-signup,
-.post-footer ~ .newsletter-signup {
-    margin-top: 48px;
-    margin-bottom: 16px;
+/* Consent checkbox */
+.newsletter-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    max-width: 420px;
+    margin: 12px auto 0;
+    font-size: 0.8rem;
+    color: var(--secondary);
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.4;
 }
 
-/* Responsive: stack on small screens */
-@media (max-width: 480px) {
+.newsletter-consent input[type="checkbox"] {
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--primary);
+}
+
+.newsletter-consent a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* ===== IN-ARTICLE VERSION (compact banner) ===== */
+.newsletter-inline {
+    max-width: 680px;
+    margin: 48px auto 16px;
+    padding: 20px 24px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--primary);
+}
+
+.newsletter-inline-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.newsletter-inline-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.newsletter-inline-fields {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+    min-width: 250px;
+}
+
+.newsletter-inline-email {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--theme);
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.newsletter-inline-email:focus {
+    border-color: var(--primary);
+}
+
+.newsletter-inline-email::placeholder {
+    color: var(--secondary);
+    opacity: 0.6;
+}
+
+.newsletter-inline-btn {
+    padding: 8px 18px;
+    border-radius: var(--radius);
+    border: none;
+    background: var(--primary);
+    color: var(--theme);
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.newsletter-inline-btn:hover {
+    opacity: 0.85;
+}
+
+.newsletter-inline-legal {
+    margin: 8px 0 0;
+    font-size: 0.75rem;
+    color: var(--secondary);
+    opacity: 0.7;
+}
+
+.newsletter-inline-legal a {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
     .newsletter-input-row {
         flex-direction: column;
     }
@@ -98,6 +205,28 @@
     }
 
     .newsletter-inner {
+        padding: 24px 16px;
+    }
+
+    .newsletter-inline-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .newsletter-inline-text {
+        white-space: normal;
+    }
+
+    .newsletter-inline-fields {
+        min-width: 0;
+        flex-direction: column;
+    }
+
+    .newsletter-inline-btn {
+        width: 100%;
+        padding: 10px;
+    }
+}
         padding: 24px 16px;
     }
 }

@@ -33,7 +33,7 @@
     {{- else }}{{ .Content }}{{ end }}
   </div>
 
-  {{- partial "newsletter.html" . }}
+  {{- partial "newsletter-inline.html" . }}
 
   <footer class="post-footer">
     {{- if not (.Param "hidePostNavLinks") }}
