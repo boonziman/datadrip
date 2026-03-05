@@ -1006,5 +1006,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1086
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-05",
+    "start_time": "2026-03-05T11:55:52.447220-08:00",
+    "end_time": "2026-03-05T11:56:12.224553-08:00",
+    "duration_seconds": 19.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3294,
+        "output_tokens": 152,
+        "cost": 0.03902
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Traditional finance is diving deep into crypto with loans backed by Bitcoin, sneaky partnerships, and even bids to own banks. It's blurring the lines fast and could reshape both worlds. Broke down the key moves and what they mean for the future. #Crypto #Bitcoin #Ethereum #Blockchain #DeFi\nhttps://datadripco.com/posts/tradfis-crypto-power-plays-loans-partnerships-and-banking-bids/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2029647182920319414",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/tradfis-crypto-power-plays-loans-partnerships-and-banking-bids/"
+    },
+    "totals": {
+      "input_tokens": 3294,
+      "output_tokens": 152,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.039
+    }
   }
 ]
