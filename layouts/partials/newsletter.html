@@ -17,6 +17,26 @@
                aria-label="Email address">
         <button type="submit" name="subscribe" class="newsletter-btn">Subscribe</button>
       </div>
+      <!-- Optional info -->
+      <details class="newsletter-optional">
+        <summary>Tell us more about yourself (optional)</summary>
+        <div class="newsletter-optional-fields">
+          <div class="newsletter-opt-row">
+            <input type="text" name="FNAME" placeholder="First name" aria-label="First name">
+            <input type="text" name="LNAME" placeholder="Last name" aria-label="Last name">
+          </div>
+          <div class="newsletter-opt-row">
+            <input type="text" name="BIRTHDAY" placeholder="Birthday (MM/DD)" aria-label="Birthday">
+            <select name="GENDER" aria-label="Gender">
+              <option value="">Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+      </details>
       <label class="newsletter-consent">
         <input type="checkbox" required>
         <span>I agree to the <a href="/privacy/" target="_blank">Privacy Policy</a> &amp; <a href="/terms/" target="_blank">Terms</a>, including data sharing</span>
