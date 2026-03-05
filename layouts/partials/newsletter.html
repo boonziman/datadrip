@@ -24,7 +24,7 @@
 <script>
 function mcRedirect(form){
   var email=document.getElementById('nl-email').value;
-  var url='https://gmail.us20.list-manage.com/subscribe?u=bef06fe2737e08e1c01ae0f28&id=b7103eb655&MERGE0='+encodeURIComponent(email);
+  var url='https://gmail.us20.list-manage.com/subscribe?u=bef06fe2737e08e1c01ae0f28&id=b7103eb655&MERGE0='+encodeURIComponent(email)+'&EMAIL='+encodeURIComponent(email);
   window.location.href=url;
   return false;
 }
