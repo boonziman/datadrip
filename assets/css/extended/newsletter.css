@@ -1,0 +1,103 @@
+/* Phase 6 Step 4: Newsletter signup form styles */
+.newsletter-signup {
+    max-width: 680px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+}
+
+.newsletter-inner {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    text-align: center;
+}
+
+.newsletter-title {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+    color: var(--primary);
+}
+
+.newsletter-desc {
+    margin: 0 0 18px;
+    font-size: 0.92rem;
+    color: var(--secondary);
+    line-height: 1.5;
+}
+
+.newsletter-form {
+    margin: 0;
+    padding: 0;
+}
+
+.newsletter-input-row {
+    display: flex;
+    gap: 8px;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.newsletter-email {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--theme);
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.newsletter-email:focus {
+    border-color: var(--primary);
+}
+
+.newsletter-email::placeholder {
+    color: var(--secondary);
+    opacity: 0.6;
+}
+
+.newsletter-btn {
+    padding: 10px 22px;
+    border-radius: var(--radius);
+    border: none;
+    background: var(--primary);
+    color: var(--theme);
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.newsletter-btn:hover {
+    opacity: 0.85;
+}
+
+/* In-article variant — slightly different spacing */
+.post-content + .newsletter-signup,
+.post-footer ~ .newsletter-signup {
+    margin-top: 48px;
+    margin-bottom: 16px;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 480px) {
+    .newsletter-input-row {
+        flex-direction: column;
+    }
+
+    .newsletter-btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .newsletter-inner {
+        padding: 24px 16px;
+    }
+}
