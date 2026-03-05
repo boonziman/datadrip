@@ -25,6 +25,13 @@ Welcome to Datadrip. By accessing or using this website, you agree to these term
 - By subscribing, you confirm that you are at least 16 years of age.
 - We reserve the right to send commercial and promotional communications to active subscribers. All such emails will include an unsubscribe option.
 
+## Data Collection & Sales
+
+- By subscribing or providing any personal information, you acknowledge and consent to Datadrip collecting, storing, sharing, selling, licensing, and distributing your data to third parties as described in our [Privacy Policy](/privacy/).
+- This includes your email address, name, birthday, gender, and any other information you provide.
+- You may opt out of data sales at any time by emailing hello@datadrip.co. See our Privacy Policy for full details on your opt-out rights.
+- Opting out of data sales does not automatically unsubscribe you from our newsletter, and vice versa.
+
 ## Intellectual Property
 
 - All content, articles, images, and branding on Datadrip are owned by us or licensed to us.

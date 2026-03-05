@@ -16,8 +16,12 @@ Datadrip ("we", "us", "our") operates the website [datadripco.com](https://datad
 When you subscribe to our newsletter, we may collect:
 - **Email address** (required)
 - **First name** (optional)
+- **Last name** (optional)
+- **Birthday** (optional)
+- **Gender** (optional)
+- Any other information you choose to provide
 
-Providing this information is voluntary. You can use the site without subscribing.
+Providing optional information is voluntary. You can subscribe with just your email address.
 
 ### Analytics Data
 We use Google Analytics (GA4) to understand how visitors use our site. This collects anonymous data such as pages visited, time on site, device type, and approximate location (country/city level). **No personally identifiable information is collected through analytics.**
@@ -34,12 +38,23 @@ By subscribing, you consent to us using your information to:
 - Personalize your experience and communications
 - Analyze subscriber engagement to improve our content and offerings
 
-## Data Sharing
+## Data Sharing & Sales
 
-- We **do not sell your email address or personal data** to third parties.
-- We may share anonymized, aggregated data (e.g., "60% of our subscribers are interested in AI") with partners or advertisers. This data cannot identify you personally.
-- We may share your data with service providers who help us operate (see Third-Party Services below), but only for the purposes described in this policy.
-- If Datadrip is acquired or merged with another entity, subscriber data may be transferred as part of that transaction. You will be notified of any such change.
+**By providing your information, you acknowledge and agree that Datadrip may share, sell, license, or otherwise distribute your personal data — including your email address, name, and any other information you provide — to third parties.** This includes but is not limited to:
+
+- Selling or licensing email addresses and subscriber data to third-party companies, advertisers, marketers, or data brokers
+- Sharing aggregated or individual-level data with partners for marketing, analytics, or commercial purposes
+- Providing subscriber data to sponsors, affiliates, or other businesses
+- Transferring all data in the event of an acquisition, merger, or sale of Datadrip
+
+We may share your data with service providers who help us operate (see Third-Party Services below).
+
+### Your Opt-Out Rights
+
+- **All users:** You may opt out of data sales at any time by emailing **hello@datadrip.co** with the subject line "Do Not Sell My Data." We will process your request within 30 days.
+- **California residents (CCPA):** You have the right to opt out of the sale of your personal information under the California Consumer Privacy Act. To exercise this right, email us at hello@datadrip.co or use the unsubscribe link in any email.
+- **EU/EEA residents (GDPR):** You may withdraw consent to data processing at any time. You also have the right to data portability, restriction of processing, and to lodge a complaint with your local supervisory authority.
+- Opting out of data sales does not affect your newsletter subscription. You can opt out of sales while still receiving emails, or you can unsubscribe from emails while we retain your data, or both.
 
 ## Third-Party Services
 
@@ -52,13 +67,12 @@ By subscribing, you consent to us using your information to:
 
 You have the right to:
 - **Unsubscribe** from our newsletter at any time using the link in every email
+- **Opt out of data sales** by emailing hello@datadrip.co (see Data Sharing & Sales above)
 - **Request access** to any personal data we hold about you
-- **Request deletion** of your data. We will remove your email from our list within 30 days
-- **Withdraw consent** at any time by contacting us or unsubscribing
+- **Request deletion** of your data by emailing hello@datadrip.co — we will process within 30 days
+- **Withdraw consent** at any time by contacting us
 
-If you are in the EU/EEA, you have additional rights under GDPR including data portability and the right to lodge a complaint with a supervisory authority.
-
-If you are a California resident, you have rights under the CCPA including the right to know what data is collected and the right to request deletion.
+See the Data Sharing & Sales section above for additional GDPR and CCPA rights.
 
 ## Data Retention
 
