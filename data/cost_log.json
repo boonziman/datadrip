@@ -969,5 +969,42 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.3154
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-05",
+    "start_time": "2026-03-05T09:53:35.828525-08:00",
+    "end_time": "2026-03-05T09:54:05.663090-08:00",
+    "duration_seconds": 29.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3326,
+        "output_tokens": 133,
+        "cost": 0.03858
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Nvidia backing off from AI deals over ethics concerns? Smart move, but it's got Anthropic scrambling to keep up. This could force the whole industry to actually think before they build. Curious how it'll play out. #AI #ArtificialIntelligence #Tech",
+      "tweet_type": "hot_take",
+      "tweet_id": "2029616452412571801",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3326,
+      "output_tokens": 133,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1086
+    }
   }
 ]

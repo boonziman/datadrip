@@ -129,5 +129,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/yield-bearing-stablecoins-cryptos-new-power-play/",
     "tweet_id": "2029450217817333892"
+  },
+  {
+    "timestamp": "2026-03-05 09:54 PST",
+    "tweet_type": "hot_take",
+    "tweet_text": "Nvidia backing off from AI deals over ethics concerns? Smart move, but it's got Anthropic scrambling to keep up. This could force the whole industry to actually think before they build. Curious how it'll play out. #AI #ArtificialIntelligence #Tech",
+    "use_image": true,
+    "image_prompt": "Photo-realistic image of a corporate boardroom meeting with executives in suits discussing documents around a table, one holding a tablet showing AI chip schematics, natural office lighting, wide-angle shot like a business news photo from Bloomberg",
+    "promoted_url": "",
+    "tweet_id": "2029616452412571801"
   }
 ]
