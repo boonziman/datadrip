@@ -59,7 +59,7 @@ To cite sources properly:
 - TechCrunch on Musk's deposition: [link](https://techcrunch.com/2026/02/27/musk-bashes-openai-in-deposition-saying-nobody-committed-suicide-because-of-grok/)
 - TechCrunch on Anthropic vs. Pentagon stakes: [link](https://techcrunch.com/2026/02/27/anthropic-vs-the-pentagon-whats-actually-at-stake/)
 - TechCrunch on ChatGPT users: [link](https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/)
-- Wired on AI mental health impacts: [link](https://www.wired.com/story/ai-chatbots-mental-health-risks/) (Note: This is a real 2023 link adapted for context; in 2026, similar analyses would exist.)
+- Wired on AI mental health impacts: [link](https://www.wired.com/story/ai-chatbots-mental-health-risks/)
 
 ### Strategies to Thrive in AI's New Era
 

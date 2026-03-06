@@ -104,7 +104,6 @@ Sources:
 - [Wired: OpenAI Fires an Employee for Prediction Market Insider Trading](https://www.wired.com/story/openai-fires-employee-insider-trading-polymarket-kalshi/)  
 - [Wired: Wall Street Has AI Psychosis](https://www.wired.com/story/wall-street-has-ai-psychosis/)  
 - [TechCrunch: Converge Bio raises $25M](https://techcrunch.com/2026/01/13/ai-drug-discovery-startup-converge-bio-pulls-in-25m-from-bessemer-and-execs-from-meta-openai-and-wiz/)  
-- [RAND Corporation: US Military AI Budget Projections](https://www.rand.org/pubs/research_reports/RRA1234-1.html) (Note: Hypothetical link based on real org; adjust as needed for accuracy)  
 - [McKinsey: The economic potential of generative AI](https://www.mckinsey.com/featured-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier)  
 - [Center for a New American Security: AI and National Security](https://www.cnas.org/publications/reports/ai-and-national-security)  
 - [MIT Sloan: Prediction Markets and AI](https://mitsloan.mit.edu/ideas-made-to-matter/prediction-markets-and-ai)  

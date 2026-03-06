@@ -7,9 +7,9 @@ layout: "single"
 
 Have a tip, partnership idea, or feedback? We'd love to hear from you.
 
-**Email:** hello@datadrip.co (or use the form below once we add it in a later phase)
+**Email:** hello@datadrip.co
 
-**X (Twitter):** @Datadrip (coming in Phase 5)
+**X (Twitter):** [@Datadrip](https://x.com/Datadrip)
 
 We typically reply within 24 hours.
 
