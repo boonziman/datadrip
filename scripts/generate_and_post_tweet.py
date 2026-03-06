@@ -601,23 +601,46 @@ if __name__ == "__main__":
         if promoted_url:
             print(f"   Promoting: {promoted_url}")
 
-    # Post to Twitter
-    try:
-        tweet_id = post_to_x(tweet_text, image_prompt, use_image)
-        # Success — clear any pending tweet that was just retried
-        clear_pending_tweet()
-    except Exception as e:
-        error_msg = str(e)
-        print(f"\n❌ FAILED TO POST TWEET: {error_msg}")
-        tracker.log_error(f"Tweet post failed: {error_msg}")
-        tracker.set_detail("tweet_text", tweet_text)
-        tracker.set_detail("tweet_type", tweet_type)
-        tracker.set_detail("outcome", f"❌ FAILED — {error_msg}")
-        tracker.set_detail("had_image", use_image)
-        if promoted_url:
-            tracker.set_detail("promoted_url", promoted_url)
-        # Save tweet for free retry on next run
-        save_pending_tweet(tweet_text, tweet_type, use_image, image_prompt, promoted_url)
+    # Post to Twitter — with same-run cooldown retries before giving up.
+    # If post_to_x() fails (all its internal retries exhausted), we wait a
+    # few minutes and try the whole thing again. This way the tweet still goes
+    # out at roughly the right time instead of waiting for the next schedule slot.
+    # Only after ALL same-run attempts fail do we save to pending_tweet.json.
+    COOLDOWN_ATTEMPTS = 3          # up to 3 cooldown rounds after the first failure
+    COOLDOWN_WAIT_MINUTES = 3      # wait 3 minutes between each cooldown round
+    tweet_id = None
+    last_error = None
+
+    for cooldown_attempt in range(1, COOLDOWN_ATTEMPTS + 2):  # +2 = initial + 3 retries
+        try:
+            tweet_id = post_to_x(tweet_text, image_prompt, use_image)
+            # Success — clear any pending tweet that was just retried
+            clear_pending_tweet()
+            break  # exit the cooldown loop
+        except Exception as e:
+            last_error = str(e)
+            if cooldown_attempt <= COOLDOWN_ATTEMPTS:
+                wait_mins = COOLDOWN_WAIT_MINUTES
+                print(f"\n⏳ Post failed (cooldown attempt {cooldown_attempt}/{COOLDOWN_ATTEMPTS}) — "
+                      f"waiting {wait_mins} min before trying again...")
+                tracker.log_event(f"Cooldown retry {cooldown_attempt}/{COOLDOWN_ATTEMPTS} — waiting {wait_mins} min")
+                time.sleep(wait_mins * 60)
+            else:
+                # All same-run attempts exhausted — save for next scheduled run
+                print(f"\n❌ FAILED TO POST TWEET after all attempts: {last_error}")
+                tracker.log_error(f"Tweet post failed: {last_error}")
+                tracker.set_detail("tweet_text", tweet_text)
+                tracker.set_detail("tweet_type", tweet_type)
+                tracker.set_detail("outcome", f"❌ FAILED — {last_error}")
+                tracker.set_detail("had_image", use_image)
+                if promoted_url:
+                    tracker.set_detail("promoted_url", promoted_url)
+                save_pending_tweet(tweet_text, tweet_type, use_image, image_prompt, promoted_url)
+                tracker.finish()
+                exit(1)
+
+    if tweet_id is None:
+        # Safety net — should never reach here
         tracker.finish()
         exit(1)
 
