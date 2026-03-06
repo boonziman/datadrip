@@ -5,6 +5,36 @@
 
 ---
 
+## 🐦 Tweet Bot — March 05, 2026 at 07:25 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 19.8 seconds
+**Estimated cost:** $0.0374
+
+### What happened (step by step)
+
+
+### Details
+
+**Tweet posted:**
+> Nvidia's pulling back from AI investments due to ethical worries, leaving Anthropic in a tough spot. It's highlighting the real tensions between speed and responsibility in AI development. I dug into how this clash could reshape the landscape for big players. #AI #ArtificialIntelligence #MachineLearning #TechNews
+https://datadripco.com/posts/ai-ethics-clash-nvidia-retreats-as-anthropic-scrambles/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2029760318017061165
+**Blog post promoted:** https://datadripco.com/posts/ai-ethics-clash-nvidia-retreats-as-anthropic-scrambles/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,142 tokens, got back 150 tokens — **$0.0374**
+
+**💰 Total estimated cost: $0.0374**
+
+---
+
 ## 🐦 Tweet Bot — March 05, 2026 at 02:26 PM PST
 
 **Status:** ✅ Everything ran successfully

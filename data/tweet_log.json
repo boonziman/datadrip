@@ -156,5 +156,14 @@
     "image_prompt": "Wide-angle photo of the Nvidia corporate headquarters building in Santa Clara, California, with employees walking in and out during daytime, clear sky, professional editorial style like a tech news magazine cover",
     "promoted_url": "",
     "tweet_id": "2029685115895398841"
+  },
+  {
+    "timestamp": "2026-03-05 19:25 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Nvidia's pulling back from AI investments due to ethical worries, leaving Anthropic in a tough spot. It's highlighting the real tensions between speed and responsibility in AI development. I dug into how this clash could reshape the landscape for big players. #AI #ArtificialIntelligence #MachineLearning #TechNews\nhttps://datadripco.com/posts/ai-ethics-clash-nvidia-retreats-as-anthropic-scrambles/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ai-ethics-clash-nvidia-retreats-as-anthropic-scrambles/",
+    "tweet_id": "2029760318017061165"
   }
 ]
