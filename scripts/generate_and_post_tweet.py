@@ -464,7 +464,9 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
         "Content-Type": "application/json",
     }
 
-    # Retry with backoff — Cloudflare sometimes blocks GitHub Actions IPs transiently
+    # Retry with backoff — Cloudflare blocks GitHub Actions IPs transiently,
+    # especially around the top-of-hour thundering herd window.
+    # Waits: 60s, 120s, 180s (total ~6 min of retries)
     max_retries = 4
     for attempt in range(1, max_retries + 1):
         r = requests.post(url, json=payload, auth=auth, headers=headers)
@@ -476,7 +478,7 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
         is_cloudflare = "Just a moment" in r.text or "_cf_chl" in r.text
 
         if is_cloudflare and attempt < max_retries:
-            wait = attempt * 15  # 15s, 30s, 45s
+            wait = attempt * 60  # 60s, 120s, 180s
             print(f"⚠️  Cloudflare challenge detected (attempt {attempt}/{max_retries}), retrying in {wait}s...")
             time.sleep(wait)
             continue
@@ -484,7 +486,7 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
             print(f"❌ Cloudflare is blocking requests to Twitter API from this server.")
             print(f"   This is a known issue with GitHub Actions data center IPs.")
             print(f"   The tweet was generated but could not be posted.")
-            print(f"   Tried {max_retries} times over ~{sum(i*15 for i in range(1,max_retries))}s.")
+            print(f"   Tried {max_retries} times over ~{sum(i*60 for i in range(1,max_retries))}s.")
             r.raise_for_status()
         else:
             # Real Twitter API error (JSON response)
@@ -501,6 +503,14 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
 
 # ====================== MAIN ======================
 if __name__ == "__main__":
+    # Random startup jitter (0-90s): prevents Cloudflare from blocking when
+    # GitHub Actions jobs all start simultaneously at scheduled times.
+    import random
+    _jitter = random.randint(0, 90)
+    if _jitter > 0:
+        print(f"⏳ Startup jitter: waiting {_jitter}s to stagger API calls...", flush=True)
+        time.sleep(_jitter)
+
     print("=" * 60)
     print(f"🚀 Datadrip Tweet Bot — {get_current_pst_time()}")
     print("=" * 60)

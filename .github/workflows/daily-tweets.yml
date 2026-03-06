@@ -2,12 +2,12 @@ name: Daily Datadrip Smart Tweets
 
 on:
   schedule:
-    - cron: '0 16 * * *'  # 8:00 AM PST
-    - cron: '0 19 * * *'  # 11:00 AM PST
-    - cron: '0 22 * * *'  # 2:00 PM PST
-    - cron: '0 1 * * *'   # 5:00 PM PST
-    - cron: '0 4 * * *'   # 8:00 PM PST
-    - cron: '0 6 * * *'   # 10:00 PM PST
+    - cron: '37 16 * * *'  # 8:37 AM PST  (off-minute avoids GitHub thundering herd)
+    - cron: '23 19 * * *'  # 11:23 AM PST
+    - cron: '51 21 * * *'  # 1:51 PM PST
+    - cron: '17 1 * * *'   # 5:17 PM PST
+    - cron: '43 3 * * *'   # 7:43 PM PST
+    - cron: '29 6 * * *'   # 10:29 PM PST
   workflow_dispatch:      # Allows manual test anytime
 
 permissions:
