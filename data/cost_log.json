@@ -1279,5 +1279,42 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.3374
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-06",
+    "start_time": "2026-03-06T09:48:34.763774-08:00",
+    "end_time": "2026-03-06T09:49:06.539762-08:00",
+    "duration_seconds": 31.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3338,
+        "output_tokens": 135,
+        "cost": 0.03878
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Bitcoin took a hit after that weak jobs report, but whales are scooping up more. Feels like they know something we don't. You buying the rebound, or bracing for another drop? #Crypto #Bitcoin #BTC #CryptoNews",
+      "tweet_type": "engagement",
+      "tweet_id": "2029977585992818919",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3338,
+      "output_tokens": 135,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1088
+    }
   }
 ]

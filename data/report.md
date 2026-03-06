@@ -5,6 +5,35 @@
 
 ---
 
+## 🐦 Tweet Bot — March 06, 2026 at 09:48 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 31.8 seconds
+**Estimated cost:** $0.1088
+
+### What happened (step by step)
+
+
+### Details
+
+**Tweet posted:**
+> Bitcoin took a hit after that weak jobs report, but whales are scooping up more. Feels like they know something we don't. You buying the rebound, or bracing for another drop? #Crypto #Bitcoin #BTC #CryptoNews
+
+**Tweet type:** engagement
+**Tweet ID:** 2029977585992818919
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,338 tokens, got back 135 tokens — **$0.0388**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1088**
+
+---
+
 ## 📝 Blog Bot — March 06, 2026 at 05:55 AM PST
 
 **Status:** ✅ Everything ran successfully
