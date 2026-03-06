@@ -44,6 +44,7 @@ jobs:
         run: python scripts/generate_and_post_tweet.py
 
       - name: Commit tweet memory log
+        if: always()   # MUST run even on failure — this is what saves pending_tweet.json to GitHub
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
