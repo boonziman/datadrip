@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import json
+import time
 import datetime
 import tempfile
 import requests
@@ -457,17 +458,38 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
     if media_id:
         payload["media"] = {"media_ids": [media_id]}
 
-    r = requests.post(url, json=payload, auth=auth)
+    # Headers to reduce Cloudflare bot-detection blocks from data center IPs
+    headers = {
+        "User-Agent": "DatadripBot/1.0",
+        "Content-Type": "application/json",
+    }
 
-    # Log the full response on error for debugging
-    if not r.ok:
-        print(f"❌ Twitter API error {r.status_code}: {r.text}")
-        if r.status_code == 403:
-            print("⚠️  403 Forbidden — likely a permissions issue.")
-            print("   Check https://developer.x.com/en/portal/dashboard")
-            print("   → Your app needs 'Read and Write' permissions under User authentication settings")
-            print("   → You may need to regenerate your Access Token & Secret after changing permissions")
-        r.raise_for_status()
+    # Retry with backoff — Cloudflare sometimes blocks GitHub Actions IPs transiently
+    max_retries = 4
+    for attempt in range(1, max_retries + 1):
+        r = requests.post(url, json=payload, auth=auth, headers=headers)
+
+        if r.ok:
+            break
+
+        # Check if it's a Cloudflare challenge (HTML instead of JSON)
+        is_cloudflare = "Just a moment" in r.text or "_cf_chl" in r.text
+
+        if is_cloudflare and attempt < max_retries:
+            wait = attempt * 15  # 15s, 30s, 45s
+            print(f"⚠️  Cloudflare challenge detected (attempt {attempt}/{max_retries}), retrying in {wait}s...")
+            time.sleep(wait)
+            continue
+        elif is_cloudflare:
+            print(f"❌ Cloudflare is blocking requests to Twitter API from this server.")
+            print(f"   This is a known issue with GitHub Actions data center IPs.")
+            print(f"   The tweet was generated but could not be posted.")
+            print(f"   Tried {max_retries} times over ~{sum(i*15 for i in range(1,max_retries))}s.")
+            r.raise_for_status()
+        else:
+            # Real Twitter API error (JSON response)
+            print(f"❌ Twitter API error {r.status_code}: {r.text}")
+            r.raise_for_status()
 
     tweet_id = r.json().get("data", {}).get("id", "unknown")
     print(f"✅ Tweet posted successfully! (ID: {tweet_id})")
