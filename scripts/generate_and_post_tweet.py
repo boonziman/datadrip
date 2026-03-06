@@ -458,7 +458,16 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
         payload["media"] = {"media_ids": [media_id]}
 
     r = requests.post(url, json=payload, auth=auth)
-    r.raise_for_status()
+
+    # Log the full response on error for debugging
+    if not r.ok:
+        print(f"❌ Twitter API error {r.status_code}: {r.text}")
+        if r.status_code == 403:
+            print("⚠️  403 Forbidden — likely a permissions issue.")
+            print("   Check https://developer.x.com/en/portal/dashboard")
+            print("   → Your app needs 'Read and Write' permissions under User authentication settings")
+            print("   → You may need to regenerate your Access Token & Secret after changing permissions")
+        r.raise_for_status()
 
     tweet_id = r.json().get("data", {}).get("id", "unknown")
     print(f"✅ Tweet posted successfully! (ID: {tweet_id})")
@@ -513,7 +522,20 @@ if __name__ == "__main__":
         print(f"   Promoting: {promoted_url}")
 
     # Post to Twitter
-    tweet_id = post_to_x(tweet_text, image_prompt, use_image)
+    try:
+        tweet_id = post_to_x(tweet_text, image_prompt, use_image)
+    except Exception as e:
+        error_msg = str(e)
+        print(f"\n❌ FAILED TO POST TWEET: {error_msg}")
+        tracker.log_error(f"Tweet post failed: {error_msg}")
+        tracker.set_detail("tweet_text", tweet_text)
+        tracker.set_detail("tweet_type", tweet_type)
+        tracker.set_detail("outcome", f"❌ FAILED — {error_msg}")
+        tracker.set_detail("had_image", use_image)
+        if promoted_url:
+            tracker.set_detail("promoted_url", promoted_url)
+        tracker.finish()
+        exit(1)
 
     # Log the tweet with full context for memory
     log = load_tweet_log()
