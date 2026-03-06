@@ -112,6 +112,65 @@ class Tracker:
             return 0
         return max(1, len(str(text)) // 4)
 
+    # ---- Spending summary ----
+
+    def _build_spending_summary(self):
+        """Read cost_log.json and build a daily/weekly/monthly spending table."""
+        try:
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            log_path = os.path.join(project_root, "data", "cost_log.json")
+            if not os.path.exists(log_path):
+                return ""
+            with open(log_path) as f:
+                log = json.load(f)
+        except Exception:
+            return ""
+
+        now        = datetime.datetime.now(_PST)
+        today_str  = now.strftime("%Y-%m-%d")
+        month_str  = now.strftime("%Y-%m")
+        # Monday of the current calendar week
+        week_start = (now - datetime.timedelta(days=now.weekday())).replace(
+            hour=0, minute=0, second=0, microsecond=0
+        )
+        week_start_str = week_start.strftime("%Y-%m-%d")
+
+        daily_cost  = weekly_cost  = monthly_cost  = 0.0
+        daily_runs  = weekly_runs  = monthly_runs  = 0
+
+        for entry in log:
+            date = entry.get("date", "")
+            cost = entry.get("totals", {}).get("estimated_cost_usd", 0.0)
+            if date == today_str:
+                daily_cost  += cost
+                daily_runs  += 1
+            if date >= week_start_str:
+                weekly_cost += cost
+                weekly_runs += 1
+            if date.startswith(month_str):
+                monthly_cost += cost
+                monthly_runs  += 1
+
+        week_label  = week_start.strftime("%b %d")
+        month_label = now.strftime("%B %Y")
+        today_label = now.strftime("%B %d")
+
+        lines = [
+            "## 💰 Spending Summary",
+            "",
+            "| Period | Bot Runs | Estimated Cost |",
+            "|--------|----------|----------------|",
+            f"| 📅 Today ({today_label}) | {daily_runs} | **${daily_cost:.4f}** |",
+            f"| 📆 This Week (since {week_label}) | {weekly_runs} | **${weekly_cost:.4f}** |",
+            f"| 🗓️ This Month ({month_label}) | {monthly_runs} | **${monthly_cost:.4f}** |",
+            "",
+            "*Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*",
+            "",
+            "---",
+            "",
+        ]
+        return "\n".join(lines)
+
     # ---- Human-readable report (the main report you read) ----
 
     def _build_readable_report(self):
@@ -265,18 +324,26 @@ class Tracker:
                 except IOError:
                     existing = ""
 
-            # Strip old header if present, we'll re-add it
-            if existing.startswith("# 📊 Datadrip Bot Reports"):
-                # Find where the header ends (after the description line + blank line)
-                header_end = existing.find("\n---\n")
-                if header_end != -1:
-                    existing = existing[header_end + 5:]  # skip past \n---\n
+            # Strip old header + spending summary — find where actual run reports start.
+            # Run reports always begin with '## 🐦' (tweet) or '## 📝' (blog).
+            stripped = False
+            for marker in ["\n## 🐦", "\n## 📝"]:
+                idx = existing.find(marker)
+                if idx != -1:
+                    existing = existing[idx + 1:]  # +1 to skip the leading \n
+                    stripped = True
+                    break
+            if not stripped:
+                existing = ""  # file had no run reports yet — start fresh
 
-            # Build full file: header + new report + old reports
+            # Fixed title/description header
             header = "# 📊 Datadrip Bot Reports\n\n"
             header += "*This file is automatically updated every time the tweet bot or blog bot runs.*\n"
             header += "*Newest reports are at the top. Scroll down for older runs.*\n\n"
             header += "---\n\n"
+
+            # Spending summary — recalculated fresh from cost_log.json every run
+            spending_summary = self._build_spending_summary()
 
             # Keep the file from growing forever — cap at roughly 100 reports
             # Each report ends with "---\n\n", so split on that
@@ -289,7 +356,7 @@ class Tracker:
                 body += "---\n\n"
 
             with open(report_path, "w", encoding="utf-8") as f:
-                f.write(header + body)
+                f.write(header + spending_summary + body)
 
             print(f"💾 Report saved to data/report.md")
         except Exception as e:
