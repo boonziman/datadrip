@@ -5,6 +5,36 @@
 
 ---
 
+## 🐦 Tweet Bot — March 05, 2026 at 10:50 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 19.1 seconds
+**Estimated cost:** $0.0366
+
+### What happened (step by step)
+
+
+### Details
+
+**Tweet posted:**
+> AI's quietly taking over as ghost authors for books, while bots make battlefield decisions. And those big ethical pledges from tech companies? They're ringing pretty hollow. I broke down this ethical mess and why it's a quagmire for the whole field. #AI #ArtificialIntelligence #MachineLearning #Tech
+https://datadripco.com/posts/ais-ethical-quagmire-ghost-authors-battlefield-bots-and-empty-pledges/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2029811965544067571
+**Blog post promoted:** https://datadripco.com/posts/ais-ethical-quagmire-ghost-authors-battlefield-bots-and-empty-pledges/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,148 tokens, got back 127 tokens — **$0.0366**
+
+**💰 Total estimated cost: $0.0366**
+
+---
+
 ## 🐦 Tweet Bot — March 05, 2026 at 09:09 PM PST
 
 **Status:** ✅ Everything ran successfully

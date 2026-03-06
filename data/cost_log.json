@@ -1140,5 +1140,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1067
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-05",
+    "start_time": "2026-03-05T22:50:40.396520-08:00",
+    "end_time": "2026-03-05T22:50:59.457692-08:00",
+    "duration_seconds": 19.1,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3148,
+        "output_tokens": 127,
+        "cost": 0.03656
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI's quietly taking over as ghost authors for books, while bots make battlefield decisions. And those big ethical pledges from tech companies? They're ringing pretty hollow. I broke down this ethical mess and why it's a quagmire for the whole field. #AI #ArtificialIntelligence #MachineLearning #Tech\nhttps://datadripco.com/posts/ais-ethical-quagmire-ghost-authors-battlefield-bots-and-empty-pledges/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2029811965544067571",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-ethical-quagmire-ghost-authors-battlefield-bots-and-empty-pledges/"
+    },
+    "totals": {
+      "input_tokens": 3148,
+      "output_tokens": 127,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0366
+    }
   }
 ]
