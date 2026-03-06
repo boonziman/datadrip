@@ -601,44 +601,28 @@ if __name__ == "__main__":
         if promoted_url:
             print(f"   Promoting: {promoted_url}")
 
-    # ── Post to Twitter — same-run retries every 5 min before saving as pending ──
-    # Attempt 1: post immediately.
-    # If it fails, wait 5 min and try again — up to 3 extra retries (4 total).
-    # Each retry has a fresh GitHub runner IP assignment window, so odds improve.
-    # Only after ALL 4 attempts fail do we save to pending_tweet.json and exit.
-    SAME_RUN_RETRIES = 3          # extra attempts after the first
-    RETRY_WAIT_SECS  = 5 * 60    # 5 minutes between each retry
-    total_attempts   = SAME_RUN_RETRIES + 1  # 4 total
-
-    tweet_id   = None
-    last_error = None
-
-    for attempt in range(1, total_attempts + 1):
-        try:
-            tweet_id = post_to_x(tweet_text, image_prompt, use_image)
-            clear_pending_tweet()   # wipe any old pending file on success
-            break
-        except Exception as e:
-            last_error = str(e)
-            if attempt < total_attempts:
-                print(f"\n⏳ Post failed (attempt {attempt}/{total_attempts}) — waiting 5 min then retrying same run...")
-                print(f"   Error: {last_error}")
-                tracker.log_event(f"Post attempt {attempt} failed, retrying in 5 min")
-                time.sleep(RETRY_WAIT_SECS)
-            else:
-                # All attempts in this run exhausted — save for next scheduled run
-                print(f"\n❌ FAILED TO POST TWEET after {total_attempts} attempts: {last_error}")
-                tracker.log_error(f"Tweet post failed: {last_error}")
-                tracker.set_detail("tweet_text", tweet_text)
-                tracker.set_detail("tweet_type", tweet_type)
-                tracker.set_detail("outcome", f"❌ FAILED — {last_error}")
-                tracker.set_detail("had_image", use_image)
-                if promoted_url:
-                    tracker.set_detail("promoted_url", promoted_url)
-                # Save tweet so next scheduled run posts it FREE (no Grok cost)
-                save_pending_tweet(tweet_text, tweet_type, use_image, image_prompt, promoted_url)
-                tracker.finish()
-                exit(1)
+    # ── Post to Twitter ────────────────────────────────────────────────────────
+    # Single attempt here. If it fails, we save the tweet to pending_tweet.json
+    # and exit immediately. A separate GitHub Actions workflow (retry-pending-tweet.yml)
+    # fires every 5 minutes, detects the file, and retries on a brand-new runner
+    # with a fresh IP — zero extra Grok cost.
+    try:
+        tweet_id = post_to_x(tweet_text, image_prompt, use_image)
+        clear_pending_tweet()   # wipe any leftover pending file on success
+    except Exception as e:
+        error_msg = str(e)
+        print(f"\n❌ FAILED TO POST TWEET: {error_msg}")
+        tracker.log_error(f"Tweet post failed: {error_msg}")
+        tracker.set_detail("tweet_text", tweet_text)
+        tracker.set_detail("tweet_type", tweet_type)
+        tracker.set_detail("outcome", f"❌ FAILED — {error_msg}")
+        tracker.set_detail("had_image", use_image)
+        if promoted_url:
+            tracker.set_detail("promoted_url", promoted_url)
+        # Save tweet — retry-pending-tweet.yml will pick this up in ~5 min
+        save_pending_tweet(tweet_text, tweet_type, use_image, image_prompt, promoted_url)
+        tracker.finish()
+        exit(1)
 
     # Log the tweet with full context for memory
     log = load_tweet_log()
