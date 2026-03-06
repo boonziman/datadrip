@@ -6,7 +6,7 @@ name: Retry Pending Tweet
 
 on:
   schedule:
-    - cron: '*/5 * * * *'   # every 5 minutes
+    - cron: '*/15 * * * *'   # every 15 minutes — checks for pending tweet, exits in 10s if none
   workflow_dispatch:         # manual trigger for testing
 
 permissions:
