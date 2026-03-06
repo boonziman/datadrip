@@ -1316,5 +1316,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1088
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-06",
+    "start_time": "2026-03-06T11:54:19.769456-08:00",
+    "end_time": "2026-03-06T11:54:39.897038-08:00",
+    "duration_seconds": 20.1,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3295,
+        "output_tokens": 132,
+        "cost": 0.03823
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI's caught in this intense geopolitical pull between superpowers, with tech transfers getting blocked and alliances shifting fast. It's exposing how national interests could fragment the whole field. I explored the key flashpoints and what it means for innovation. #AI #ArtificialIntelligence #MachineLearning #TechNews\nhttps://datadripco.com/posts/ais-geopolitical-tug-of-war-exposed/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2030009183584559381",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-geopolitical-tug-of-war-exposed/"
+    },
+    "totals": {
+      "input_tokens": 3295,
+      "output_tokens": 132,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0382
+    }
   }
 ]
