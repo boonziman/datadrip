@@ -5,6 +5,43 @@
 
 ---
 
+## 📝 Blog Bot — March 06, 2026 at 05:55 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 826.4 seconds
+**Estimated cost:** $1.3374
+
+### What happened (step by step)
+
+
+### Details
+
+**Posts generated:** 3 of 3 posts generated successfully
+  - [AI] AI's Geopolitical Tug-of-War Exposed
+  - [Crypto] Bitcoin Slumps on Weak Jobs: But Whales Signal Rebound
+  - [Tech] Global Tech Clampdown: AI Fights Back as Bans Loom
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 2,364 tokens, got back 3,617 tokens — **$0.1683**
+- **AI Review (Pass 2)** — sent 3,966 tokens, got back 3,885 tokens — **$0.1951**
+- **AI Image Prompt (Pass 3)** — sent 327 tokens, got back 218 tokens — **$0.0120**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 2,491 tokens, got back 3,630 tokens — **$0.1701**
+- **Crypto Review (Pass 2)** — sent 3,978 tokens, got back 3,525 tokens — **$0.1808**
+- **Crypto Image Prompt (Pass 3)** — sent 331 tokens, got back 266 tokens — **$0.0140**
+- **Image generation** — 1 image created — **$0.0700**
+- **Tech Draft (Pass 1)** — sent 2,530 tokens, got back 3,714 tokens — **$0.1739**
+- **Tech Review (Pass 2)** — sent 4,063 tokens, got back 4,021 tokens — **$0.2015**
+- **Tech Image Prompt (Pass 3)** — sent 330 tokens, got back 215 tokens — **$0.0119**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.3374**
+
+---
+
 ## 🐦 Tweet Bot — March 05, 2026 at 10:50 PM PST
 
 **Status:** ✅ Everything ran successfully
