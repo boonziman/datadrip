@@ -165,5 +165,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/ai-ethics-clash-nvidia-retreats-as-anthropic-scrambles/",
     "tweet_id": "2029760318017061165"
+  },
+  {
+    "timestamp": "2026-03-05 21:10 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "AI's getting deployed in battlefields with bots making life-or-death calls. Those ethical pledges from tech giants feel pretty hollow right now. Do you buy that they'll actually hold up, or is it inevitable we'll see misuse? What's your take?",
+    "use_image": true,
+    "image_prompt": "Photo-realistic image of a military operator monitoring drone feeds on a rugged laptop in a command tent, dim overhead lighting, tactical gear scattered around, like a Reuters battlefield report photo",
+    "promoted_url": "",
+    "tweet_id": "2029786636733534216"
   }
 ]

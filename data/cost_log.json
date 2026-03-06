@@ -1103,5 +1103,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0374
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-05",
+    "start_time": "2026-03-05T21:09:46.863901-08:00",
+    "end_time": "2026-03-05T21:10:20.770260-08:00",
+    "duration_seconds": 33.9,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3188,
+        "output_tokens": 120,
+        "cost": 0.03668
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI's getting deployed in battlefields with bots making life-or-death calls. Those ethical pledges from tech giants feel pretty hollow right now. Do you buy that they'll actually hold up, or is it inevitable we'll see misuse? What's your take?",
+      "tweet_type": "engagement",
+      "tweet_id": "2029786636733534216",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3188,
+      "output_tokens": 120,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1067
+    }
   }
 ]
