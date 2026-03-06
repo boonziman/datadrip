@@ -24,6 +24,7 @@ X_ACCESS_TOKEN_SECRET = os.getenv("X_ACCESS_TOKEN_SECRET")
 # Project root (one level up from scripts/)
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TWEET_LOG_PATH = os.path.join(PROJECT_ROOT, "data", "tweet_log.json")
+PENDING_TWEET_PATH = os.path.join(PROJECT_ROOT, "data", "pending_tweet.json")
 POSTS_DIR = os.path.join(PROJECT_ROOT, "content", "posts")
 SITE_URL = "https://datadripco.com"
 
@@ -501,6 +502,37 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
 
     return tweet_id
 
+# ====================== PENDING TWEET ======================
+def save_pending_tweet(tweet_text, tweet_type, use_image, image_prompt, promoted_url):
+    """Save a failed tweet so the next run can retry it without calling Grok."""
+    pending = {
+        "tweet_text": tweet_text,
+        "tweet_type": tweet_type,
+        "use_image": use_image,
+        "image_prompt": image_prompt,
+        "promoted_url": promoted_url,
+        "saved_at": get_current_pst_time(),
+    }
+    with open(PENDING_TWEET_PATH, "w") as f:
+        json.dump(pending, f, indent=2)
+    print(f"💾 Pending tweet saved — will retry on next run (no extra API cost).")
+
+def load_pending_tweet():
+    """Return pending tweet dict if one exists, else None."""
+    if not os.path.exists(PENDING_TWEET_PATH):
+        return None
+    try:
+        with open(PENDING_TWEET_PATH) as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+def clear_pending_tweet():
+    """Delete the pending tweet file after a successful retry."""
+    if os.path.exists(PENDING_TWEET_PATH):
+        os.remove(PENDING_TWEET_PATH)
+
+
 # ====================== MAIN ======================
 if __name__ == "__main__":
     # Random startup jitter (0-90s): prevents Cloudflare from blocking when
@@ -523,39 +555,57 @@ if __name__ == "__main__":
     validate_keys()
     tracker.log_event("API keys validated")
 
-    # Generate the tweet
-    tweet = generate_tweet()
-    tweet_text = tweet.get("tweet_text", "").strip()
-    tweet_type = tweet.get("tweet_type", "unknown")
-    use_image = tweet.get("use_image", False)
-    image_prompt = tweet.get("image_prompt", "")
-    promoted_url = tweet.get("promoted_url", "")
+    # ── Check for a pending tweet from a previous failed run ──────────────────
+    # If a tweet was generated but couldn't be posted last time (e.g. Cloudflare
+    # block), it was saved to pending_tweet.json. We retry it here for FREE
+    # (no Grok call needed — the text is already written).
+    pending = load_pending_tweet()
+    if pending:
+        tweet_text   = pending["tweet_text"]
+        tweet_type   = pending["tweet_type"]
+        use_image    = pending["use_image"]
+        image_prompt = pending["image_prompt"]
+        promoted_url = pending["promoted_url"]
+        saved_at     = pending.get("saved_at", "unknown")
+        print(f"\n🔄 Found a pending tweet from {saved_at} — retrying (no Grok cost).")
+        print(f"   {tweet_text}")
+        tracker.log_event(f"Retrying pending tweet from {saved_at}")
+    else:
+        # Normal path: ask Grok to generate a fresh tweet
+        tweet = generate_tweet()
+        tweet_text   = tweet.get("tweet_text", "").strip()
+        tweet_type   = tweet.get("tweet_type", "unknown")
+        use_image    = tweet.get("use_image", False)
+        image_prompt = tweet.get("image_prompt", "")
+        promoted_url = tweet.get("promoted_url", "")
 
-    if not tweet_text:
-        print("❌ Grok returned empty tweet text. Aborting.")
-        if tracker:
-            tracker.log_error("Grok returned empty tweet text")
-            tracker.finish()
-        exit(1)
+        if not tweet_text:
+            print("❌ Grok returned empty tweet text. Aborting.")
+            if tracker:
+                tracker.log_error("Grok returned empty tweet text")
+                tracker.finish()
+            exit(1)
 
-    # For blog teasers: strip ANY url Grok may have written (it could be wrong,
-    # truncated, or slightly different) and append the exact promoted_url dead last.
-    # Twitter only collapses the URL into a card when it is the absolute last thing.
-    if tweet_type == "blog_teaser" and promoted_url:
-        tweet_text = re.sub(r'https?://\S+', '', tweet_text).strip()
-        tweet_text = tweet_text.rstrip() + "\n" + promoted_url
+        # For blog teasers: strip ANY url Grok may have written (it could be wrong,
+        # truncated, or slightly different) and append the exact promoted_url dead last.
+        # Twitter only collapses the URL into a card when it is the absolute last thing.
+        if tweet_type == "blog_teaser" and promoted_url:
+            tweet_text = re.sub(r'https?://\S+', '', tweet_text).strip()
+            tweet_text = tweet_text.rstrip() + "\n" + promoted_url
 
-    print(f"\n📋 Generated tweet ({len(tweet_text)} chars, type: {tweet_type}):")
-    print(f"   {tweet_text}")
-    print(f"   Image: {'Yes' if use_image else 'No'}")
-    if use_image and image_prompt:
-        print(f"   Image prompt: {image_prompt[:100]}...")
-    if promoted_url:
-        print(f"   Promoting: {promoted_url}")
+        print(f"\n📋 Generated tweet ({len(tweet_text)} chars, type: {tweet_type}):")
+        print(f"   {tweet_text}")
+        print(f"   Image: {'Yes' if use_image else 'No'}")
+        if use_image and image_prompt:
+            print(f"   Image prompt: {image_prompt[:100]}...")
+        if promoted_url:
+            print(f"   Promoting: {promoted_url}")
 
     # Post to Twitter
     try:
         tweet_id = post_to_x(tweet_text, image_prompt, use_image)
+        # Success — clear any pending tweet that was just retried
+        clear_pending_tweet()
     except Exception as e:
         error_msg = str(e)
         print(f"\n❌ FAILED TO POST TWEET: {error_msg}")
@@ -566,6 +616,8 @@ if __name__ == "__main__":
         tracker.set_detail("had_image", use_image)
         if promoted_url:
             tracker.set_detail("promoted_url", promoted_url)
+        # Save tweet for free retry on next run
+        save_pending_tweet(tweet_text, tweet_type, use_image, image_prompt, promoted_url)
         tracker.finish()
         exit(1)
 
