@@ -135,8 +135,8 @@ class Tracker:
         )
         week_start_str = week_start.strftime("%Y-%m-%d")
 
-        daily_cost  = weekly_cost  = monthly_cost  = 0.0
-        daily_runs  = weekly_runs  = monthly_runs  = 0
+        daily_cost  = weekly_cost  = monthly_cost  = overall_cost  = 0.0
+        daily_runs  = weekly_runs  = monthly_runs  = overall_runs  = 0
 
         for entry in log:
             date = entry.get("date", "")
@@ -149,7 +149,9 @@ class Tracker:
                 weekly_runs += 1
             if date.startswith(month_str):
                 monthly_cost += cost
-                monthly_runs  += 1
+                monthly_runs += 1
+            overall_cost += cost
+            overall_runs += 1
 
         week_label  = week_start.strftime("%b %d")
         month_label = now.strftime("%B %Y")
@@ -163,6 +165,7 @@ class Tracker:
             f"| 📅 Today ({today_label}) | {daily_runs} | **${daily_cost:.4f}** |",
             f"| 📆 This Week (since {week_label}) | {weekly_runs} | **${weekly_cost:.4f}** |",
             f"| 🗓️ This Month ({month_label}) | {monthly_runs} | **${monthly_cost:.4f}** |",
+            f"| 🏦 Overall All-Time | {overall_runs} | **${overall_cost:.4f}** |",
             "",
             "*Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*",
             "",
