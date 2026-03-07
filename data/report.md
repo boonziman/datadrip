@@ -9,12 +9,47 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 06) | 4 | **$1.5188** |
-| 📆 This Week (since Mar 02) | 31 | **$7.0436** |
-| 🗓️ This Month (March 2026) | 31 | **$7.0436** |
-| 🏦 Overall All-Time | 31 | **$7.0436** |
+| 📅 Today (March 06) | 5 | **$1.5553** |
+| 📆 This Week (since Mar 02) | 32 | **$7.0801** |
+| 🗓️ This Month (March 2026) | 32 | **$7.0801** |
+| 🏦 Overall All-Time | 32 | **$7.0801** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 06, 2026 at 08:50 PM PST
+
+**Status:** ⚠️ 1 error(s) occurred
+**Total time:** 400.3 seconds
+**Estimated cost:** $0.0365
+
+### What happened (step by step)
+
+1. **20:57:13 PST** — ❌ ERROR: Tweet post failed: 403 Client Error: Forbidden for url: https://api.twitter.com/2/tweets
+
+### Details
+
+**Outcome:** ❌ FAILED — 403 Client Error: Forbidden for url: https://api.twitter.com/2/tweets
+
+**Tweet posted:**
+> Governments are ramping up AI bans worldwide, but the tech's pushing back hard with clever workarounds and legal fights. It's a wild standoff that could reshape innovation. I dug into the key battles and what's at stake for the field. #AI #ArtificialIntelligence #Tech #TechNews #Innovation
+https://datadripco.com/posts/global-tech-clampdown-ai-fights-back-as-bans-loom/
+
+**Tweet type:** blog_teaser
+**Blog post promoted:** https://datadripco.com/posts/global-tech-clampdown-ai-fights-back-as-bans-loom/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,079 tokens, got back 144 tokens — **$0.0365**
+
+**💰 Total estimated cost: $0.0365**
+
+### ⚠️ Errors
+
+- ❌ Tweet post failed: 403 Client Error: Forbidden for url: https://api.twitter.com/2/tweets
 
 ---
 ## 🐦 Tweet Bot — March 06, 2026 at 07:25 PM PST

@@ -1375,5 +1375,37 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0344
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-06",
+    "start_time": "2026-03-06T20:50:33.214201-08:00",
+    "end_time": "2026-03-06T20:57:13.513414-08:00",
+    "duration_seconds": 400.3,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3079,
+        "output_tokens": 144,
+        "cost": 0.03655
+      }
+    ],
+    "errors": [
+      "Tweet post failed: 403 Client Error: Forbidden for url: https://api.twitter.com/2/tweets"
+    ],
+    "details": {
+      "tweet_text": "Governments are ramping up AI bans worldwide, but the tech's pushing back hard with clever workarounds and legal fights. It's a wild standoff that could reshape innovation. I dug into the key battles and what's at stake for the field. #AI #ArtificialIntelligence #Tech #TechNews #Innovation\nhttps://datadripco.com/posts/global-tech-clampdown-ai-fights-back-as-bans-loom/",
+      "tweet_type": "blog_teaser",
+      "outcome": "\u274c FAILED \u2014 403 Client Error: Forbidden for url: https://api.twitter.com/2/tweets",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/global-tech-clampdown-ai-fights-back-as-bans-loom/"
+    },
+    "totals": {
+      "input_tokens": 3079,
+      "output_tokens": 144,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0365
+    }
   }
 ]
