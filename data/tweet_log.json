@@ -246,5 +246,14 @@
     "image_prompt": "Photo-realistic image of a trader's desk with dual monitors displaying live charts of USDC and Tether market caps side by side, red and green candlestick patterns for Bitcoin in the background, natural office daylight filtering through windows, shallow focus on the screens",
     "promoted_url": "",
     "tweet_id": "2030367918018510982"
+  },
+  {
+    "timestamp": "2026-03-07 13:56 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "USDC just flipped Tether in market cap, and with Bitcoin looking shaky on a possible cycle crash, it's a big shift toward trusted stables. I broke down the data, why it's happening, and what it means for the next moves in crypto. #Crypto #USDC #Tether #Bitcoin #CryptoNews\nhttps://datadripco.com/posts/usdc-surges-past-tether-as-bitcoin-teeters-on-cycle-crash/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/usdc-surges-past-tether-as-bitcoin-teeters-on-cycle-crash/",
+    "tweet_id": "2030402273835159930"
   }
 ]

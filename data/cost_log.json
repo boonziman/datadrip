@@ -1642,5 +1642,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1084
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-07",
+    "start_time": "2026-03-07T13:56:11.028154-08:00",
+    "end_time": "2026-03-07T13:56:39.931955-08:00",
+    "duration_seconds": 28.9,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3254,
+        "output_tokens": 152,
+        "cost": 0.03862
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "USDC just flipped Tether in market cap, and with Bitcoin looking shaky on a possible cycle crash, it's a big shift toward trusted stables. I broke down the data, why it's happening, and what it means for the next moves in crypto. #Crypto #USDC #Tether #Bitcoin #CryptoNews\nhttps://datadripco.com/posts/usdc-surges-past-tether-as-bitcoin-teeters-on-cycle-crash/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2030402273835159930",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/usdc-surges-past-tether-as-bitcoin-teeters-on-cycle-crash/"
+    },
+    "totals": {
+      "input_tokens": 3254,
+      "output_tokens": 152,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0386
+    }
   }
 ]
