@@ -1605,5 +1605,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0368
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-07",
+    "start_time": "2026-03-07T11:39:33.092900-08:00",
+    "end_time": "2026-03-07T11:40:08.995282-08:00",
+    "duration_seconds": 35.9,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3282,
+        "output_tokens": 139,
+        "cost": 0.03838
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "USDC overtaking Tether in market cap while Bitcoin's staring down a potential cycle crash? That's got me thinking stablecoins are finally winning trust. Whales might be hedging hard right now. #Crypto #USDC #Tether #Bitcoin",
+      "tweet_type": "hot_take",
+      "tweet_id": "2030367918018510982",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3282,
+      "output_tokens": 139,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1084
+    }
   }
 ]
