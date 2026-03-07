@@ -9,12 +9,40 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 06) | 6 | **$1.5553** |
-| 📆 This Week (since Mar 02) | 33 | **$7.0801** |
-| 🗓️ This Month (March 2026) | 33 | **$7.0801** |
-| 🏦 Overall All-Time | 33 | **$7.0801** |
+| 📅 Today (March 06) | 7 | **$1.6617** |
+| 📆 This Week (since Mar 02) | 34 | **$7.1865** |
+| 🗓️ This Month (March 2026) | 34 | **$7.1865** |
+| 🏦 Overall All-Time | 34 | **$7.1865** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 06, 2026 at 11:04 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 48.1 seconds
+**Estimated cost:** $0.1064
+
+### What happened (step by step)
+
+
+### Details
+
+**Tweet posted:**
+> Bitcoin's dipping hard off that weak jobs report, but whales keep stacking sats like it's nothing. Starting to feel like they're front-running a rebound. I've seen this play out before - could flip fast. #Crypto #Bitcoin #BTC
+
+**Tweet type:** hot_take
+**Tweet ID:** 2030177978496471060
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,128 tokens, got back 129 tokens — **$0.0364**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1064**
 
 ---
 ## 🐦 Tweet Bot — March 06, 2026 at 09:26 PM PST
