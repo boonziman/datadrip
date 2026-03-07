@@ -9,48 +9,41 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 07) | 1 | **$1.4067** |
-| 📆 This Week (since Mar 02) | 35 | **$8.5932** |
-| 🗓️ This Month (March 2026) | 35 | **$8.5932** |
-| 🏦 Overall All-Time | 35 | **$8.5932** |
+| 📅 Today (March 07) | 2 | **$1.4435** |
+| 📆 This Week (since Mar 02) | 36 | **$8.6300** |
+| 🗓️ This Month (March 2026) | 36 | **$8.6300** |
+| 🏦 Overall All-Time | 36 | **$8.6300** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
 
 ---
-## 📝 Blog Bot — March 07, 2026 at 05:38 AM PST
+## 🐦 Tweet Bot — March 07, 2026 at 08:56 AM PST
 
 **Status:** ✅ Everything ran successfully
-**Total time:** 894.2 seconds
-**Estimated cost:** $1.4067
+**Total time:** 21.3 seconds
+**Estimated cost:** $0.0368
 
 ### What happened (step by step)
 
 
 ### Details
 
-**Posts generated:** 3 of 3 posts generated successfully
-  - [AI] AI's Listening Crisis: Jammers, Flops, and Dorsey's Reboot
-  - [Crypto] USDC Surges Past Tether as Bitcoin Teeters on Cycle Crash
-  - [Tech] EV Shakeup: Fatal Flaws, Bold Buyouts, and Hybrid Heroes
+**Tweet posted:**
+> AI's voice tech is in rough shape - jammers are killing smart assistants, reliability flops are piling up, and now Dorsey's calling for a full reboot. I looked at what's breaking and if there's a way out of this mess.
+https://datadripco.com/posts/ais-listening-crisis-jammers-flops-and-dorseys-reboot/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2030326803059867911
+**Blog post promoted:** https://datadripco.com/posts/ais-listening-crisis-jammers-flops-and-dorseys-reboot/
+**Image attached:** No
 
 ### Cost breakdown
 
 What we paid for (estimated):
 
-- **AI Draft (Pass 1)** — sent 2,431 tokens, got back 4,102 tokens — **$0.1884**
-- **AI Review (Pass 2)** — sent 4,451 tokens, got back 4,225 tokens — **$0.2135**
-- **AI Image Prompt (Pass 3)** — sent 332 tokens, got back 231 tokens — **$0.0126**
-- **Image generation** — 1 image created — **$0.0700**
-- **Crypto Draft (Pass 1)** — sent 2,588 tokens, got back 3,815 tokens — **$0.1785**
-- **Crypto Review (Pass 2)** — sent 4,163 tokens, got back 3,609 tokens — **$0.1860**
-- **Crypto Image Prompt (Pass 3)** — sent 332 tokens, got back 290 tokens — **$0.0149**
-- **Image generation** — 1 image created — **$0.0700**
-- **Tech Draft (Pass 1)** — sent 2,540 tokens, got back 4,274 tokens — **$0.1964**
-- **Tech Review (Pass 2)** — sent 4,623 tokens, got back 3,669 tokens — **$0.1930**
-- **Tech Image Prompt (Pass 3)** — sent 332 tokens, got back 255 tokens — **$0.0135**
-- **Image generation** — 1 image created — **$0.0700**
+- **Tweet Generation** — sent 3,244 tokens, got back 110 tokens — **$0.0368**
 
-**💰 Total estimated cost: $1.4067**
+**💰 Total estimated cost: $0.0368**
 
 ---
 ## 🐦 Tweet Bot — March 06, 2026 at 11:04 PM PST

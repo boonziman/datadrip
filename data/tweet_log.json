@@ -228,5 +228,14 @@
     "image_prompt": "Photo-realistic image of a dimly lit trading desk at night with multiple screens showing red Bitcoin price charts and candlestick patterns, a coffee mug and notebook nearby, overhead office lighting, wide-angle shot like a Bloomberg news photo",
     "promoted_url": "",
     "tweet_id": "2030177978496471060"
+  },
+  {
+    "timestamp": "2026-03-07 08:56 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "AI's voice tech is in rough shape - jammers are killing smart assistants, reliability flops are piling up, and now Dorsey's calling for a full reboot. I looked at what's breaking and if there's a way out of this mess.\nhttps://datadripco.com/posts/ais-listening-crisis-jammers-flops-and-dorseys-reboot/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ais-listening-crisis-jammers-flops-and-dorseys-reboot/",
+    "tweet_id": "2030326803059867911"
   }
 ]
