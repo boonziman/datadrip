@@ -5,6 +5,45 @@
 
 ---
 
+## 💰 Spending Summary
+
+| Period | Bot Runs | Estimated Cost |
+|--------|----------|----------------|
+| 📅 Today (March 06) | 4 | **$1.5188** |
+| 📆 This Week (since Mar 02) | 31 | **$7.0436** |
+| 🗓️ This Month (March 2026) | 31 | **$7.0436** |
+| 🏦 Overall All-Time | 31 | **$7.0436** |
+
+*Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 06, 2026 at 07:25 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 40.6 seconds
+**Estimated cost:** $0.0344
+
+### What happened (step by step)
+
+
+### Details
+
+**Tweet posted:**
+> Seeing more talk about global AI bans and how tech's pushing back. If your country clamped down hard on AI development, would you move to keep building, or adapt and stay put? Curious what folks think.
+
+**Tweet type:** engagement
+**Tweet ID:** 2030122686094135632
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,126 tokens, got back 78 tokens — **$0.0344**
+
+**💰 Total estimated cost: $0.0344**
+
+---
 ## 🐦 Tweet Bot — March 06, 2026 at 11:54 AM PST
 
 **Status:** ✅ Everything ran successfully
