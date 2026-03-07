@@ -1407,5 +1407,27 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0365
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-06",
+    "start_time": "2026-03-06T21:26:05.127686-08:00",
+    "end_time": "2026-03-06T21:26:05.425124-08:00",
+    "duration_seconds": 0.3,
+    "api_calls": [],
+    "errors": [],
+    "details": {
+      "tweet_text": "Governments are ramping up AI bans worldwide, but the tech's pushing back hard with clever workarounds and legal fights. It's a wild standoff that could reshape innovation. I dug into the key battles and what's at stake for the field. #AI #ArtificialIntelligence #Tech #TechNews #Innovation\nhttps://datadripco.com/posts/global-tech-clampdown-ai-fights-back-as-bans-loom/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2030152987465617485",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/global-tech-clampdown-ai-fights-back-as-bans-loom/"
+    },
+    "totals": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0
+    }
   }
 ]
