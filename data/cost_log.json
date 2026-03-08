@@ -1760,5 +1760,114 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.035
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-08",
+    "start_time": "2026-03-08T06:39:44.179003-07:00",
+    "end_time": "2026-03-08T06:51:14.797269-07:00",
+    "duration_seconds": 690.6,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2517,
+        "output_tokens": 3912,
+        "cost": 0.18165
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4261,
+        "output_tokens": 3543,
+        "cost": 0.18433
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 334,
+        "output_tokens": 318,
+        "cost": 0.01606
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2622,
+        "output_tokens": 3747,
+        "cost": 0.1761
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4096,
+        "output_tokens": 3880,
+        "cost": 0.19616
+      },
+      {
+        "label": "Crypto Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 335,
+        "output_tokens": 214,
+        "cost": 0.01191
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2671,
+        "output_tokens": 4072,
+        "cost": 0.18959
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4421,
+        "output_tokens": 3210,
+        "cost": 0.17261
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 332,
+        "output_tokens": 264,
+        "cost": 0.01388
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "post_ai": "[AI] AI's Corporate Reckoning: Layoffs, Biotech Bets, and Power Grabs",
+      "post_crypto": "[Crypto] Oil Hits $100: Tokenized Assets Surge as Bitcoin ETFs Signal Rebound",
+      "post_tech": "[Tech] AI Ethics Uproar: Resignations, Roadmaps, and CEO Riches",
+      "posts_generated": "3 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 21589,
+      "output_tokens": 23160,
+      "images_generated": 3,
+      "estimated_cost_usd": 1.3523
+    }
   }
 ]

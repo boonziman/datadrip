@@ -9,12 +9,48 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 07) | 7 | **$1.6974** |
-| 📆 This Week (since Mar 02) | 41 | **$8.8839** |
-| 🗓️ This Month (March 2026) | 41 | **$8.8839** |
-| 🏦 Overall All-Time | 41 | **$8.8839** |
+| 📅 Today (March 08) | 1 | **$1.3523** |
+| 📆 This Week (since Mar 02) | 42 | **$10.2362** |
+| 🗓️ This Month (March 2026) | 42 | **$10.2362** |
+| 🏦 Overall All-Time | 42 | **$10.2362** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 08, 2026 at 06:39 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 690.6 seconds
+**Estimated cost:** $1.3523
+
+### What happened (step by step)
+
+
+### Details
+
+**Posts generated:** 3 of 3 posts generated successfully
+  - [AI] AI's Corporate Reckoning: Layoffs, Biotech Bets, and Power Grabs
+  - [Crypto] Oil Hits $100: Tokenized Assets Surge as Bitcoin ETFs Signal Rebound
+  - [Tech] AI Ethics Uproar: Resignations, Roadmaps, and CEO Riches
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 2,517 tokens, got back 3,912 tokens — **$0.1817**
+- **AI Review (Pass 2)** — sent 4,261 tokens, got back 3,543 tokens — **$0.1843**
+- **AI Image Prompt (Pass 3)** — sent 334 tokens, got back 318 tokens — **$0.0161**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 2,622 tokens, got back 3,747 tokens — **$0.1761**
+- **Crypto Review (Pass 2)** — sent 4,096 tokens, got back 3,880 tokens — **$0.1962**
+- **Crypto Image Prompt (Pass 3)** — sent 335 tokens, got back 214 tokens — **$0.0119**
+- **Image generation** — 1 image created — **$0.0700**
+- **Tech Draft (Pass 1)** — sent 2,671 tokens, got back 4,072 tokens — **$0.1896**
+- **Tech Review (Pass 2)** — sent 4,421 tokens, got back 3,210 tokens — **$0.1726**
+- **Tech Image Prompt (Pass 3)** — sent 332 tokens, got back 264 tokens — **$0.0139**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.3523**
 
 ---
 ## 🐦 Tweet Bot — March 07, 2026 at 11:07 PM PST
