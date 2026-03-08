@@ -273,5 +273,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/ev-shakeup-fatal-flaws-bold-buyouts-and-hybrid-heroes/",
     "tweet_id": "2030508979214753869"
+  },
+  {
+    "timestamp": "2026-03-07 23:07 PST",
+    "tweet_type": "insight",
+    "tweet_text": "I've been watching how AI models are getting better at handling context, but it's still hit or miss with long conversations. Makes me wonder if we're close to real breakthroughs in memory tech for these systems. What if that unlocks way more practical uses?",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "",
+    "tweet_id": "2030540852020514863"
   }
 ]
