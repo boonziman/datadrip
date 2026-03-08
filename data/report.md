@@ -9,12 +9,41 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 07) | 5 | **$1.6256** |
-| 📆 This Week (since Mar 02) | 39 | **$8.8121** |
-| 🗓️ This Month (March 2026) | 39 | **$8.8121** |
-| 🏦 Overall All-Time | 39 | **$8.8121** |
+| 📅 Today (March 07) | 6 | **$1.6624** |
+| 📆 This Week (since Mar 02) | 40 | **$8.8489** |
+| 🗓️ This Month (March 2026) | 40 | **$8.8489** |
+| 🏦 Overall All-Time | 40 | **$8.8489** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 07, 2026 at 09:00 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 17.0 seconds
+**Estimated cost:** $0.0368
+
+### What happened (step by step)
+
+
+### Details
+
+**Tweet posted:**
+> Electric vehicles are hitting serious roadblocks - think fatal crashes from software glitches, big buyouts shaking up the market, and hybrids stepping in as the real winners. I dug into what's failing and where the opportunities are hiding. #Tech #EV #ElectricVehicles #Innovation #TechNews
+https://datadripco.com/posts/ev-shakeup-fatal-flaws-bold-buyouts-and-hybrid-heroes/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2030508979214753869
+**Blog post promoted:** https://datadripco.com/posts/ev-shakeup-fatal-flaws-bold-buyouts-and-hybrid-heroes/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,115 tokens, got back 141 tokens — **$0.0368**
+
+**💰 Total estimated cost: $0.0368**
 
 ---
 ## 🐦 Tweet Bot — March 07, 2026 at 07:38 PM PST

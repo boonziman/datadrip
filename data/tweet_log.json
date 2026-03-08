@@ -264,5 +264,14 @@
     "image_prompt": "",
     "promoted_url": "",
     "tweet_id": "2030488473480622459"
+  },
+  {
+    "timestamp": "2026-03-07 21:00 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Electric vehicles are hitting serious roadblocks - think fatal crashes from software glitches, big buyouts shaking up the market, and hybrids stepping in as the real winners. I dug into what's failing and where the opportunities are hiding. #Tech #EV #ElectricVehicles #Innovation #TechNews\nhttps://datadripco.com/posts/ev-shakeup-fatal-flaws-bold-buyouts-and-hybrid-heroes/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ev-shakeup-fatal-flaws-bold-buyouts-and-hybrid-heroes/",
+    "tweet_id": "2030508979214753869"
   }
 ]
