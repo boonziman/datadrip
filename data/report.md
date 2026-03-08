@@ -9,12 +9,40 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 08) | 2 | **$1.3915** |
-| 📆 This Week (since Mar 02) | 43 | **$10.2754** |
-| 🗓️ This Month (March 2026) | 43 | **$10.2754** |
-| 🏦 Overall All-Time | 43 | **$10.2754** |
+| 📅 Today (March 08) | 3 | **$1.5006** |
+| 📆 This Week (since Mar 02) | 44 | **$10.3845** |
+| 🗓️ This Month (March 2026) | 44 | **$10.3845** |
+| 🏦 Overall All-Time | 44 | **$10.3845** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 08, 2026 at 12:40 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 30.1 seconds
+**Estimated cost:** $0.1091
+
+### What happened (step by step)
+
+
+### Details
+
+**Tweet posted:**
+> AI ethics debates are heating up with all these resignations and new roadmaps from the big players. Do you buy that it's leading to real changes, or is it mostly talk? Curious what folks in the space think - hit me with your takes. #AI #ArtificialIntelligence #MachineLearning
+
+**Tweet type:** engagement
+**Tweet ID:** 2030730558771224770
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,354 tokens, got back 139 tokens — **$0.0391**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1091**
 
 ---
 ## 🐦 Tweet Bot — March 08, 2026 at 09:58 AM PST
