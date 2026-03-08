@@ -1936,5 +1936,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1091
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-08",
+    "start_time": "2026-03-08T14:57:45.541671-07:00",
+    "end_time": "2026-03-08T14:58:04.310280-07:00",
+    "duration_seconds": 18.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3320,
+        "output_tokens": 151,
+        "cost": 0.03924
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI ethics is blowing up again with key resignations at top firms, new safety roadmaps that feel half-baked, and CEOs raking in millions amid the chaos. I broke down if this is real progress or just PR spin. #AI #ArtificialIntelligence #MachineLearning #TechNews #Innovation\nhttps://datadripco.com/posts/ai-ethics-uproar-resignations-roadmaps-and-ceo-riches/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2030765015624507667",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ai-ethics-uproar-resignations-roadmaps-and-ceo-riches/"
+    },
+    "totals": {
+      "input_tokens": 3320,
+      "output_tokens": 151,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0392
+    }
   }
 ]
