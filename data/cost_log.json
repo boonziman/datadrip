@@ -1869,5 +1869,35 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.3523
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-08",
+    "start_time": "2026-03-08T09:58:49.446418-07:00",
+    "end_time": "2026-03-08T09:59:14.647296-07:00",
+    "duration_seconds": 25.2,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3303,
+        "output_tokens": 154,
+        "cost": 0.03919
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI companies are facing some serious shakeups - mass layoffs at places like Stability AI, big bets on biotech integrations, and power struggles in the boardrooms. I looked at what's driving this and if it's a sign of maturation or just chaos. #AI #ArtificialIntelligence #MachineLearning #TechNews #Innovation\nhttps://datadripco.com/posts/ais-corporate-reckoning-layoffs-biotech-bets-and-power-grabs/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2030689813137875071",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-corporate-reckoning-layoffs-biotech-bets-and-power-grabs/"
+    },
+    "totals": {
+      "input_tokens": 3303,
+      "output_tokens": 154,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0392
+    }
   }
 ]

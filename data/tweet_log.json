@@ -282,5 +282,14 @@
     "image_prompt": "",
     "promoted_url": "",
     "tweet_id": "2030540852020514863"
+  },
+  {
+    "timestamp": "2026-03-08 09:59 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "AI companies are facing some serious shakeups - mass layoffs at places like Stability AI, big bets on biotech integrations, and power struggles in the boardrooms. I looked at what's driving this and if it's a sign of maturation or just chaos. #AI #ArtificialIntelligence #MachineLearning #TechNews #Innovation\nhttps://datadripco.com/posts/ais-corporate-reckoning-layoffs-biotech-bets-and-power-grabs/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ais-corporate-reckoning-layoffs-biotech-bets-and-power-grabs/",
+    "tweet_id": "2030689813137875071"
   }
 ]

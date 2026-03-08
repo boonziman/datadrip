@@ -9,48 +9,41 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 08) | 1 | **$1.3523** |
-| 📆 This Week (since Mar 02) | 42 | **$10.2362** |
-| 🗓️ This Month (March 2026) | 42 | **$10.2362** |
-| 🏦 Overall All-Time | 42 | **$10.2362** |
+| 📅 Today (March 08) | 2 | **$1.3915** |
+| 📆 This Week (since Mar 02) | 43 | **$10.2754** |
+| 🗓️ This Month (March 2026) | 43 | **$10.2754** |
+| 🏦 Overall All-Time | 43 | **$10.2754** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
 
 ---
-## 📝 Blog Bot — March 08, 2026 at 06:39 AM PST
+## 🐦 Tweet Bot — March 08, 2026 at 09:58 AM PST
 
 **Status:** ✅ Everything ran successfully
-**Total time:** 690.6 seconds
-**Estimated cost:** $1.3523
+**Total time:** 25.2 seconds
+**Estimated cost:** $0.0392
 
 ### What happened (step by step)
 
 
 ### Details
 
-**Posts generated:** 3 of 3 posts generated successfully
-  - [AI] AI's Corporate Reckoning: Layoffs, Biotech Bets, and Power Grabs
-  - [Crypto] Oil Hits $100: Tokenized Assets Surge as Bitcoin ETFs Signal Rebound
-  - [Tech] AI Ethics Uproar: Resignations, Roadmaps, and CEO Riches
+**Tweet posted:**
+> AI companies are facing some serious shakeups - mass layoffs at places like Stability AI, big bets on biotech integrations, and power struggles in the boardrooms. I looked at what's driving this and if it's a sign of maturation or just chaos. #AI #ArtificialIntelligence #MachineLearning #TechNews #Innovation
+https://datadripco.com/posts/ais-corporate-reckoning-layoffs-biotech-bets-and-power-grabs/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2030689813137875071
+**Blog post promoted:** https://datadripco.com/posts/ais-corporate-reckoning-layoffs-biotech-bets-and-power-grabs/
+**Image attached:** No
 
 ### Cost breakdown
 
 What we paid for (estimated):
 
-- **AI Draft (Pass 1)** — sent 2,517 tokens, got back 3,912 tokens — **$0.1817**
-- **AI Review (Pass 2)** — sent 4,261 tokens, got back 3,543 tokens — **$0.1843**
-- **AI Image Prompt (Pass 3)** — sent 334 tokens, got back 318 tokens — **$0.0161**
-- **Image generation** — 1 image created — **$0.0700**
-- **Crypto Draft (Pass 1)** — sent 2,622 tokens, got back 3,747 tokens — **$0.1761**
-- **Crypto Review (Pass 2)** — sent 4,096 tokens, got back 3,880 tokens — **$0.1962**
-- **Crypto Image Prompt (Pass 3)** — sent 335 tokens, got back 214 tokens — **$0.0119**
-- **Image generation** — 1 image created — **$0.0700**
-- **Tech Draft (Pass 1)** — sent 2,671 tokens, got back 4,072 tokens — **$0.1896**
-- **Tech Review (Pass 2)** — sent 4,421 tokens, got back 3,210 tokens — **$0.1726**
-- **Tech Image Prompt (Pass 3)** — sent 332 tokens, got back 264 tokens — **$0.0139**
-- **Image generation** — 1 image created — **$0.0700**
+- **Tweet Generation** — sent 3,303 tokens, got back 154 tokens — **$0.0392**
 
-**💰 Total estimated cost: $1.3523**
+**💰 Total estimated cost: $0.0392**
 
 ---
 ## 🐦 Tweet Bot — March 07, 2026 at 11:07 PM PST
