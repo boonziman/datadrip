@@ -264,19 +264,13 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 - NEVER promote a post that's already been promoted (check the list).
 
 ═══ HASHTAGS ═══
-- Hashtags are SEPARATE from your tweet content. Write the tweet first, then decide on hashtags. Hashtags should NOT eat into or shorten your actual message.
-- Most tweets (~50%) should have ZERO hashtags. Clean tweets look more human.
-- When you DO use hashtags, use 3-5 that are smart and audience-targeted — tags people in your niche actually follow and search.
-- Smart hashtag strategy — pick from whichever category matches the tweet:
-  * AI posts: #AI #ArtificialIntelligence #ChatGPT #MachineLearning #OpenAI #Claude #LLM #Grok
-  * Crypto posts: #Bitcoin #Crypto #BTC #Ethereum #Blockchain #DeFi #CryptoNews #Web3
-  * Tech posts: #Tech #TechNews #Startups #SaaS #Innovation #Fintech #BigTech
-- Bad hashtag use: obscure tags nobody searches, irrelevant tags, generic spam tags.
-- CRITICAL for blog_teaser tweets: ALWAYS include 3-5 hashtags, AND the URL MUST be the absolute last thing — order is: tweet text → hashtags → URL. This is how Twitter hides the raw URL and shows only the clean card preview.
-- For all other tweet types: hashtags go at the END of the tweet.
+- NEVER use hashtags. Not even one. No exceptions.
+- The X algorithm understands context and distributes your content without them. Hashtags look spammy and low-quality. Real accounts with audiences don’t use them.
+- Write clean tweets with zero hashtags, every time.
 
 ═══ IMAGE RULES ═══
 - NEVER use an image on blog teaser tweets (the link preview card from our site already shows the article image — adding another image HIDES the link preview which kills click-through).
+- CRITICAL for blog_teaser tweets: the URL MUST be the absolute last thing in the tweet (tweet text → URL). This is how X hides the raw URL and shows only the clean card preview.
 - Use images on ~30-40% of NON-link tweets (insight tweets, data visualizations, trend reactions).
 - When you DO want an image, your prompt must follow these rules:
   * Photo-realistic, editorial magazine quality — like a Reuters or Bloomberg photo
@@ -400,6 +394,11 @@ def generate_tweet():
     # Hard strip em-dashes — they're an AI tell and Grok uses them constantly
     if tweet_data.get("tweet_text"):
         tweet_data["tweet_text"] = tweet_data["tweet_text"].replace("\u2014", " - ").replace("\u2013", " - ")
+
+    # Hard strip hashtags — they look spammy, X algorithm doesn't need them
+    if tweet_data.get("tweet_text"):
+        import re as _re
+        tweet_data["tweet_text"] = _re.sub(r'\s*#\w+', '', tweet_data["tweet_text"]).strip()
 
     # Safety: force no image on blog teasers (link preview is better)
     if tweet_data.get("tweet_type") == "blog_teaser":

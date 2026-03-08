@@ -61,6 +61,8 @@ class Tracker:
     def log_event(self, message):
         """Log a key event with timestamp."""
         timestamp = datetime.datetime.now(_PST).strftime("%H:%M:%S PST")
+        self.events.append({"time": timestamp, "message": message})
+        print(f"📋 {message}")
 
     def log_api_call(self, label, model="grok-4", input_tokens=0, output_tokens=0):
         """Log a text API call with token counts and estimated cost."""
@@ -329,14 +331,14 @@ class Tracker:
 
             # Strip old header + spending summary — find where actual run reports start.
             # Run reports always begin with '## 🐦' (tweet) or '## 📝' (blog).
-            stripped = False
-            for marker in ["\n## 🐦", "\n## 📝"]:
-                idx = existing.find(marker)
-                if idx != -1:
-                    existing = existing[idx + 1:]  # +1 to skip the leading \n
-                    stripped = True
-                    break
-            if not stripped:
+            # Use the EARLIEST occurrence so we never drop a report that precedes
+            # a different bot type's entry (e.g. blog bot ran first, tweet bot second).
+            idx_tweet = existing.find("\n## 🐦")
+            idx_blog  = existing.find("\n## 📝")
+            candidates = [i for i in [idx_tweet, idx_blog] if i != -1]
+            if candidates:
+                existing = existing[min(candidates) + 1:]  # +1 to skip the leading \n
+            else:
                 existing = ""  # file had no run reports yet — start fresh
 
             # Fixed title/description header
