@@ -2209,5 +2209,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.036
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-09",
+    "start_time": "2026-03-09T12:55:19.321818-07:00",
+    "end_time": "2026-03-09T12:55:46.088795-07:00",
+    "duration_seconds": 26.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3137,
+        "output_tokens": 124,
+        "cost": 0.03633
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Bitcoin just hit 20 million wallets. Crypto winter might actually be thawing, especially with the UN throwing weight behind blockchain. I've got mixed feelings - real adoption or just hype? Either way, it's pulling me back in.",
+      "tweet_type": "hot_take",
+      "tweet_id": "2031096624374579264",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3137,
+      "output_tokens": 124,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1063
+    }
   }
 ]

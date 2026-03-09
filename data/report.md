@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 09) | 3 | **$1.4514** |
-| 📆 This Week (since Mar 09) | 3 | **$1.4514** |
-| 🗓️ This Month (March 2026) | 50 | **$12.0156** |
-| 🏦 Overall All-Time | 50 | **$12.0156** |
+| 📅 Today (March 09) | 4 | **$1.5577** |
+| 📆 This Week (since Mar 09) | 4 | **$1.5577** |
+| 🗓️ This Month (March 2026) | 51 | **$12.1219** |
+| 🏦 Overall All-Time | 51 | **$12.1219** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 09, 2026 at 12:55 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 26.8 seconds
+**Estimated cost:** $0.1063
+
+### What happened (step by step)
+
+1. **12:55:19 PST** — Tweet bot started
+2. **12:55:19 PST** — API keys validated
+3. **12:55:46 PST** — Tweet posted and logged (type: hot_take, ID: 2031096624374579264)
+4. **12:55:46 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Bitcoin just hit 20 million wallets. Crypto winter might actually be thawing, especially with the UN throwing weight behind blockchain. I've got mixed feelings - real adoption or just hype? Either way, it's pulling me back in.
+
+**Tweet type:** hot_take
+**Tweet ID:** 2031096624374579264
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,137 tokens, got back 124 tokens — **$0.0363**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1063**
 
 ---
 ## 🐦 Tweet Bot — March 09, 2026 at 10:30 AM PST

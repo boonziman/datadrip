@@ -345,5 +345,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/will-ai-upend-venture-capital-forever/",
     "tweet_id": "2031060220542169367"
+  },
+  {
+    "timestamp": "2026-03-09 12:55 PST",
+    "tweet_type": "hot_take",
+    "tweet_text": "Bitcoin just hit 20 million wallets. Crypto winter might actually be thawing, especially with the UN throwing weight behind blockchain. I've got mixed feelings - real adoption or just hype? Either way, it's pulling me back in.",
+    "use_image": true,
+    "image_prompt": "Close-up of a smartphone screen displaying a Bitcoin wallet app with a milestone notification for 20 million users, held in someone's hand in a modern office setting, natural daylight filtering through windows, sharp focus on the screen",
+    "promoted_url": "",
+    "tweet_id": "2031096624374579264"
   }
 ]
