@@ -1966,5 +1966,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0392
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-08",
+    "start_time": "2026-03-08T20:43:29.338236-07:00",
+    "end_time": "2026-03-08T20:43:58.303112-07:00",
+    "duration_seconds": 29.0,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3004,
+        "output_tokens": 127,
+        "cost": 0.03512
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Oil just spiked to $100 and tokenized assets are exploding. Feels like we're seeing real-world commodities bleed into crypto in a big way. Bitcoin ETFs might finally rebound from this mess. Skeptical but watching closely - could be a turning point.",
+      "tweet_type": "hot_take",
+      "tweet_id": "2030852063542833326",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3004,
+      "output_tokens": 127,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1051
+    }
   }
 ]

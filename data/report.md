@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 08) | 4 | **$1.5398** |
-| 📆 This Week (since Mar 02) | 45 | **$10.4237** |
-| 🗓️ This Month (March 2026) | 45 | **$10.4237** |
-| 🏦 Overall All-Time | 45 | **$10.4237** |
+| 📅 Today (March 08) | 5 | **$1.6449** |
+| 📆 This Week (since Mar 02) | 46 | **$10.5288** |
+| 🗓️ This Month (March 2026) | 46 | **$10.5288** |
+| 🏦 Overall All-Time | 46 | **$10.5288** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 08, 2026 at 08:43 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 29.0 seconds
+**Estimated cost:** $0.1051
+
+### What happened (step by step)
+
+1. **20:43:29 PST** — Tweet bot started
+2. **20:43:29 PST** — API keys validated
+3. **20:43:58 PST** — Tweet posted and logged (type: hot_take, ID: 2030852063542833326)
+4. **20:43:58 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Oil just spiked to $100 and tokenized assets are exploding. Feels like we're seeing real-world commodities bleed into crypto in a big way. Bitcoin ETFs might finally rebound from this mess. Skeptical but watching closely - could be a turning point.
+
+**Tweet type:** hot_take
+**Tweet ID:** 2030852063542833326
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,004 tokens, got back 127 tokens — **$0.0351**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1051**
 
 ---
 ## 🐦 Tweet Bot — March 08, 2026 at 02:57 PM PST
