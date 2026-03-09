@@ -9,12 +9,59 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 09) | 1 | **$0.1052** |
-| 📆 This Week (since Mar 09) | 1 | **$0.1052** |
-| 🗓️ This Month (March 2026) | 48 | **$10.6694** |
-| 🏦 Overall All-Time | 48 | **$10.6694** |
+| 📅 Today (March 09) | 2 | **$1.4154** |
+| 📆 This Week (since Mar 09) | 2 | **$1.4154** |
+| 🗓️ This Month (March 2026) | 49 | **$11.9796** |
+| 🏦 Overall All-Time | 49 | **$11.9796** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 09, 2026 at 07:05 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 696.4 seconds
+**Estimated cost:** $1.3102
+
+### What happened (step by step)
+
+1. **07:05:59 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **07:05:59 PST** — Starting AI post generation
+3. **07:05:59 PST** — Fetched 8 RSS articles for AI
+4. **07:10:03 PST** — ✅ AI post saved: 2026-03-09-0710-will-ai-upend-venture-capital-forever.md
+5. **07:10:03 PST** — Starting Crypto post generation
+6. **07:10:03 PST** — Fetched 8 RSS articles for Crypto
+7. **07:13:49 PST** — ✅ Crypto post saved: 2026-03-09-0713-bitcoins-20m-milestone-winter-thaws-as-un-bets-big-on-blockchain.md
+8. **07:13:49 PST** — Starting Tech post generation
+9. **07:13:49 PST** — Fetched 8 RSS articles for Tech
+10. **07:17:35 PST** — ✅ Tech post saved: 2026-03-09-0717-nostalgia-tech-boom-ai-toys-meet-retro-gaming-gold.md
+11. **07:17:35 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 3 of 3 posts generated successfully
+  - [AI] Will AI Upend Venture Capital Forever?
+  - [Crypto] Bitcoin's 20M Milestone: Winter Thaws as UN Bets Big on Blockchain
+  - [Tech] Nostalgia Tech Boom: AI Toys Meet Retro Gaming Gold
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 2,554 tokens, got back 3,538 tokens — **$0.1671**
+- **AI Review (Pass 2)** — sent 3,886 tokens, got back 3,373 tokens — **$0.1738**
+- **AI Image Prompt (Pass 3)** — sent 327 tokens, got back 275 tokens — **$0.0143**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 2,759 tokens, got back 3,851 tokens — **$0.1816**
+- **Crypto Review (Pass 2)** — sent 4,200 tokens, got back 3,274 tokens — **$0.1730**
+- **Crypto Image Prompt (Pass 3)** — sent 334 tokens, got back 278 tokens — **$0.0145**
+- **Image generation** — 1 image created — **$0.0700**
+- **Tech Draft (Pass 1)** — sent 2,737 tokens, got back 3,700 tokens — **$0.1754**
+- **Tech Review (Pass 2)** — sent 4,048 tokens, got back 3,678 tokens — **$0.1876**
+- **Tech Image Prompt (Pass 3)** — sent 330 tokens, got back 244 tokens — **$0.0131**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.3102**
 
 ---
 ## 🐦 Tweet Bot — March 09, 2026 at 12:33 AM PST
