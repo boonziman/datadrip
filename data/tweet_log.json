@@ -327,5 +327,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/oil-hits-100-tokenized-assets-surge-as-bitcoin-etfs-signal-rebound/",
     "tweet_id": "2030874132041101344"
+  },
+  {
+    "timestamp": "2026-03-09 00:34 PST",
+    "tweet_type": "hot_take",
+    "tweet_text": "Bitcoin took a hit after those weak jobs numbers, but whale buys are piling up. Feels like the rebound might be closer than people think. I've seen these cycles before - crash talk always overblown. What do you reckon?",
+    "use_image": true,
+    "image_prompt": "Photo-realistic image of a dimly lit trading desk at night with multiple monitors displaying volatile Bitcoin price charts and whale transaction alerts, close-up on the screens and a coffee mug nearby, editorial style like a Bloomberg photo",
+    "promoted_url": "",
+    "tweet_id": "2030910015616307307"
   }
 ]

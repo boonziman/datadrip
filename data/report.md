@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 08) | 6 | **$1.6803** |
-| 📆 This Week (since Mar 02) | 47 | **$10.5642** |
-| 🗓️ This Month (March 2026) | 47 | **$10.5642** |
-| 🏦 Overall All-Time | 47 | **$10.5642** |
+| 📅 Today (March 09) | 1 | **$0.1052** |
+| 📆 This Week (since Mar 09) | 1 | **$0.1052** |
+| 🗓️ This Month (March 2026) | 48 | **$10.6694** |
+| 🏦 Overall All-Time | 48 | **$10.6694** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 09, 2026 at 12:33 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 34.6 seconds
+**Estimated cost:** $0.1052
+
+### What happened (step by step)
+
+1. **00:33:40 PST** — Tweet bot started
+2. **00:33:40 PST** — API keys validated
+3. **00:34:15 PST** — Tweet posted and logged (type: hot_take, ID: 2030910015616307307)
+4. **00:34:15 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Bitcoin took a hit after those weak jobs numbers, but whale buys are piling up. Feels like the rebound might be closer than people think. I've seen these cycles before - crash talk always overblown. What do you reckon?
+
+**Tweet type:** hot_take
+**Tweet ID:** 2030910015616307307
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,014 tokens, got back 127 tokens — **$0.0352**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1052**
 
 ---
 ## 🐦 Tweet Bot — March 08, 2026 at 10:11 PM PST
