@@ -2179,5 +2179,35 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.3102
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-09",
+    "start_time": "2026-03-09T10:30:49.549488-07:00",
+    "end_time": "2026-03-09T10:31:06.654247-07:00",
+    "duration_seconds": 17.1,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3119,
+        "output_tokens": 119,
+        "cost": 0.03595
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "I've been pondering if AI is about to flip venture capital on its head. Startups raising billions without traditional VCs? Models predicting hits better than humans? I dug into the data and it's wild how this could reshape funding forever.\nhttps://datadripco.com/posts/will-ai-upend-venture-capital-forever/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2031060220542169367",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/will-ai-upend-venture-capital-forever/"
+    },
+    "totals": {
+      "input_tokens": 3119,
+      "output_tokens": 119,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.036
+    }
   }
 ]

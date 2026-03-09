@@ -336,5 +336,14 @@
     "image_prompt": "Photo-realistic image of a dimly lit trading desk at night with multiple monitors displaying volatile Bitcoin price charts and whale transaction alerts, close-up on the screens and a coffee mug nearby, editorial style like a Bloomberg photo",
     "promoted_url": "",
     "tweet_id": "2030910015616307307"
+  },
+  {
+    "timestamp": "2026-03-09 10:31 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "I've been pondering if AI is about to flip venture capital on its head. Startups raising billions without traditional VCs? Models predicting hits better than humans? I dug into the data and it's wild how this could reshape funding forever.\nhttps://datadripco.com/posts/will-ai-upend-venture-capital-forever/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/will-ai-upend-venture-capital-forever/",
+    "tweet_id": "2031060220542169367"
   }
 ]
