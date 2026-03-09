@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 08) | 5 | **$1.6449** |
-| 📆 This Week (since Mar 02) | 46 | **$10.5288** |
-| 🗓️ This Month (March 2026) | 46 | **$10.5288** |
-| 🏦 Overall All-Time | 46 | **$10.5288** |
+| 📅 Today (March 08) | 6 | **$1.6803** |
+| 📆 This Week (since Mar 02) | 47 | **$10.5642** |
+| 🗓️ This Month (March 2026) | 47 | **$10.5642** |
+| 🏦 Overall All-Time | 47 | **$10.5642** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 08, 2026 at 10:11 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 16.1 seconds
+**Estimated cost:** $0.0354
+
+### What happened (step by step)
+
+1. **22:11:23 PST** — Tweet bot started
+2. **22:11:23 PST** — API keys validated
+3. **22:11:39 PST** — Tweet posted and logged (type: blog_teaser, ID: 2030874132041101344)
+4. **22:11:39 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Oil's back at $100 a barrel, and it's lighting a fire under tokenized assets. Meanwhile, Bitcoin ETFs are showing signs of life after a rough patch. I dug into why this could be the rebound crypto needs, or if it's just noise.
+https://datadripco.com/posts/oil-hits-100-tokenized-assets-surge-as-bitcoin-etfs-signal-rebound/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2030874132041101344
+**Blog post promoted:** https://datadripco.com/posts/oil-hits-100-tokenized-assets-surge-as-bitcoin-etfs-signal-rebound/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,971 tokens, got back 142 tokens — **$0.0354**
+
+**💰 Total estimated cost: $0.0354**
 
 ---
 ## 🐦 Tweet Bot — March 08, 2026 at 08:43 PM PST

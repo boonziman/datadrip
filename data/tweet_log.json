@@ -318,5 +318,14 @@
     "image_prompt": "Close-up of a digital trading screen showing oil price charts at $100 alongside tokenized asset graphs, with a trader's reflection in the monitor, dim office lighting, realistic depth of field like a Bloomberg photo",
     "promoted_url": "",
     "tweet_id": "2030852063542833326"
+  },
+  {
+    "timestamp": "2026-03-08 22:11 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Oil's back at $100 a barrel, and it's lighting a fire under tokenized assets. Meanwhile, Bitcoin ETFs are showing signs of life after a rough patch. I dug into why this could be the rebound crypto needs, or if it's just noise.\nhttps://datadripco.com/posts/oil-hits-100-tokenized-assets-surge-as-bitcoin-etfs-signal-rebound/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/oil-hits-100-tokenized-assets-surge-as-bitcoin-etfs-signal-rebound/",
+    "tweet_id": "2030874132041101344"
   }
 ]

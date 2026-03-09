@@ -2003,5 +2003,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1051
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-08",
+    "start_time": "2026-03-08T22:11:23.572883-07:00",
+    "end_time": "2026-03-08T22:11:39.692727-07:00",
+    "duration_seconds": 16.1,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2971,
+        "output_tokens": 142,
+        "cost": 0.03539
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Oil's back at $100 a barrel, and it's lighting a fire under tokenized assets. Meanwhile, Bitcoin ETFs are showing signs of life after a rough patch. I dug into why this could be the rebound crypto needs, or if it's just noise.\nhttps://datadripco.com/posts/oil-hits-100-tokenized-assets-surge-as-bitcoin-etfs-signal-rebound/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2030874132041101344",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/oil-hits-100-tokenized-assets-surge-as-bitcoin-etfs-signal-rebound/"
+    },
+    "totals": {
+      "input_tokens": 2971,
+      "output_tokens": 142,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0354
+    }
   }
 ]
