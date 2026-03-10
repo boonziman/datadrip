@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 09) | 6 | **$1.6262** |
-| 📆 This Week (since Mar 09) | 6 | **$1.6262** |
-| 🗓️ This Month (March 2026) | 53 | **$12.1904** |
-| 🏦 Overall All-Time | 53 | **$12.1904** |
+| 📅 Today (March 09) | 7 | **$1.6607** |
+| 📆 This Week (since Mar 09) | 7 | **$1.6607** |
+| 🗓️ This Month (March 2026) | 54 | **$12.2249** |
+| 🏦 Overall All-Time | 54 | **$12.2249** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 09, 2026 at 10:00 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 17.5 seconds
+**Estimated cost:** $0.0345
+
+### What happened (step by step)
+
+1. **22:00:07 PST** — Tweet bot started
+2. **22:00:07 PST** — API keys validated
+3. **22:00:24 PST** — Tweet posted and logged (type: blog_teaser, ID: 2031233689305190614)
+4. **22:00:24 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Bitcoin's wallet count just crossed 20 million, and with the UN diving into blockchain, it looks like crypto winter could be wrapping up. I broke down the numbers, what this means for adoption, and why institutions are betting big again. Some surprising shifts in here that got me rethinking my portfolio.
+https://datadripco.com/posts/bitcoins-20m-milestone-winter-thaws-as-un-bets-big-on-blockchain/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2031233689305190614
+**Blog post promoted:** https://datadripco.com/posts/bitcoins-20m-milestone-winter-thaws-as-un-bets-big-on-blockchain/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,937 tokens, got back 127 tokens — **$0.0345**
+
+**💰 Total estimated cost: $0.0345**
 
 ---
 ## 🐦 Tweet Bot — March 09, 2026 at 08:35 PM PST

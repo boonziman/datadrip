@@ -2305,5 +2305,35 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0328
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-09",
+    "start_time": "2026-03-09T22:00:07.400114-07:00",
+    "end_time": "2026-03-09T22:00:24.852132-07:00",
+    "duration_seconds": 17.5,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2937,
+        "output_tokens": 127,
+        "cost": 0.03445
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Bitcoin's wallet count just crossed 20 million, and with the UN diving into blockchain, it looks like crypto winter could be wrapping up. I broke down the numbers, what this means for adoption, and why institutions are betting big again. Some surprising shifts in here that got me rethinking my portfolio.\nhttps://datadripco.com/posts/bitcoins-20m-milestone-winter-thaws-as-un-bets-big-on-blockchain/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2031233689305190614",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/bitcoins-20m-milestone-winter-thaws-as-un-bets-big-on-blockchain/"
+    },
+    "totals": {
+      "input_tokens": 2937,
+      "output_tokens": 127,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0345
+    }
   }
 ]
