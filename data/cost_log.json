@@ -2276,5 +2276,34 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0357
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-09",
+    "start_time": "2026-03-09T20:35:01.199743-07:00",
+    "end_time": "2026-03-09T20:35:33.966786-07:00",
+    "duration_seconds": 32.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2977,
+        "output_tokens": 77,
+        "cost": 0.03285
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Bitcoin wallets just topped 20 million, and the UN's pushing blockchain hard. Feels like winter might be easing up. Are you buying back in, or waiting for more proof? What's your move?",
+      "tweet_type": "engagement",
+      "tweet_id": "2031212336787386594",
+      "had_image": false
+    },
+    "totals": {
+      "input_tokens": 2977,
+      "output_tokens": 77,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0328
+    }
   }
 ]

@@ -9,12 +9,43 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 09) | 5 | **$1.5934** |
-| 📆 This Week (since Mar 09) | 5 | **$1.5934** |
-| 🗓️ This Month (March 2026) | 52 | **$12.1576** |
-| 🏦 Overall All-Time | 52 | **$12.1576** |
+| 📅 Today (March 09) | 6 | **$1.6262** |
+| 📆 This Week (since Mar 09) | 6 | **$1.6262** |
+| 🗓️ This Month (March 2026) | 53 | **$12.1904** |
+| 🏦 Overall All-Time | 53 | **$12.1904** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 09, 2026 at 08:35 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 32.8 seconds
+**Estimated cost:** $0.0328
+
+### What happened (step by step)
+
+1. **20:35:01 PST** — Tweet bot started
+2. **20:35:01 PST** — API keys validated
+3. **20:35:33 PST** — Tweet posted and logged (type: engagement, ID: 2031212336787386594)
+4. **20:35:33 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Bitcoin wallets just topped 20 million, and the UN's pushing blockchain hard. Feels like winter might be easing up. Are you buying back in, or waiting for more proof? What's your move?
+
+**Tweet type:** engagement
+**Tweet ID:** 2031212336787386594
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,977 tokens, got back 77 tokens — **$0.0328**
+
+**💰 Total estimated cost: $0.0328**
 
 ---
 ## 🐦 Tweet Bot — March 09, 2026 at 03:02 PM PST
