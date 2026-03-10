@@ -9,12 +9,59 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 10) | 1 | **$0.1051** |
-| 📆 This Week (since Mar 09) | 8 | **$1.7658** |
-| 🗓️ This Month (March 2026) | 55 | **$12.3300** |
-| 🏦 Overall All-Time | 55 | **$12.3300** |
+| 📅 Today (March 10) | 2 | **$1.4425** |
+| 📆 This Week (since Mar 09) | 9 | **$3.1032** |
+| 🗓️ This Month (March 2026) | 56 | **$13.6674** |
+| 🏦 Overall All-Time | 56 | **$13.6674** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 10, 2026 at 07:01 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 779.1 seconds
+**Estimated cost:** $1.3374
+
+### What happened (step by step)
+
+1. **07:01:45 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **07:01:45 PST** — Starting AI post generation
+3. **07:01:45 PST** — Fetched 8 RSS articles for AI
+4. **07:06:32 PST** — ✅ AI post saved: 2026-03-10-0706-ais-physical-frontier-lecuns-1b-push-and-nvidias-agent-revolution.md
+5. **07:06:32 PST** — Starting Crypto post generation
+6. **07:06:33 PST** — Fetched 8 RSS articles for Crypto
+7. **07:11:02 PST** — ✅ Crypto post saved: 2026-03-10-0711-stellars-surge-ignites-crypto-optimism-amid-mega-bets.md
+8. **07:11:02 PST** — Starting Tech post generation
+9. **07:11:02 PST** — Fetched 8 RSS articles for Tech
+10. **07:14:44 PST** — ✅ Tech post saved: 2026-03-10-0714-ais-creative-surge-tools-that-build-and-bust-deepfakes.md
+11. **07:14:44 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 3 of 3 posts generated successfully
+  - [AI] AI's Physical Frontier: LeCun's $1B Push and Nvidia's Agent Revolution
+  - [Crypto] Stellar's Surge Ignites Crypto Optimism Amid Mega Bets
+  - [Tech] AI's Creative Surge: Tools That Build and Bust Deepfakes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 2,708 tokens, got back 3,552 tokens — **$0.1692**
+- **AI Review (Pass 2)** — sent 3,901 tokens, got back 3,910 tokens — **$0.1954**
+- **AI Image Prompt (Pass 3)** — sent 335 tokens, got back 216 tokens — **$0.0120**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 2,806 tokens, got back 3,932 tokens — **$0.1853**
+- **Crypto Review (Pass 2)** — sent 4,280 tokens, got back 3,601 tokens — **$0.1868**
+- **Crypto Image Prompt (Pass 3)** — sent 331 tokens, got back 198 tokens — **$0.0112**
+- **Image generation** — 1 image created — **$0.0700**
+- **Tech Draft (Pass 1)** — sent 2,852 tokens, got back 3,407 tokens — **$0.1648**
+- **Tech Review (Pass 2)** — sent 3,755 tokens, got back 3,762 tokens — **$0.1880**
+- **Tech Image Prompt (Pass 3)** — sent 332 tokens, got back 283 tokens — **$0.0146**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.3374**
 
 ---
 ## 🐦 Tweet Bot — March 10, 2026 at 12:13 AM PST

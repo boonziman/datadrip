@@ -2372,5 +2372,114 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1051
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-10",
+    "start_time": "2026-03-10T07:01:45.263533-07:00",
+    "end_time": "2026-03-10T07:14:44.386423-07:00",
+    "duration_seconds": 779.1,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2708,
+        "output_tokens": 3552,
+        "cost": 0.16916
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3901,
+        "output_tokens": 3910,
+        "cost": 0.19541
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 335,
+        "output_tokens": 216,
+        "cost": 0.01199
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2806,
+        "output_tokens": 3932,
+        "cost": 0.18534
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4280,
+        "output_tokens": 3601,
+        "cost": 0.18684
+      },
+      {
+        "label": "Crypto Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 331,
+        "output_tokens": 198,
+        "cost": 0.01123
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2852,
+        "output_tokens": 3407,
+        "cost": 0.1648
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3755,
+        "output_tokens": 3762,
+        "cost": 0.18803
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 332,
+        "output_tokens": 283,
+        "cost": 0.01464
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "post_ai": "[AI] AI's Physical Frontier: LeCun's $1B Push and Nvidia's Agent Revolution",
+      "post_crypto": "[Crypto] Stellar's Surge Ignites Crypto Optimism Amid Mega Bets",
+      "post_tech": "[Tech] AI's Creative Surge: Tools That Build and Bust Deepfakes",
+      "posts_generated": "3 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 21300,
+      "output_tokens": 22861,
+      "images_generated": 3,
+      "estimated_cost_usd": 1.3374
+    }
   }
 ]
