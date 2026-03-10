@@ -390,5 +390,14 @@
     "image_prompt": "Close-up of a financial analyst staring at multiple computer screens displaying AI-generated market charts and crypto price graphs, dim office lighting with reflections on the screens, realistic depth of field like a Bloomberg news photo",
     "promoted_url": "",
     "tweet_id": "2031267300830044210"
+  },
+  {
+    "timestamp": "2026-03-10 10:29 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Yann LeCun's talking a $1B fund to get AI into the real world, like robots that actually understand physics. Nvidia's pushing agents that could change everything from manufacturing to daily tasks. I dug into why this might be the next big shift, and honestly, it's got me excited about what's coming.\nhttps://datadripco.com/posts/ais-physical-frontier-lecuns-1b-push-and-nvidias-agent-revolution/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ais-physical-frontier-lecuns-1b-push-and-nvidias-agent-revolution/",
+    "tweet_id": "2031422142902939693"
   }
 ]

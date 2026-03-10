@@ -2481,5 +2481,35 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.3374
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-10",
+    "start_time": "2026-03-10T10:28:52.196758-07:00",
+    "end_time": "2026-03-10T10:29:15.639911-07:00",
+    "duration_seconds": 23.4,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3143,
+        "output_tokens": 159,
+        "cost": 0.03779
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Yann LeCun's talking a $1B fund to get AI into the real world, like robots that actually understand physics. Nvidia's pushing agents that could change everything from manufacturing to daily tasks. I dug into why this might be the next big shift, and honestly, it's got me excited about what's coming.\nhttps://datadripco.com/posts/ais-physical-frontier-lecuns-1b-push-and-nvidias-agent-revolution/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2031422142902939693",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-physical-frontier-lecuns-1b-push-and-nvidias-agent-revolution/"
+    },
+    "totals": {
+      "input_tokens": 3143,
+      "output_tokens": 159,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0378
+    }
   }
 ]
