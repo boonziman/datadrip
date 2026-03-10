@@ -408,5 +408,14 @@
     "image_prompt": "Close-up of a financial trader staring intently at multiple computer screens displaying volatile crypto charts for Stellar and other coins, with green upward arrows, dim office lighting, realistic details like coffee mug and notepad on the desk",
     "promoted_url": "",
     "tweet_id": "2031458983257477506"
+  },
+  {
+    "timestamp": "2026-03-10 15:01 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "AI tools are getting wild at creating deepfakes, but now we're seeing ones that spot them just as fast. I looked into the latest builders and busters, and it's clear this tech's double-edged sword is sharpening quick. Some of these could change how we trust media forever.\nhttps://datadripco.com/posts/ais-creative-surge-tools-that-build-and-bust-deepfakes/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ais-creative-surge-tools-that-build-and-bust-deepfakes/",
+    "tweet_id": "2031490682532106744"
   }
 ]
