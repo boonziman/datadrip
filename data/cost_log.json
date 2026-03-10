@@ -2511,5 +2511,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0378
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-10",
+    "start_time": "2026-03-10T12:55:11.860305-07:00",
+    "end_time": "2026-03-10T12:55:39.225533-07:00",
+    "duration_seconds": 27.4,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3202,
+        "output_tokens": 125,
+        "cost": 0.03702
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Stellar's up 20% this week, and big players are betting millions on crypto again. Makes me think the market's heating back up. You seeing this as a real turnaround, or just another pump? What's your read?",
+      "tweet_type": "engagement",
+      "tweet_id": "2031458983257477506",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3202,
+      "output_tokens": 125,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.107
+    }
   }
 ]

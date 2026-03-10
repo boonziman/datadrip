@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 10) | 3 | **$1.4803** |
-| 📆 This Week (since Mar 09) | 10 | **$3.1410** |
-| 🗓️ This Month (March 2026) | 57 | **$13.7052** |
-| 🏦 Overall All-Time | 57 | **$13.7052** |
+| 📅 Today (March 10) | 4 | **$1.5873** |
+| 📆 This Week (since Mar 09) | 11 | **$3.2480** |
+| 🗓️ This Month (March 2026) | 58 | **$13.8122** |
+| 🏦 Overall All-Time | 58 | **$13.8122** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 10, 2026 at 12:55 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 27.4 seconds
+**Estimated cost:** $0.1070
+
+### What happened (step by step)
+
+1. **12:55:11 PST** — Tweet bot started
+2. **12:55:11 PST** — API keys validated
+3. **12:55:39 PST** — Tweet posted and logged (type: engagement, ID: 2031458983257477506)
+4. **12:55:39 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Stellar's up 20% this week, and big players are betting millions on crypto again. Makes me think the market's heating back up. You seeing this as a real turnaround, or just another pump? What's your read?
+
+**Tweet type:** engagement
+**Tweet ID:** 2031458983257477506
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,202 tokens, got back 125 tokens — **$0.0370**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1070**
 
 ---
 ## 🐦 Tweet Bot — March 10, 2026 at 10:28 AM PST
