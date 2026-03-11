@@ -2578,5 +2578,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0374
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-10",
+    "start_time": "2026-03-10T20:34:52.811668-07:00",
+    "end_time": "2026-03-10T20:35:28.928078-07:00",
+    "duration_seconds": 36.1,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3027,
+        "output_tokens": 136,
+        "cost": 0.03571
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Stellar just hit a 20% surge this week, with mega bets pouring in from institutions. Did you know it's now processing cross-border payments faster than ever? Feels like crypto's getting its second wind. Interesting stat: trading volume up 30% in the last month alone.",
+      "tweet_type": "value_drop",
+      "tweet_id": "2031574702687154449",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3027,
+      "output_tokens": 136,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1057
+    }
   }
 ]

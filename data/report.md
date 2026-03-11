@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 10) | 5 | **$1.6247** |
-| 📆 This Week (since Mar 09) | 12 | **$3.2854** |
-| 🗓️ This Month (March 2026) | 59 | **$13.8496** |
-| 🏦 Overall All-Time | 59 | **$13.8496** |
+| 📅 Today (March 10) | 6 | **$1.7304** |
+| 📆 This Week (since Mar 09) | 13 | **$3.3911** |
+| 🗓️ This Month (March 2026) | 60 | **$13.9553** |
+| 🏦 Overall All-Time | 60 | **$13.9553** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 10, 2026 at 08:34 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 36.1 seconds
+**Estimated cost:** $0.1057
+
+### What happened (step by step)
+
+1. **20:34:52 PST** — Tweet bot started
+2. **20:34:52 PST** — API keys validated
+3. **20:35:28 PST** — Tweet posted and logged (type: value_drop, ID: 2031574702687154449)
+4. **20:35:28 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Stellar just hit a 20% surge this week, with mega bets pouring in from institutions. Did you know it's now processing cross-border payments faster than ever? Feels like crypto's getting its second wind. Interesting stat: trading volume up 30% in the last month alone.
+
+**Tweet type:** value_drop
+**Tweet ID:** 2031574702687154449
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,027 tokens, got back 136 tokens — **$0.0357**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1057**
 
 ---
 ## 🐦 Tweet Bot — March 10, 2026 at 03:01 PM PST
