@@ -2791,5 +2791,35 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.2945
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-11",
+    "start_time": "2026-03-11T10:33:33.438606-07:00",
+    "end_time": "2026-03-11T10:33:50.968585-07:00",
+    "duration_seconds": 17.5,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3158,
+        "output_tokens": 129,
+        "cost": 0.03674
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI's getting way more accessible, but it's causing some wild chaos with teens messing around and coders clashing over jobs. I also caught wind of some quiet pivots in the space that could shift things big time. Dug into all this in my latest post, and it's eye-opening how fast this is evolving.\nhttps://datadripco.com/posts/ais-accessibility-boom-teen-chaos-coding-clashes-and-quiet-pivots/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2031785685498405187",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-accessibility-boom-teen-chaos-coding-clashes-and-quiet-pivots/"
+    },
+    "totals": {
+      "input_tokens": 3158,
+      "output_tokens": 129,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0367
+    }
   }
 ]

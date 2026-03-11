@@ -444,5 +444,14 @@
     "image_prompt": "Wide-angle photo of engineers monitoring a robotic assembly line in a high-tech factory, with screens showing AI interfaces, bright overhead lighting, realistic industrial setting",
     "promoted_url": "",
     "tweet_id": "2031633272032158200"
+  },
+  {
+    "timestamp": "2026-03-11 10:33 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "AI's getting way more accessible, but it's causing some wild chaos with teens messing around and coders clashing over jobs. I also caught wind of some quiet pivots in the space that could shift things big time. Dug into all this in my latest post, and it's eye-opening how fast this is evolving.\nhttps://datadripco.com/posts/ais-accessibility-boom-teen-chaos-coding-clashes-and-quiet-pivots/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ais-accessibility-boom-teen-chaos-coding-clashes-and-quiet-pivots/",
+    "tweet_id": "2031785685498405187"
   }
 ]

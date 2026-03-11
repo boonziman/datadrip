@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 11) | 2 | **$1.3996** |
-| 📆 This Week (since Mar 09) | 16 | **$4.8260** |
-| 🗓️ This Month (March 2026) | 63 | **$15.3902** |
-| 🏦 Overall All-Time | 63 | **$15.3902** |
+| 📅 Today (March 11) | 3 | **$1.4363** |
+| 📆 This Week (since Mar 09) | 17 | **$4.8627** |
+| 🗓️ This Month (March 2026) | 64 | **$15.4269** |
+| 🏦 Overall All-Time | 64 | **$15.4269** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 11, 2026 at 10:33 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 17.5 seconds
+**Estimated cost:** $0.0367
+
+### What happened (step by step)
+
+1. **10:33:33 PST** — Tweet bot started
+2. **10:33:33 PST** — API keys validated
+3. **10:33:50 PST** — Tweet posted and logged (type: blog_teaser, ID: 2031785685498405187)
+4. **10:33:50 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI's getting way more accessible, but it's causing some wild chaos with teens messing around and coders clashing over jobs. I also caught wind of some quiet pivots in the space that could shift things big time. Dug into all this in my latest post, and it's eye-opening how fast this is evolving.
+https://datadripco.com/posts/ais-accessibility-boom-teen-chaos-coding-clashes-and-quiet-pivots/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2031785685498405187
+**Blog post promoted:** https://datadripco.com/posts/ais-accessibility-boom-teen-chaos-coding-clashes-and-quiet-pivots/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,158 tokens, got back 129 tokens — **$0.0367**
+
+**💰 Total estimated cost: $0.0367**
 
 ---
 ## 📝 Blog Bot — March 11, 2026 at 07:06 AM PST
