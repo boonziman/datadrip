@@ -2645,5 +2645,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0353
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-11",
+    "start_time": "2026-03-11T00:27:45.303316-07:00",
+    "end_time": "2026-03-11T00:28:12.945384-07:00",
+    "duration_seconds": 27.6,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3042,
+        "output_tokens": 116,
+        "cost": 0.03506
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Nvidia's pushing these AI agents hard, saying they'll handle real-world tasks like robots that learn on the fly. I'm curious if this is the future of work or just another hype cycle. What do you think - game on or wait and see?",
+      "tweet_type": "engagement",
+      "tweet_id": "2031633272032158200",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3042,
+      "output_tokens": 116,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1051
+    }
   }
 ]

@@ -435,5 +435,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/stellars-surge-ignites-crypto-optimism-amid-mega-bets/",
     "tweet_id": "2031596529765544249"
+  },
+  {
+    "timestamp": "2026-03-11 00:28 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "Nvidia's pushing these AI agents hard, saying they'll handle real-world tasks like robots that learn on the fly. I'm curious if this is the future of work or just another hype cycle. What do you think - game on or wait and see?",
+    "use_image": true,
+    "image_prompt": "Wide-angle photo of engineers monitoring a robotic assembly line in a high-tech factory, with screens showing AI interfaces, bright overhead lighting, realistic industrial setting",
+    "promoted_url": "",
+    "tweet_id": "2031633272032158200"
   }
 ]
