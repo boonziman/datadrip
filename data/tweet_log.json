@@ -462,5 +462,14 @@
     "image_prompt": "Photo-realistic image of a modern tech office conference room with executives in suits shaking hands over a table with laptops showing security dashboards and AI charts, natural daylight from windows, professional atmosphere like a Bloomberg business photo",
     "promoted_url": "",
     "tweet_id": "2031821326902513675"
+  },
+  {
+    "timestamp": "2026-03-11 15:05 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Google's $32B grab of Wiz is lighting a fire under AI security. I looked at how this deal could spark a boom in tools that actually fight back against evolving threats, plus what it means for big tech's grip on the space. Some surprising angles in there, like the regulatory ripple effects. Worth a read if you're into where AI defense is headed.\nhttps://datadripco.com/posts/googles-32b-wiz-buy-fuels-ai-security-boom/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/googles-32b-wiz-buy-fuels-ai-security-boom/",
+    "tweet_id": "2031854051743199695"
   }
 ]
