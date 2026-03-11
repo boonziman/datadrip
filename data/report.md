@@ -9,12 +9,59 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 11) | 1 | **$0.1051** |
-| 📆 This Week (since Mar 09) | 15 | **$3.5315** |
-| 🗓️ This Month (March 2026) | 62 | **$14.0957** |
-| 🏦 Overall All-Time | 62 | **$14.0957** |
+| 📅 Today (March 11) | 2 | **$1.3996** |
+| 📆 This Week (since Mar 09) | 16 | **$4.8260** |
+| 🗓️ This Month (March 2026) | 63 | **$15.3902** |
+| 🏦 Overall All-Time | 63 | **$15.3902** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 11, 2026 at 07:06 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 649.1 seconds
+**Estimated cost:** $1.2945
+
+### What happened (step by step)
+
+1. **07:06:06 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **07:06:06 PST** — Starting AI post generation
+3. **07:06:07 PST** — Fetched 8 RSS articles for AI
+4. **07:09:52 PST** — ✅ AI post saved: 2026-03-11-0709-ais-accessibility-boom-teen-chaos-coding-clashes-and-quiet-pivots.md
+5. **07:09:52 PST** — Starting Crypto post generation
+6. **07:09:52 PST** — Fetched 8 RSS articles for Crypto
+7. **07:13:23 PST** — ✅ Crypto post saved: 2026-03-11-0713-crypto-defies-inflation-blues-big-bets-and-regulatory-twists.md
+8. **07:13:23 PST** — Starting Tech post generation
+9. **07:13:23 PST** — Fetched 8 RSS articles for Tech
+10. **07:16:56 PST** — ✅ Tech post saved: 2026-03-11-0716-googles-32b-wiz-buy-fuels-ai-security-boom.md
+11. **07:16:56 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 3 of 3 posts generated successfully
+  - [AI] AI's Accessibility Boom: Teen Chaos, Coding Clashes, and Quiet Pivots
+  - [Crypto] Crypto Defies Inflation Blues: Big Bets and Regulatory Twists
+  - [Tech] Google's $32B Wiz Buy Fuels AI Security Boom
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 2,734 tokens, got back 3,763 tokens — **$0.1779**
+- **AI Review (Pass 2)** — sent 4,112 tokens, got back 3,385 tokens — **$0.1765**
+- **AI Image Prompt (Pass 3)** — sent 335 tokens, got back 271 tokens — **$0.0142**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 2,891 tokens, got back 3,690 tokens — **$0.1765**
+- **Crypto Review (Pass 2)** — sent 4,039 tokens, got back 3,254 tokens — **$0.1706**
+- **Crypto Image Prompt (Pass 3)** — sent 333 tokens, got back 257 tokens — **$0.0136**
+- **Image generation** — 1 image created — **$0.0700**
+- **Tech Draft (Pass 1)** — sent 2,943 tokens, got back 3,596 tokens — **$0.1733**
+- **Tech Review (Pass 2)** — sent 3,944 tokens, got back 3,259 tokens — **$0.1698**
+- **Tech Image Prompt (Pass 3)** — sent 329 tokens, got back 223 tokens — **$0.0122**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.2945**
 
 ---
 ## 🐦 Tweet Bot — March 11, 2026 at 12:27 AM PST

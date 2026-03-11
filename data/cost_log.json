@@ -2682,5 +2682,114 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1051
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-11",
+    "start_time": "2026-03-11T07:06:06.914452-07:00",
+    "end_time": "2026-03-11T07:16:56.050549-07:00",
+    "duration_seconds": 649.1,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2734,
+        "output_tokens": 3763,
+        "cost": 0.17786
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4112,
+        "output_tokens": 3385,
+        "cost": 0.17652
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 335,
+        "output_tokens": 271,
+        "cost": 0.01419
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2891,
+        "output_tokens": 3690,
+        "cost": 0.17651
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4039,
+        "output_tokens": 3254,
+        "cost": 0.17055
+      },
+      {
+        "label": "Crypto Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 333,
+        "output_tokens": 257,
+        "cost": 0.01361
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2943,
+        "output_tokens": 3596,
+        "cost": 0.17327
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3944,
+        "output_tokens": 3259,
+        "cost": 0.1698
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 329,
+        "output_tokens": 223,
+        "cost": 0.01221
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "post_ai": "[AI] AI's Accessibility Boom: Teen Chaos, Coding Clashes, and Quiet Pivots",
+      "post_crypto": "[Crypto] Crypto Defies Inflation Blues: Big Bets and Regulatory Twists",
+      "post_tech": "[Tech] Google's $32B Wiz Buy Fuels AI Security Boom",
+      "posts_generated": "3 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 21660,
+      "output_tokens": 21698,
+      "images_generated": 3,
+      "estimated_cost_usd": 1.2945
+    }
   }
 ]
