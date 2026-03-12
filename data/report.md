@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 11) | 5 | **$1.5820** |
-| 📆 This Week (since Mar 09) | 19 | **$5.0084** |
-| 🗓️ This Month (March 2026) | 66 | **$15.5726** |
-| 🏦 Overall All-Time | 66 | **$15.5726** |
+| 📅 Today (March 11) | 6 | **$1.6874** |
+| 📆 This Week (since Mar 09) | 20 | **$5.1138** |
+| 🗓️ This Month (March 2026) | 67 | **$15.6780** |
+| 🏦 Overall All-Time | 67 | **$15.6780** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 11, 2026 at 08:40 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 30.9 seconds
+**Estimated cost:** $0.1054
+
+### What happened (step by step)
+
+1. **20:40:58 PST** — Tweet bot started
+2. **20:40:58 PST** — API keys validated
+3. **20:41:29 PST** — Tweet posted and logged (type: engagement, ID: 2031938602117243181)
+4. **20:41:29 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Crypto's pushing back against these inflation hits with some huge bets rolling in and regulatory changes shaking things up. I'm seeing real momentum, but it's still volatile. You jumping in on the dip or holding off for smoother waters?
+
+**Tweet type:** engagement
+**Tweet ID:** 2031938602117243181
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,037 tokens, got back 126 tokens — **$0.0354**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1054**
 
 ---
 ## 🐦 Tweet Bot — March 11, 2026 at 03:02 PM PST
