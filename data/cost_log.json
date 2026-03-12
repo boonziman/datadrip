@@ -3131,5 +3131,34 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0368
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-12",
+    "start_time": "2026-03-12T12:55:28.638485-07:00",
+    "end_time": "2026-03-12T12:55:50.159133-07:00",
+    "duration_seconds": 21.5,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3196,
+        "output_tokens": 88,
+        "cost": 0.03548
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Google's rolling out AI-powered flood predictions in Maps, mixing that with immersive views for better navigation. It's cool tech, but does it make you trust AI more for real-world stuff like disaster prep, or are you skeptical about the accuracy? What's your take?",
+      "tweet_type": "engagement",
+      "tweet_id": "2032183805444812803",
+      "had_image": false
+    },
+    "totals": {
+      "input_tokens": 3196,
+      "output_tokens": 88,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0355
+    }
   }
 ]

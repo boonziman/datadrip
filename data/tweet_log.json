@@ -507,5 +507,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/ais-hardware-hustle-nvidias-billions-vs-metas-chips/",
     "tweet_id": "2032147407106908176"
+  },
+  {
+    "timestamp": "2026-03-12 12:55 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "Google's rolling out AI-powered flood predictions in Maps, mixing that with immersive views for better navigation. It's cool tech, but does it make you trust AI more for real-world stuff like disaster prep, or are you skeptical about the accuracy? What's your take?",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "",
+    "tweet_id": "2032183805444812803"
   }
 ]

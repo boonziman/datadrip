@@ -9,12 +9,43 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 12) | 3 | **$1.4450** |
-| 📆 This Week (since Mar 09) | 24 | **$6.5943** |
-| 🗓️ This Month (March 2026) | 71 | **$17.1585** |
-| 🏦 Overall All-Time | 71 | **$17.1585** |
+| 📅 Today (March 12) | 4 | **$1.4805** |
+| 📆 This Week (since Mar 09) | 25 | **$6.6298** |
+| 🗓️ This Month (March 2026) | 72 | **$17.1940** |
+| 🏦 Overall All-Time | 72 | **$17.1940** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 12, 2026 at 12:55 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 21.5 seconds
+**Estimated cost:** $0.0355
+
+### What happened (step by step)
+
+1. **12:55:28 PST** — Tweet bot started
+2. **12:55:28 PST** — API keys validated
+3. **12:55:50 PST** — Tweet posted and logged (type: engagement, ID: 2032183805444812803)
+4. **12:55:50 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Google's rolling out AI-powered flood predictions in Maps, mixing that with immersive views for better navigation. It's cool tech, but does it make you trust AI more for real-world stuff like disaster prep, or are you skeptical about the accuracy? What's your take?
+
+**Tweet type:** engagement
+**Tweet ID:** 2032183805444812803
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,196 tokens, got back 88 tokens — **$0.0355**
+
+**💰 Total estimated cost: $0.0355**
 
 ---
 ## 🐦 Tweet Bot — March 12, 2026 at 10:30 AM PST
