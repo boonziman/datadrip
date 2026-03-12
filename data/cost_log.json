@@ -3160,5 +3160,35 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0355
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-12",
+    "start_time": "2026-03-12T15:01:48.763581-07:00",
+    "end_time": "2026-03-12T15:02:11.320233-07:00",
+    "duration_seconds": 22.6,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3147,
+        "output_tokens": 144,
+        "cost": 0.03723
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Google's blending AI flood predictions with immersive views in Maps, making navigation way smarter for dodging disasters. I looked at how this could actually save lives in real scenarios, but there are some accuracy questions that popped up in the data. It's impressive tech with real potential impact.\nhttps://datadripco.com/posts/googles-ai-maps-revolution-flood-predictions-meet-immersive-navigation/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2032215603117764710",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/googles-ai-maps-revolution-flood-predictions-meet-immersive-navigation/"
+    },
+    "totals": {
+      "input_tokens": 3147,
+      "output_tokens": 144,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0372
+    }
   }
 ]
