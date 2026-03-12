@@ -2992,5 +2992,114 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1056
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-12",
+    "start_time": "2026-03-12T07:03:36.041045-07:00",
+    "end_time": "2026-03-12T07:15:37.611480-07:00",
+    "duration_seconds": 721.6,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2859,
+        "output_tokens": 3541,
+        "cost": 0.17023
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3890,
+        "output_tokens": 3319,
+        "cost": 0.17166
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 332,
+        "output_tokens": 223,
+        "cost": 0.01224
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2973,
+        "output_tokens": 3308,
+        "cost": 0.16205
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3656,
+        "output_tokens": 3773,
+        "cost": 0.18748
+      },
+      {
+        "label": "Crypto Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 328,
+        "output_tokens": 255,
+        "cost": 0.01348
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3036,
+        "output_tokens": 3981,
+        "cost": 0.1896
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4330,
+        "output_tokens": 3265,
+        "cost": 0.1739
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 336,
+        "output_tokens": 214,
+        "cost": 0.01192
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "post_ai": "[AI] AI's Hardware Hustle: Nvidia's Billions vs Meta's Chips",
+      "post_crypto": "[Crypto] Quantum Shadows Over Crypto's Yield Boom",
+      "post_tech": "[Tech] Google's AI Maps Revolution: Flood Predictions Meet Immersive Navigation",
+      "posts_generated": "3 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 21740,
+      "output_tokens": 21879,
+      "images_generated": 3,
+      "estimated_cost_usd": 1.3026
+    }
   }
 ]
