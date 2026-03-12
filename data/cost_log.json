@@ -2925,5 +2925,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1054
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-11",
+    "start_time": "2026-03-11T22:06:58.370402-07:00",
+    "end_time": "2026-03-11T22:07:15.347774-07:00",
+    "duration_seconds": 17.0,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2982,
+        "output_tokens": 142,
+        "cost": 0.0355
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Crypto's holding strong against inflation woes, with massive bets pouring in and some key regulatory shifts that could change the game. I broke down the big players involved and what this means for the market's rebound. It's got me optimistic, but there are twists worth watching. Check it out.\nhttps://datadripco.com/posts/crypto-defies-inflation-blues-big-bets-and-regulatory-twists/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2031960186978504893",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/crypto-defies-inflation-blues-big-bets-and-regulatory-twists/"
+    },
+    "totals": {
+      "input_tokens": 2982,
+      "output_tokens": 142,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0355
+    }
   }
 ]

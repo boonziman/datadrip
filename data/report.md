@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 11) | 6 | **$1.6874** |
-| 📆 This Week (since Mar 09) | 20 | **$5.1138** |
-| 🗓️ This Month (March 2026) | 67 | **$15.6780** |
-| 🏦 Overall All-Time | 67 | **$15.6780** |
+| 📅 Today (March 11) | 7 | **$1.7229** |
+| 📆 This Week (since Mar 09) | 21 | **$5.1493** |
+| 🗓️ This Month (March 2026) | 68 | **$15.7135** |
+| 🏦 Overall All-Time | 68 | **$15.7135** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 11, 2026 at 10:06 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 17.0 seconds
+**Estimated cost:** $0.0355
+
+### What happened (step by step)
+
+1. **22:06:58 PST** — Tweet bot started
+2. **22:06:58 PST** — API keys validated
+3. **22:07:15 PST** — Tweet posted and logged (type: blog_teaser, ID: 2031960186978504893)
+4. **22:07:15 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Crypto's holding strong against inflation woes, with massive bets pouring in and some key regulatory shifts that could change the game. I broke down the big players involved and what this means for the market's rebound. It's got me optimistic, but there are twists worth watching. Check it out.
+https://datadripco.com/posts/crypto-defies-inflation-blues-big-bets-and-regulatory-twists/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2031960186978504893
+**Blog post promoted:** https://datadripco.com/posts/crypto-defies-inflation-blues-big-bets-and-regulatory-twists/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,982 tokens, got back 142 tokens — **$0.0355**
+
+**💰 Total estimated cost: $0.0355**
 
 ---
 ## 🐦 Tweet Bot — March 11, 2026 at 08:40 PM PST
