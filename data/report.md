@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 11) | 7 | **$1.7229** |
-| 📆 This Week (since Mar 09) | 21 | **$5.1493** |
-| 🗓️ This Month (March 2026) | 68 | **$15.7135** |
-| 🏦 Overall All-Time | 68 | **$15.7135** |
+| 📅 Today (March 12) | 1 | **$0.1056** |
+| 📆 This Week (since Mar 09) | 22 | **$5.2549** |
+| 🗓️ This Month (March 2026) | 69 | **$15.8191** |
+| 🏦 Overall All-Time | 69 | **$15.8191** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 12, 2026 at 12:29 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 21.7 seconds
+**Estimated cost:** $0.1056
+
+### What happened (step by step)
+
+1. **00:29:34 PST** — Tweet bot started
+2. **00:29:34 PST** — API keys validated
+3. **00:29:56 PST** — Tweet posted and logged (type: engagement, ID: 2031996093521592790)
+4. **00:29:56 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI's pushing into physical robots more every day, like with that recent LeCun talk on needing $1B for real progress. Do you think we'll see AI bots doing household chores reliably by 2027, or is the hardware still too far behind? Curious what you all think.
+
+**Tweet type:** engagement
+**Tweet ID:** 2031996093521592790
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,021 tokens, got back 135 tokens — **$0.0356**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1056**
 
 ---
 ## 🐦 Tweet Bot — March 11, 2026 at 10:06 PM PST
