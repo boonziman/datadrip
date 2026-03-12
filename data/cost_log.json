@@ -3101,5 +3101,35 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.3026
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-12",
+    "start_time": "2026-03-12T10:30:54.302144-07:00",
+    "end_time": "2026-03-12T10:31:12.111001-07:00",
+    "duration_seconds": 17.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3140,
+        "output_tokens": 136,
+        "cost": 0.03684
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Nvidia's raking in billions from AI chips, but Meta's building their own to cut costs. I dug into how this hardware race is heating up, with Nvidia dominating sales while Meta aims to slash dependency. It's wild seeing the numbers stack up, and what it means for the rest of us chasing AI tech. Some eye-opening contrasts in there.\nhttps://datadripco.com/posts/ais-hardware-hustle-nvidias-billions-vs-metas-chips/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2032147407106908176",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-hardware-hustle-nvidias-billions-vs-metas-chips/"
+    },
+    "totals": {
+      "input_tokens": 3140,
+      "output_tokens": 136,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0368
+    }
   }
 ]

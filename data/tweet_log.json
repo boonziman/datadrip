@@ -498,5 +498,14 @@
     "image_prompt": "Photo-realistic image of a humanoid robot arm assembling a simple circuit board in a modern lab setting, with engineers in the background observing, natural daylight from windows, wide-angle shot like a Wired magazine feature.",
     "promoted_url": "",
     "tweet_id": "2031996093521592790"
+  },
+  {
+    "timestamp": "2026-03-12 10:31 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Nvidia's raking in billions from AI chips, but Meta's building their own to cut costs. I dug into how this hardware race is heating up, with Nvidia dominating sales while Meta aims to slash dependency. It's wild seeing the numbers stack up, and what it means for the rest of us chasing AI tech. Some eye-opening contrasts in there.\nhttps://datadripco.com/posts/ais-hardware-hustle-nvidias-billions-vs-metas-chips/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ais-hardware-hustle-nvidias-billions-vs-metas-chips/",
+    "tweet_id": "2032147407106908176"
   }
 ]

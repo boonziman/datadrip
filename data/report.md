@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 12) | 2 | **$1.4082** |
-| 📆 This Week (since Mar 09) | 23 | **$6.5575** |
-| 🗓️ This Month (March 2026) | 70 | **$17.1217** |
-| 🏦 Overall All-Time | 70 | **$17.1217** |
+| 📅 Today (March 12) | 3 | **$1.4450** |
+| 📆 This Week (since Mar 09) | 24 | **$6.5943** |
+| 🗓️ This Month (March 2026) | 71 | **$17.1585** |
+| 🏦 Overall All-Time | 71 | **$17.1585** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 12, 2026 at 10:30 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 17.8 seconds
+**Estimated cost:** $0.0368
+
+### What happened (step by step)
+
+1. **10:30:54 PST** — Tweet bot started
+2. **10:30:54 PST** — API keys validated
+3. **10:31:12 PST** — Tweet posted and logged (type: blog_teaser, ID: 2032147407106908176)
+4. **10:31:12 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Nvidia's raking in billions from AI chips, but Meta's building their own to cut costs. I dug into how this hardware race is heating up, with Nvidia dominating sales while Meta aims to slash dependency. It's wild seeing the numbers stack up, and what it means for the rest of us chasing AI tech. Some eye-opening contrasts in there.
+https://datadripco.com/posts/ais-hardware-hustle-nvidias-billions-vs-metas-chips/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2032147407106908176
+**Blog post promoted:** https://datadripco.com/posts/ais-hardware-hustle-nvidias-billions-vs-metas-chips/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,140 tokens, got back 136 tokens — **$0.0368**
+
+**💰 Total estimated cost: $0.0368**
 
 ---
 ## 📝 Blog Bot — March 12, 2026 at 07:03 AM PST
