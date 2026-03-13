@@ -1,0 +1,27 @@
+{{- /*
+  Post Badge Partial
+  - NEW: posts published within 48 hours
+  - HOT: posts published 2-7 days ago (simulates trending until real analytics connected)
+  - Can also be overridden with frontmatter: hot: true or featured: true
+*/ -}}
+
+{{- $now := now }}
+{{- $postAge := $now.Sub .Date }}
+{{- $hoursOld := div $postAge.Hours 1 }}
+
+{{- /* Check frontmatter overrides */ -}}
+{{- $isHot := .Params.hot | default false }}
+{{- $isFeatured := .Params.featured | default false }}
+
+{{- /* Auto-calculate based on age */ -}}
+{{- $isNew := lt $hoursOld 48 }}
+{{- $isTrending := and (ge $hoursOld 48) (lt $hoursOld 168) }}
+
+{{- /* Render badge */ -}}
+{{- if or $isFeatured }}
+<span class="post-badge post-badge--featured">★ FEATURED</span>
+{{- else if $isNew }}
+<span class="post-badge post-badge--new">NEW</span>
+{{- else if or $isHot $isTrending }}
+<span class="post-badge post-badge--hot">🔥 HOT</span>
+{{- end -}}

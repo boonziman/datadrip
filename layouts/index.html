@@ -110,6 +110,7 @@
                         {{- end }}
                         
                         <article class="story-card">
+                            {{- partial "post-badge.html" $post }}
                             <a href="{{ $post.Permalink }}">
                                 {{- $img := $post.Params.featuredImage }}
                                 {{- if $img }}

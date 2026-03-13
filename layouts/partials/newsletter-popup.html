@@ -1,0 +1,130 @@
+{{- /*
+  Newsletter Popup - Non-intrusive slide-in
+  Appears after 45 seconds OR 70% scroll depth (whichever comes first)
+  Remembers dismissal for 7 days
+  Does NOT appear on: thank-you, privacy, terms, contact, search pages
+*/ -}}
+
+{{- $skipPages := slice "thank-you" "privacy" "terms" "contact" "search" }}
+{{- $currentPage := "" }}
+{{- with .File }}{{ $currentPage = .ContentBaseName }}{{ end }}
+{{- $shouldShow := not (in $skipPages $currentPage) }}
+
+{{- if $shouldShow }}
+<div class="nl-popup" id="nl-popup" role="dialog" aria-labelledby="nl-popup-title" aria-hidden="true">
+    <div class="nl-popup-backdrop" data-close></div>
+    <div class="nl-popup-container">
+        <button class="nl-popup-close" data-close aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        
+        <div class="nl-popup-content">
+            <div class="nl-popup-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <path d="m22 6-10 7L2 6"/>
+                </svg>
+            </div>
+            
+            <h2 class="nl-popup-title" id="nl-popup-title">Stay Ahead of the Curve</h2>
+            <p class="nl-popup-desc">Join <strong>10,000+ readers</strong> getting daily AI, Crypto & Tech insights. Zero spam, unsubscribe anytime.</p>
+            
+            <form class="nl-popup-form" onsubmit="return nlPopupSubmit(this);">
+                <div class="nl-popup-input-wrap">
+                    <input type="email" 
+                           id="nl-popup-email" 
+                           class="nl-popup-input" 
+                           required 
+                           placeholder="Enter your email"
+                           aria-label="Email address">
+                    <button type="submit" class="nl-popup-btn">
+                        Subscribe
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+                <label class="nl-popup-consent">
+                    <input type="checkbox" required>
+                    <span>I agree to the <a href="/privacy/" target="_blank">Privacy Policy</a></span>
+                </label>
+            </form>
+            
+            <p class="nl-popup-trust">🔒 We respect your privacy. No spam, ever.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    var popup = document.getElementById('nl-popup');
+    if (!popup) return;
+    
+    var STORAGE_KEY = 'dd_nl_dismissed';
+    var DISMISS_DAYS = 7;
+    var SHOW_DELAY_MS = 45000; // 45 seconds
+    var SCROLL_THRESHOLD = 0.70; // 70%
+    
+    // Check if already dismissed
+    var dismissed = localStorage.getItem(STORAGE_KEY);
+    if (dismissed) {
+        var dismissedDate = new Date(parseInt(dismissed));
+        var now = new Date();
+        var daysSince = (now - dismissedDate) / (1000 * 60 * 60 * 24);
+        if (daysSince < DISMISS_DAYS) return;
+    }
+    
+    var shown = false;
+    
+    function showPopup() {
+        if (shown) return;
+        shown = true;
+        popup.classList.add('is-visible');
+        popup.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function hidePopup() {
+        popup.classList.remove('is-visible');
+        popup.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        localStorage.setItem(STORAGE_KEY, Date.now().toString());
+    }
+    
+    // Time-based trigger
+    setTimeout(showPopup, SHOW_DELAY_MS);
+    
+    // Scroll-based trigger
+    var scrollTriggered = false;
+    window.addEventListener('scroll', function() {
+        if (scrollTriggered || shown) return;
+        var scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+        if (scrollPercent >= SCROLL_THRESHOLD) {
+            scrollTriggered = true;
+            showPopup();
+        }
+    }, { passive: true });
+    
+    // Close handlers
+    popup.querySelectorAll('[data-close]').forEach(function(el) {
+        el.addEventListener('click', hidePopup);
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup.classList.contains('is-visible')) {
+            hidePopup();
+        }
+    });
+})();
+
+function nlPopupSubmit(form) {
+    var email = document.getElementById('nl-popup-email').value;
+    var url = 'https://gmail.us20.list-manage.com/subscribe?u=bef06fe2737e08e1c01ae0f28&id=b7103eb655&MERGE0=' + encodeURIComponent(email) + '&EMAIL=' + encodeURIComponent(email);
+    localStorage.setItem('dd_nl_dismissed', Date.now().toString());
+    window.location.href = url;
+    return false;
+}
+</script>
+{{- end }}

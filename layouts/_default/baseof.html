@@ -18,6 +18,8 @@
 
 <body id="top">
     <a href="#main" class="skip-link">Skip to content</a>
+
+    {{- partial "ticker.html" . -}}
     
     {{- partial "header.html" . -}}
     
@@ -26,6 +28,9 @@
     </main>
     
     {{- partial "footer.html" . -}}
+
+    {{- partial "newsletter-popup.html" . -}}
+    {{- partial "cookie-consent.html" . -}}
     
     {{ $js := resources.Get "js/custom.js" }}
     {{ if $js }}

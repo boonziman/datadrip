@@ -1,0 +1,58 @@
+{{- /*
+  Cookie Consent Banner - GDPR Compliant
+  - Shows on first visit
+  - Stores consent in localStorage
+  - If declined, disables Google Analytics
+*/ -}}
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-hidden="true">
+    <div class="cookie-banner-inner">
+        <div class="cookie-content">
+            <h3 class="cookie-title" id="cookie-title">🍪 We value your privacy</h3>
+            <p class="cookie-text">We use cookies and similar technologies to analyze traffic and improve your experience. By clicking "Accept", you consent to our use of cookies. <a href="/privacy/">Learn more</a></p>
+        </div>
+        <div class="cookie-actions">
+            <button class="cookie-btn cookie-btn--decline" id="cookie-decline">Decline</button>
+            <button class="cookie-btn cookie-btn--accept" id="cookie-accept">Accept All</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    var banner = document.getElementById('cookie-banner');
+    var CONSENT_KEY = 'dd_cookie_consent';
+    
+    // Check existing consent
+    var consent = localStorage.getItem(CONSENT_KEY);
+    
+    if (consent === null) {
+        // No decision yet - show banner after small delay
+        setTimeout(function() {
+            banner.classList.add('is-visible');
+            banner.setAttribute('aria-hidden', 'false');
+        }, 1500);
+    } else if (consent === 'declined') {
+        // User declined - disable GA
+        window['ga-disable-G-MV5WLFFD8Z'] = true;
+    }
+    
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+        localStorage.setItem(CONSENT_KEY, 'accepted');
+        banner.classList.remove('is-visible');
+        banner.setAttribute('aria-hidden', 'true');
+    });
+    
+    document.getElementById('cookie-decline').addEventListener('click', function() {
+        localStorage.setItem(CONSENT_KEY, 'declined');
+        window['ga-disable-G-MV5WLFFD8Z'] = true;
+        // Delete existing GA cookies
+        document.cookie.split(';').forEach(function(c) {
+            if (c.trim().startsWith('_ga')) {
+                document.cookie = c.trim().split('=')[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+            }
+        });
+        banner.classList.remove('is-visible');
+        banner.setAttribute('aria-hidden', 'true');
+    });
+})();
+</script>

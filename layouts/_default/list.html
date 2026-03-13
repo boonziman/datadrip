@@ -130,6 +130,7 @@
                 {{- range $index, $page := $paginator.Pages }}
                 {{- if ge $index $startIndex }}
                 <article class="archive-card">
+                    {{- partial "post-badge.html" $page }}
                     <a href="{{ $page.Permalink }}">
                         {{- $img := or $page.Params.featuredImage $page.Params.cover.image }}
                         <div class="archive-card-image">
