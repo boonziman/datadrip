@@ -1,6 +1,6 @@
 baseURL: 'https://datadripco.com/'
 languageCode: 'en-us'
-title: 'Datadrip'
+title: 'Datadripco'
 theme: 'PaperMod'
 paginate: 6
 enableRobotsTXT: true
@@ -17,11 +17,11 @@ outputs:
     - RSS
     - JSON
 
-copyright: "© 2026 Datadrip. All rights reserved."
+copyright: "© 2026 Datadripco. All rights reserved."
 
 params:
-  description: "Datadrip — Daily original insights on AI, Crypto & Tech. Smart analysis, zero fluff."
-  author: "Datadrip Team"
+  description: "Datadripco — Daily original insights on AI, Crypto & Tech. Smart analysis, zero fluff."
+  author: "Datadripco Team"
   keywords: ["AI news", "crypto news", "tech news", "artificial intelligence", "machine learning", "bitcoin", "ethereum", "grok", "blockchain", "tech trends", "ai trends", "crypto trends"]
   defaultTheme: light
   disableThemeToggle: true
@@ -36,7 +36,7 @@ params:
   ShowCanonicalLink: true  # prevents duplicate-content penalties
 
   homeInfoParams:
-    Title: "Datadrip"
+    Title: "Datadripco"
     Content: "Your daily source for original, high-value insights on Artificial Intelligence, Cryptocurrency, and Emerging Technology. Fresh news. Real analysis. Built for forward-thinkers who want to stay ahead."
 
   social:

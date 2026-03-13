@@ -2,124 +2,205 @@
 
 {{- if (and site.Params.profileMode.enabled .IsHome) }}
 {{- partial "index_profile.html" . }}
-{{- else }} {{/* if not profileMode */}}
+{{- else }}
 
-{{- if not .IsHome | and .Title }}
-<header class="page-header">
-  {{- partial "breadcrumbs.html" . }}
-  <h1>
-    {{ .Title }}
-    {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
-    {{- with .OutputFormats.Get "rss" }}
-    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" height="23">
-        <path d="M4 11a9 9 0 0 1 9 9" />
-        <path d="M4 4a16 16 0 0 1 16 16" />
-        <circle cx="5" cy="19" r="1" />
-      </svg>
-    </a>
-    {{- end }}
-    {{- end }}
-  </h1>
-  {{- if .Description }}
-  <div class="post-description">
-    {{ .Description | markdownify }}
-  </div>
-  {{- end }}
-</header>
-{{- end }}
-
-{{- if .Content }}
-<div class="post-content">
-  {{- if not (.Param "disableAnchoredHeadings") }}
-  {{- partial "anchored_headings.html" .Content -}}
-  {{- else }}{{ .Content }}{{ end }}
-</div>
-{{- end }}
-
+{{- /* Get pages */ -}}
 {{- $pages := union .RegularPages .Sections }}
-
 {{- if .IsHome }}
 {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
-{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
 {{- end }}
-
 {{- $paginator := .Paginate $pages }}
 
-{{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
-{{- partial "home_info.html" . }}
-{{- end }}
-
-{{- $term := .Data.Term }}
-{{- range $index, $page := $paginator.Pages }}
-
-{{- $class := "post-entry" }}
-
-{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
-{{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
-{{- $class = "first-entry" }}
-{{- else if $term }}
-{{- $class = "post-entry tag-entry" }}
-{{- end }}
-
-<article class="{{ $class }}">
-  {{- $featuredImage := or .Params.featuredImage .Params.cover.image }}
-  {{- if $featuredImage }}
-  <div class="entry-image">
-    <img src="{{ $featuredImage | relURL }}" alt="{{ .Title }}" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px;" />
-  </div>
-  {{- end }}
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-      {{- .Title }}
-      {{- if .Draft }}
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
-      {{- end }}
-    </h2>
-  </header>
-  {{- if (ne (.Param "hideSummary") true) }}
-  <div class="entry-content">
-    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-  </div>
-  {{- end }}
-  {{- if not (.Param "hideMeta") }}
-  <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
-  </footer>
-  {{- end }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-</article>
-{{- end }}
-
-{{- if gt $paginator.TotalPages 1 }}
-<footer class="page-footer">
-  <nav class="pagination">
-    {{- if $paginator.HasPrev }}
-    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
-      «&nbsp;{{ i18n "prev_page" }}&nbsp;
-      {{- if (.Param "ShowPageNums") }}
-      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
-      {{- end }}
-    </a>
+<div class="archive-page">
+    {{- /* Page Header */ -}}
+    {{- if not .IsHome | and .Title }}
+    <header class="archive-header">
+        <div class="archive-header-bg">
+            {{- if eq .Title "AI" }}
+            <div class="header-pattern header-pattern--ai"></div>
+            {{- else if eq .Title "Crypto" }}
+            <div class="header-pattern header-pattern--crypto"></div>
+            {{- else if eq .Title "Tech" }}
+            <div class="header-pattern header-pattern--tech"></div>
+            {{- else }}
+            <div class="header-pattern"></div>
+            {{- end }}
+        </div>
+        <div class="container">
+            <div class="archive-header-content">
+                {{- partial "breadcrumbs.html" . }}
+                <div class="archive-icon">
+                    {{- if eq .Title "AI" }}
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
+                        <path d="M12 12v10"/>
+                        <path d="M8 22h8"/>
+                        <circle cx="12" cy="6" r="1"/>
+                    </svg>
+                    {{- else if eq .Title "Crypto" }}
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.5 8.5h3a2 2 0 0 1 0 4h-3v-4z"/>
+                        <path d="M9.5 12.5h4a2 2 0 0 1 0 4h-4v-4z"/>
+                        <path d="M12 6v2"/>
+                        <path d="M12 16v2"/>
+                    </svg>
+                    {{- else if eq .Title "Tech" }}
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <path d="M8 21h8"/>
+                        <path d="M12 17v4"/>
+                        <path d="M7 8h2"/>
+                        <path d="M7 11h4"/>
+                    </svg>
+                    {{- else }}
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                    {{- end }}
+                </div>
+                <h1 class="archive-title">{{ .Title }}</h1>
+                {{- if .Description }}
+                <p class="archive-description">{{ .Description | markdownify }}</p>
+                {{- else }}
+                <p class="archive-description">
+                    {{- if eq .Title "AI" }}The latest in artificial intelligence, machine learning breakthroughs, and the future of intelligent systems.
+                    {{- else if eq .Title "Crypto" }}Breaking cryptocurrency news, blockchain developments, and digital asset market analysis.
+                    {{- else if eq .Title "Tech" }}Innovation updates, emerging technologies, and digital transformation insights.
+                    {{- else }}Explore our collection of insights and analysis.
+                    {{- end }}
+                </p>
+                {{- end }}
+                <div class="archive-meta">
+                    <span class="archive-count">{{ len $pages }} Articles</span>
+                    <span class="archive-divider">·</span>
+                    <span class="archive-updated">Updated daily</span>
+                </div>
+            </div>
+        </div>
+    </header>
     {{- end }}
-    {{- if $paginator.HasNext }}
-    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
-      {{- i18n "next_page" }}&nbsp;
-      {{- if (.Param "ShowPageNums") }}
-      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
-      {{- end }}&nbsp;»
-    </a>
+
+    {{- /* Featured Article (first on page 1) */ -}}
+    {{- if and (eq $paginator.PageNumber 1) (gt (len $paginator.Pages) 0) }}
+    {{- with index $paginator.Pages 0 }}
+    <section class="archive-featured">
+        <div class="container">
+            <article class="featured-article">
+                <a href="{{ .Permalink }}">
+                    {{- $img := or .Params.featuredImage .Params.cover.image }}
+                    <div class="featured-image">
+                        {{- if $img }}
+                        <img src="{{ $img | relURL }}" alt="{{ .Title }}" loading="eager">
+                        {{- else }}
+                        <div class="featured-image-placeholder">
+                            {{- with .Params.categories }}{{ index . 0 }}{{- else }}DATADRIPCO{{- end }}
+                        </div>
+                        {{- end }}
+                    </div>
+                    <div class="featured-content">
+                        <span class="featured-label">Featured</span>
+                        <h2 class="featured-title">{{ .Title }}</h2>
+                        <p class="featured-excerpt">{{ .Summary | plainify | truncate 200 }}</p>
+                        <div class="featured-meta">
+                            <time>{{ .Date.Format "January 2, 2006" }}</time>
+                            <span class="meta-dot">·</span>
+                            <span>{{ .ReadingTime }} min read</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        </div>
+    </section>
     {{- end }}
-  </nav>
-</footer>
+    {{- end }}
+
+    {{- /* Article Grid */ -}}
+    <section class="archive-content">
+        <div class="container">
+            <div class="archive-grid">
+                {{- $startIndex := 0 }}
+                {{- if eq $paginator.PageNumber 1 }}
+                {{- $startIndex = 1 }}
+                {{- end }}
+                
+                {{- range $index, $page := $paginator.Pages }}
+                {{- if ge $index $startIndex }}
+                <article class="archive-card">
+                    <a href="{{ $page.Permalink }}">
+                        {{- $img := or $page.Params.featuredImage $page.Params.cover.image }}
+                        <div class="archive-card-image">
+                            {{- if $img }}
+                            <img src="{{ $img | relURL }}" alt="{{ $page.Title }}" loading="lazy">
+                            {{- else }}
+                            <div class="archive-card-placeholder">
+                                {{- with $page.Params.categories }}{{ index . 0 }}{{- else }}DD{{- end }}
+                            </div>
+                            {{- end }}
+                        </div>
+                        <div class="archive-card-content">
+                            {{- with $page.Params.categories }}
+                            <span class="archive-card-category">{{ index . 0 }}</span>
+                            {{- end }}
+                            <h3 class="archive-card-title">{{ $page.Title }}</h3>
+                            <p class="archive-card-excerpt">{{ $page.Summary | plainify | truncate 100 }}</p>
+                            <div class="archive-card-meta">
+                                <time>{{ $page.Date.Format "Jan 2, 2006" }}</time>
+                                <span>{{ $page.ReadingTime }} min</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                {{- end }}
+                {{- end }}
+            </div>
+
+            {{- /* Pagination */ -}}
+            {{- if gt $paginator.TotalPages 1 }}
+            <nav class="archive-pagination">
+                {{- if $paginator.HasPrev }}
+                <a href="{{ $paginator.Prev.URL }}" class="pagination-btn pagination-prev">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                    Newer
+                </a>
+                {{- else }}
+                <span class="pagination-btn pagination-disabled">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                    Newer
+                </span>
+                {{- end }}
+                
+                <span class="pagination-info">
+                    Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+                </span>
+                
+                {{- if $paginator.HasNext }}
+                <a href="{{ $paginator.Next.URL }}" class="pagination-btn pagination-next">
+                    Older
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </a>
+                {{- else }}
+                <span class="pagination-btn pagination-disabled">
+                    Older
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </span>
+                {{- end }}
+            </nav>
+            {{- end }}
+        </div>
+    </section>
+</div>
+
 {{- end }}
-
-{{- end }}{{/* end profileMode */}}
-
-{{- end }}{{- /* end main */ -}}
+{{- end }}

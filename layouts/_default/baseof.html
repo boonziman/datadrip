@@ -1,0 +1,35 @@
+{{- /* 
+  Datadrip Custom Base Template
+*/ -}}
+{{- if lt hugo.Version "0.146.0" }}
+{{- errorf "=> hugo v0.146.0 or greater is required" }}
+{{- end -}}
+
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="light">
+<head>
+    {{- partial "head.html" . }}
+    
+    {{- /* Inter font */ -}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body id="top">
+    <a href="#main" class="skip-link">Skip to content</a>
+    
+    {{- partial "header.html" . -}}
+    
+    <main id="main">
+        {{- block "main" . }}{{ end }}
+    </main>
+    
+    {{- partial "footer.html" . -}}
+    
+    {{ $js := resources.Get "js/custom.js" }}
+    {{ if $js }}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+    {{ end }}
+</body>
+</html>

@@ -1,0 +1,172 @@
+{{- /*
+  ============================================================
+  DATADRIP AD SPACE PARTIAL
+  ============================================================
+  
+  A reusable component for placing advertisements throughout the site.
+  
+  USAGE:
+  {{ partial "ad-space.html" (dict "location" "LOCATION_NAME" "context" .) }}
+  
+  LOCATIONS (use these names for the "location" parameter):
+  - "header-banner"     : Below the header, full-width leaderboard (728x90)
+  - "sidebar"           : In the sidebar, typically square (300x250) or skyscraper (160x600)
+  - "in-article"        : Inserted within article content (responsive)
+  - "between-posts"     : Between post listings on homepage/archives
+  - "footer-banner"     : Above the footer, full-width (728x90)
+  - "mobile-sticky"     : Mobile-only sticky bottom banner (320x50)
+  
+  TO ADD YOUR AD CODE:
+  1. Find the location below matching where you want ads
+  2. Replace the placeholder comment with your ad network code
+     (e.g., Google AdSense, Carbon Ads, etc.)
+  3. Uncomment the container div
+  
+  EXAMPLE (Google AdSense):
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  
+  ============================================================
+*/ -}}
+
+{{ $location := .location | default "default" }}
+{{ $context := .context }}
+
+{{- /* HEADER BANNER - Leaderboard (728x90) */ -}}
+{{- if eq $location "header-banner" }}
+<div class="dd-ad dd-ad-header" data-ad-location="header-banner">
+    <div class="dd-ad-container">
+        <!-- 
+        =====================================================
+        HEADER BANNER AD (728x90 Leaderboard)
+        Insert your ad code here. Example:
+        
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        =====================================================
+        -->
+        <span class="dd-ad-placeholder">Advertisement</span>
+    </div>
+</div>
+{{- end }}
+
+{{- /* SIDEBAR AD - Square (300x250) or Skyscraper */ -}}
+{{- if eq $location "sidebar" }}
+<aside class="dd-ad dd-ad-sidebar" data-ad-location="sidebar">
+    <div class="dd-ad-container">
+        <!-- 
+        =====================================================
+        SIDEBAR AD (300x250 Medium Rectangle)
+        Insert your ad code here. Example:
+        
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:300px;height:250px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        =====================================================
+        -->
+        <span class="dd-ad-placeholder">Advertisement</span>
+    </div>
+</aside>
+{{- end }}
+
+{{- /* IN-ARTICLE AD - Responsive, inserted within content */ -}}
+{{- if eq $location "in-article" }}
+<div class="dd-ad dd-ad-in-article" data-ad-location="in-article">
+    <div class="dd-ad-container">
+        <!-- 
+        =====================================================
+        IN-ARTICLE AD (Responsive)
+        Insert your ad code here. Example:
+        
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        =====================================================
+        -->
+        <span class="dd-ad-placeholder">Advertisement</span>
+    </div>
+</div>
+{{- end }}
+
+{{- /* BETWEEN POSTS AD - Used in list/archive pages */ -}}
+{{- if eq $location "between-posts" }}
+<div class="dd-ad dd-ad-between-posts" data-ad-location="between-posts">
+    <div class="dd-ad-container">
+        <!-- 
+        =====================================================
+        BETWEEN POSTS AD (Responsive)
+        Insert your ad code here. Example:
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="fluid"
+             data-ad-layout-key="-fb+5w+4e-db+86"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        =====================================================
+        -->
+        <span class="dd-ad-placeholder">Advertisement</span>
+    </div>
+</div>
+{{- end }}
+
+{{- /* FOOTER BANNER - Leaderboard (728x90) */ -}}
+{{- if eq $location "footer-banner" }}
+<div class="dd-ad dd-ad-footer" data-ad-location="footer-banner">
+    <div class="dd-container">
+        <div class="dd-ad-container">
+            <!-- 
+            =====================================================
+            FOOTER BANNER AD (728x90 Leaderboard)
+            Insert your ad code here. Example:
+            
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            =====================================================
+            -->
+            <span class="dd-ad-placeholder">Advertisement</span>
+        </div>
+    </div>
+</div>
+{{- end }}
+
+{{- /* MOBILE STICKY AD - Bottom of viewport on mobile */ -}}
+{{- if eq $location "mobile-sticky" }}
+<div class="dd-ad dd-ad-mobile-sticky" data-ad-location="mobile-sticky">
+    <div class="dd-ad-container">
+        <!-- 
+        =====================================================
+        MOBILE STICKY AD (320x50 Mobile Banner)
+        This ad is only visible on mobile devices.
+        Insert your ad code here. Example:
+        
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:320px;height:50px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        =====================================================
+        -->
+        <span class="dd-ad-placeholder">Ad</span>
+        <button class="dd-ad-close" aria-label="Close ad">×</button>
+    </div>
+</div>
+{{- end }}

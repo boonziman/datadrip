@@ -1,0 +1,66 @@
+{{- /*
+  Datadrip Header - Clean, Modern, Professional
+*/ -}}
+
+<header class="site-header" id="site-header">
+    <div class="header-main">
+        <div class="header-container">
+            {{- /* Logo */ -}}
+            <a href="{{ "" | absLangURL }}" class="site-logo">
+                <span class="logo-mark">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </span>
+                <span class="logo-text">Datadripco</span>
+            </a>
+
+            {{- /* Main Navigation */ -}}
+            <nav class="main-nav" aria-label="Main">
+                {{- range site.Menus.main }}
+                {{- if ne .Name "Search" }}
+                <a href="{{ .URL | absLangURL }}" class="nav-link {{ if $.IsMenuCurrent "main" . }}is-active{{ end }}">
+                    {{ .Name }}
+                </a>
+                {{- end }}
+                {{- end }}
+            </nav>
+
+            {{- /* Actions */ -}}
+            <div class="header-actions">
+                <a href="/search/" class="action-btn search-btn" aria-label="Search">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                    </svg>
+                </a>
+                <a href="https://x.com/datadripco" target="_blank" rel="noopener" class="action-btn social-btn hide-mobile" aria-label="Follow on X">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+                    <span class="menu-icon"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    {{- /* Mobile Menu */ -}}
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <nav class="mobile-nav">
+                {{- range site.Menus.main }}
+                <a href="{{ .URL | absLangURL }}" class="mobile-nav-link">{{ .Name }}</a>
+                {{- end }}
+            </nav>
+            <div class="mobile-topics">
+                <span class="mobile-label">Topics</span>
+                <a href="/categories/ai/">Artificial Intelligence</a>
+                <a href="/categories/crypto/">Cryptocurrency</a>
+                <a href="/categories/tech/">Technology</a>
+            </div>
+        </div>
+    </div>
+</header>

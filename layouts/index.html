@@ -1,0 +1,345 @@
+{{- define "main" }}
+
+{{- $allPosts := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $allPosts = where $allPosts "Params.hiddenInHomeList" "!=" "true" }}
+{{- $featured := first 1 $allPosts }}
+{{- $highlights := after 1 $allPosts | first 3 }}
+{{- $aiPosts := where $allPosts "Params.categories" "intersect" (slice "AI") | first 4 }}
+{{- $cryptoPosts := where $allPosts "Params.categories" "intersect" (slice "Crypto") | first 4 }}
+{{- $techPosts := where $allPosts "Params.categories" "intersect" (slice "Tech") | first 4 }}
+
+<div class="home-page">
+    {{- /* Top Banner - Newsletter CTA */ -}}
+    <div class="promo-banner">
+        <div class="promo-banner-content">
+            <span class="promo-icon">📬</span>
+            <span class="promo-text"><strong>Get smarter about AI, Crypto & Tech.</strong> Join 10,000+ readers getting daily insights.</span>
+            <a href="#newsletter" class="promo-btn">Subscribe Free →</a>
+        </div>
+    </div>
+
+    {{- /* Hero Section - Edge to Edge */ -}}
+    <section class="hero-section">
+        <div class="hero-grid">
+            {{- /* Main Feature */ -}}
+            {{- with index $featured 0 }}
+            <article class="hero-main">
+                <a href="{{ .Permalink }}" class="hero-link">
+                    {{- $img := .Params.featuredImage }}
+                    {{- if $img }}
+                    <div class="hero-image">
+                        <img src="/{{ $img }}" alt="{{ .Title }}" loading="eager">
+                    </div>
+                    {{- else }}
+                    <div class="hero-image hero-image--placeholder">
+                        <div class="placeholder-icon">DATADRIPCO</div>
+                    </div>
+                    {{- end }}
+                    <div class="hero-content">
+                        {{- with .Params.categories }}
+                        <span class="tag tag--{{ index . 0 | urlize }}">{{ index . 0 }}</span>
+                        {{- end }}
+                        <h1 class="hero-title">{{ .Title }}</h1>
+                        <p class="hero-excerpt">{{ .Summary | plainify | truncate 200 }}</p>
+                        <div class="hero-meta">
+                            <time>{{ .Date.Format "January 2, 2006" }}</time>
+                            <span class="dot">·</span>
+                            <span>{{ .ReadingTime }} min read</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {{- end }}
+
+            {{- /* Side Features */ -}}
+            <div class="hero-side">
+                <div class="hero-side-header">More Stories</div>
+                {{- range $highlights }}
+                <article class="hero-card">
+                    <a href="{{ .Permalink }}">
+                        {{- $img := .Params.featuredImage }}
+                        {{- if $img }}
+                        <div class="hero-card-image">
+                            <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy">
+                        </div>
+                        {{- else }}
+                        <div class="hero-card-image hero-card-image--placeholder">
+                            {{- with .Params.categories }}
+                                {{- $cat := index . 0 }}
+                                {{- if eq $cat "AI" }}AI{{- else if eq $cat "Crypto" }}₿{{- else }}T{{- end }}
+                            {{- end }}
+                        </div>
+                        {{- end }}
+                        <div class="hero-card-content">
+                            {{- with .Params.categories }}
+                            <span class="hero-card-cat">{{ index . 0 }}</span>
+                            {{- end }}
+                            <h3>{{ .Title | truncate 70 }}</h3>
+                            <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                        </div>
+                    </a>
+                </article>
+                {{- end }}
+            </div>
+        </div>
+    </section>
+
+    {{- /* Main Content */ -}}
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                {{- /* Feed */ -}}
+                <main class="main-feed">
+                    <header class="section-header">
+                        <h2 class="section-title">Latest Stories</h2>
+                        <a href="/posts/" class="section-link">View all →</a>
+                    </header>
+
+                    <div class="story-feed">
+                        {{- $paginator := .Paginate (after 4 $allPosts) }}
+                        {{- range $i, $post := $paginator.Pages }}
+                        
+                        {{- /* Insert ad after 3rd story */ -}}
+                        {{- if eq $i 3 }}
+                        <div class="ad-infeed">
+                            <span class="ad-infeed-label">Sponsored</span>
+                            <div class="ad-placeholder ad-320x100">
+                                <div class="ad-mock">In-Feed Ad</div>
+                            </div>
+                        </div>
+                        {{- end }}
+                        
+                        <article class="story-card">
+                            <a href="{{ $post.Permalink }}">
+                                {{- $img := $post.Params.featuredImage }}
+                                {{- if $img }}
+                                <div class="story-image">
+                                    <img src="/{{ $img }}" alt="{{ $post.Title }}" loading="lazy">
+                                </div>
+                                {{- else }}
+                                <div class="story-image story-image--placeholder">
+                                    {{- with $post.Params.categories }}
+                                        {{- $cat := index . 0 }}
+                                        {{- if eq $cat "AI" }}AI{{- else if eq $cat "Crypto" }}₿{{- else }}T{{- end }}
+                                    {{- end }}
+                                </div>
+                                {{- end }}
+                                <div class="story-content">
+                                    {{- with $post.Params.categories }}
+                                    <span class="tag tag--sm tag--{{ index . 0 | urlize }}">{{ index . 0 }}</span>
+                                    {{- end }}
+                                    <h3 class="story-title">{{ $post.Title }}</h3>
+                                    <p class="story-excerpt">{{ $post.Summary | plainify | truncate 120 }}</p>
+                                    <footer class="story-meta">
+                                        <time>{{ $post.Date.Format "Jan 2, 2006" }}</time>
+                                        <span class="dot">·</span>
+                                        <span>{{ $post.ReadingTime }} min</span>
+                                    </footer>
+                                </div>
+                            </a>
+                        </article>
+                        {{- end }}
+                    </div>
+
+                    {{- if gt $paginator.TotalPages 1 }}
+                    <nav class="pagination">
+                        {{- if $paginator.HasPrev }}
+                        <a href="{{ $paginator.Prev.URL }}" class="page-btn">← Newer</a>
+                        {{- end }}
+                        <span class="page-num">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+                        {{- if $paginator.HasNext }}
+                        <a href="{{ $paginator.Next.URL }}" class="page-btn">Older →</a>
+                        {{- end }}
+                    </nav>
+                    {{- end }}
+                </main>
+
+                {{- /* Sidebar */ -}}
+                <aside class="sidebar">
+                    {{- /* Social Follow CTA */ -}}
+                    <div class="sidebar-block sidebar-social">
+                        <h3 class="sidebar-title">Follow Us</h3>
+                        <p>Stay connected for breaking news and exclusive insights.</p>
+                        <div class="social-buttons">
+                            <a href="https://x.com/datadripco" target="_blank" rel="noopener" class="social-follow-btn social-follow-btn--x">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                                Follow on X
+                            </a>
+                            <a href="/index.xml" class="social-follow-btn social-follow-btn--rss">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 11a9 9 0 0 1 9 9"/>
+                                    <path d="M4 4a16 16 0 0 1 16 16"/>
+                                    <circle cx="5" cy="19" r="1"/>
+                                </svg>
+                                RSS Feed
+                            </a>
+                        </div>
+                    </div>
+
+                    {{- /* Trending */ -}}
+                    <div class="sidebar-block">
+                        <h3 class="sidebar-title">Trending Now</h3>
+                        <ol class="trending-list">
+                            {{- range $i, $post := (first 5 $allPosts) }}
+                            <li>
+                                <a href="{{ $post.Permalink }}">
+                                    <span class="trend-num">{{ printf "%02d" (add $i 1) }}</span>
+                                    <div class="trend-content">
+                                        <span class="trend-title">{{ $post.Title | truncate 55 }}</span>
+                                        {{- with $post.Params.categories }}
+                                        <span class="trend-topic">{{ index . 0 }}</span>
+                                        {{- end }}
+                                    </div>
+                                </a>
+                            </li>
+                            {{- end }}
+                        </ol>
+                    </div>
+
+                    {{- /* Newsletter */ -}}
+                    <div class="sidebar-block sidebar-newsletter" id="newsletter">
+                        <h3 class="sidebar-title">Newsletter</h3>
+                        <p>Daily AI, crypto & tech insights delivered to your inbox. No spam, ever.</p>
+                        {{ partial "newsletter.html" . }}
+                    </div>
+
+                    {{- /* Topics */ -}}
+                    <div class="sidebar-block">
+                        <h3 class="sidebar-title">Topics</h3>
+                        <div class="topic-cards">
+                            <a href="/categories/ai/" class="topic-card">
+                                <span class="topic-icon topic-icon--ai">AI</span>
+                                <span class="topic-name">Artificial Intelligence</span>
+                                <span class="topic-count">{{ len (where site.RegularPages "Params.categories" "intersect" (slice "AI")) }}</span>
+                            </a>
+                            <a href="/categories/crypto/" class="topic-card">
+                                <span class="topic-icon topic-icon--crypto">₿</span>
+                                <span class="topic-name">Cryptocurrency</span>
+                                <span class="topic-count">{{ len (where site.RegularPages "Params.categories" "intersect" (slice "Crypto")) }}</span>
+                            </a>
+                            <a href="/categories/tech/" class="topic-card">
+                                <span class="topic-icon topic-icon--tech">T</span>
+                                <span class="topic-name">Technology</span>
+                                <span class="topic-count">{{ len (where site.RegularPages "Params.categories" "intersect" (slice "Tech")) }}</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    {{- /* About Blurb - Sticky */ -}}
+                    <div class="sidebar-block sidebar-about ad-sticky">
+                        <h3 class="sidebar-title">About Datadripco</h3>
+                        <p>We deliver daily original analysis on the technologies shaping tomorrow. AI breakthroughs. Crypto movements. Tech innovations.</p>
+                        <a href="/about/" class="sidebar-link">Learn more about us →</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    {{- /* Category Sections */ -}}
+    <section class="category-section">
+        <div class="container">
+            {{- /* AI */ -}}
+            <div class="category-block">
+                <header class="section-header">
+                    <h2 class="section-title"><span class="section-icon section-icon--ai">AI</span> Artificial Intelligence</h2>
+                    <a href="/categories/ai/" class="section-link">All AI →</a>
+                </header>
+                <div class="category-grid">
+                    {{- range $aiPosts }}
+                    <article class="category-card">
+                        <a href="{{ .Permalink }}">
+                            {{- $img := .Params.featuredImage }}
+                            {{- if $img }}
+                            <div class="category-card-image">
+                                <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy">
+                            </div>
+                            {{- else }}
+                            <div class="category-card-image category-card-image--placeholder category-card-image--ai">AI</div>
+                            {{- end }}
+                            <div class="category-card-content">
+                                <h3>{{ .Title | truncate 60 }}</h3>
+                                <time>{{ .Date.Format "Jan 2" }}</time>
+                            </div>
+                        </a>
+                    </article>
+                    {{- end }}
+                </div>
+            </div>
+
+            {{- /* Trending Topics Banner */ -}}
+            <div class="trending-banner">
+                <div class="trending-banner-content">
+                    <span class="trending-label">🔥 Trending</span>
+                    <div class="trending-topics">
+                        <a href="/categories/ai/" class="trending-topic trending-topic--ai">AI Regulation</a>
+                        <a href="/categories/crypto/" class="trending-topic trending-topic--crypto">Bitcoin ETF</a>
+                        <a href="/categories/tech/" class="trending-topic trending-topic--tech">Tech Layoffs</a>
+                        <a href="/categories/ai/" class="trending-topic trending-topic--ai">GPT-5 Rumors</a>
+                        <a href="/categories/crypto/" class="trending-topic trending-topic--crypto">Ethereum 2.0</a>
+                    </div>
+                </div>
+            </div>
+
+            {{- /* Crypto */ -}}
+            <div class="category-block">
+                <header class="section-header">
+                    <h2 class="section-title"><span class="section-icon section-icon--crypto">₿</span> Cryptocurrency</h2>
+                    <a href="/categories/crypto/" class="section-link">All Crypto →</a>
+                </header>
+                <div class="category-grid">
+                    {{- range $cryptoPosts }}
+                    <article class="category-card">
+                        <a href="{{ .Permalink }}">
+                            {{- $img := .Params.featuredImage }}
+                            {{- if $img }}
+                            <div class="category-card-image">
+                                <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy">
+                            </div>
+                            {{- else }}
+                            <div class="category-card-image category-card-image--placeholder category-card-image--crypto">₿</div>
+                            {{- end }}
+                            <div class="category-card-content">
+                                <h3>{{ .Title | truncate 60 }}</h3>
+                                <time>{{ .Date.Format "Jan 2" }}</time>
+                            </div>
+                        </a>
+                    </article>
+                    {{- end }}
+                </div>
+            </div>
+
+            {{- /* Tech */ -}}
+            <div class="category-block">
+                <header class="section-header">
+                    <h2 class="section-title"><span class="section-icon section-icon--tech">⚡</span> Technology</h2>
+                    <a href="/categories/tech/" class="section-link">All Tech →</a>
+                </header>
+                <div class="category-grid">
+                    {{- range $techPosts }}
+                    <article class="category-card">
+                        <a href="{{ .Permalink }}">
+                            {{- $img := .Params.featuredImage }}
+                            {{- if $img }}
+                            <div class="category-card-image">
+                                <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy">
+                            </div>
+                            {{- else }}
+                            <div class="category-card-image category-card-image--placeholder category-card-image--tech">⚡</div>
+                            {{- end }}
+                            <div class="category-card-content">
+                                <h3>{{ .Title | truncate 60 }}</h3>
+                                <time>{{ .Date.Format "Jan 2" }}</time>
+                            </div>
+                        </a>
+                    </article>
+                    {{- end }}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{{- end }}
