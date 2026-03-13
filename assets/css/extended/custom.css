@@ -1330,7 +1330,7 @@ body {
 
 .footer-tagline {
     font-size: 14px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.75);
     line-height: 1.6;
     margin: 0;
 }
@@ -1347,7 +1347,7 @@ body {
 .footer-links a {
     display: block;
     font-size: 14px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.75);
     padding: var(--space-2) 0;
     transition: color var(--transition-fast);
 }
@@ -1367,7 +1367,7 @@ body {
 
 .footer-newsletter p {
     font-size: 14px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.75);
     margin: 0 0 var(--space-4);
 }
 
@@ -1389,7 +1389,7 @@ body {
 
 .footer-bottom p {
     font-size: 12px;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.6);
     margin: 0;
 }
 
@@ -1399,12 +1399,12 @@ body {
 }
 
 .footer-social a {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.7);
     transition: color var(--transition-fast);
 }
 
 .footer-social a:hover {
-    color: var(--color-text);
+    color: white;
 }
 
 /* ============================================
@@ -1540,6 +1540,44 @@ body {
 
 .site-footer .newsletter-consent a {
     color: rgba(255,255,255,0.75);
+}
+
+/* Sidebar newsletter - dark theme */
+.sidebar-newsletter .newsletter-form input[type="email"],
+.sidebar-newsletter .newsletter-email {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.sidebar-newsletter .newsletter-form input[type="email"]::placeholder,
+.sidebar-newsletter .newsletter-email::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+.sidebar-newsletter .newsletter-form input[type="email"]:focus,
+.sidebar-newsletter .newsletter-email:focus {
+    border-color: rgba(255,255,255,0.5);
+}
+
+.sidebar-newsletter .newsletter-form button,
+.sidebar-newsletter .newsletter-btn {
+    background: white;
+    color: var(--color-dark);
+}
+
+.sidebar-newsletter .newsletter-form button:hover,
+.sidebar-newsletter .newsletter-btn:hover {
+    background: var(--color-accent);
+    color: white;
+}
+
+.sidebar-newsletter .newsletter-consent {
+    color: rgba(255,255,255,0.55);
+}
+
+.sidebar-newsletter .newsletter-consent a {
+    color: rgba(255,255,255,0.8);
 }
 
 /* ============================================
@@ -3673,5 +3711,358 @@ body {
     .ei-popup-btn {
         width: 100%;
         text-align: center;
+    }
+}
+
+/* ============================================
+   Comprehensive Mobile Optimizations
+   ============================================ */
+@media (max-width: 767px) {
+    /* Base spacing */
+    :root {
+        --space-6: 20px;
+        --space-8: 28px;
+        --space-10: 36px;
+    }
+    
+    /* Header mobile */
+    .site-header {
+        padding: 0 16px;
+    }
+    
+    .nav-container {
+        padding: 0;
+    }
+    
+    .logo-text {
+        font-size: 18px;
+    }
+    
+    .logo-mark {
+        width: 32px;
+        height: 32px;
+        font-size: 10px;
+    }
+    
+    /* Ticker mobile */
+    .ticker-bar {
+        height: 32px;
+    }
+    
+    .ticker-live-badge {
+        display: none;
+    }
+    
+    .ticker-branding {
+        font-size: 9px;
+        padding: 0 8px;
+    }
+    
+    body {
+        padding-top: 32px;
+    }
+    
+    .site-header {
+        top: 32px;
+    }
+    
+    /* Promo banner mobile */
+    .promo-banner {
+        padding: 10px 16px;
+        gap: 8px;
+    }
+    
+    .promo-text {
+        font-size: 12px;
+    }
+    
+    .promo-btn {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+    
+    /* Hero mobile */
+    .hero-section {
+        padding: 0 16px;
+    }
+    
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .hero-main {
+        padding: 20px 16px;
+    }
+    
+    .hero-featured-title {
+        font-size: 22px;
+        line-height: 1.25;
+    }
+    
+    .hero-featured-excerpt {
+        font-size: 14px;
+        -webkit-line-clamp: 2;
+    }
+    
+    .hero-side {
+        padding: 16px;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .hero-card {
+        min-width: unset;
+    }
+    
+    .hero-card a {
+        flex-direction: row;
+        gap: 12px;
+    }
+    
+    .hero-card-image {
+        width: 80px;
+        height: 60px;
+        flex-shrink: 0;
+    }
+    
+    .hero-card h3 {
+        font-size: 13px;
+    }
+    
+    /* Feed grid mobile */
+    .feed-section {
+        padding: 0 16px;
+    }
+    
+    .feed-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .main-feed {
+        width: 100%;
+    }
+    
+    /* Story card mobile */
+    .story-card {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 0;
+    }
+    
+    .story-image {
+        width: 100%;
+        height: 180px;
+    }
+    
+    .story-content {
+        padding: 0;
+    }
+    
+    .story-title {
+        font-size: 16px;
+    }
+    
+    .story-excerpt {
+        font-size: 13px;
+        -webkit-line-clamp: 2;
+    }
+    
+    /* Sidebar mobile - stack below */
+    .sidebar {
+        width: 100%;
+        margin-top: var(--space-8);
+        gap: 16px;
+    }
+    
+    .sidebar-block {
+        padding: 20px 16px;
+    }
+    
+    /* Newsletter form mobile */
+    .newsletter-input-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .newsletter-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Trending list mobile */
+    .trending-list li a {
+        padding: 12px 0;
+    }
+    
+    .trend-title {
+        font-size: 13px;
+    }
+    
+    /* Topic cards mobile */
+    .topic-cards {
+        gap: 8px;
+    }
+    
+    .topic-card {
+        padding: 12px 14px;
+    }
+    
+    /* Social buttons mobile */
+    .social-buttons {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .social-follow-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 12px;
+        font-size: 13px;
+    }
+    
+    /* Footer mobile */
+    .footer-container {
+        padding: 32px 16px 24px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+    }
+    
+    .footer-brand {
+        max-width: none;
+    }
+    
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-newsletter {
+        text-align: center;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+        padding-top: 24px;
+    }
+    
+    /* Single post mobile */
+    .post-header {
+        padding: 20px 0;
+    }
+    
+    .post-title {
+        font-size: 24px;
+        line-height: 1.25;
+    }
+    
+    .post-content {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+    
+    .post-content h2 {
+        font-size: 20px;
+    }
+    
+    .post-content h3 {
+        font-size: 18px;
+    }
+    
+    /* Related posts mobile */
+    .related-posts {
+        margin: 32px 0 24px;
+        padding-top: 24px;
+    }
+    
+    .related-posts-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .related-post-card {
+        padding: 16px;
+    }
+    
+    .related-post-title {
+        -webkit-line-clamp: 2;
+    }
+    
+    /* Newsletter inline mobile */
+    .newsletter-inline {
+        margin: 32px 0;
+        padding: 20px 16px;
+    }
+    
+    .newsletter-inline-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .newsletter-inline-fields {
+        flex-direction: column;
+    }
+    
+    .newsletter-inline-email {
+        width: 100%;
+    }
+    
+    /* Archive/list page mobile */
+    .archive-card {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .archive-card-image {
+        width: 100%;
+        height: 160px;
+    }
+    
+    .archive-card-title {
+        font-size: 16px;
+    }
+    
+    /* Pagination mobile */
+    .pagination {
+        padding: 16px 0;
+        gap: 8px;
+    }
+    
+    .page-btn {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+    .hero-featured-title {
+        font-size: 20px;
+    }
+    
+    .story-title {
+        font-size: 15px;
+    }
+    
+    .promo-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .social-buttons {
+        flex-direction: column;
+    }
+    
+    .social-follow-btn {
+        width: 100%;
     }
 }
