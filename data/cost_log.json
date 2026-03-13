@@ -3190,5 +3190,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0372
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-12",
+    "start_time": "2026-03-12T20:37:32.657141-07:00",
+    "end_time": "2026-03-12T20:37:53.597681-07:00",
+    "duration_seconds": 20.9,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3017,
+        "output_tokens": 137,
+        "cost": 0.03565
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "I've been watching how quantum computing could mess with crypto's security down the line. Yields are booming now, but those quantum threats feel closer than we think. Makes me wonder if we're prepping enough, or just riding the wave. It's got real implications for where things head next.",
+      "tweet_type": "insight",
+      "tweet_id": "2032300085338321065",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3017,
+      "output_tokens": 137,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1057
+    }
   }
 ]

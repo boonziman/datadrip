@@ -525,5 +525,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/googles-ai-maps-revolution-flood-predictions-meet-immersive-navigation/",
     "tweet_id": "2032215603117764710"
+  },
+  {
+    "timestamp": "2026-03-12 20:37 PST",
+    "tweet_type": "insight",
+    "tweet_text": "I've been watching how quantum computing could mess with crypto's security down the line. Yields are booming now, but those quantum threats feel closer than we think. Makes me wonder if we're prepping enough, or just riding the wave. It's got real implications for where things head next.",
+    "use_image": true,
+    "image_prompt": "Close-up of a quantum computer chip in a high-tech lab, with glowing circuits and cooling systems visible, soft blue lighting from monitors, editorial style like a Wired magazine photo, shallow depth of field focusing on the chip",
+    "promoted_url": "",
+    "tweet_id": "2032300085338321065"
   }
 ]

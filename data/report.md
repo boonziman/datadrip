@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 12) | 5 | **$1.5177** |
-| 📆 This Week (since Mar 09) | 26 | **$6.6670** |
-| 🗓️ This Month (March 2026) | 73 | **$17.2312** |
-| 🏦 Overall All-Time | 73 | **$17.2312** |
+| 📅 Today (March 12) | 6 | **$1.6234** |
+| 📆 This Week (since Mar 09) | 27 | **$6.7727** |
+| 🗓️ This Month (March 2026) | 74 | **$17.3369** |
+| 🏦 Overall All-Time | 74 | **$17.3369** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 12, 2026 at 08:37 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 20.9 seconds
+**Estimated cost:** $0.1057
+
+### What happened (step by step)
+
+1. **20:37:32 PST** — Tweet bot started
+2. **20:37:32 PST** — API keys validated
+3. **20:37:53 PST** — Tweet posted and logged (type: insight, ID: 2032300085338321065)
+4. **20:37:53 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> I've been watching how quantum computing could mess with crypto's security down the line. Yields are booming now, but those quantum threats feel closer than we think. Makes me wonder if we're prepping enough, or just riding the wave. It's got real implications for where things head next.
+
+**Tweet type:** insight
+**Tweet ID:** 2032300085338321065
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,017 tokens, got back 137 tokens — **$0.0357**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1057**
 
 ---
 ## 🐦 Tweet Bot — March 12, 2026 at 03:01 PM PST
