@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 13) | 3 | **$1.5477** |
-| 📆 This Week (since Mar 09) | 31 | **$8.3557** |
-| 🗓️ This Month (March 2026) | 78 | **$18.9199** |
-| 🏦 Overall All-Time | 78 | **$18.9199** |
+| 📅 Today (March 13) | 4 | **$1.6541** |
+| 📆 This Week (since Mar 09) | 32 | **$8.4621** |
+| 🗓️ This Month (March 2026) | 79 | **$19.0263** |
+| 🏦 Overall All-Time | 79 | **$19.0263** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 13, 2026 at 12:51 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 25.3 seconds
+**Estimated cost:** $0.1064
+
+### What happened (step by step)
+
+1. **12:51:24 PST** — Tweet bot started
+2. **12:51:24 PST** — API keys validated
+3. **12:51:49 PST** — Tweet posted and logged (type: engagement, ID: 2032545182780952692)
+4. **12:51:49 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Crypto's seeing some serious crackdowns lately, but the market's still heating up with big plays. Makes me curious - are you betting on more regulations killing the vibe, or do you think it'll just push innovation underground? What's your take?
+
+**Tweet type:** engagement
+**Tweet ID:** 2032545182780952692
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,143 tokens, got back 124 tokens — **$0.0364**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1064**
 
 ---
 ## 🐦 Tweet Bot — March 13, 2026 at 10:20 AM PST
