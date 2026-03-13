@@ -1,0 +1,109 @@
+{{- /*
+  Exit Intent Popup — fires once when mouse moves toward browser chrome (top of viewport).
+  Guards:
+    · minimum 10 seconds on page before eligible
+    · respects dd_nl_dismissed localStorage (7-day cooldown)
+    · won't fire if newsletter popup already shown this session (window.ddNlShown)
+    · fires at most once per page load
+  Skip list: thank-you, privacy, terms, contact, search
+*/ -}}
+
+{{- $skipPages := slice "thank-you" "privacy" "terms" "contact" "search" }}
+{{- $currentPage := "" }}
+{{- with .File }}{{ $currentPage = .ContentBaseName }}{{ end }}
+{{- $shouldShow := not (in $skipPages $currentPage) }}
+
+{{- if $shouldShow }}
+<div class="ei-popup" id="ei-popup" role="dialog" aria-labelledby="ei-popup-title" aria-hidden="true">
+    <div class="ei-popup-backdrop" data-close></div>
+    <div class="ei-popup-container">
+        <button class="ei-popup-close" data-close aria-label="Close newsletter popup">&#10005;</button>
+        <div class="ei-popup-accent-bar"></div>
+        <div class="ei-popup-content">
+            <span class="ei-popup-label">WAIT</span>
+            <h2 class="ei-popup-title" id="ei-popup-title">Don't miss what's moving markets</h2>
+            <p class="ei-popup-desc">The best AI, crypto &amp; tech stories — curated daily. Join <strong>10,000+ readers</strong> who stay ahead of the curve.</p>
+            <form class="ei-popup-form" onsubmit="return eiPopupSubmit(this);">
+                <div class="ei-popup-input-wrap">
+                    <input type="email"
+                           id="ei-popup-email"
+                           class="ei-popup-input"
+                           required
+                           placeholder="your@email.com"
+                           aria-label="Email address">
+                    <button type="submit" class="ei-popup-btn">Get Daily Drip</button>
+                </div>
+            </form>
+            <button class="ei-popup-skip" data-close type="button">No thanks, I'll miss out</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    var popup = document.getElementById('ei-popup');
+    if (!popup) return;
+
+    var STORAGE_KEY = 'dd_nl_dismissed';
+    var DISMISS_DAYS = 7;
+    var MIN_WAIT_MS = 10000; // must be on page 10s before eligible
+
+    // Respect existing 7-day dismissal
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+        var daysSince = (Date.now() - parseInt(stored)) / 86400000;
+        if (daysSince < DISMISS_DAYS) return;
+    }
+
+    var eligible = false;
+    var fired = false;
+
+    // Arm after minimum time on page
+    var armTimer = setTimeout(function() { eligible = true; }, MIN_WAIT_MS);
+
+    function showPopup() {
+        if (fired || !eligible) return;
+        if (window.ddNlShown) return; // newsletter popup already shown this session
+        fired = true;
+        window.ddNlShown = true;
+        popup.classList.add('is-visible');
+        popup.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function hidePopup() {
+        popup.classList.remove('is-visible');
+        popup.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        localStorage.setItem(STORAGE_KEY, Date.now().toString());
+    }
+
+    // Exit intent: mouse leaves viewport through the top edge
+    document.addEventListener('mouseleave', function(e) {
+        if (e.clientY < 10 && e.relatedTarget === null) {
+            showPopup();
+        }
+    });
+
+    // Close triggers
+    popup.querySelectorAll('[data-close]').forEach(function(el) {
+        el.addEventListener('click', hidePopup);
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup.classList.contains('is-visible')) {
+            hidePopup();
+        }
+    });
+})();
+
+function eiPopupSubmit(form) {
+    var email = document.getElementById('ei-popup-email').value;
+    var url = 'https://gmail.us20.list-manage.com/subscribe?u=bef06fe2737e08e1c01ae0f28&id=b7103eb655&MERGE0='
+              + encodeURIComponent(email) + '&EMAIL=' + encodeURIComponent(email);
+    localStorage.setItem('dd_nl_dismissed', Date.now().toString());
+    window.location.href = url;
+    return false;
+}
+</script>
+{{- end }}

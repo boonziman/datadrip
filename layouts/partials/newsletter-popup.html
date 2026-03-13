@@ -81,6 +81,7 @@
     function showPopup() {
         if (shown) return;
         shown = true;
+        window.ddNlShown = true;
         popup.classList.add('is-visible');
         popup.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';

@@ -35,6 +35,8 @@
 
   {{- partial "newsletter-inline.html" . }}
 
+  {{- partial "related-posts.html" . }}
+
   <footer class="post-footer">
     {{- if not (.Param "hidePostNavLinks") }}
     {{- partial "post_nav_links.html" . }}

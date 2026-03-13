@@ -31,6 +31,7 @@
 
     {{- partial "newsletter-popup.html" . -}}
     {{- partial "cookie-consent.html" . -}}
+    {{- partial "exit-intent.html" . -}}
     
     {{ $js := resources.Get "js/custom.js" }}
     {{ if $js }}

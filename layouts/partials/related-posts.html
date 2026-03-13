@@ -1,0 +1,57 @@
+{{- /*
+  Related Posts — finds up to 3 posts sharing categories or tags,
+  falls back to recent posts if not enough matches.
+*/ -}}
+{{- $currentPermalink := .Permalink }}
+{{- $categories := .Params.categories | default slice }}
+{{- $tags := .Params.tags | default slice }}
+
+{{- /* Work from date-sorted post list so results are naturally newest-first */ -}}
+{{- $sortedPosts := where site.RegularPages "Section" "posts" }}
+
+{{- /* Collect related by shared category/tag */ -}}
+{{- $related := slice }}
+{{- range $sortedPosts }}
+  {{- if and (ne .Permalink $currentPermalink) (not .Draft) }}
+    {{- $sharedCats := intersect $categories (.Params.categories | default slice) }}
+    {{- $sharedTags := intersect $tags (.Params.tags | default slice) }}
+    {{- if or (gt (len $sharedCats) 0) (gt (len $sharedTags) 0) }}
+      {{- $related = $related | append . }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+{{- /* Take newest 3 */ -}}
+{{- $related = first 3 $related }}
+
+{{- /* Fill remaining slots with recent posts if needed */ -}}
+{{- $needed := sub 3 (len $related) }}
+{{- if gt $needed 0 }}
+  {{- range $sortedPosts }}
+    {{- if gt $needed 0 }}
+      {{- if and (ne .Permalink $currentPermalink) (not .Draft) (not (in $related .)) }}
+        {{- $related = $related | append . }}
+        {{- $needed = sub $needed 1 }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+{{- if $related }}
+<section class="related-posts">
+  <h2 class="related-posts-label">Related Stories</h2>
+  <div class="related-posts-grid">
+    {{- range $related }}
+    <a href="{{ .Permalink }}" class="related-post-card">
+      {{- $cat := index (.Params.categories | default slice) 0 }}
+      {{- if $cat }}<span class="related-post-tag">{{ $cat }}</span>{{- end }}
+      <h3 class="related-post-title">{{ .Title }}</h3>
+      <div class="related-post-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        {{- if .ReadingTime }}<span>&nbsp;·&nbsp;{{ .ReadingTime }} min read</span>{{- end }}
+      </div>
+    </a>
+    {{- end }}
+  </div>
+</section>
+{{- end }}
