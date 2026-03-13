@@ -4,11 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
-    <title>Datadripco · Analytics</title>
+    <title>Datadripco · Analytics Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ── Reset & Base ─────────────────────── */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
             --bg: #0b0e14; --card: #151921; --card-hover: #1a1f2b;
@@ -18,154 +17,184 @@
             --t1: #f1f5f9; --t2: #94a3b8; --t3: #4b5563;
             --radius: 14px; --radius-sm: 8px;
         }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--t1); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--t1); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         a { color: var(--accent); text-decoration: none; }
         button { font-family: inherit; cursor: pointer; }
+        input, select { font-family: inherit; }
 
-        /* ── Screens (Setup & Auth) ───────────── */
+        /* ── Screens ──────────────────────── */
         .screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; }
         .screen-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 48px; max-width: 560px; width: 100%; text-align: center; animation: fadeUp .5s ease; }
         .screen-card h1 { font-size: 24px; font-weight: 800; margin: 16px 0 8px; }
         .screen-card p { color: var(--t2); font-size: 14px; margin-bottom: 24px; }
         .brand-badge { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: linear-gradient(135deg, var(--accent), var(--purple)); border-radius: 16px; font-size: 18px; font-weight: 800; color: white; }
-
-        /* Google sign-in button */
         .g-btn { display: inline-flex; align-items: center; gap: 12px; padding: 13px 28px; background: white; color: #1f1f1f; border: none; border-radius: var(--radius-sm); font-size: 15px; font-weight: 500; transition: all .2s; }
         .g-btn:hover { box-shadow: 0 4px 20px rgba(59,130,246,.25); transform: translateY(-1px); }
         .g-btn svg { flex-shrink: 0; }
 
-        /* Setup steps */
-        .setup-steps { text-align: left; margin: 0 0 24px; padding: 0; list-style: none; counter-reset: steps; }
-        .setup-steps li { counter-increment: steps; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--t2); line-height: 1.6; display: flex; gap: 12px; }
-        .setup-steps li::before { content: counter(steps); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: var(--accent); color: white; border-radius: 50%; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-        .setup-steps code { background: rgba(255,255,255,.08); padding: 2px 6px; border-radius: 4px; font-size: 12px; color: var(--accent); word-break: break-all; }
+        /* ── Header ───────────────────────── */
+        .dash-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 24px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(11,14,20,.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); z-index: 100; }
+        .dash-brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; white-space: nowrap; }
+        .dash-brand .mark { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--accent), var(--purple)); border-radius: 8px; font-size: 9px; font-weight: 800; }
+        .header-right { display: flex; align-items: center; gap: 10px; }
+        .text-btn { background: none; border: none; color: var(--t3); font-size: 12px; font-weight: 500; transition: color .2s; padding: 6px 10px; }
+        .text-btn:hover { color: var(--t1); }
+        .meta-text { font-size: 11px; color: var(--t3); white-space: nowrap; }
 
-        /* ── Dashboard Header ─────────────────── */
-        .dash-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 28px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(11,14,20,.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100; flex-wrap: wrap; }
-        .dash-brand { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; }
-        .dash-brand .mark { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--accent), var(--purple)); border-radius: 8px; font-size: 10px; font-weight: 800; }
-        .dash-controls { display: flex; align-items: center; gap: 12px; }
+        /* ── Tab Navigation ───────────────── */
+        .tab-bar { display: flex; gap: 0; border-bottom: 1px solid var(--border); padding: 0 24px; background: rgba(11,14,20,.6); position: sticky; top: 53px; z-index: 99; backdrop-filter: blur(8px); }
+        .tab { padding: 12px 20px; font-size: 13px; font-weight: 600; color: var(--t3); background: none; border: none; border-bottom: 2px solid transparent; transition: all .2s; white-space: nowrap; }
+        .tab:hover { color: var(--t2); }
+        .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* ── Controls Bar ─────────────────── */
+        .controls-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 24px; flex-wrap: wrap; }
         .range-pills { display: flex; background: rgba(255,255,255,.04); border-radius: var(--radius-sm); overflow: hidden; }
-        .pill { padding: 7px 16px; font-size: 12px; font-weight: 600; background: none; border: none; color: var(--t3); transition: all .2s; }
+        .pill { padding: 7px 14px; font-size: 12px; font-weight: 600; background: none; border: none; color: var(--t3); transition: all .2s; }
         .pill.active { background: var(--accent); color: white; }
         .pill:hover:not(.active) { color: var(--t2); }
         .icon-btn { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--t2); font-size: 16px; transition: all .2s; }
         .icon-btn:hover { background: rgba(255,255,255,.08); color: var(--t1); }
-        .meta-text { font-size: 11px; color: var(--t3); }
-        .text-btn { background: none; border: none; color: var(--t3); font-size: 12px; font-weight: 500; transition: color .2s; }
-        .text-btn:hover { color: var(--t1); }
+        .ctrl-group { display: flex; align-items: center; gap: 8px; }
 
-        /* ── Dashboard Layout ─────────────────── */
-        .dash-content { padding: 24px; max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
-        .row-kpi { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+        /* ── Dashboard Layout ─────────────── */
+        .dash-content { padding: 0 24px 24px; max-width: 1480px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .row-kpi { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
         .row-2col { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
-        .row-2col-r { display: grid; grid-template-columns: 2fr 3fr; gap: 16px; }
+        .row-2col-even { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .row-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
 
-        /* ── Cards ────────────────────────────── */
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color .2s; }
+        /* ── Cards ────────────────────────── */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: border-color .2s; }
         .card:hover { border-color: rgba(255,255,255,.1); }
-        .card-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--t3); margin-bottom: 16px; }
+        .card-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--t3); margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+        .card-label .badge { font-size: 9px; padding: 2px 8px; border-radius: 10px; background: rgba(59,130,246,.1); color: var(--accent); font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
 
         /* Realtime */
-        .card-rt { display: flex; align-items: center; gap: 20px; padding: 20px 28px; }
+        .card-rt { display: flex; align-items: center; gap: 16px; padding: 16px 24px; background: linear-gradient(135deg, rgba(34,197,94,.06), rgba(34,197,94,.02)); }
         .rt-dot { width: 10px; height: 10px; background: var(--green); border-radius: 50%; animation: pulse-dot 2s ease infinite; flex-shrink: 0; }
-        .rt-num { font-size: 36px; font-weight: 800; line-height: 1; }
-        .rt-label { font-size: 13px; color: var(--t2); }
+        .rt-num { font-size: 32px; font-weight: 800; line-height: 1; }
+        .rt-label { font-size: 12px; color: var(--t2); }
+        .rt-pages { margin-top: 6px; font-size: 11px; color: var(--t3); }
 
         /* KPI */
-        .kpi-value { font-size: 28px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
-        .kpi-change { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
+        .kpi-value { font-size: 24px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+        .kpi-change { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 20px; }
         .kpi-change.up { color: var(--green); background: rgba(34,197,94,.1); }
         .kpi-change.down { color: var(--red); background: rgba(239,68,68,.1); }
         .kpi-change.neutral { color: var(--t3); background: rgba(255,255,255,.04); }
+        .kpi-sub { font-size: 11px; color: var(--t3); margin-top: 4px; }
 
         /* Charts */
         .chart-wrap { position: relative; height: 280px; }
         .chart-wrap-sm { position: relative; height: 200px; }
-        .chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-        .chart-toggles { display: flex; gap: 6px; }
-        .toggle { padding: 5px 12px; font-size: 11px; font-weight: 600; border: 1px solid var(--border); background: none; color: var(--t3); border-radius: 20px; transition: all .2s; }
+        .chart-wrap-xs { position: relative; height: 160px; }
+        .chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 8px; flex-wrap: wrap; }
+        .chart-toggles { display: flex; gap: 5px; flex-wrap: wrap; }
+        .toggle { padding: 4px 10px; font-size: 11px; font-weight: 600; border: 1px solid var(--border); background: none; color: var(--t3); border-radius: 20px; transition: all .2s; }
         .toggle.active { border-color: var(--accent); color: var(--accent); background: rgba(59,130,246,.08); }
-
-        /* Legend */
-        .chart-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
-        .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--t2); }
+        .chart-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+        .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--t2); }
         .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
         /* Tables */
-        .tbl { width: 100%; font-size: 13px; border-collapse: collapse; }
-        .tbl th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--t3); text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }
-        .tbl td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--t2); }
+        .tbl { width: 100%; font-size: 12px; border-collapse: collapse; }
+        .tbl th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--t3); text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+        .tbl td { padding: 9px 10px; border-bottom: 1px solid var(--border); color: var(--t2); }
         .tbl tr:last-child td { border-bottom: none; }
         .tbl tr:hover td { background: rgba(255,255,255,.02); }
-        .tbl .pg-path { color: var(--t1); font-weight: 500; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .tbl .pg-path { color: var(--t1); font-weight: 500; max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .tbl .num { text-align: right; font-variant-numeric: tabular-nums; }
-        .bar-cell { display: flex; align-items: center; gap: 8px; }
+        .bar-cell { display: flex; align-items: center; gap: 6px; }
         .bar-fill { height: 4px; border-radius: 2px; background: var(--accent); transition: width .6s ease; }
+        .tbl-scroll { max-height: 400px; overflow-y: auto; }
+        .tbl-scroll::-webkit-scrollbar { width: 4px; }
+        .tbl-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-        /* Skeleton */
+        /* Insights */
+        .insight-card { background: linear-gradient(135deg, rgba(59,130,246,.06), rgba(139,92,246,.04)); border: 1px solid rgba(59,130,246,.12); border-radius: var(--radius); padding: 20px; }
+        .insight-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .insight-item:last-child { border-bottom: none; }
+        .insight-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+        .insight-text { font-size: 13px; color: var(--t2); line-height: 1.5; }
+        .insight-text strong { color: var(--t1); }
+
+        /* User Explorer */
+        .search-box { display: flex; gap: 8px; margin-bottom: 16px; }
+        .search-input { flex: 1; padding: 10px 14px; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--t1); font-size: 13px; outline: none; transition: border-color .2s; }
+        .search-input:focus { border-color: var(--accent); }
+        .search-input::placeholder { color: var(--t3); }
+        .btn { padding: 10px 18px; background: var(--accent); color: white; border: none; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; transition: all .2s; }
+        .btn:hover { background: #2563eb; }
+        .btn-outline { background: none; border: 1px solid var(--border); color: var(--t2); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(59,130,246,.06); }
+        .user-card { background: rgba(255,255,255,.02); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 10px; cursor: pointer; transition: all .2s; }
+        .user-card:hover { border-color: rgba(255,255,255,.12); background: rgba(255,255,255,.04); }
+        .user-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+        .user-id { font-size: 13px; font-weight: 600; color: var(--t1); display: flex; align-items: center; gap: 8px; }
+        .user-id .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .user-meta { display: flex; gap: 16px; font-size: 11px; color: var(--t3); flex-wrap: wrap; }
+        .user-meta span { display: flex; align-items: center; gap: 4px; }
+        .journey-timeline { padding: 12px 0 0 20px; border-left: 2px solid var(--border); margin-left: 4px; }
+        .journey-step { position: relative; padding: 0 0 16px 16px; font-size: 12px; color: var(--t2); }
+        .journey-step::before { content: ''; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--card); border: 2px solid var(--accent); }
+        .journey-step:last-child { padding-bottom: 0; }
+        .journey-step .step-time { font-size: 10px; color: var(--t3); margin-bottom: 2px; }
+        .journey-step .step-page { color: var(--t1); font-weight: 500; }
+        .journey-step .step-detail { font-size: 11px; color: var(--t3); margin-top: 2px; }
+
+        /* Engagement section */
+        .engagement-metric { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .engagement-metric:last-child { border-bottom: none; }
+        .em-label { font-size: 13px; color: var(--t2); }
+        .em-value { font-size: 15px; font-weight: 700; color: var(--t1); }
+        .em-bar { width: 100px; height: 6px; background: rgba(255,255,255,.06); border-radius: 3px; margin-left: 12px; overflow: hidden; }
+        .em-bar-fill { height: 100%; border-radius: 3px; transition: width .6s ease; }
+
+        /* Heatmap */
+        .heatmap-cell { border-radius: 3px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 9px; color: transparent; transition: all .2s; cursor: default; }
+        .heatmap-cell:hover { color: white; transform: scale(1.3); z-index: 2; }
+        .heatmap-label { font-size: 10px; color: var(--t3); text-align: center; padding: 4px 0; }
+
+        /* Skeleton & loading */
         .skel { background: rgba(255,255,255,.04); border-radius: var(--radius-sm); animation: pulse-skel 1.5s ease infinite; }
-        .skel-text { height: 28px; width: 80px; }
-        .skel-sm { height: 16px; width: 50px; }
+        .skel-text { height: 24px; width: 80px; }
+        .skel-sm { height: 14px; width: 50px; }
+        .loading { display: flex; align-items: center; justify-content: center; padding: 40px 0; color: var(--t3); font-size: 13px; gap: 10px; }
+        .spinner { width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .6s linear infinite; }
+        .err-msg { padding: 16px; background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); border-radius: var(--radius-sm); color: var(--red); font-size: 13px; text-align: center; }
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--t3); font-size: 13px; }
 
-        /* ── Animations ───────────────────────── */
+        /* Animations */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse-dot { 0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,.4); } 50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); } }
         @keyframes pulse-skel { 0%,100% { opacity: .4; } 50% { opacity: .15; } }
-
-        /* ── Loading overlay ──────────────────── */
-        .loading { display: flex; align-items: center; justify-content: center; padding: 60px 0; color: var(--t3); font-size: 14px; gap: 10px; }
-        .spinner { width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .6s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Error */
-        .err-msg { padding: 16px; background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); border-radius: var(--radius-sm); color: var(--red); font-size: 13px; text-align: center; }
-
-        /* ── Responsive ───────────────────────── */
-        @media (max-width: 1024px) {
+        /* Responsive */
+        @media (max-width: 1100px) {
             .row-kpi { grid-template-columns: repeat(3, 1fr); }
-            .row-2col, .row-2col-r { grid-template-columns: 1fr; }
+            .row-2col, .row-2col-even, .row-3col { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
             .row-kpi { grid-template-columns: repeat(2, 1fr); }
-            .dash-header { padding: 12px 16px; }
-            .dash-content { padding: 16px; }
-            .card { padding: 18px; }
-            .kpi-value { font-size: 22px; }
-            .rt-num { font-size: 28px; }
+            .dash-header { padding: 10px 14px; }
+            .tab-bar { padding: 0 12px; overflow-x: auto; }
+            .controls-bar { padding: 12px 14px; }
+            .dash-content { padding: 0 14px 14px; }
+            .card { padding: 16px; }
+            .kpi-value { font-size: 20px; }
+            .rt-num { font-size: 26px; }
             .chart-wrap { height: 220px; }
             .screen-card { padding: 28px 20px; }
-            .setup-steps li { font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════ -->
-<!-- SETUP SCREEN                            -->
-<!-- ════════════════════════════════════════ -->
-<div id="setup-screen" class="screen" style="display:none">
-    <div class="screen-card">
-        <div class="brand-badge">DD</div>
-        <h1>Analytics Dashboard Setup</h1>
-        <p>One-time setup to connect your Google Analytics data.</p>
-        <ol class="setup-steps">
-            <li>Go to <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a> and create a project (or select existing).</li>
-            <li>Go to <strong>APIs &amp; Services → Library</strong>, search for <code>Google Analytics Data API</code> and <strong>Enable</strong> it.</li>
-            <li>Go to <strong>APIs &amp; Services → OAuth consent screen</strong>. Choose <strong>External</strong>, enter app name (e.g. "Datadripco Dash"), save. Then add your Google email as a <strong>Test User</strong>.</li>
-            <li>Go to <strong>Credentials → Create Credentials → OAuth 2.0 Client ID</strong>. Type: <strong>Web application</strong>.</li>
-            <li>Add <strong>Authorized JavaScript origins</strong>: <code>https://datadripco.com</code> (and <code>http://localhost:1313</code> for local dev).</li>
-            <li>Copy the <strong>Client ID</strong> (looks like <code>123…apps.googleusercontent.com</code>).</li>
-            <li>Go to <a href="https://analytics.google.com/" target="_blank">Google Analytics</a> → Admin → Property Details. Copy your numeric <strong>Property ID</strong>.</li>
-            <li>Open this file (<code>static/dashboard/index.html</code>) and paste both values into the <strong>CONFIG</strong> at the bottom of the file.</li>
-        </ol>
-        <p style="color:var(--t3); font-size:12px;">After saving, rebuild your site and refresh this page.</p>
-    </div>
-</div>
-
-<!-- ════════════════════════════════════════ -->
-<!-- AUTH SCREEN                              -->
-<!-- ════════════════════════════════════════ -->
+<!-- AUTH SCREEN -->
 <div id="auth-screen" class="screen" style="display:none">
     <div class="screen-card">
         <div class="brand-badge">DD</div>
@@ -179,133 +208,277 @@
     </div>
 </div>
 
-<!-- ════════════════════════════════════════ -->
-<!-- DASHBOARD                                -->
-<!-- ════════════════════════════════════════ -->
+<!-- DASHBOARD -->
 <div id="dashboard" style="display:none">
     <header class="dash-header">
         <div class="dash-brand">
             <span class="mark">DD</span>
             <span>Analytics</span>
         </div>
-        <div class="dash-controls">
-            <div class="range-pills">
-                <button class="pill" data-range="7" onclick="setRange('7')">7D</button>
-                <button class="pill active" data-range="30" onclick="setRange('30')">30D</button>
-                <button class="pill" data-range="90" onclick="setRange('90')">90D</button>
-            </div>
-            <button class="icon-btn" onclick="loadDashboard()" title="Refresh">⟳</button>
+        <div class="header-right">
             <span class="meta-text" id="last-updated"></span>
+            <button class="icon-btn" onclick="refreshCurrentTab()" title="Refresh">&#8635;</button>
+            <button class="text-btn" onclick="signOut()">Sign out</button>
         </div>
-        <button class="text-btn" onclick="signOut()">Sign out</button>
     </header>
 
-    <div class="dash-content">
-        <!-- Realtime -->
-        <div class="card card-rt" id="card-rt">
-            <div class="rt-dot"></div>
-            <div>
-                <div class="rt-num" id="rt-count">—</div>
-                <div class="rt-label">active users right now</div>
-            </div>
-        </div>
+    <div class="tab-bar">
+        <button class="tab active" data-tab="overview" onclick="switchTab('overview')">Overview</button>
+        <button class="tab" data-tab="content" onclick="switchTab('content')">Content</button>
+        <button class="tab" data-tab="audience" onclick="switchTab('audience')">Audience</button>
+        <button class="tab" data-tab="behavior" onclick="switchTab('behavior')">User Explorer</button>
+        <button class="tab" data-tab="realtime" onclick="switchTab('realtime')">Real-Time</button>
+    </div>
 
-        <!-- KPIs -->
-        <div class="row-kpi" id="kpi-row">
-            <div class="card" id="kpi-users"><div class="card-label">Users</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
-            <div class="card" id="kpi-sessions"><div class="card-label">Sessions</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
-            <div class="card" id="kpi-pageviews"><div class="card-label">Pageviews</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
-            <div class="card" id="kpi-duration"><div class="card-label">Avg Duration</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
-            <div class="card" id="kpi-bounce"><div class="card-label">Bounce Rate</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
-        </div>
-
-        <!-- Traffic Chart -->
-        <div class="card">
-            <div class="chart-header">
-                <div class="card-label" style="margin:0">Traffic Overview</div>
-                <div class="chart-toggles">
-                    <button class="toggle active" data-m="0" onclick="toggleLine(this,0)">Users</button>
-                    <button class="toggle" data-m="1" onclick="toggleLine(this,1)">Sessions</button>
-                    <button class="toggle" data-m="2" onclick="toggleLine(this,2)">Views</button>
+    <!-- OVERVIEW TAB -->
+    <div id="tab-overview" class="tab-panel active">
+        <div class="controls-bar">
+            <div class="ctrl-group">
+                <div class="range-pills">
+                    <button class="pill" data-range="1" onclick="setRange('1')">Today</button>
+                    <button class="pill" data-range="7" onclick="setRange('7')">7D</button>
+                    <button class="pill active" data-range="30" onclick="setRange('30')">30D</button>
+                    <button class="pill" data-range="90" onclick="setRange('90')">90D</button>
+                    <button class="pill" data-range="365" onclick="setRange('365')">1Y</button>
                 </div>
             </div>
-            <div class="chart-wrap"><canvas id="chart-traffic"></canvas></div>
-        </div>
-
-        <!-- Top Pages + Sources -->
-        <div class="row-2col">
-            <div class="card">
-                <div class="card-label">Top Pages</div>
-                <div id="tbl-pages"><div class="loading"><div class="spinner"></div> Loading…</div></div>
-            </div>
-            <div class="card">
-                <div class="card-label">Traffic Sources</div>
-                <div class="chart-wrap-sm"><canvas id="chart-sources"></canvas></div>
-                <div class="chart-legend" id="legend-sources"></div>
+            <div class="ctrl-group">
+                <span class="meta-text" id="range-label"></span>
             </div>
         </div>
-
-        <!-- Devices + Countries -->
-        <div class="row-2col-r">
-            <div class="card">
-                <div class="card-label">Devices</div>
-                <div class="chart-wrap-sm"><canvas id="chart-devices"></canvas></div>
-                <div class="chart-legend" id="legend-devices"></div>
+        <div class="dash-content">
+            <div class="insight-card" id="insights-panel">
+                <div class="card-label" style="margin-bottom:8px">Smart Insights <span class="badge">AI</span></div>
+                <div id="insights-content"><div class="loading"><div class="spinner"></div> Analyzing your data...</div></div>
+            </div>
+            <div class="row-kpi" id="kpi-row">
+                <div class="card" id="kpi-users"><div class="card-label">Users</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div><div class="kpi-sub" id="kpi-users-sub"></div></div>
+                <div class="card" id="kpi-sessions"><div class="card-label">Sessions</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div><div class="kpi-sub" id="kpi-sessions-sub"></div></div>
+                <div class="card" id="kpi-pageviews"><div class="card-label">Pageviews</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div><div class="kpi-sub" id="kpi-pv-sub"></div></div>
+                <div class="card" id="kpi-duration"><div class="card-label">Avg Duration</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
+                <div class="card" id="kpi-bounce"><div class="card-label">Bounce Rate</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
+                <div class="card" id="kpi-pps"><div class="card-label">Pages / Session</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
             </div>
             <div class="card">
-                <div class="card-label">Top Countries</div>
-                <div id="tbl-countries"><div class="loading"><div class="spinner"></div> Loading…</div></div>
+                <div class="chart-header">
+                    <div class="card-label" style="margin:0">Traffic Trend</div>
+                    <div class="chart-toggles">
+                        <button class="toggle active" data-m="0" onclick="toggleLine(this,0)">Users</button>
+                        <button class="toggle" data-m="1" onclick="toggleLine(this,1)">Sessions</button>
+                        <button class="toggle" data-m="2" onclick="toggleLine(this,2)">Pageviews</button>
+                        <button class="toggle" data-m="3" onclick="toggleLine(this,3)">New Users</button>
+                    </div>
+                </div>
+                <div class="chart-wrap"><canvas id="chart-traffic"></canvas></div>
+            </div>
+            <div class="row-3col">
+                <div class="card">
+                    <div class="card-label">Traffic Sources</div>
+                    <div class="chart-wrap-xs"><canvas id="chart-sources"></canvas></div>
+                    <div class="chart-legend" id="legend-sources"></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Devices</div>
+                    <div class="chart-wrap-xs"><canvas id="chart-devices"></canvas></div>
+                    <div class="chart-legend" id="legend-devices"></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Browsers</div>
+                    <div class="chart-wrap-xs"><canvas id="chart-browsers"></canvas></div>
+                    <div class="chart-legend" id="legend-browsers"></div>
+                </div>
+            </div>
+            <div class="row-2col">
+                <div class="card">
+                    <div class="card-label">Top Pages</div>
+                    <div class="tbl-scroll" id="tbl-pages"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Top Countries</div>
+                    <div class="tbl-scroll" id="tbl-countries"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-label">Traffic by Day &amp; Hour <span class="badge">Heatmap</span></div>
+                <div id="heatmap-container"><div class="loading"><div class="spinner"></div> Loading...</div></div>
             </div>
         </div>
-
-        <p style="text-align:center; font-size:11px; color:var(--t3); padding:12px 0;">Powered by Google Analytics Data API · Data stays between you and Google</p>
     </div>
+
+    <!-- CONTENT TAB -->
+    <div id="tab-content" class="tab-panel">
+        <div class="controls-bar">
+            <div class="ctrl-group">
+                <div class="range-pills">
+                    <button class="pill" data-range="1" onclick="setRange('1')">Today</button>
+                    <button class="pill" data-range="7" onclick="setRange('7')">7D</button>
+                    <button class="pill active" data-range="30" onclick="setRange('30')">30D</button>
+                    <button class="pill" data-range="90" onclick="setRange('90')">90D</button>
+                </div>
+            </div>
+        </div>
+        <div class="dash-content">
+            <div class="card">
+                <div class="card-label">All Pages Performance</div>
+                <div class="tbl-scroll" id="tbl-all-pages" style="max-height:600px"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+            </div>
+            <div class="row-2col-even">
+                <div class="card">
+                    <div class="card-label">Top Entry Pages <span class="badge">Where users land</span></div>
+                    <div class="tbl-scroll" id="tbl-entry-pages"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Top Exit Pages <span class="badge">Where users leave</span></div>
+                    <div class="tbl-scroll" id="tbl-exit-pages"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-label">Content Performance Over Time</div>
+                <div class="chart-wrap"><canvas id="chart-content-trend"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIENCE TAB -->
+    <div id="tab-audience" class="tab-panel">
+        <div class="controls-bar">
+            <div class="ctrl-group">
+                <div class="range-pills">
+                    <button class="pill" data-range="7" onclick="setRange('7')">7D</button>
+                    <button class="pill active" data-range="30" onclick="setRange('30')">30D</button>
+                    <button class="pill" data-range="90" onclick="setRange('90')">90D</button>
+                </div>
+            </div>
+        </div>
+        <div class="dash-content">
+            <div class="row-2col-even">
+                <div class="card">
+                    <div class="card-label">New vs Returning Users</div>
+                    <div class="chart-wrap-sm"><canvas id="chart-new-returning"></canvas></div>
+                    <div class="chart-legend" id="legend-new-returning"></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Engagement Metrics</div>
+                    <div id="engagement-metrics"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+            </div>
+            <div class="row-3col">
+                <div class="card">
+                    <div class="card-label">Top Countries</div>
+                    <div class="tbl-scroll" id="tbl-aud-countries"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Top Cities</div>
+                    <div class="tbl-scroll" id="tbl-cities"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Languages</div>
+                    <div class="tbl-scroll" id="tbl-languages"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+            </div>
+            <div class="row-2col-even">
+                <div class="card">
+                    <div class="card-label">Operating Systems</div>
+                    <div class="chart-wrap-sm"><canvas id="chart-os"></canvas></div>
+                    <div class="chart-legend" id="legend-os"></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Screen Resolutions</div>
+                    <div class="tbl-scroll" id="tbl-resolutions"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- USER EXPLORER TAB -->
+    <div id="tab-behavior" class="tab-panel">
+        <div class="controls-bar">
+            <div class="ctrl-group" style="flex:1">
+                <div class="search-box" style="margin:0;width:100%">
+                    <input type="text" class="search-input" id="user-search" placeholder="Search by country, city, device, or page viewed..." onkeydown="if(event.key==='Enter')loadUserExplorer()">
+                    <button class="btn" onclick="loadUserExplorer()">Search</button>
+                    <button class="btn btn-outline" onclick="loadUserExplorer('all')">Show All Recent</button>
+                </div>
+            </div>
+        </div>
+        <div class="dash-content">
+            <div class="card" style="grid-column:1/-1">
+                <div class="card-label">Recent User Sessions <span class="badge">User Explorer</span></div>
+                <p style="font-size:12px;color:var(--t3);margin-bottom:16px">Each card represents a unique user session. Click to expand their page journey. You can see every page they visited, how long they stayed, and where they came from.</p>
+                <div id="user-list"><div class="empty-state">Click <strong>Show All Recent</strong> or search by country, device, or page to explore user sessions.</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REAL-TIME TAB -->
+    <div id="tab-realtime" class="tab-panel">
+        <div class="dash-content" style="padding-top:20px">
+            <div class="card card-rt" id="card-rt-main">
+                <div class="rt-dot"></div>
+                <div>
+                    <div class="rt-num" id="rt-count-main">&mdash;</div>
+                    <div class="rt-label">active users right now</div>
+                    <div class="rt-pages" id="rt-pages-info"></div>
+                </div>
+            </div>
+            <div class="row-2col-even">
+                <div class="card">
+                    <div class="card-label">Active Pages <span class="badge">Live</span></div>
+                    <div id="rt-active-pages"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Active Users by Source <span class="badge">Live</span></div>
+                    <div id="rt-sources"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+            </div>
+            <div class="row-2col-even">
+                <div class="card">
+                    <div class="card-label">Active Users by Country <span class="badge">Live</span></div>
+                    <div id="rt-countries"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Active Users by Device <span class="badge">Live</span></div>
+                    <div id="rt-devices"><div class="loading"><div class="spinner"></div> Loading...</div></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-label">Users in Last 30 Minutes <span class="badge">Minutely</span></div>
+                <div class="chart-wrap-sm"><canvas id="chart-rt-timeline"></canvas></div>
+            </div>
+            <p style="text-align:center;font-size:11px;color:var(--t3)">Real-time data refreshes every 15 seconds</p>
+        </div>
+    </div>
+
+    <p style="text-align:center; font-size:11px; color:var(--t3); padding:16px 0;">Powered by Google Analytics Data API &middot; Data stays between you and Google</p>
 </div>
 
-<!-- ════════════════════════════════════════ -->
-<!-- SCRIPTS                                  -->
-<!-- ════════════════════════════════════════ -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="https://accounts.google.com/gsi/client" async></script>
 <script>
-/* ──────────────────────────────────────────
-   CONFIGURATION — Fill in your details
-   ────────────────────────────────────────── */
-const CONFIG = {
+var CONFIG = {
     clientId:   '448198625237-gui5db3furgsruo2jlp528kv05splqra.apps.googleusercontent.com',
     propertyId: '526846900'
 };
 
-/* ──────────────────────────────────────────
-   STATE
-   ────────────────────────────────────────── */
-const API_BASE = 'https://analyticsdata.googleapis.com/v1beta';
-let accessToken = null;
-let tokenExpiry  = 0;
-let currentRange = '30';
-let tokenClient  = null;
-let charts       = {};
-let rtInterval   = null;
+var API = 'https://analyticsdata.googleapis.com/v1beta';
+var accessToken = null, tokenExpiry = 0, tokenClient = null;
+var currentRange = '30', currentTab = 'overview';
+var charts = {}, intervals = {};
+var $ = function(id) { return document.getElementById(id); };
+var COLORS = ['#3b82f6','#8b5cf6','#06b6d4','#22c55e','#f59e0b','#ef4444','#ec4899','#64748b','#a855f7','#14b8a6','#f97316','#84cc16'];
 
-const $ = id => document.getElementById(id);
-const COLORS = ['#3b82f6','#8b5cf6','#06b6d4','#22c55e','#f59e0b','#ef4444','#ec4899','#64748b','#a855f7','#14b8a6'];
-
-/* ──────────────────────────────────────────
-   INIT
-   ────────────────────────────────────────── */
-window.addEventListener('DOMContentLoaded', () => {
-    if (CONFIG.clientId === 'YOUR_CLIENT_ID' || CONFIG.propertyId === 'YOUR_PROPERTY_ID') {
-        $('setup-screen').style.display = 'flex';
-        return;
-    }
+/* AUTH */
+window.addEventListener('DOMContentLoaded', function() {
     $('auth-screen').style.display = 'flex';
-    waitForGIS().then(initAuth);
+    waitGIS().then(initAuth);
 });
 
-function waitForGIS() {
-    return new Promise(resolve => {
-        if (window.google?.accounts?.oauth2) return resolve();
-        const iv = setInterval(() => { if (window.google?.accounts?.oauth2) { clearInterval(iv); resolve(); } }, 80);
+function waitGIS() {
+    return new Promise(function(r) {
+        if (window.google && window.google.accounts && window.google.accounts.oauth2) return r();
+        var iv = setInterval(function() {
+            if (window.google && window.google.accounts && window.google.accounts.oauth2) { clearInterval(iv); r(); }
+        }, 80);
     });
 }
 
@@ -317,208 +490,222 @@ function initAuth() {
     });
 }
 
-function signIn()  { tokenClient.requestAccessToken({ prompt: 'consent' }); }
+function signIn() { tokenClient.requestAccessToken({ prompt: 'consent' }); }
+
 function signOut() {
+    var t = accessToken;
     accessToken = null; tokenExpiry = 0;
-    if (rtInterval) clearInterval(rtInterval);
+    Object.keys(intervals).forEach(function(k) { clearInterval(intervals[k]); });
+    intervals = {};
     $('dashboard').style.display = 'none';
     $('auth-screen').style.display = 'flex';
-    google.accounts.oauth2.revoke(accessToken, () => {});
+    if (t) { try { google.accounts.oauth2.revoke(t, function(){}); } catch(e){} }
 }
 
 function onToken(resp) {
     if (resp.error) { alert('Auth error: ' + resp.error); return; }
     accessToken = resp.access_token;
-    tokenExpiry = Date.now() + (resp.expires_in * 1000) - 60000; // 1 min buffer
+    tokenExpiry = Date.now() + (resp.expires_in * 1000) - 60000;
     $('auth-screen').style.display = 'none';
     $('dashboard').style.display = 'block';
-    loadDashboard();
+    loadTab('overview');
 }
 
-async function ensureToken() {
+function ensureToken() {
     if (Date.now() > tokenExpiry) {
-        return new Promise(resolve => {
+        return new Promise(function(r) {
+            tokenClient.callback = function(resp) { onToken(resp); r(); };
             tokenClient.requestAccessToken({ prompt: '' });
-            const orig = tokenClient.callback;
-            tokenClient.callback = (r) => { onToken(r); resolve(); };
         });
     }
+    return Promise.resolve();
 }
 
-/* ──────────────────────────────────────────
-   DATE RANGES
-   ────────────────────────────────────────── */
+/* TABS */
+function switchTab(tab) {
+    currentTab = tab;
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.toggle('active', t.dataset.tab === tab); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.toggle('active', p.id === 'tab-' + tab); });
+    loadTab(tab);
+}
+
+function refreshCurrentTab() { loadTab(currentTab); }
+
+function loadTab(tab) {
+    var loaders = { overview: loadOverview, content: loadContent, audience: loadAudience, behavior: function(){}, realtime: loadRealtime };
+    if (loaders[tab]) loaders[tab]();
+}
+
+/* DATE RANGE */
 function getRange(days) {
+    var d = parseInt(days);
     return {
-        current:  { startDate: days + 'daysAgo', endDate: 'today' },
-        previous: { startDate: (days * 2) + 'daysAgo', endDate: (parseInt(days) + 1) + 'daysAgo' }
+        current:  { startDate: d + 'daysAgo', endDate: 'today' },
+        previous: { startDate: (d * 2) + 'daysAgo', endDate: (d + 1) + 'daysAgo' }
     };
 }
 
 function setRange(r) {
     currentRange = r;
-    document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.range === r));
-    loadDashboard();
+    document.querySelectorAll('.pill').forEach(function(p) { p.classList.toggle('active', p.dataset.range === r); });
+    refreshCurrentTab();
 }
 
-/* ──────────────────────────────────────────
-   API HELPERS
-   ────────────────────────────────────────── */
-async function gaReport(body) {
-    await ensureToken();
-    const res = await fetch(`${API_BASE}/properties/${CONFIG.propertyId}:runReport`, {
-        method: 'POST', headers: { 'Authorization': 'Bearer ' + accessToken, 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+function updateRangeLabel() {
+    var d = parseInt(currentRange);
+    var end = new Date();
+    var start = new Date(); start.setDate(start.getDate() - d);
+    var fmt = function(dt) { return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); };
+    var el = $('range-label');
+    if (el) el.textContent = fmt(start) + ' \u2014 ' + fmt(end);
+}
+
+/* API */
+function gaReport(body) {
+    return ensureToken().then(function() {
+        return fetch(API + '/properties/' + CONFIG.propertyId + ':runReport', {
+            method: 'POST',
+            headers: { Authorization: 'Bearer ' + accessToken, 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
+    }).then(function(r) {
+        if (!r.ok) return r.text().then(function(t) { throw new Error('API ' + r.status + ': ' + t); });
+        return r.json();
     });
-    if (!res.ok) throw new Error('API ' + res.status + ': ' + (await res.text()));
-    return res.json();
 }
 
-async function gaRealtime(body) {
-    await ensureToken();
-    const res = await fetch(`${API_BASE}/properties/${CONFIG.propertyId}:runRealtimeReport`, {
-        method: 'POST', headers: { 'Authorization': 'Bearer ' + accessToken, 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+function gaRealtime(body) {
+    return ensureToken().then(function() {
+        return fetch(API + '/properties/' + CONFIG.propertyId + ':runRealtimeReport', {
+            method: 'POST',
+            headers: { Authorization: 'Bearer ' + accessToken, 'Content-Type': 'application/json' },
+            body: JSON.stringify(body || {})
+        });
+    }).then(function(r) {
+        if (!r.ok) throw new Error('RT API ' + r.status);
+        return r.json();
     });
-    if (!res.ok) throw new Error('Realtime API ' + res.status);
-    return res.json();
 }
 
-/* ──────────────────────────────────────────
-   FORMATTERS
-   ────────────────────────────────────────── */
-function fmtNum(n)   { return new Intl.NumberFormat().format(n); }
-function fmtDur(sec) { const m = Math.floor(sec/60), s = Math.round(sec%60); return m + 'm ' + s + 's'; }
+/* FORMATTERS */
+function fmtNum(n)   { return new Intl.NumberFormat().format(Math.round(n)); }
+function fmtDec(n)   { return n.toFixed(1); }
+function fmtDur(sec) { if (sec < 60) return Math.round(sec) + 's'; var m = Math.floor(sec/60), s = Math.round(sec%60); return m + 'm ' + s + 's'; }
 function fmtPct(v)   { return (v * 100).toFixed(1) + '%'; }
 function fmtDate(d)  { return new Date(d.slice(0,4), d.slice(4,6)-1, d.slice(6,8)).toLocaleDateString('en-US', { month:'short', day:'numeric' }); }
-function metricVal(row, i) { return parseFloat(row?.metricValues?.[i]?.value || '0'); }
+function mVal(row, i) { return parseFloat(row && row.metricValues && row.metricValues[i] ? row.metricValues[i].value : '0'); }
+function dVal(row, i) { return row && row.dimensionValues && row.dimensionValues[i] ? row.dimensionValues[i].value : ''; }
 
 function calcChange(curr, prev, higherBetter) {
-    if (!prev) return { text: '—', cls: 'neutral' };
-    const pct = prev === 0 ? (curr > 0 ? 100 : 0) : ((curr - prev) / prev) * 100;
-    const positive = pct >= 0;
-    const good = higherBetter ? positive : !positive;
-    const arrow = positive ? '↑' : '↓';
-    return { text: arrow + ' ' + Math.abs(pct).toFixed(1) + '%', cls: pct === 0 ? 'neutral' : (good ? 'up' : 'down') };
+    if (!prev && !curr) return { text: '\u2014', cls: 'neutral' };
+    if (!prev) return { text: curr > 0 ? '\u2191 New' : '\u2014', cls: curr > 0 ? 'up' : 'neutral' };
+    var pct = ((curr - prev) / prev) * 100;
+    var positive = pct >= 0;
+    var good = higherBetter ? positive : !positive;
+    return { text: (positive ? '\u2191' : '\u2193') + ' ' + Math.abs(pct).toFixed(1) + '%', cls: pct === 0 ? 'neutral' : (good ? 'up' : 'down') };
 }
 
-/* ──────────────────────────────────────────
-   LOAD ALL DATA
-   ────────────────────────────────────────── */
-async function loadDashboard() {
-    const range = getRange(currentRange);
-    const metrics = [
+/* ═══════════════════════════════════════
+   OVERVIEW
+   ═══════════════════════════════════════ */
+function loadOverview() {
+    updateRangeLabel();
+    var range = getRange(currentRange);
+    var metrics = [
         { name:'totalUsers' }, { name:'sessions' }, { name:'screenPageViews' },
-        { name:'averageSessionDuration' }, { name:'bounceRate' }
+        { name:'averageSessionDuration' }, { name:'bounceRate' }, { name:'screenPageViewsPerSession' },
+        { name:'newUsers' }
     ];
 
-    try {
-        const [kpiCurr, kpiPrev, daily, pages, sources, devices, countries, realtime] = await Promise.all([
-            gaReport({ dateRanges: [range.current],  metrics }),
-            gaReport({ dateRanges: [range.previous], metrics }),
-            gaReport({ dateRanges: [range.current], dimensions: [{ name:'date' }], metrics: [{ name:'totalUsers' },{ name:'sessions' },{ name:'screenPageViews' }], orderBys: [{ dimension:{ dimensionName:'date' } }], limit: 500 }),
-            gaReport({ dateRanges: [range.current], dimensions: [{ name:'pagePath' }], metrics: [{ name:'screenPageViews' },{ name:'totalUsers' }], orderBys: [{ metric:{ metricName:'screenPageViews' }, desc:true }], limit: 10 }),
-            gaReport({ dateRanges: [range.current], dimensions: [{ name:'sessionDefaultChannelGroup' }], metrics: [{ name:'sessions' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }], limit: 8 }),
-            gaReport({ dateRanges: [range.current], dimensions: [{ name:'deviceCategory' }], metrics: [{ name:'sessions' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }] }),
-            gaReport({ dateRanges: [range.current], dimensions: [{ name:'country' }], metrics: [{ name:'totalUsers' },{ name:'sessions' }], orderBys: [{ metric:{ metricName:'totalUsers' }, desc:true }], limit: 10 }),
-            gaRealtime({ metrics: [{ name:'activeUsers' }] })
-        ]);
-
-        renderKPIs(kpiCurr, kpiPrev);
-        renderTrafficChart(daily);
-        renderPages(pages);
-        renderDoughnut('chart-sources', 'legend-sources', sources);
-        renderDoughnut('chart-devices', 'legend-devices', devices);
-        renderCountries(countries);
-        renderRealtime(realtime);
-
+    Promise.all([
+        gaReport({ dateRanges: [range.current], metrics: metrics }),
+        gaReport({ dateRanges: [range.previous], metrics: metrics }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'date' }], metrics: [{ name:'totalUsers' },{ name:'sessions' },{ name:'screenPageViews' },{ name:'newUsers' }], orderBys: [{ dimension:{ dimensionName:'date' } }], limit: 500 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'pagePath' }], metrics: [{ name:'screenPageViews' },{ name:'totalUsers' },{ name:'averageSessionDuration' }], orderBys: [{ metric:{ metricName:'screenPageViews' }, desc:true }], limit: 15 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'sessionDefaultChannelGroup' }], metrics: [{ name:'sessions' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }], limit: 8 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'deviceCategory' }], metrics: [{ name:'sessions' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }] }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'browser' }], metrics: [{ name:'sessions' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }], limit: 6 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'country' }], metrics: [{ name:'totalUsers' },{ name:'sessions' }], orderBys: [{ metric:{ metricName:'totalUsers' }, desc:true }], limit: 12 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'dayOfWeek' },{ name:'hour' }], metrics: [{ name:'activeUsers' }], limit: 500 })
+    ]).then(function(results) {
+        renderKPIs(results[0], results[1]);
+        renderTrafficChart(results[2]);
+        renderPages('tbl-pages', results[3], 15);
+        renderDoughnut('chart-sources', 'legend-sources', results[4]);
+        renderDoughnut('chart-devices', 'legend-devices', results[5]);
+        renderDoughnut('chart-browsers', 'legend-browsers', results[6]);
+        renderCountryTable('tbl-countries', results[7]);
+        renderHeatmap(results[8]);
+        generateInsights(results[0], results[1], results[3], results[4], results[7], results[2]);
         $('last-updated').textContent = 'Updated ' + new Date().toLocaleTimeString();
-
-        // Auto-refresh realtime every 30s
-        if (rtInterval) clearInterval(rtInterval);
-        rtInterval = setInterval(async () => {
-            try {
-                const rt = await gaRealtime({ metrics: [{ name:'activeUsers' }] });
-                renderRealtime(rt);
-            } catch(e) { /* silent */ }
-        }, 30000);
-
-    } catch(err) {
+    }).catch(function(err) {
         console.error(err);
         $('kpi-row').innerHTML = '<div class="err-msg" style="grid-column:1/-1">' + err.message + '</div>';
-    }
+    });
 }
 
-/* ──────────────────────────────────────────
-   RENDER: KPIs
-   ────────────────────────────────────────── */
+/* KPIs */
 function renderKPIs(curr, prev) {
-    const cr = curr.rows?.[0], pr = prev.rows?.[0];
-    const kpis = [
-        { id:'kpi-users',     i:0, fmt: v => fmtNum(Math.round(v)),  hb:true },
-        { id:'kpi-sessions',  i:1, fmt: v => fmtNum(Math.round(v)),  hb:true },
-        { id:'kpi-pageviews', i:2, fmt: v => fmtNum(Math.round(v)),  hb:true },
-        { id:'kpi-duration',  i:3, fmt: v => fmtDur(v),              hb:true },
-        { id:'kpi-bounce',    i:4, fmt: v => fmtPct(v),              hb:false }
+    var cr = curr.rows ? curr.rows[0] : null;
+    var pr = prev.rows ? prev.rows[0] : null;
+    var d = parseInt(currentRange);
+    var kpis = [
+        { id:'kpi-users', i:0, fmt: function(v){return fmtNum(v)}, hb:true },
+        { id:'kpi-sessions', i:1, fmt: function(v){return fmtNum(v)}, hb:true },
+        { id:'kpi-pageviews', i:2, fmt: function(v){return fmtNum(v)}, hb:true },
+        { id:'kpi-duration', i:3, fmt: function(v){return fmtDur(v)}, hb:true },
+        { id:'kpi-bounce', i:4, fmt: function(v){return fmtPct(v)}, hb:false },
+        { id:'kpi-pps', i:5, fmt: function(v){return fmtDec(v)}, hb:true }
     ];
 
-    kpis.forEach(k => {
-        const cVal = metricVal(cr, k.i);
-        const pVal = metricVal(pr, k.i);
-        const change = calcChange(cVal, pVal, k.hb);
-        const el = $(k.id);
+    kpis.forEach(function(k) {
+        var cVal = mVal(cr, k.i), pVal = mVal(pr, k.i);
+        var change = calcChange(cVal, pVal, k.hb);
+        var el = $(k.id);
         el.querySelector('.kpi-value').className = 'kpi-value';
         el.querySelector('.kpi-value').textContent = k.fmt(cVal);
         el.querySelector('.kpi-change').className = 'kpi-change ' + change.cls;
         el.querySelector('.kpi-change').textContent = change.text;
     });
+
+    var users = mVal(cr, 0), newU = mVal(cr, 6);
+    var retU = Math.max(0, users - newU);
+    $('kpi-users-sub').textContent = fmtNum(newU) + ' new \u00b7 ' + fmtNum(retU) + ' returning';
+    $('kpi-sessions-sub').textContent = d > 1 ? '~' + fmtNum(Math.round(mVal(cr, 1) / d)) + '/day avg' : '';
+    $('kpi-pv-sub').textContent = d > 1 ? '~' + fmtNum(Math.round(mVal(cr, 2) / d)) + '/day avg' : '';
 }
 
-/* ──────────────────────────────────────────
-   RENDER: Realtime
-   ────────────────────────────────────────── */
-function renderRealtime(data) {
-    const val = data.rows?.[0]?.metricValues?.[0]?.value || '0';
-    $('rt-count').textContent = fmtNum(parseInt(val));
-}
-
-/* ──────────────────────────────────────────
-   RENDER: Traffic Line Chart
-   ────────────────────────────────────────── */
+/* TRAFFIC CHART */
 function renderTrafficChart(data) {
-    const rows = data.rows || [];
-    const labels = rows.map(r => fmtDate(r.dimensionValues[0].value));
-    const datasets = [
-        { label:'Users',    data: rows.map(r => metricVal(r,0)), color:'#3b82f6' },
-        { label:'Sessions', data: rows.map(r => metricVal(r,1)), color:'#8b5cf6', hidden:true },
-        { label:'Views',    data: rows.map(r => metricVal(r,2)), color:'#06b6d4', hidden:true }
+    var rows = data.rows || [];
+    var labels = rows.map(function(r) { return fmtDate(dVal(r,0)); });
+    var sets = [
+        { label:'Users', data: rows.map(function(r){return mVal(r,0)}), color:'#3b82f6' },
+        { label:'Sessions', data: rows.map(function(r){return mVal(r,1)}), color:'#8b5cf6', hidden:true },
+        { label:'Pageviews', data: rows.map(function(r){return mVal(r,2)}), color:'#06b6d4', hidden:true },
+        { label:'New Users', data: rows.map(function(r){return mVal(r,3)}), color:'#22c55e', hidden:true }
     ];
 
     if (charts.traffic) charts.traffic.destroy();
-
-    const ctx = $('chart-traffic').getContext('2d');
-    const grad = ctx.createLinearGradient(0, 0, 0, 280);
-    grad.addColorStop(0, 'rgba(59,130,246,.2)'); grad.addColorStop(1, 'rgba(59,130,246,0)');
+    var ctx = $('chart-traffic').getContext('2d');
+    var grad = ctx.createLinearGradient(0, 0, 0, 280);
+    grad.addColorStop(0, 'rgba(59,130,246,.15)'); grad.addColorStop(1, 'rgba(59,130,246,0)');
 
     charts.traffic = new Chart(ctx, {
         type: 'line',
-        data: {
-            labels,
-            datasets: datasets.map((ds, i) => ({
-                label: ds.label, data: ds.data, borderColor: ds.color, backgroundColor: i === 0 ? grad : 'transparent',
-                fill: i === 0, tension: .4, borderWidth: 2, pointRadius: 0, pointHitRadius: 10, hidden: ds.hidden
-            }))
-        },
+        data: { labels: labels, datasets: sets.map(function(ds, i) { return {
+            label: ds.label, data: ds.data, borderColor: ds.color,
+            backgroundColor: i === 0 ? grad : 'transparent',
+            fill: i === 0, tension: .35, borderWidth: 2, pointRadius: rows.length < 60 ? 3 : 0,
+            pointBackgroundColor: ds.color, pointHitRadius: 10, hidden: ds.hidden
+        }; })},
         options: {
             responsive: true, maintainAspectRatio: false,
             interaction: { mode:'index', intersect:false },
-            plugins: {
-                legend: { display:false },
-                tooltip: { backgroundColor:'#1e293b', titleColor:'#f1f5f9', bodyColor:'#94a3b8', padding:12, cornerRadius:8, displayColors:true, boxPadding:4 }
-            },
+            plugins: { legend: { display:false }, tooltip: { backgroundColor:'#1e293b', titleColor:'#f1f5f9', bodyColor:'#94a3b8', padding:12, cornerRadius:8, displayColors:true, boxPadding:4 } },
             scales: {
-                x: { grid:{ display:false }, ticks:{ color:'#4b5563', maxTicksLimit:10, font:{ size:11 } } },
-                y: { beginAtZero:true, grid:{ color:'rgba(255,255,255,.03)' }, border:{ display:false }, ticks:{ color:'#4b5563', font:{ size:11 } } }
+                x: { grid:{ display:false }, ticks:{ color:'#4b5563', maxTicksLimit:12, font:{ size:10 } } },
+                y: { beginAtZero:true, grid:{ color:'rgba(255,255,255,.03)' }, border:{ display:false }, ticks:{ color:'#4b5563', font:{ size:10 } } }
             }
         }
     });
@@ -526,84 +713,477 @@ function renderTrafficChart(data) {
 
 function toggleLine(btn, idx) {
     btn.classList.toggle('active');
-    const meta = charts.traffic.getDatasetMeta(idx);
+    var meta = charts.traffic.getDatasetMeta(idx);
     meta.hidden = !meta.hidden;
     charts.traffic.update();
 }
 
-/* ──────────────────────────────────────────
-   RENDER: Doughnut Charts (Sources & Devices)
-   ────────────────────────────────────────── */
+/* DOUGHNUT */
 function renderDoughnut(canvasId, legendId, data) {
-    const rows = data.rows || [];
-    const labels = rows.map(r => r.dimensionValues[0].value);
-    const values = rows.map(r => metricVal(r, 0));
-    const total  = values.reduce((a,b) => a + b, 0);
+    var rows = data.rows || [];
+    var labels = rows.map(function(r) { return dVal(r,0); });
+    var values = rows.map(function(r) { return mVal(r,0); });
+    var total = values.reduce(function(a,b) { return a + b; }, 0);
 
     if (charts[canvasId]) charts[canvasId].destroy();
-
     charts[canvasId] = new Chart($(canvasId), {
         type: 'doughnut',
-        data: {
-            labels,
-            datasets: [{ data: values, backgroundColor: COLORS.slice(0, labels.length), borderWidth: 0, hoverOffset: 6 }]
-        },
+        data: { labels: labels, datasets: [{ data: values, backgroundColor: COLORS.slice(0, labels.length), borderWidth: 0, hoverOffset: 4 }] },
         options: {
-            responsive: true, maintainAspectRatio: false, cutout: '72%',
-            plugins: {
-                legend: { display:false },
-                tooltip: { backgroundColor:'#1e293b', titleColor:'#f1f5f9', bodyColor:'#94a3b8', padding:12, cornerRadius:8,
-                    callbacks: { label: ctx => ctx.label + ': ' + fmtNum(ctx.parsed) + ' (' + (total ? ((ctx.parsed/total)*100).toFixed(1) : 0) + '%)' }
-                }
-            }
+            responsive: true, maintainAspectRatio: false, cutout: '70%',
+            plugins: { legend: { display:false }, tooltip: { backgroundColor:'#1e293b', titleColor:'#f1f5f9', bodyColor:'#94a3b8', padding:12, cornerRadius:8,
+                callbacks: { label: function(ctx) { return ctx.label + ': ' + fmtNum(ctx.parsed) + ' (' + (total ? ((ctx.parsed/total)*100).toFixed(1) : 0) + '%)'; } } } }
         }
     });
 
-    // Custom legend
-    $(legendId).innerHTML = labels.map((l, i) =>
-        '<div class="legend-item"><span class="legend-dot" style="background:' + COLORS[i] + '"></span>' + l + ' <span style="color:var(--t3)">' + (total ? ((values[i]/total)*100).toFixed(0) : 0) + '%</span></div>'
-    ).join('');
+    $(legendId).innerHTML = labels.map(function(l, i) {
+        return '<div class="legend-item"><span class="legend-dot" style="background:' + COLORS[i] + '"></span>' + l + ' <span style="color:var(--t3)">' + (total ? ((values[i]/total)*100).toFixed(0) : 0) + '%</span></div>';
+    }).join('');
 }
 
-/* ──────────────────────────────────────────
-   RENDER: Top Pages Table
-   ────────────────────────────────────────── */
-function renderPages(data) {
-    const rows = data.rows || [];
-    if (!rows.length) { $('tbl-pages').innerHTML = '<p style="color:var(--t3);text-align:center;padding:24px">No data yet</p>'; return; }
-    const maxViews = Math.max(...rows.map(r => metricVal(r,0)));
-    let html = '<table class="tbl"><thead><tr><th>Page</th><th class="num">Views</th><th class="num">Users</th><th style="width:80px"></th></tr></thead><tbody>';
-    rows.forEach(r => {
-        const path = r.dimensionValues[0].value;
-        const views = metricVal(r, 0), users = metricVal(r, 1);
-        const pct = maxViews ? (views / maxViews) * 100 : 0;
-        html += '<tr><td class="pg-path" title="' + path + '"><a href="https://datadripco.com' + path + '" target="_blank">' + path + '</a></td><td class="num">' + fmtNum(views) + '</td><td class="num">' + fmtNum(users) + '</td><td><div class="bar-cell"><div class="bar-fill" style="width:' + pct + '%"></div></div></td></tr>';
+/* TABLES */
+function renderPages(containerId, data, limit) {
+    var rows = (data.rows || []).slice(0, limit);
+    if (!rows.length) { $(containerId).innerHTML = '<div class="empty-state">No data yet</div>'; return; }
+    var maxV = Math.max.apply(null, rows.map(function(r){return mVal(r,0)}));
+    var h = '<table class="tbl"><thead><tr><th>Page</th><th class="num">Views</th><th class="num">Users</th><th class="num">Avg Time</th><th style="width:70px"></th></tr></thead><tbody>';
+    rows.forEach(function(r) {
+        var path = dVal(r,0), views = mVal(r,0), users = mVal(r,1), dur = mVal(r,2);
+        h += '<tr><td class="pg-path" title="'+path+'"><a href="https://datadripco.com'+path+'" target="_blank">'+path+'</a></td><td class="num">'+fmtNum(views)+'</td><td class="num">'+fmtNum(users)+'</td><td class="num">'+fmtDur(dur)+'</td><td><div class="bar-cell"><div class="bar-fill" style="width:'+(maxV?(views/maxV)*100:0)+'%"></div></div></td></tr>';
     });
-    html += '</tbody></table>';
-    $('tbl-pages').innerHTML = html;
+    h += '</tbody></table>';
+    $(containerId).innerHTML = h;
 }
 
-/* ──────────────────────────────────────────
-   RENDER: Countries Table
-   ────────────────────────────────────────── */
-function renderCountries(data) {
-    const rows = data.rows || [];
-    if (!rows.length) { $('tbl-countries').innerHTML = '<p style="color:var(--t3);text-align:center;padding:24px">No data yet</p>'; return; }
-    const maxUsers = Math.max(...rows.map(r => metricVal(r,0)));
-    let html = '<table class="tbl"><thead><tr><th>Country</th><th class="num">Users</th><th class="num">Sessions</th><th style="width:80px"></th></tr></thead><tbody>';
-    rows.forEach(r => {
-        const country = r.dimensionValues[0].value;
-        const users = metricVal(r, 0), sessions = metricVal(r, 1);
-        const pct = maxUsers ? (users / maxUsers) * 100 : 0;
-        html += '<tr><td>' + country + '</td><td class="num">' + fmtNum(users) + '</td><td class="num">' + fmtNum(sessions) + '</td><td><div class="bar-cell"><div class="bar-fill" style="width:' + pct + '%"></div></div></td></tr>';
+function renderCountryTable(containerId, data) {
+    var rows = data.rows || [];
+    if (!rows.length) { $(containerId).innerHTML = '<div class="empty-state">No data yet</div>'; return; }
+    var maxU = Math.max.apply(null, rows.map(function(r){return mVal(r,0)}));
+    var h = '<table class="tbl"><thead><tr><th>Country</th><th class="num">Users</th><th class="num">Sessions</th><th style="width:70px"></th></tr></thead><tbody>';
+    rows.forEach(function(r) {
+        var country = dVal(r,0), users = mVal(r,0), sessions = mVal(r,1);
+        h += '<tr><td>'+country+'</td><td class="num">'+fmtNum(users)+'</td><td class="num">'+fmtNum(sessions)+'</td><td><div class="bar-cell"><div class="bar-fill" style="width:'+(maxU?(users/maxU)*100:0)+'%"></div></div></td></tr>';
     });
-    html += '</tbody></table>';
-    $('tbl-countries').innerHTML = html;
+    h += '</tbody></table>';
+    $(containerId).innerHTML = h;
 }
 
-/* ──────────────────────────────────────────
-   CHART.JS GLOBAL DEFAULTS
-   ────────────────────────────────────────── */
+function renderSimpleTable(containerId, data, dimLabel, metLabel) {
+    var rows = data.rows || [];
+    if (!rows.length) { $(containerId).innerHTML = '<div class="empty-state">No data</div>'; return; }
+    var maxV = Math.max.apply(null, rows.map(function(r){return mVal(r,0)}));
+    var h = '<table class="tbl"><thead><tr><th>'+dimLabel+'</th><th class="num">'+metLabel+'</th><th style="width:70px"></th></tr></thead><tbody>';
+    rows.forEach(function(r) {
+        var dim = dVal(r,0), val = mVal(r,0);
+        h += '<tr><td>'+dim+'</td><td class="num">'+fmtNum(val)+'</td><td><div class="bar-cell"><div class="bar-fill" style="width:'+(maxV?(val/maxV)*100:0)+'%"></div></div></td></tr>';
+    });
+    h += '</tbody></table>';
+    $(containerId).innerHTML = h;
+}
+
+/* HEATMAP */
+function renderHeatmap(data) {
+    var rows = data.rows || [];
+    var grid = [];
+    for (var di = 0; di < 7; di++) { grid[di] = []; for (var hi = 0; hi < 24; hi++) grid[di][hi] = 0; }
+    var maxVal = 0;
+    rows.forEach(function(r) {
+        var day = parseInt(dVal(r,0)), hour = parseInt(dVal(r,1)), val = mVal(r,0);
+        if (day >= 0 && day < 7 && hour >= 0 && hour < 24) {
+            grid[day][hour] = val;
+            if (val > maxVal) maxVal = val;
+        }
+    });
+
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var h = '<div style="display:grid;grid-template-columns:40px repeat(24,1fr);gap:2px;align-items:center">';
+    h += '<div></div>';
+    for (var hr = 0; hr < 24; hr++) h += '<div class="heatmap-label">' + (hr % 3 === 0 ? hr + 'h' : '') + '</div>';
+    days.forEach(function(day, di) {
+        h += '<div style="font-size:11px;color:var(--t3);text-align:right;padding-right:6px">' + day + '</div>';
+        for (var hr = 0; hr < 24; hr++) {
+            var v = grid[di][hr];
+            var intensity = maxVal ? v / maxVal : 0;
+            var bg = intensity === 0 ? 'rgba(255,255,255,.03)' : 'rgba(59,130,246,' + (0.1 + intensity * 0.8) + ')';
+            h += '<div class="heatmap-cell" style="background:'+bg+'" title="'+days[di]+' '+hr+':00 \u2014 '+Math.round(v)+' users">'+Math.round(v)+'</div>';
+        }
+    });
+    h += '</div>';
+    $('heatmap-container').innerHTML = h;
+}
+
+/* INSIGHTS */
+function generateInsights(kpiCurr, kpiPrev, pages, sources, countries, daily) {
+    var cr = kpiCurr.rows ? kpiCurr.rows[0] : null;
+    var pr = kpiPrev.rows ? kpiPrev.rows[0] : null;
+    var insights = [];
+    var d = parseInt(currentRange);
+
+    var currUsers = mVal(cr,0), prevUsers = mVal(pr,0);
+    var userChange = prevUsers ? ((currUsers - prevUsers) / prevUsers * 100) : 0;
+    if (Math.abs(userChange) > 5) {
+        var dir = userChange > 0 ? 'up' : 'down';
+        var bg = userChange > 0 ? 'rgba(34,197,94,.1)' : 'rgba(239,68,68,.1)';
+        insights.push({ icon: userChange > 0 ? '\uD83D\uDCC8' : '\uD83D\uDCC9', bg: bg, text: 'Traffic is <strong>' + dir + ' ' + Math.abs(userChange).toFixed(1) + '%</strong> compared to the previous ' + d + ' days. You had <strong>' + fmtNum(currUsers) + '</strong> users vs <strong>' + fmtNum(prevUsers) + '</strong> previously.' });
+    }
+
+    var bounce = mVal(cr,4);
+    if (bounce > 0.7) {
+        insights.push({ icon: '\u26A0\uFE0F', bg: 'rgba(245,158,11,.1)', text: 'Your bounce rate is <strong>' + fmtPct(bounce) + '</strong> \u2014 that\'s high. Consider adding more internal links or related posts to keep readers engaged.' });
+    } else if (bounce < 0.4) {
+        insights.push({ icon: '\uD83C\uDFAF', bg: 'rgba(34,197,94,.1)', text: 'Excellent bounce rate of <strong>' + fmtPct(bounce) + '</strong>! Visitors are exploring multiple pages.' });
+    }
+
+    if (pages.rows && pages.rows.length) {
+        var topPath = dVal(pages.rows[0],0), topViews = mVal(pages.rows[0],0);
+        insights.push({ icon: '\uD83D\uDD25', bg: 'rgba(239,68,68,.1)', text: 'Top page: <strong>' + topPath + '</strong> with <strong>' + fmtNum(topViews) + ' views</strong>. Consider creating similar content.' });
+    }
+
+    if (sources.rows && sources.rows.length) {
+        var topSrc = dVal(sources.rows[0],0), topSrcSess = mVal(sources.rows[0],0);
+        var totalSess = mVal(cr,1);
+        var srcPct = totalSess ? (topSrcSess / totalSess * 100).toFixed(0) : 0;
+        insights.push({ icon: '\uD83D\uDD17', bg: 'rgba(59,130,246,.1)', text: '<strong>' + srcPct + '%</strong> of traffic comes from <strong>' + topSrc + '</strong>.' + (topSrc === 'Organic Search' ? ' Your SEO is working!' : ' Consider diversifying sources.') });
+    }
+
+    var avgDur = mVal(cr,3);
+    if (avgDur < 30) {
+        insights.push({ icon: '\u23F1\uFE0F', bg: 'rgba(245,158,11,.1)', text: 'Average session is only <strong>' + fmtDur(avgDur) + '</strong>. Try longer content or interactive elements.' });
+    } else if (avgDur > 120) {
+        insights.push({ icon: '\u2B50', bg: 'rgba(34,197,94,.1)', text: 'Users spend <strong>' + fmtDur(avgDur) + '</strong> on avg \u2014 great engagement!' });
+    }
+
+    var newUsers = mVal(cr, 6);
+    var newPct = currUsers ? (newUsers / currUsers * 100) : 0;
+    if (newPct > 80) {
+        insights.push({ icon: '\uD83D\uDC4B', bg: 'rgba(139,92,246,.1)', text: '<strong>' + newPct.toFixed(0) + '%</strong> are new visitors. Great for growth \u2014 consider email signups to bring them back.' });
+    }
+
+    if (countries.rows && countries.rows.length) {
+        var topCountry = dVal(countries.rows[0],0);
+        insights.push({ icon: '\uD83C\uDF0D', bg: 'rgba(6,182,212,.1)', text: 'Most visitors from <strong>' + topCountry + '</strong>. Time your posts for their timezone.' });
+    }
+
+    if (!insights.length) {
+        insights.push({ icon: '\u2705', bg: 'rgba(34,197,94,.1)', text: 'Everything looks healthy! Keep publishing great content.' });
+    }
+
+    $('insights-content').innerHTML = insights.map(function(ins) {
+        return '<div class="insight-item"><div class="insight-icon" style="background:'+ins.bg+'">'+ins.icon+'</div><div class="insight-text">'+ins.text+'</div></div>';
+    }).join('');
+}
+
+/* ═══════════════════════════════════════
+   CONTENT TAB
+   ═══════════════════════════════════════ */
+function loadContent() {
+    var range = getRange(currentRange);
+    Promise.all([
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'pagePath' }], metrics: [{ name:'screenPageViews' },{ name:'totalUsers' },{ name:'averageSessionDuration' },{ name:'bounceRate' }], orderBys: [{ metric:{ metricName:'screenPageViews' }, desc:true }], limit: 50 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'landingPage' }], metrics: [{ name:'sessions' },{ name:'totalUsers' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }], limit: 15 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'pagePath' }], metrics: [{ name:'screenPageViews' },{ name:'totalUsers' }], orderBys: [{ metric:{ metricName:'screenPageViews' }, desc:true }], limit: 15 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'date' }], metrics: [{ name:'screenPageViews' },{ name:'engagedSessions' }], orderBys: [{ dimension:{ dimensionName:'date' } }], limit: 500 })
+    ]).then(function(results) {
+        renderAllPages(results[0]);
+        renderEntryExitPages('tbl-entry-pages', results[1], 'Landing Page', 'Sessions');
+        renderEntryExitPages('tbl-exit-pages', results[2], 'Page', 'Pageviews');
+        renderContentTrend(results[3]);
+    }).catch(function(err) {
+        console.error(err);
+        $('tbl-all-pages').innerHTML = '<div class="err-msg">' + err.message + '</div>';
+    });
+}
+
+function renderAllPages(data) {
+    var rows = data.rows || [];
+    if (!rows.length) { $('tbl-all-pages').innerHTML = '<div class="empty-state">No data</div>'; return; }
+    var maxV = Math.max.apply(null, rows.map(function(r){return mVal(r,0)}));
+    var h = '<table class="tbl"><thead><tr><th>Page</th><th class="num">Views</th><th class="num">Users</th><th class="num">Avg Time</th><th class="num">Bounce</th><th style="width:80px"></th></tr></thead><tbody>';
+    rows.forEach(function(r) {
+        var path = dVal(r,0), views = mVal(r,0), users = mVal(r,1), dur = mVal(r,2), bnc = mVal(r,3);
+        var bColor = bnc > 0.7 ? 'var(--red)' : bnc < 0.4 ? 'var(--green)' : 'var(--t2)';
+        h += '<tr><td class="pg-path" title="'+path+'"><a href="https://datadripco.com'+path+'" target="_blank">'+path+'</a></td><td class="num">'+fmtNum(views)+'</td><td class="num">'+fmtNum(users)+'</td><td class="num">'+fmtDur(dur)+'</td><td class="num" style="color:'+bColor+'">'+fmtPct(bnc)+'</td><td><div class="bar-cell"><div class="bar-fill" style="width:'+(maxV?(views/maxV)*100:0)+'%"></div></div></td></tr>';
+    });
+    h += '</tbody></table>';
+    $('tbl-all-pages').innerHTML = h;
+}
+
+function renderEntryExitPages(containerId, data, dimLabel, metLabel) {
+    var rows = data.rows || [];
+    if (!rows.length) { $(containerId).innerHTML = '<div class="empty-state">No data</div>'; return; }
+    var maxV = Math.max.apply(null, rows.map(function(r){return mVal(r,0)}));
+    var h = '<table class="tbl"><thead><tr><th>'+dimLabel+'</th><th class="num">'+metLabel+'</th><th class="num">Users</th><th style="width:70px"></th></tr></thead><tbody>';
+    rows.forEach(function(r) {
+        var path = dVal(r,0), val1 = mVal(r,0), val2 = mVal(r,1);
+        h += '<tr><td class="pg-path" title="'+path+'"><a href="https://datadripco.com'+path+'" target="_blank">'+path+'</a></td><td class="num">'+fmtNum(val1)+'</td><td class="num">'+fmtNum(val2)+'</td><td><div class="bar-cell"><div class="bar-fill" style="width:'+(maxV?(val1/maxV)*100:0)+'%"></div></div></td></tr>';
+    });
+    h += '</tbody></table>';
+    $(containerId).innerHTML = h;
+}
+
+function renderContentTrend(data) {
+    var rows = data.rows || [];
+    var labels = rows.map(function(r) { return fmtDate(dVal(r,0)); });
+    if (charts.contentTrend) charts.contentTrend.destroy();
+
+    charts.contentTrend = new Chart($('chart-content-trend'), {
+        type: 'line',
+        data: { labels: labels, datasets: [
+            { label: 'Pageviews', data: rows.map(function(r){return mVal(r,0)}), borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,.08)', fill: true, tension: .35, borderWidth: 2, pointRadius: 0 },
+            { label: 'Engaged Sessions', data: rows.map(function(r){return mVal(r,1)}), borderColor: '#22c55e', backgroundColor: 'transparent', tension: .35, borderWidth: 2, pointRadius: 0 }
+        ]},
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            interaction: { mode:'index', intersect:false },
+            plugins: { legend: { display:true, labels:{ color:'#94a3b8', usePointStyle:true, pointStyle:'circle', padding:16, font:{size:11} } }, tooltip: { backgroundColor:'#1e293b', titleColor:'#f1f5f9', bodyColor:'#94a3b8', padding:12, cornerRadius:8 } },
+            scales: {
+                x: { grid:{ display:false }, ticks:{ color:'#4b5563', maxTicksLimit:12, font:{ size:10 } } },
+                y: { beginAtZero:true, grid:{ color:'rgba(255,255,255,.03)' }, border:{ display:false }, ticks:{ color:'#4b5563', font:{ size:10 } } }
+            }
+        }
+    });
+}
+
+/* ═══════════════════════════════════════
+   AUDIENCE TAB
+   ═══════════════════════════════════════ */
+function loadAudience() {
+    var range = getRange(currentRange);
+    Promise.all([
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'newVsReturning' }], metrics: [{ name:'totalUsers' },{ name:'sessions' }] }),
+        gaReport({ dateRanges: [range.current], metrics: [{ name:'engagedSessions' },{ name:'engagementRate' },{ name:'averageSessionDuration' },{ name:'screenPageViewsPerSession' },{ name:'sessionsPerUser' },{ name:'totalUsers' },{ name:'sessions' }] }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'country' }], metrics: [{ name:'totalUsers' },{ name:'sessions' }], orderBys: [{ metric:{ metricName:'totalUsers' }, desc:true }], limit: 15 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'city' }], metrics: [{ name:'totalUsers' }], orderBys: [{ metric:{ metricName:'totalUsers' }, desc:true }], limit: 15 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'language' }], metrics: [{ name:'totalUsers' }], orderBys: [{ metric:{ metricName:'totalUsers' }, desc:true }], limit: 10 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'operatingSystem' }], metrics: [{ name:'sessions' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }], limit: 6 }),
+        gaReport({ dateRanges: [range.current], dimensions: [{ name:'screenResolution' }], metrics: [{ name:'sessions' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }], limit: 10 })
+    ]).then(function(results) {
+        renderDoughnut('chart-new-returning', 'legend-new-returning', results[0]);
+        renderEngagement(results[1]);
+        renderCountryTable('tbl-aud-countries', results[2]);
+        renderSimpleTable('tbl-cities', results[3], 'City', 'Users');
+        renderSimpleTable('tbl-languages', results[4], 'Language', 'Users');
+        renderDoughnut('chart-os', 'legend-os', results[5]);
+        renderSimpleTable('tbl-resolutions', results[6], 'Resolution', 'Sessions');
+    }).catch(function(err) {
+        console.error(err);
+        $('engagement-metrics').innerHTML = '<div class="err-msg">' + err.message + '</div>';
+    });
+}
+
+function renderEngagement(data) {
+    var r = data.rows ? data.rows[0] : null;
+    if (!r) { $('engagement-metrics').innerHTML = '<div class="empty-state">No data</div>'; return; }
+
+    var metrics = [
+        { label: 'Engagement Rate', value: fmtPct(mVal(r,1)), pct: mVal(r,1) * 100, color: 'var(--green)' },
+        { label: 'Engaged Sessions', value: fmtNum(mVal(r,0)), pct: mVal(r,6) ? (mVal(r,0)/mVal(r,6))*100 : 0, color: 'var(--accent)' },
+        { label: 'Avg Session Duration', value: fmtDur(mVal(r,2)), pct: Math.min(mVal(r,2)/300*100, 100), color: 'var(--cyan)' },
+        { label: 'Pages per Session', value: fmtDec(mVal(r,3)), pct: Math.min(mVal(r,3)/5*100, 100), color: 'var(--purple)' },
+        { label: 'Sessions per User', value: fmtDec(mVal(r,4)), pct: Math.min(mVal(r,4)/3*100, 100), color: 'var(--amber)' }
+    ];
+
+    $('engagement-metrics').innerHTML = metrics.map(function(m) {
+        return '<div class="engagement-metric"><span class="em-label">' + m.label + '</span><div style="display:flex;align-items:center"><span class="em-value">' + m.value + '</span><div class="em-bar"><div class="em-bar-fill" style="width:' + Math.min(m.pct, 100) + '%;background:' + m.color + '"></div></div></div></div>';
+    }).join('');
+}
+
+/* ═══════════════════════════════════════
+   USER EXPLORER
+   ═══════════════════════════════════════ */
+function loadUserExplorer(mode) {
+    var search = $('user-search').value.trim().toLowerCase();
+    $('user-list').innerHTML = '<div class="loading"><div class="spinner"></div> Loading user sessions...</div>';
+
+    gaReport({
+        dateRanges: [{ startDate: '7daysAgo', endDate: 'today' }],
+        dimensions: [
+            { name: 'dateHourMinute' },
+            { name: 'country' },
+            { name: 'city' },
+            { name: 'deviceCategory' },
+            { name: 'operatingSystem' },
+            { name: 'browser' },
+            { name: 'pagePath' },
+            { name: 'sessionDefaultChannelGroup' },
+            { name: 'landingPage' }
+        ],
+        metrics: [
+            { name: 'sessions' },
+            { name: 'screenPageViews' },
+            { name: 'averageSessionDuration' },
+            { name: 'engagedSessions' }
+        ],
+        orderBys: [{ dimension: { dimensionName: 'dateHourMinute' }, desc: true }],
+        limit: 500
+    }).then(function(data) {
+        var rows = data.rows || [];
+        if (!rows.length) {
+            $('user-list').innerHTML = '<div class="empty-state">No session data found for the last 7 days.</div>';
+            return;
+        }
+
+        var sessions = {};
+        rows.forEach(function(r) {
+            var time = dVal(r,0), country = dVal(r,1), city = dVal(r,2), device = dVal(r,3);
+            var os = dVal(r,4), browser = dVal(r,5), page = dVal(r,6);
+            var source = dVal(r,7), landing = dVal(r,8);
+            var key = time.slice(0,10) + '|' + country + '|' + city + '|' + device;
+
+            if (!sessions[key]) {
+                sessions[key] = { time:time, country:country, city:city, device:device, os:os, browser:browser, source:source, landing:landing, pages:[], totalViews:0, totalDuration:0, engaged:0 };
+            }
+            sessions[key].pages.push({ page:page, views:mVal(r,1), duration:mVal(r,2) });
+            sessions[key].totalViews += mVal(r,1);
+            sessions[key].totalDuration += mVal(r,2);
+            sessions[key].engaged += mVal(r,3);
+        });
+
+        var sessionList = Object.keys(sessions).map(function(k) { return sessions[k]; });
+        sessionList.sort(function(a,b) { return b.time.localeCompare(a.time); });
+
+        if (search && mode !== 'all') {
+            sessionList = sessionList.filter(function(s) {
+                return s.country.toLowerCase().indexOf(search) !== -1 ||
+                    s.city.toLowerCase().indexOf(search) !== -1 ||
+                    s.device.toLowerCase().indexOf(search) !== -1 ||
+                    s.os.toLowerCase().indexOf(search) !== -1 ||
+                    s.browser.toLowerCase().indexOf(search) !== -1 ||
+                    s.source.toLowerCase().indexOf(search) !== -1 ||
+                    s.pages.some(function(p) { return p.page.toLowerCase().indexOf(search) !== -1; });
+            });
+        }
+
+        if (!sessionList.length) {
+            $('user-list').innerHTML = '<div class="empty-state">No sessions match your search.</div>';
+            return;
+        }
+
+        var html = '<p style="font-size:12px;color:var(--t3);margin-bottom:12px">Showing ' + Math.min(sessionList.length, 50) + ' of ' + sessionList.length + ' sessions (last 7 days)</p>';
+        sessionList.slice(0, 50).forEach(function(s, idx) {
+            var timeStr = formatSessionTime(s.time);
+            var isEngaged = s.engaged > 0;
+            var dotColor = isEngaged ? 'var(--green)' : 'var(--amber)';
+            var statusText = isEngaged ? 'Engaged' : 'Bounced';
+
+            html += '<div class="user-card" onclick="toggleJourney(this)">' +
+                '<div class="user-card-header">' +
+                    '<div class="user-id"><span class="dot" style="background:'+dotColor+'"></span>Session #'+(idx+1)+' \u2014 '+statusText+'</div>' +
+                    '<span style="font-size:11px;color:var(--t3)">'+timeStr+'</span>' +
+                '</div>' +
+                '<div class="user-meta">' +
+                    '<span>\uD83C\uDF0D '+s.country+(s.city && s.city !== '(not set)' ? ', '+s.city : '')+'</span>' +
+                    '<span>\uD83D\uDCF1 '+s.device+' \u00b7 '+s.os+'</span>' +
+                    '<span>\uD83C\uDF10 '+s.browser+'</span>' +
+                    '<span>\uD83D\uDD17 '+s.source+'</span>' +
+                    '<span>\uD83D\uDCC4 '+s.totalViews+' pages</span>' +
+                    '<span>\u23F1\uFE0F '+fmtDur(s.totalDuration)+'</span>' +
+                '</div>' +
+                '<div class="journey-timeline" style="display:none;margin-top:12px">' +
+                    '<div class="journey-step"><div class="step-time">Entry Point</div><div class="step-page">'+s.landing+'</div><div class="step-detail">via '+s.source+'</div></div>' +
+                    s.pages.map(function(p) {
+                        return '<div class="journey-step"><div class="step-page">'+p.page+'</div><div class="step-detail">'+fmtNum(p.views)+' view(s) \u00b7 '+fmtDur(p.duration)+' avg</div></div>';
+                    }).join('') +
+                '</div>' +
+            '</div>';
+        });
+        $('user-list').innerHTML = html;
+
+    }).catch(function(err) {
+        console.error(err);
+        $('user-list').innerHTML = '<div class="err-msg">' + err.message + '</div>';
+    });
+}
+
+function formatSessionTime(t) {
+    if (!t || t.length < 12) return t;
+    var y = t.slice(0,4), mo = t.slice(4,6), d = t.slice(6,8), h = t.slice(8,10), mi = t.slice(10,12);
+    return new Date(y, mo-1, d, h, mi).toLocaleString('en-US', { month:'short', day:'numeric', hour:'numeric', minute:'2-digit', hour12:true });
+}
+
+function toggleJourney(card) {
+    var timeline = card.querySelector('.journey-timeline');
+    if (timeline) timeline.style.display = timeline.style.display === 'none' ? 'block' : 'none';
+}
+
+/* ═══════════════════════════════════════
+   REAL-TIME TAB
+   ═══════════════════════════════════════ */
+function loadRealtime() {
+    if (intervals.rt) clearInterval(intervals.rt);
+
+    function fetchRT() {
+        Promise.all([
+            gaRealtime({ metrics: [{ name:'activeUsers' }] }),
+            gaRealtime({ dimensions: [{ name:'unifiedPagePathScreen' }], metrics: [{ name:'activeUsers' }], limit: 10 }),
+            gaRealtime({ dimensions: [{ name:'sessionDefaultChannelGroup' }], metrics: [{ name:'activeUsers' }], limit: 8 }),
+            gaRealtime({ dimensions: [{ name:'country' }], metrics: [{ name:'activeUsers' }], limit: 10 }),
+            gaRealtime({ dimensions: [{ name:'deviceCategory' }], metrics: [{ name:'activeUsers' }] }),
+            gaRealtime({ dimensions: [{ name:'minutesAgo' }], metrics: [{ name:'activeUsers' }], limit: 30 })
+        ]).then(function(results) {
+            var count = results[0].rows && results[0].rows[0] ? results[0].rows[0].metricValues[0].value : '0';
+            $('rt-count-main').textContent = fmtNum(parseInt(count));
+
+            var totalPages = results[1].rows ? results[1].rows.length : 0;
+            $('rt-pages-info').textContent = totalPages + ' pages being viewed';
+
+            renderRTTable('rt-active-pages', results[1], 'Page', 'Active Users');
+            renderRTTable('rt-sources', results[2], 'Source', 'Active Users');
+            renderRTTable('rt-countries', results[3], 'Country', 'Active Users');
+            renderRTTable('rt-devices', results[4], 'Device', 'Active Users');
+            renderRTTimeline(results[5]);
+        }).catch(function(err) {
+            console.error('RT error:', err);
+        });
+    }
+
+    fetchRT();
+    intervals.rt = setInterval(fetchRT, 15000);
+}
+
+function renderRTTable(containerId, data, dimLabel, metLabel) {
+    var rows = data.rows || [];
+    if (!rows.length) { $(containerId).innerHTML = '<div class="empty-state" style="padding:20px">No active data</div>'; return; }
+    var maxV = Math.max.apply(null, rows.map(function(r){return mVal(r,0)}));
+    var h = '<table class="tbl"><thead><tr><th>'+dimLabel+'</th><th class="num">'+metLabel+'</th><th style="width:60px"></th></tr></thead><tbody>';
+    rows.forEach(function(r) {
+        var dim = dVal(r,0), val = mVal(r,0);
+        h += '<tr><td>'+dim+'</td><td class="num">'+fmtNum(val)+'</td><td><div class="bar-cell"><div class="bar-fill" style="width:'+(maxV?(val/maxV)*100:0)+'%;background:var(--green)"></div></div></td></tr>';
+    });
+    h += '</tbody></table>';
+    $(containerId).innerHTML = h;
+}
+
+function renderRTTimeline(data) {
+    var rows = data.rows || [];
+    var minutes = [];
+    for (var i = 0; i < 30; i++) minutes[i] = 0;
+    rows.forEach(function(r) {
+        var min = parseInt(dVal(r,0));
+        if (min >= 0 && min < 30) minutes[min] = mVal(r,0);
+    });
+    var labels = minutes.map(function(_, i) { return (29 - i) + 'm'; }).reverse();
+    var values = minutes.slice().reverse();
+
+    if (charts.rtTimeline) charts.rtTimeline.destroy();
+    var ctx = $('chart-rt-timeline').getContext('2d');
+    var grad = ctx.createLinearGradient(0, 0, 0, 200);
+    grad.addColorStop(0, 'rgba(34,197,94,.3)'); grad.addColorStop(1, 'rgba(34,197,94,.02)');
+
+    charts.rtTimeline = new Chart(ctx, {
+        type: 'bar',
+        data: { labels: labels, datasets: [{ data: values, backgroundColor: grad, borderColor: 'rgba(34,197,94,.6)', borderWidth: 1, borderRadius: 2 }] },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { backgroundColor:'#1e293b', titleColor:'#f1f5f9', bodyColor:'#94a3b8', padding:10, cornerRadius:6 } },
+            scales: {
+                x: { grid:{ display:false }, ticks:{ color:'#4b5563', font:{ size:9 }, maxTicksLimit:10 } },
+                y: { beginAtZero:true, grid:{ color:'rgba(255,255,255,.03)' }, border:{ display:false }, ticks:{ color:'#4b5563', font:{ size:10 }, stepSize:1 } }
+            }
+        }
+    });
+}
+
 Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.color = '#94a3b8';
 </script>
