@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 12) | 7 | **$1.6587** |
-| 📆 This Week (since Mar 09) | 28 | **$6.8080** |
-| 🗓️ This Month (March 2026) | 75 | **$17.3722** |
-| 🏦 Overall All-Time | 75 | **$17.3722** |
+| 📅 Today (March 13) | 1 | **$0.1052** |
+| 📆 This Week (since Mar 09) | 29 | **$6.9132** |
+| 🗓️ This Month (March 2026) | 76 | **$17.4774** |
+| 🏦 Overall All-Time | 76 | **$17.4774** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 13, 2026 at 12:27 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 21.2 seconds
+**Estimated cost:** $0.1052
+
+### What happened (step by step)
+
+1. **00:27:43 PST** — Tweet bot started
+2. **00:27:43 PST** — API keys validated
+3. **00:28:04 PST** — Tweet posted and logged (type: engagement, ID: 2032358012426342863)
+4. **00:28:04 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI agents are popping up everywhere, from Nvidia's latest push to everyday tools. Do you think they'll handle most of our boring tasks in the next year, or is that overhyped? Curious what tasks you'd offload first.
+
+**Tweet type:** engagement
+**Tweet ID:** 2032358012426342863
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,016 tokens, got back 127 tokens — **$0.0352**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1052**
 
 ---
 ## 🐦 Tweet Bot — March 12, 2026 at 10:04 PM PST

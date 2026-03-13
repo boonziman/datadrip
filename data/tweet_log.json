@@ -543,5 +543,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/quantum-shadows-over-cryptos-yield-boom/",
     "tweet_id": "2032321924852789719"
+  },
+  {
+    "timestamp": "2026-03-13 00:28 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "AI agents are popping up everywhere, from Nvidia's latest push to everyday tools. Do you think they'll handle most of our boring tasks in the next year, or is that overhyped? Curious what tasks you'd offload first.",
+    "use_image": true,
+    "image_prompt": "Photo-realistic image of a person at a cluttered desk in a modern office, interacting with a computer screen showing multiple AI agent interfaces, soft natural lighting from a window, shallow depth of field focusing on the screen and hands typing",
+    "promoted_url": "",
+    "tweet_id": "2032358012426342863"
   }
 ]
