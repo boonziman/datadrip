@@ -3294,5 +3294,114 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1052
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-13",
+    "start_time": "2026-03-13T07:00:29.659466-07:00",
+    "end_time": "2026-03-13T07:12:43.516090-07:00",
+    "duration_seconds": 733.9,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 2947,
+        "output_tokens": 3753,
+        "cost": 0.17959
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4102,
+        "output_tokens": 4783,
+        "cost": 0.23234
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 328,
+        "output_tokens": 251,
+        "cost": 0.01332
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3047,
+        "output_tokens": 3856,
+        "cost": 0.18471
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4204,
+        "output_tokens": 3669,
+        "cost": 0.1888
+      },
+      {
+        "label": "Crypto Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 330,
+        "output_tokens": 281,
+        "cost": 0.01454
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3230,
+        "output_tokens": 3428,
+        "cost": 0.16942
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3777,
+        "output_tokens": 4103,
+        "cost": 0.20189
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 334,
+        "output_tokens": 205,
+        "cost": 0.01154
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "post_ai": "[AI] AI's Military Edge Fuels Gaming's Downfall",
+      "post_crypto": "[Crypto] Crypto Crackdowns vs. Market Heat: What's Next?",
+      "post_tech": "[Tech] Peacock's AI Overhaul: Nvidia's GTC Signals Streaming Wars Shift",
+      "posts_generated": "3 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 22299,
+      "output_tokens": 24329,
+      "images_generated": 3,
+      "estimated_cost_usd": 1.4062
+    }
   }
 ]
