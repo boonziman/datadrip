@@ -3403,5 +3403,35 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.4062
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-13",
+    "start_time": "2026-03-13T10:20:46.537639-07:00",
+    "end_time": "2026-03-13T10:20:59.286830-07:00",
+    "duration_seconds": 12.7,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3108,
+        "output_tokens": 130,
+        "cost": 0.03628
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI's getting pulled into military tech, and that's sucking talent away from gaming. I dug into how this shift is hitting the industry hard, with some wild stats on where the money's flowing now. Makes you think about the real cost of all that edge.\nhttps://datadripco.com/posts/ais-military-edge-fuels-gamings-downfall/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2032507224413589730",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-military-edge-fuels-gamings-downfall/"
+    },
+    "totals": {
+      "input_tokens": 3108,
+      "output_tokens": 130,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0363
+    }
   }
 ]

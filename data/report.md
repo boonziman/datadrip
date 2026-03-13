@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 13) | 2 | **$1.5114** |
-| 📆 This Week (since Mar 09) | 30 | **$8.3194** |
-| 🗓️ This Month (March 2026) | 77 | **$18.8836** |
-| 🏦 Overall All-Time | 77 | **$18.8836** |
+| 📅 Today (March 13) | 3 | **$1.5477** |
+| 📆 This Week (since Mar 09) | 31 | **$8.3557** |
+| 🗓️ This Month (March 2026) | 78 | **$18.9199** |
+| 🏦 Overall All-Time | 78 | **$18.9199** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 13, 2026 at 10:20 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 12.8 seconds
+**Estimated cost:** $0.0363
+
+### What happened (step by step)
+
+1. **10:20:46 PST** — Tweet bot started
+2. **10:20:46 PST** — API keys validated
+3. **10:20:59 PST** — Tweet posted and logged (type: blog_teaser, ID: 2032507224413589730)
+4. **10:20:59 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI's getting pulled into military tech, and that's sucking talent away from gaming. I dug into how this shift is hitting the industry hard, with some wild stats on where the money's flowing now. Makes you think about the real cost of all that edge.
+https://datadripco.com/posts/ais-military-edge-fuels-gamings-downfall/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2032507224413589730
+**Blog post promoted:** https://datadripco.com/posts/ais-military-edge-fuels-gamings-downfall/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,108 tokens, got back 130 tokens — **$0.0363**
+
+**💰 Total estimated cost: $0.0363**
 
 ---
 ## 📝 Blog Bot — March 13, 2026 at 07:00 AM PST

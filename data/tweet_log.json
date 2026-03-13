@@ -552,5 +552,14 @@
     "image_prompt": "Photo-realistic image of a person at a cluttered desk in a modern office, interacting with a computer screen showing multiple AI agent interfaces, soft natural lighting from a window, shallow depth of field focusing on the screen and hands typing",
     "promoted_url": "",
     "tweet_id": "2032358012426342863"
+  },
+  {
+    "timestamp": "2026-03-13 10:20 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "AI's getting pulled into military tech, and that's sucking talent away from gaming. I dug into how this shift is hitting the industry hard, with some wild stats on where the money's flowing now. Makes you think about the real cost of all that edge.\nhttps://datadripco.com/posts/ais-military-edge-fuels-gamings-downfall/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ais-military-edge-fuels-gamings-downfall/",
+    "tweet_id": "2032507224413589730"
   }
 ]
