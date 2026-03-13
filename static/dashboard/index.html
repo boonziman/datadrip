@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Datadripco · Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Base ─────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #0b0e14; --card: #151921; --card-hover: #1a1f2b;
+            --border: rgba(255,255,255,0.06); --accent: #3b82f6;
+            --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+            --purple: #8b5cf6; --cyan: #06b6d4; --pink: #ec4899;
+            --t1: #f1f5f9; --t2: #94a3b8; --t3: #4b5563;
+            --radius: 14px; --radius-sm: 8px;
+        }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--t1); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        a { color: var(--accent); text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; }
+
+        /* ── Screens (Setup & Auth) ───────────── */
+        .screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; }
+        .screen-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 48px; max-width: 560px; width: 100%; text-align: center; animation: fadeUp .5s ease; }
+        .screen-card h1 { font-size: 24px; font-weight: 800; margin: 16px 0 8px; }
+        .screen-card p { color: var(--t2); font-size: 14px; margin-bottom: 24px; }
+        .brand-badge { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: linear-gradient(135deg, var(--accent), var(--purple)); border-radius: 16px; font-size: 18px; font-weight: 800; color: white; }
+
+        /* Google sign-in button */
+        .g-btn { display: inline-flex; align-items: center; gap: 12px; padding: 13px 28px; background: white; color: #1f1f1f; border: none; border-radius: var(--radius-sm); font-size: 15px; font-weight: 500; transition: all .2s; }
+        .g-btn:hover { box-shadow: 0 4px 20px rgba(59,130,246,.25); transform: translateY(-1px); }
+        .g-btn svg { flex-shrink: 0; }
+
+        /* Setup steps */
+        .setup-steps { text-align: left; margin: 0 0 24px; padding: 0; list-style: none; counter-reset: steps; }
+        .setup-steps li { counter-increment: steps; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--t2); line-height: 1.6; display: flex; gap: 12px; }
+        .setup-steps li::before { content: counter(steps); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: var(--accent); color: white; border-radius: 50%; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+        .setup-steps code { background: rgba(255,255,255,.08); padding: 2px 6px; border-radius: 4px; font-size: 12px; color: var(--accent); word-break: break-all; }
+
+        /* ── Dashboard Header ─────────────────── */
+        .dash-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 28px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(11,14,20,.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100; flex-wrap: wrap; }
+        .dash-brand { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; }
+        .dash-brand .mark { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--accent), var(--purple)); border-radius: 8px; font-size: 10px; font-weight: 800; }
+        .dash-controls { display: flex; align-items: center; gap: 12px; }
+        .range-pills { display: flex; background: rgba(255,255,255,.04); border-radius: var(--radius-sm); overflow: hidden; }
+        .pill { padding: 7px 16px; font-size: 12px; font-weight: 600; background: none; border: none; color: var(--t3); transition: all .2s; }
+        .pill.active { background: var(--accent); color: white; }
+        .pill:hover:not(.active) { color: var(--t2); }
+        .icon-btn { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--t2); font-size: 16px; transition: all .2s; }
+        .icon-btn:hover { background: rgba(255,255,255,.08); color: var(--t1); }
+        .meta-text { font-size: 11px; color: var(--t3); }
+        .text-btn { background: none; border: none; color: var(--t3); font-size: 12px; font-weight: 500; transition: color .2s; }
+        .text-btn:hover { color: var(--t1); }
+
+        /* ── Dashboard Layout ─────────────────── */
+        .dash-content { padding: 24px; max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .row-kpi { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+        .row-2col { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
+        .row-2col-r { display: grid; grid-template-columns: 2fr 3fr; gap: 16px; }
+
+        /* ── Cards ────────────────────────────── */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color .2s; }
+        .card:hover { border-color: rgba(255,255,255,.1); }
+        .card-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--t3); margin-bottom: 16px; }
+
+        /* Realtime */
+        .card-rt { display: flex; align-items: center; gap: 20px; padding: 20px 28px; }
+        .rt-dot { width: 10px; height: 10px; background: var(--green); border-radius: 50%; animation: pulse-dot 2s ease infinite; flex-shrink: 0; }
+        .rt-num { font-size: 36px; font-weight: 800; line-height: 1; }
+        .rt-label { font-size: 13px; color: var(--t2); }
+
+        /* KPI */
+        .kpi-value { font-size: 28px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+        .kpi-change { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
+        .kpi-change.up { color: var(--green); background: rgba(34,197,94,.1); }
+        .kpi-change.down { color: var(--red); background: rgba(239,68,68,.1); }
+        .kpi-change.neutral { color: var(--t3); background: rgba(255,255,255,.04); }
+
+        /* Charts */
+        .chart-wrap { position: relative; height: 280px; }
+        .chart-wrap-sm { position: relative; height: 200px; }
+        .chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+        .chart-toggles { display: flex; gap: 6px; }
+        .toggle { padding: 5px 12px; font-size: 11px; font-weight: 600; border: 1px solid var(--border); background: none; color: var(--t3); border-radius: 20px; transition: all .2s; }
+        .toggle.active { border-color: var(--accent); color: var(--accent); background: rgba(59,130,246,.08); }
+
+        /* Legend */
+        .chart-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+        .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--t2); }
+        .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+        /* Tables */
+        .tbl { width: 100%; font-size: 13px; border-collapse: collapse; }
+        .tbl th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--t3); text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }
+        .tbl td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--t2); }
+        .tbl tr:last-child td { border-bottom: none; }
+        .tbl tr:hover td { background: rgba(255,255,255,.02); }
+        .tbl .pg-path { color: var(--t1); font-weight: 500; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .tbl .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .bar-cell { display: flex; align-items: center; gap: 8px; }
+        .bar-fill { height: 4px; border-radius: 2px; background: var(--accent); transition: width .6s ease; }
+
+        /* Skeleton */
+        .skel { background: rgba(255,255,255,.04); border-radius: var(--radius-sm); animation: pulse-skel 1.5s ease infinite; }
+        .skel-text { height: 28px; width: 80px; }
+        .skel-sm { height: 16px; width: 50px; }
+
+        /* ── Animations ───────────────────────── */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse-dot { 0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,.4); } 50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); } }
+        @keyframes pulse-skel { 0%,100% { opacity: .4; } 50% { opacity: .15; } }
+
+        /* ── Loading overlay ──────────────────── */
+        .loading { display: flex; align-items: center; justify-content: center; padding: 60px 0; color: var(--t3); font-size: 14px; gap: 10px; }
+        .spinner { width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .6s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Error */
+        .err-msg { padding: 16px; background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); border-radius: var(--radius-sm); color: var(--red); font-size: 13px; text-align: center; }
+
+        /* ── Responsive ───────────────────────── */
+        @media (max-width: 1024px) {
+            .row-kpi { grid-template-columns: repeat(3, 1fr); }
+            .row-2col, .row-2col-r { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .row-kpi { grid-template-columns: repeat(2, 1fr); }
+            .dash-header { padding: 12px 16px; }
+            .dash-content { padding: 16px; }
+            .card { padding: 18px; }
+            .kpi-value { font-size: 22px; }
+            .rt-num { font-size: 28px; }
+            .chart-wrap { height: 220px; }
+            .screen-card { padding: 28px 20px; }
+            .setup-steps li { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SETUP SCREEN                            -->
+<!-- ════════════════════════════════════════ -->
+<div id="setup-screen" class="screen" style="display:none">
+    <div class="screen-card">
+        <div class="brand-badge">DD</div>
+        <h1>Analytics Dashboard Setup</h1>
+        <p>One-time setup to connect your Google Analytics data.</p>
+        <ol class="setup-steps">
+            <li>Go to <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a> and create a project (or select existing).</li>
+            <li>Go to <strong>APIs &amp; Services → Library</strong>, search for <code>Google Analytics Data API</code> and <strong>Enable</strong> it.</li>
+            <li>Go to <strong>APIs &amp; Services → OAuth consent screen</strong>. Choose <strong>External</strong>, enter app name (e.g. "Datadripco Dash"), save. Then add your Google email as a <strong>Test User</strong>.</li>
+            <li>Go to <strong>Credentials → Create Credentials → OAuth 2.0 Client ID</strong>. Type: <strong>Web application</strong>.</li>
+            <li>Add <strong>Authorized JavaScript origins</strong>: <code>https://datadripco.com</code> (and <code>http://localhost:1313</code> for local dev).</li>
+            <li>Copy the <strong>Client ID</strong> (looks like <code>123…apps.googleusercontent.com</code>).</li>
+            <li>Go to <a href="https://analytics.google.com/" target="_blank">Google Analytics</a> → Admin → Property Details. Copy your numeric <strong>Property ID</strong>.</li>
+            <li>Open this file (<code>static/dashboard/index.html</code>) and paste both values into the <strong>CONFIG</strong> at the bottom of the file.</li>
+        </ol>
+        <p style="color:var(--t3); font-size:12px;">After saving, rebuild your site and refresh this page.</p>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- AUTH SCREEN                              -->
+<!-- ════════════════════════════════════════ -->
+<div id="auth-screen" class="screen" style="display:none">
+    <div class="screen-card">
+        <div class="brand-badge">DD</div>
+        <h1>Datadripco Analytics</h1>
+        <p>Private dashboard — sign in with the Google account that has access to your GA4 property.</p>
+        <button id="sign-in-btn" class="g-btn" onclick="signIn()">
+            <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            Sign in with Google
+        </button>
+        <p style="margin-top:20px; font-size:11px; color:var(--t3);">Only your Google account can view this data.</p>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- DASHBOARD                                -->
+<!-- ════════════════════════════════════════ -->
+<div id="dashboard" style="display:none">
+    <header class="dash-header">
+        <div class="dash-brand">
+            <span class="mark">DD</span>
+            <span>Analytics</span>
+        </div>
+        <div class="dash-controls">
+            <div class="range-pills">
+                <button class="pill" data-range="7" onclick="setRange('7')">7D</button>
+                <button class="pill active" data-range="30" onclick="setRange('30')">30D</button>
+                <button class="pill" data-range="90" onclick="setRange('90')">90D</button>
+            </div>
+            <button class="icon-btn" onclick="loadDashboard()" title="Refresh">⟳</button>
+            <span class="meta-text" id="last-updated"></span>
+        </div>
+        <button class="text-btn" onclick="signOut()">Sign out</button>
+    </header>
+
+    <div class="dash-content">
+        <!-- Realtime -->
+        <div class="card card-rt" id="card-rt">
+            <div class="rt-dot"></div>
+            <div>
+                <div class="rt-num" id="rt-count">—</div>
+                <div class="rt-label">active users right now</div>
+            </div>
+        </div>
+
+        <!-- KPIs -->
+        <div class="row-kpi" id="kpi-row">
+            <div class="card" id="kpi-users"><div class="card-label">Users</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
+            <div class="card" id="kpi-sessions"><div class="card-label">Sessions</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
+            <div class="card" id="kpi-pageviews"><div class="card-label">Pageviews</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
+            <div class="card" id="kpi-duration"><div class="card-label">Avg Duration</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
+            <div class="card" id="kpi-bounce"><div class="card-label">Bounce Rate</div><div class="kpi-value skel skel-text"></div><div class="kpi-change skel skel-sm"></div></div>
+        </div>
+
+        <!-- Traffic Chart -->
+        <div class="card">
+            <div class="chart-header">
+                <div class="card-label" style="margin:0">Traffic Overview</div>
+                <div class="chart-toggles">
+                    <button class="toggle active" data-m="0" onclick="toggleLine(this,0)">Users</button>
+                    <button class="toggle" data-m="1" onclick="toggleLine(this,1)">Sessions</button>
+                    <button class="toggle" data-m="2" onclick="toggleLine(this,2)">Views</button>
+                </div>
+            </div>
+            <div class="chart-wrap"><canvas id="chart-traffic"></canvas></div>
+        </div>
+
+        <!-- Top Pages + Sources -->
+        <div class="row-2col">
+            <div class="card">
+                <div class="card-label">Top Pages</div>
+                <div id="tbl-pages"><div class="loading"><div class="spinner"></div> Loading…</div></div>
+            </div>
+            <div class="card">
+                <div class="card-label">Traffic Sources</div>
+                <div class="chart-wrap-sm"><canvas id="chart-sources"></canvas></div>
+                <div class="chart-legend" id="legend-sources"></div>
+            </div>
+        </div>
+
+        <!-- Devices + Countries -->
+        <div class="row-2col-r">
+            <div class="card">
+                <div class="card-label">Devices</div>
+                <div class="chart-wrap-sm"><canvas id="chart-devices"></canvas></div>
+                <div class="chart-legend" id="legend-devices"></div>
+            </div>
+            <div class="card">
+                <div class="card-label">Top Countries</div>
+                <div id="tbl-countries"><div class="loading"><div class="spinner"></div> Loading…</div></div>
+            </div>
+        </div>
+
+        <p style="text-align:center; font-size:11px; color:var(--t3); padding:12px 0;">Powered by Google Analytics Data API · Data stays between you and Google</p>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SCRIPTS                                  -->
+<!-- ════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script src="https://accounts.google.com/gsi/client" async></script>
+<script>
+/* ──────────────────────────────────────────
+   CONFIGURATION — Fill in your details
+   ────────────────────────────────────────── */
+const CONFIG = {
+    clientId:   'YOUR_CLIENT_ID',    // e.g. '123456789-abc.apps.googleusercontent.com'
+    propertyId: 'YOUR_PROPERTY_ID'   // numeric, e.g. '412345678'  (NOT the G-XXXXX measurement ID)
+};
+
+/* ──────────────────────────────────────────
+   STATE
+   ────────────────────────────────────────── */
+const API_BASE = 'https://analyticsdata.googleapis.com/v1beta';
+let accessToken = null;
+let tokenExpiry  = 0;
+let currentRange = '30';
+let tokenClient  = null;
+let charts       = {};
+let rtInterval   = null;
+
+const $ = id => document.getElementById(id);
+const COLORS = ['#3b82f6','#8b5cf6','#06b6d4','#22c55e','#f59e0b','#ef4444','#ec4899','#64748b','#a855f7','#14b8a6'];
+
+/* ──────────────────────────────────────────
+   INIT
+   ────────────────────────────────────────── */
+window.addEventListener('DOMContentLoaded', () => {
+    if (CONFIG.clientId === 'YOUR_CLIENT_ID' || CONFIG.propertyId === 'YOUR_PROPERTY_ID') {
+        $('setup-screen').style.display = 'flex';
+        return;
+    }
+    $('auth-screen').style.display = 'flex';
+    waitForGIS().then(initAuth);
+});
+
+function waitForGIS() {
+    return new Promise(resolve => {
+        if (window.google?.accounts?.oauth2) return resolve();
+        const iv = setInterval(() => { if (window.google?.accounts?.oauth2) { clearInterval(iv); resolve(); } }, 80);
+    });
+}
+
+function initAuth() {
+    tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: CONFIG.clientId,
+        scope: 'https://www.googleapis.com/auth/analytics.readonly',
+        callback: onToken
+    });
+}
+
+function signIn()  { tokenClient.requestAccessToken({ prompt: 'consent' }); }
+function signOut() {
+    accessToken = null; tokenExpiry = 0;
+    if (rtInterval) clearInterval(rtInterval);
+    $('dashboard').style.display = 'none';
+    $('auth-screen').style.display = 'flex';
+    google.accounts.oauth2.revoke(accessToken, () => {});
+}
+
+function onToken(resp) {
+    if (resp.error) { alert('Auth error: ' + resp.error); return; }
+    accessToken = resp.access_token;
+    tokenExpiry = Date.now() + (resp.expires_in * 1000) - 60000; // 1 min buffer
+    $('auth-screen').style.display = 'none';
+    $('dashboard').style.display = 'block';
+    loadDashboard();
+}
+
+async function ensureToken() {
+    if (Date.now() > tokenExpiry) {
+        return new Promise(resolve => {
+            tokenClient.requestAccessToken({ prompt: '' });
+            const orig = tokenClient.callback;
+            tokenClient.callback = (r) => { onToken(r); resolve(); };
+        });
+    }
+}
+
+/* ──────────────────────────────────────────
+   DATE RANGES
+   ────────────────────────────────────────── */
+function getRange(days) {
+    return {
+        current:  { startDate: days + 'daysAgo', endDate: 'today' },
+        previous: { startDate: (days * 2) + 'daysAgo', endDate: (parseInt(days) + 1) + 'daysAgo' }
+    };
+}
+
+function setRange(r) {
+    currentRange = r;
+    document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.range === r));
+    loadDashboard();
+}
+
+/* ──────────────────────────────────────────
+   API HELPERS
+   ────────────────────────────────────────── */
+async function gaReport(body) {
+    await ensureToken();
+    const res = await fetch(`${API_BASE}/properties/${CONFIG.propertyId}:runReport`, {
+        method: 'POST', headers: { 'Authorization': 'Bearer ' + accessToken, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+    });
+    if (!res.ok) throw new Error('API ' + res.status + ': ' + (await res.text()));
+    return res.json();
+}
+
+async function gaRealtime(body) {
+    await ensureToken();
+    const res = await fetch(`${API_BASE}/properties/${CONFIG.propertyId}:runRealtimeReport`, {
+        method: 'POST', headers: { 'Authorization': 'Bearer ' + accessToken, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+    });
+    if (!res.ok) throw new Error('Realtime API ' + res.status);
+    return res.json();
+}
+
+/* ──────────────────────────────────────────
+   FORMATTERS
+   ────────────────────────────────────────── */
+function fmtNum(n)   { return new Intl.NumberFormat().format(n); }
+function fmtDur(sec) { const m = Math.floor(sec/60), s = Math.round(sec%60); return m + 'm ' + s + 's'; }
+function fmtPct(v)   { return (v * 100).toFixed(1) + '%'; }
+function fmtDate(d)  { return new Date(d.slice(0,4), d.slice(4,6)-1, d.slice(6,8)).toLocaleDateString('en-US', { month:'short', day:'numeric' }); }
+function metricVal(row, i) { return parseFloat(row?.metricValues?.[i]?.value || '0'); }
+
+function calcChange(curr, prev, higherBetter) {
+    if (!prev) return { text: '—', cls: 'neutral' };
+    const pct = prev === 0 ? (curr > 0 ? 100 : 0) : ((curr - prev) / prev) * 100;
+    const positive = pct >= 0;
+    const good = higherBetter ? positive : !positive;
+    const arrow = positive ? '↑' : '↓';
+    return { text: arrow + ' ' + Math.abs(pct).toFixed(1) + '%', cls: pct === 0 ? 'neutral' : (good ? 'up' : 'down') };
+}
+
+/* ──────────────────────────────────────────
+   LOAD ALL DATA
+   ────────────────────────────────────────── */
+async function loadDashboard() {
+    const range = getRange(currentRange);
+    const metrics = [
+        { name:'totalUsers' }, { name:'sessions' }, { name:'screenPageViews' },
+        { name:'averageSessionDuration' }, { name:'bounceRate' }
+    ];
+
+    try {
+        const [kpiCurr, kpiPrev, daily, pages, sources, devices, countries, realtime] = await Promise.all([
+            gaReport({ dateRanges: [range.current],  metrics }),
+            gaReport({ dateRanges: [range.previous], metrics }),
+            gaReport({ dateRanges: [range.current], dimensions: [{ name:'date' }], metrics: [{ name:'totalUsers' },{ name:'sessions' },{ name:'screenPageViews' }], orderBys: [{ dimension:{ dimensionName:'date' } }], limit: 500 }),
+            gaReport({ dateRanges: [range.current], dimensions: [{ name:'pagePath' }], metrics: [{ name:'screenPageViews' },{ name:'totalUsers' }], orderBys: [{ metric:{ metricName:'screenPageViews' }, desc:true }], limit: 10 }),
+            gaReport({ dateRanges: [range.current], dimensions: [{ name:'sessionDefaultChannelGroup' }], metrics: [{ name:'sessions' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }], limit: 8 }),
+            gaReport({ dateRanges: [range.current], dimensions: [{ name:'deviceCategory' }], metrics: [{ name:'sessions' }], orderBys: [{ metric:{ metricName:'sessions' }, desc:true }] }),
+            gaReport({ dateRanges: [range.current], dimensions: [{ name:'country' }], metrics: [{ name:'totalUsers' },{ name:'sessions' }], orderBys: [{ metric:{ metricName:'totalUsers' }, desc:true }], limit: 10 }),
+            gaRealtime({ metrics: [{ name:'activeUsers' }] })
+        ]);
+
+        renderKPIs(kpiCurr, kpiPrev);
+        renderTrafficChart(daily);
+        renderPages(pages);
+        renderDoughnut('chart-sources', 'legend-sources', sources);
+        renderDoughnut('chart-devices', 'legend-devices', devices);
+        renderCountries(countries);
+        renderRealtime(realtime);
+
+        $('last-updated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+
+        // Auto-refresh realtime every 30s
+        if (rtInterval) clearInterval(rtInterval);
+        rtInterval = setInterval(async () => {
+            try {
+                const rt = await gaRealtime({ metrics: [{ name:'activeUsers' }] });
+                renderRealtime(rt);
+            } catch(e) { /* silent */ }
+        }, 30000);
+
+    } catch(err) {
+        console.error(err);
+        $('kpi-row').innerHTML = '<div class="err-msg" style="grid-column:1/-1">' + err.message + '</div>';
+    }
+}
+
+/* ──────────────────────────────────────────
+   RENDER: KPIs
+   ────────────────────────────────────────── */
+function renderKPIs(curr, prev) {
+    const cr = curr.rows?.[0], pr = prev.rows?.[0];
+    const kpis = [
+        { id:'kpi-users',     i:0, fmt: v => fmtNum(Math.round(v)),  hb:true },
+        { id:'kpi-sessions',  i:1, fmt: v => fmtNum(Math.round(v)),  hb:true },
+        { id:'kpi-pageviews', i:2, fmt: v => fmtNum(Math.round(v)),  hb:true },
+        { id:'kpi-duration',  i:3, fmt: v => fmtDur(v),              hb:true },
+        { id:'kpi-bounce',    i:4, fmt: v => fmtPct(v),              hb:false }
+    ];
+
+    kpis.forEach(k => {
+        const cVal = metricVal(cr, k.i);
+        const pVal = metricVal(pr, k.i);
+        const change = calcChange(cVal, pVal, k.hb);
+        const el = $(k.id);
+        el.querySelector('.kpi-value').className = 'kpi-value';
+        el.querySelector('.kpi-value').textContent = k.fmt(cVal);
+        el.querySelector('.kpi-change').className = 'kpi-change ' + change.cls;
+        el.querySelector('.kpi-change').textContent = change.text;
+    });
+}
+
+/* ──────────────────────────────────────────
+   RENDER: Realtime
+   ────────────────────────────────────────── */
+function renderRealtime(data) {
+    const val = data.rows?.[0]?.metricValues?.[0]?.value || '0';
+    $('rt-count').textContent = fmtNum(parseInt(val));
+}
+
+/* ──────────────────────────────────────────
+   RENDER: Traffic Line Chart
+   ────────────────────────────────────────── */
+function renderTrafficChart(data) {
+    const rows = data.rows || [];
+    const labels = rows.map(r => fmtDate(r.dimensionValues[0].value));
+    const datasets = [
+        { label:'Users',    data: rows.map(r => metricVal(r,0)), color:'#3b82f6' },
+        { label:'Sessions', data: rows.map(r => metricVal(r,1)), color:'#8b5cf6', hidden:true },
+        { label:'Views',    data: rows.map(r => metricVal(r,2)), color:'#06b6d4', hidden:true }
+    ];
+
+    if (charts.traffic) charts.traffic.destroy();
+
+    const ctx = $('chart-traffic').getContext('2d');
+    const grad = ctx.createLinearGradient(0, 0, 0, 280);
+    grad.addColorStop(0, 'rgba(59,130,246,.2)'); grad.addColorStop(1, 'rgba(59,130,246,0)');
+
+    charts.traffic = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels,
+            datasets: datasets.map((ds, i) => ({
+                label: ds.label, data: ds.data, borderColor: ds.color, backgroundColor: i === 0 ? grad : 'transparent',
+                fill: i === 0, tension: .4, borderWidth: 2, pointRadius: 0, pointHitRadius: 10, hidden: ds.hidden
+            }))
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            interaction: { mode:'index', intersect:false },
+            plugins: {
+                legend: { display:false },
+                tooltip: { backgroundColor:'#1e293b', titleColor:'#f1f5f9', bodyColor:'#94a3b8', padding:12, cornerRadius:8, displayColors:true, boxPadding:4 }
+            },
+            scales: {
+                x: { grid:{ display:false }, ticks:{ color:'#4b5563', maxTicksLimit:10, font:{ size:11 } } },
+                y: { beginAtZero:true, grid:{ color:'rgba(255,255,255,.03)' }, border:{ display:false }, ticks:{ color:'#4b5563', font:{ size:11 } } }
+            }
+        }
+    });
+}
+
+function toggleLine(btn, idx) {
+    btn.classList.toggle('active');
+    const meta = charts.traffic.getDatasetMeta(idx);
+    meta.hidden = !meta.hidden;
+    charts.traffic.update();
+}
+
+/* ──────────────────────────────────────────
+   RENDER: Doughnut Charts (Sources & Devices)
+   ────────────────────────────────────────── */
+function renderDoughnut(canvasId, legendId, data) {
+    const rows = data.rows || [];
+    const labels = rows.map(r => r.dimensionValues[0].value);
+    const values = rows.map(r => metricVal(r, 0));
+    const total  = values.reduce((a,b) => a + b, 0);
+
+    if (charts[canvasId]) charts[canvasId].destroy();
+
+    charts[canvasId] = new Chart($(canvasId), {
+        type: 'doughnut',
+        data: {
+            labels,
+            datasets: [{ data: values, backgroundColor: COLORS.slice(0, labels.length), borderWidth: 0, hoverOffset: 6 }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false, cutout: '72%',
+            plugins: {
+                legend: { display:false },
+                tooltip: { backgroundColor:'#1e293b', titleColor:'#f1f5f9', bodyColor:'#94a3b8', padding:12, cornerRadius:8,
+                    callbacks: { label: ctx => ctx.label + ': ' + fmtNum(ctx.parsed) + ' (' + (total ? ((ctx.parsed/total)*100).toFixed(1) : 0) + '%)' }
+                }
+            }
+        }
+    });
+
+    // Custom legend
+    $(legendId).innerHTML = labels.map((l, i) =>
+        '<div class="legend-item"><span class="legend-dot" style="background:' + COLORS[i] + '"></span>' + l + ' <span style="color:var(--t3)">' + (total ? ((values[i]/total)*100).toFixed(0) : 0) + '%</span></div>'
+    ).join('');
+}
+
+/* ──────────────────────────────────────────
+   RENDER: Top Pages Table
+   ────────────────────────────────────────── */
+function renderPages(data) {
+    const rows = data.rows || [];
+    if (!rows.length) { $('tbl-pages').innerHTML = '<p style="color:var(--t3);text-align:center;padding:24px">No data yet</p>'; return; }
+    const maxViews = Math.max(...rows.map(r => metricVal(r,0)));
+    let html = '<table class="tbl"><thead><tr><th>Page</th><th class="num">Views</th><th class="num">Users</th><th style="width:80px"></th></tr></thead><tbody>';
+    rows.forEach(r => {
+        const path = r.dimensionValues[0].value;
+        const views = metricVal(r, 0), users = metricVal(r, 1);
+        const pct = maxViews ? (views / maxViews) * 100 : 0;
+        html += '<tr><td class="pg-path" title="' + path + '"><a href="https://datadripco.com' + path + '" target="_blank">' + path + '</a></td><td class="num">' + fmtNum(views) + '</td><td class="num">' + fmtNum(users) + '</td><td><div class="bar-cell"><div class="bar-fill" style="width:' + pct + '%"></div></div></td></tr>';
+    });
+    html += '</tbody></table>';
+    $('tbl-pages').innerHTML = html;
+}
+
+/* ──────────────────────────────────────────
+   RENDER: Countries Table
+   ────────────────────────────────────────── */
+function renderCountries(data) {
+    const rows = data.rows || [];
+    if (!rows.length) { $('tbl-countries').innerHTML = '<p style="color:var(--t3);text-align:center;padding:24px">No data yet</p>'; return; }
+    const maxUsers = Math.max(...rows.map(r => metricVal(r,0)));
+    let html = '<table class="tbl"><thead><tr><th>Country</th><th class="num">Users</th><th class="num">Sessions</th><th style="width:80px"></th></tr></thead><tbody>';
+    rows.forEach(r => {
+        const country = r.dimensionValues[0].value;
+        const users = metricVal(r, 0), sessions = metricVal(r, 1);
+        const pct = maxUsers ? (users / maxUsers) * 100 : 0;
+        html += '<tr><td>' + country + '</td><td class="num">' + fmtNum(users) + '</td><td class="num">' + fmtNum(sessions) + '</td><td><div class="bar-cell"><div class="bar-fill" style="width:' + pct + '%"></div></div></td></tr>';
+    });
+    html += '</tbody></table>';
+    $('tbl-countries').innerHTML = html;
+}
+
+/* ──────────────────────────────────────────
+   CHART.JS GLOBAL DEFAULTS
+   ────────────────────────────────────────── */
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.color = '#94a3b8';
+</script>
+</body>
+</html>
