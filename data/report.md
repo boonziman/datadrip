@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 12) | 6 | **$1.6234** |
-| 📆 This Week (since Mar 09) | 27 | **$6.7727** |
-| 🗓️ This Month (March 2026) | 74 | **$17.3369** |
-| 🏦 Overall All-Time | 74 | **$17.3369** |
+| 📅 Today (March 12) | 7 | **$1.6587** |
+| 📆 This Week (since Mar 09) | 28 | **$6.8080** |
+| 🗓️ This Month (March 2026) | 75 | **$17.3722** |
+| 🏦 Overall All-Time | 75 | **$17.3722** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 12, 2026 at 10:04 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 17.3 seconds
+**Estimated cost:** $0.0353
+
+### What happened (step by step)
+
+1. **22:04:23 PST** — Tweet bot started
+2. **22:04:23 PST** — API keys validated
+3. **22:04:40 PST** — Tweet posted and logged (type: blog_teaser, ID: 2032321924852789719)
+4. **22:04:40 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Crypto yields are spiking, but quantum computing could crack that security wide open sooner than we expect. I broke down the latest on how big players are betting huge while ignoring these shadows, and it's got me rethinking some investments. Some surprising stats in there that caught me off guard.
+https://datadripco.com/posts/quantum-shadows-over-cryptos-yield-boom/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2032321924852789719
+**Blog post promoted:** https://datadripco.com/posts/quantum-shadows-over-cryptos-yield-boom/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,990 tokens, got back 135 tokens — **$0.0353**
+
+**💰 Total estimated cost: $0.0353**
 
 ---
 ## 🐦 Tweet Bot — March 12, 2026 at 08:37 PM PST

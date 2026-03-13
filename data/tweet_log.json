@@ -534,5 +534,14 @@
     "image_prompt": "Close-up of a quantum computer chip in a high-tech lab, with glowing circuits and cooling systems visible, soft blue lighting from monitors, editorial style like a Wired magazine photo, shallow depth of field focusing on the chip",
     "promoted_url": "",
     "tweet_id": "2032300085338321065"
+  },
+  {
+    "timestamp": "2026-03-12 22:04 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Crypto yields are spiking, but quantum computing could crack that security wide open sooner than we expect. I broke down the latest on how big players are betting huge while ignoring these shadows, and it's got me rethinking some investments. Some surprising stats in there that caught me off guard.\nhttps://datadripco.com/posts/quantum-shadows-over-cryptos-yield-boom/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/quantum-shadows-over-cryptos-yield-boom/",
+    "tweet_id": "2032321924852789719"
   }
 ]
