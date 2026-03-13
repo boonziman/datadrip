@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 13) | 4 | **$1.6541** |
-| 📆 This Week (since Mar 09) | 32 | **$8.4621** |
-| 🗓️ This Month (March 2026) | 79 | **$19.0263** |
-| 🏦 Overall All-Time | 79 | **$19.0263** |
+| 📅 Today (March 13) | 5 | **$1.6901** |
+| 📆 This Week (since Mar 09) | 33 | **$8.4981** |
+| 🗓️ This Month (March 2026) | 80 | **$19.0623** |
+| 🏦 Overall All-Time | 80 | **$19.0623** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 13, 2026 at 03:03 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 16.9 seconds
+**Estimated cost:** $0.0360
+
+### What happened (step by step)
+
+1. **15:03:03 PST** — Tweet bot started
+2. **15:03:03 PST** — API keys validated
+3. **15:03:20 PST** — Tweet posted and logged (type: blog_teaser, ID: 2032578279434236141)
+4. **15:03:20 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Peacock's diving deep into AI for better recommendations and content, especially with Nvidia's GTC dropping hints on how streaming's evolving. I looked at how this could tilt the wars against Netflix and others, and the tech behind it is pretty slick. Some details on the hardware push surprised me.
+https://datadripco.com/posts/peacocks-ai-overhaul-nvidias-gtc-signals-streaming-wars-shift/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2032578279434236141
+**Blog post promoted:** https://datadripco.com/posts/peacocks-ai-overhaul-nvidias-gtc-signals-streaming-wars-shift/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,108 tokens, got back 124 tokens — **$0.0360**
+
+**💰 Total estimated cost: $0.0360**
 
 ---
 ## 🐦 Tweet Bot — March 13, 2026 at 12:51 PM PST

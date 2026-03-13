@@ -3470,5 +3470,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1064
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-13",
+    "start_time": "2026-03-13T15:03:03.184920-07:00",
+    "end_time": "2026-03-13T15:03:20.082672-07:00",
+    "duration_seconds": 16.9,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3108,
+        "output_tokens": 124,
+        "cost": 0.03604
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Peacock's diving deep into AI for better recommendations and content, especially with Nvidia's GTC dropping hints on how streaming's evolving. I looked at how this could tilt the wars against Netflix and others, and the tech behind it is pretty slick. Some details on the hardware push surprised me.\nhttps://datadripco.com/posts/peacocks-ai-overhaul-nvidias-gtc-signals-streaming-wars-shift/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2032578279434236141",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/peacocks-ai-overhaul-nvidias-gtc-signals-streaming-wars-shift/"
+    },
+    "totals": {
+      "input_tokens": 3108,
+      "output_tokens": 124,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.036
+    }
   }
 ]
