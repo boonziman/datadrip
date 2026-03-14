@@ -94,7 +94,10 @@
                     {{- $img := or .Params.featuredImage .Params.cover.image }}
                     <div class="featured-image">
                         {{- if $img }}
-                        <img src="{{ $img | relURL }}" alt="{{ .Title }}" loading="eager">
+                        <picture>
+                            <source srcset="{{ (replace $img ".jpg" ".webp") | relURL }}" type="image/webp">
+                            <img src="{{ $img | relURL }}" alt="{{ .Title }}" loading="eager" width="1213" height="768">
+                        </picture>
                         {{- else }}
                         <div class="featured-image-placeholder">
                             {{- with .Params.categories }}{{ index . 0 }}{{- else }}DATADRIPCO{{- end }}
@@ -135,7 +138,10 @@
                         {{- $img := or $page.Params.featuredImage $page.Params.cover.image }}
                         <div class="archive-card-image">
                             {{- if $img }}
-                            <img src="{{ $img | relURL }}" alt="{{ $page.Title }}" loading="lazy">
+                            <picture>
+                                <source srcset="{{ (replace $img ".jpg" ".webp") | relURL }}" type="image/webp">
+                                <img src="{{ $img | relURL }}" alt="{{ $page.Title }}" loading="lazy" width="640" height="360">
+                            </picture>
                             {{- else }}
                             <div class="archive-card-placeholder">
                                 {{- with $page.Params.categories }}{{ index . 0 }}{{- else }}DD{{- end }}

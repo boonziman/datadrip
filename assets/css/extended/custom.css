@@ -17,7 +17,7 @@
     
     --color-text: #0a0a0a;
     --color-text-secondary: #525252;
-    --color-text-muted: #a3a3a3;
+    --color-text-muted: #737373;
     
     --color-border: #e5e5e5;
     --color-border-strong: #d4d4d4;
@@ -579,7 +579,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-4);
+    margin: 0 0 var(--space-4) 0;
     padding-bottom: var(--space-3);
     border-bottom: 1px solid var(--color-border);
 }
@@ -1023,7 +1023,7 @@ body {
     color: var(--color-accent);
     font-feature-settings: 'tnum';
     min-width: 32px;
-    opacity: 0.4;
+    opacity: 0.7;
 }
 
 .trending-list a:hover .trend-num {
@@ -2721,12 +2721,12 @@ body {
 }
 
 .social-follow-btn--rss {
-    background: #f97316;
+    background: #c2410c;
     color: white;
 }
 
 .social-follow-btn--rss:hover {
-    background: #ea580c;
+    background: #9a3412;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
@@ -3013,8 +3013,8 @@ body {
 }
 
 @keyframes ticker-pulse {
-    0%, 100% { opacity: 1;  transform: scale(1);   box-shadow: 0 0 8px 3px rgba(255,255,255,0.6); }
-    50%       { opacity: 0.4; transform: scale(0.7); box-shadow: 0 0 4px 1px rgba(255,255,255,0.2); }
+    0%, 100% { opacity: 1;  transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.7); }
 }
 
 .ticker-divider {
@@ -3472,7 +3472,7 @@ body {
 }
 
 .cookie-text a {
-    color: #0066ff;
+    color: #5ba3ff;
     text-decoration: underline;
 }
 

@@ -28,7 +28,10 @@
                     {{- $img := .Params.featuredImage }}
                     {{- if $img }}
                     <div class="hero-image">
-                        <img src="/{{ $img }}" alt="{{ .Title }}" loading="eager">
+                        <picture>
+                            <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
+                            <img src="/{{ $img }}" alt="{{ .Title }}" loading="eager" width="1213" height="768">
+                        </picture>
                     </div>
                     {{- else }}
                     <div class="hero-image hero-image--placeholder">
@@ -53,14 +56,17 @@
 
             {{- /* Side Features */ -}}
             <div class="hero-side">
-                <div class="hero-side-header">More Stories</div>
+                <h2 class="hero-side-header">More Stories</h2>
                 {{- range $highlights }}
                 <article class="hero-card">
                     <a href="{{ .Permalink }}">
                         {{- $img := .Params.featuredImage }}
                         {{- if $img }}
                         <div class="hero-card-image">
-                            <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy">
+                            <picture>
+                                <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
+                                <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="640" height="360">
+                            </picture>
                         </div>
                         {{- else }}
                         <div class="hero-card-image hero-card-image--placeholder">
@@ -115,7 +121,10 @@
                                 {{- $img := $post.Params.featuredImage }}
                                 {{- if $img }}
                                 <div class="story-image">
-                                    <img src="/{{ $img }}" alt="{{ $post.Title }}" loading="lazy">
+                                    <picture>
+                                        <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
+                                        <img src="/{{ $img }}" alt="{{ $post.Title }}" loading="lazy" width="640" height="360">
+                                    </picture>
                                 </div>
                                 {{- else }}
                                 <div class="story-image story-image--placeholder">
@@ -255,7 +264,10 @@
                             {{- $img := .Params.featuredImage }}
                             {{- if $img }}
                             <div class="category-card-image">
-                                <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy">
+                                <picture>
+                                    <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
+                                    <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="640" height="360">
+                                </picture>
                             </div>
                             {{- else }}
                             <div class="category-card-image category-card-image--placeholder category-card-image--ai">AI</div>
@@ -297,7 +309,10 @@
                             {{- $img := .Params.featuredImage }}
                             {{- if $img }}
                             <div class="category-card-image">
-                                <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy">
+                                <picture>
+                                    <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
+                                    <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="640" height="360">
+                                </picture>
                             </div>
                             {{- else }}
                             <div class="category-card-image category-card-image--placeholder category-card-image--crypto">₿</div>
@@ -325,7 +340,10 @@
                             {{- $img := .Params.featuredImage }}
                             {{- if $img }}
                             <div class="category-card-image">
-                                <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy">
+                                <picture>
+                                    <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
+                                    <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="640" height="360">
+                                </picture>
                             </div>
                             {{- else }}
                             <div class="category-card-image category-card-image--placeholder category-card-image--tech">⚡</div>

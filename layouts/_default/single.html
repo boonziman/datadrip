@@ -23,7 +23,10 @@
   {{- $coverImage := or .Params.featuredImage .Params.cover.image }}
   {{- if (and $coverImage (not $isHidden)) }}
   <figure class="post-cover">
-    <img src="{{ $coverImage | relURL }}" alt="{{ .Title }}" loading="eager" />
+    <picture>
+      <source srcset="{{ (replace $coverImage ".jpg" ".webp") | relURL }}" type="image/webp">
+      <img src="{{ $coverImage | relURL }}" alt="{{ .Title }}" loading="eager" width="1213" height="768" />
+    </picture>
   </figure>
   {{- end }}
 
