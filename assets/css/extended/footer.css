@@ -18,7 +18,7 @@
 }
 .footer-links a {
     margin: 0 12px;
-    color: var(--primary);
+    color: rgba(255,255,255,0.75);
     text-decoration: none;
 }
 .footer-links a:hover {

@@ -17,7 +17,7 @@
     
     --color-text: #0a0a0a;
     --color-text-secondary: #525252;
-    --color-text-muted: #737373;
+    --color-text-muted: #666666;
     
     --color-border: #e5e5e5;
     --color-border-strong: #d4d4d4;
@@ -29,7 +29,7 @@
     /* Topic Colors - Bold */
     --color-ai: #6d28d9;
     --color-crypto: #dc2626;
-    --color-tech: #0284c7;
+    --color-tech: #0369a1;
     
     /* Typography */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -586,7 +586,15 @@ body {
 
 @media (max-width: 1023px) {
     .hero-side-header {
-        display: none;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
     }
 }
 
@@ -2514,6 +2522,7 @@ body {
 
 .topic-icon--ai {
     background: rgba(124, 58, 237, 0.15);
+    color: #6d28d9;
 }
 
 .topic-icon--crypto {
@@ -2819,24 +2828,24 @@ body {
 }
 
 .trending-topic--crypto {
-    background: rgba(220, 38, 38, 0.1);
-    color: #dc2626;
-    border: 1px solid rgba(220, 38, 38, 0.2);
+    background: rgba(185, 28, 28, 0.1);
+    color: #b91c1c;
+    border: 1px solid rgba(185, 28, 28, 0.2);
 }
 
 .trending-topic--crypto:hover {
-    background: rgba(220, 38, 38, 0.2);
+    background: rgba(185, 28, 28, 0.2);
     transform: translateY(-2px);
 }
 
 .trending-topic--tech {
-    background: rgba(2, 132, 199, 0.1);
-    color: #0284c7;
-    border: 1px solid rgba(2, 132, 199, 0.2);
+    background: rgba(3, 105, 161, 0.1);
+    color: #0369a1;
+    border: 1px solid rgba(3, 105, 161, 0.2);
 }
 
 .trending-topic--tech:hover {
-    background: rgba(2, 132, 199, 0.2);
+    background: rgba(3, 105, 161, 0.2);
     transform: translateY(-2px);
 }
 
@@ -3462,6 +3471,7 @@ body {
     font-size: 16px;
     font-weight: 700;
     margin: 0 0 6px;
+    color: white;
 }
 
 .cookie-text {
