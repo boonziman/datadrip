@@ -624,5 +624,14 @@
     "image_prompt": "Close-up of a smartphone screen showing the ChatGPT app with integration notifications, held by a person's hand in a modern office setting, natural daylight filtering through windows, shallow focus on the screen",
     "promoted_url": "",
     "tweet_id": "2032905870774808930"
+  },
+  {
+    "timestamp": "2026-03-14 15:00 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "ChatGPT's rolling out these app integrations, and it's sparking some serious debates on AI risks like data privacy and potential exploits. I dug into how this could reshape everything from daily workflows to enterprise security, with examples that made me pause. The upside's huge, but so are the pitfalls.\nhttps://datadripco.com/posts/chatgpts-app-integrations-ignite-ai-risk-debates/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/chatgpts-app-integrations-ignite-ai-risk-debates/",
+    "tweet_id": "2032939994797490402"
   }
 ]

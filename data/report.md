@@ -1,4 +1,4 @@
-# 📊 Datadrip Bot Reports
+# 📊 Datadripco Bot Reports
 
 *This file is automatically updated every time the tweet bot or blog bot runs.*
 *Newest reports are at the top. Scroll down for older runs.*
@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 14) | 4 | **$1.5163** |
-| 📆 This Week (since Mar 09) | 39 | **$10.0817** |
-| 🗓️ This Month (March 2026) | 86 | **$20.6459** |
-| 🏦 Overall All-Time | 86 | **$20.6459** |
+| 📅 Today (March 14) | 5 | **$1.5521** |
+| 📆 This Week (since Mar 09) | 40 | **$10.1175** |
+| 🗓️ This Month (March 2026) | 87 | **$20.6817** |
+| 🏦 Overall All-Time | 87 | **$20.6817** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 14, 2026 at 03:00 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 19.8 seconds
+**Estimated cost:** $0.0358
+
+### What happened (step by step)
+
+1. **15:00:19 PST** — Tweet bot started
+2. **15:00:19 PST** — API keys validated
+3. **15:00:39 PST** — Tweet posted and logged (type: blog_teaser, ID: 2032939994797490402)
+4. **15:00:39 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> ChatGPT's rolling out these app integrations, and it's sparking some serious debates on AI risks like data privacy and potential exploits. I dug into how this could reshape everything from daily workflows to enterprise security, with examples that made me pause. The upside's huge, but so are the pitfalls.
+https://datadripco.com/posts/chatgpts-app-integrations-ignite-ai-risk-debates/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2032939994797490402
+**Blog post promoted:** https://datadripco.com/posts/chatgpts-app-integrations-ignite-ai-risk-debates/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,104 tokens, got back 118 tokens — **$0.0358**
+
+**💰 Total estimated cost: $0.0358**
 
 ---
 ## 🐦 Tweet Bot — March 14, 2026 at 12:44 PM PST

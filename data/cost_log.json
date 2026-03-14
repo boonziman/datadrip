@@ -3772,5 +3772,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1065
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-14",
+    "start_time": "2026-03-14T15:00:19.998038-07:00",
+    "end_time": "2026-03-14T15:00:39.745432-07:00",
+    "duration_seconds": 19.7,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3104,
+        "output_tokens": 118,
+        "cost": 0.03576
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "ChatGPT's rolling out these app integrations, and it's sparking some serious debates on AI risks like data privacy and potential exploits. I dug into how this could reshape everything from daily workflows to enterprise security, with examples that made me pause. The upside's huge, but so are the pitfalls.\nhttps://datadripco.com/posts/chatgpts-app-integrations-ignite-ai-risk-debates/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2032939994797490402",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/chatgpts-app-integrations-ignite-ai-risk-debates/"
+    },
+    "totals": {
+      "input_tokens": 3104,
+      "output_tokens": 118,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0358
+    }
   }
 ]
