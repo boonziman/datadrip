@@ -9,12 +9,43 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 13) | 5 | **$1.6901** |
-| 📆 This Week (since Mar 09) | 33 | **$8.4981** |
-| 🗓️ This Month (March 2026) | 80 | **$19.0623** |
-| 🏦 Overall All-Time | 80 | **$19.0623** |
+| 📅 Today (March 13) | 6 | **$1.7232** |
+| 📆 This Week (since Mar 09) | 34 | **$8.5312** |
+| 🗓️ This Month (March 2026) | 81 | **$19.0954** |
+| 🏦 Overall All-Time | 81 | **$19.0954** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 13, 2026 at 08:35 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 15.0 seconds
+**Estimated cost:** $0.0331
+
+### What happened (step by step)
+
+1. **20:35:57 PST** — Tweet bot started
+2. **20:35:57 PST** — API keys validated
+3. **20:36:12 PST** — Tweet posted and logged (type: engagement, ID: 2032662049067598080)
+4. **20:36:12 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Crypto's facing more crackdowns, but the market's not cooling off at all. I've been watching these big bets roll in despite the noise. What do you think happens next - does it force better tech, or just more underground plays? Spill your thoughts.
+
+**Tweet type:** engagement
+**Tweet ID:** 2032662049067598080
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,955 tokens, got back 88 tokens — **$0.0331**
+
+**💰 Total estimated cost: $0.0331**
 
 ---
 ## 🐦 Tweet Bot — March 13, 2026 at 03:03 PM PST

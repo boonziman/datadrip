@@ -3500,5 +3500,34 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.036
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-13",
+    "start_time": "2026-03-13T20:35:57.308822-07:00",
+    "end_time": "2026-03-13T20:36:12.315845-07:00",
+    "duration_seconds": 15.0,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2955,
+        "output_tokens": 88,
+        "cost": 0.03307
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Crypto's facing more crackdowns, but the market's not cooling off at all. I've been watching these big bets roll in despite the noise. What do you think happens next - does it force better tech, or just more underground plays? Spill your thoughts.",
+      "tweet_type": "engagement",
+      "tweet_id": "2032662049067598080",
+      "had_image": false
+    },
+    "totals": {
+      "input_tokens": 2955,
+      "output_tokens": 88,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0331
+    }
   }
 ]
