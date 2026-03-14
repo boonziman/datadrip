@@ -1437,7 +1437,6 @@ function loadUserExplorer() {
             { name: 'browser' },
             { name: 'pagePath' },
             { name: 'sessionDefaultChannelGroup' },
-            { name: 'landingPage' },
             { name: 'newVsReturning' }
         ],
         metrics: [
@@ -1468,10 +1467,10 @@ function buildSessions(rows) {
     rows.forEach(function(r) {
         var time = dVal(r,0), country = dVal(r,1), city = dVal(r,2), device = dVal(r,3);
         var os = dVal(r,4), browser = dVal(r,5), page = dVal(r,6);
-        var source = dVal(r,7), landing = dVal(r,8), userType = dVal(r,9);
+        var source = dVal(r,7), userType = dVal(r,8);
         var key = time.slice(0,10) + '|' + country + '|' + city + '|' + device + '|' + userType;
         if (!sessions[key]) {
-            sessions[key] = { time:time, country:country, city:city, device:device, os:os, browser:browser, source:source, landing:landing, userType:userType || 'new', pages:[], totalViews:0, totalDuration:0, engaged:0 };
+            sessions[key] = { time:time, country:country, city:city, device:device, os:os, browser:browser, source:source, landing:page, userType:userType || 'new', pages:[], totalViews:0, totalDuration:0, engaged:0 };
         }
         sessions[key].pages.push({ page:page, views:mVal(r,1), duration:mVal(r,2) });
         sessions[key].totalViews += mVal(r,1);
@@ -1597,7 +1596,8 @@ function fetchRT() {
         gaRealtime({ dimensions: [{ name:'country' }], metrics: [{ name:'activeUsers' }], limit: 10 }),
         gaRealtime({ dimensions: [{ name:'deviceCategory' }], metrics: [{ name:'activeUsers' }] }),
         gaRealtime({ dimensions: [{ name:'minutesAgo' }], metrics: [{ name:'activeUsers' }], limit: 31 }),
-        gaRealtime({ dimensions: [{ name:'country' },{ name:'city' },{ name:'deviceCategory' },{ name:'unifiedPagePathScreen' }], metrics: [{ name:'activeUsers' }], limit: 30 })
+        gaRealtime({ dimensions: [{ name:'country' },{ name:'city' }], metrics: [{ name:'activeUsers' }], limit: 20 }),
+        gaRealtime({ dimensions: [{ name:'unifiedPagePathScreen' },{ name:'deviceCategory' }], metrics: [{ name:'activeUsers' }], limit: 20 })
     ]).then(function(results) {
         rtRetryCount = 0;
         var now = new Date().toLocaleTimeString();
@@ -1625,8 +1625,8 @@ function fetchRT() {
         /* Timeline */
         renderRTTimeline(results[5]);
 
-        /* Live sessions */
-        renderLiveSessions(results[6]);
+        /* Live sessions - merge two 2-dim queries */
+        renderLiveSessions(results[6], results[7]);
 
         updateRTStatus('Live \u00b7 Last updated ' + now + ' \u00b7 Refreshes every 15s');
     }).catch(function(err) {
@@ -1687,21 +1687,33 @@ function renderRTTimeline(data) {
     });
 }
 
-function renderLiveSessions(data) {
-    var rows = (data && data.rows) ? data.rows : [];
-    if (!rows.length) {
+function renderLiveSessions(locationData, pageData) {
+    var locRows = (locationData && locationData.rows) ? locationData.rows : [];
+    var pgRows = (pageData && pageData.rows) ? pageData.rows : [];
+    if (!locRows.length && !pgRows.length) {
         $('rt-live-sessions').innerHTML = '<div class="empty-state" style="padding:20px">\uD83D\uDE34 No active sessions right now. When visitors arrive, they will appear here in real time.</div>';
         return;
     }
+    /* Use the longer list as primary display */
     var h = '';
-    rows.forEach(function(r) {
-        var country = dVal(r,0), city = dVal(r,1), device = dVal(r,2), page = dVal(r,3), users = mVal(r,0);
-        var location = country + (city && city !== '(not set)' ? ', ' + city : '');
-        h += '<div class="live-session" onclick="openDrilldown(\'country\',\'' + escHtml(country.replace(/'/g, "\\'")) + '\')">' +
-            '<div class="live-dot"></div>' +
-            '<div class="live-info"><div class="live-page">' + escHtml(page) + '</div><div class="live-detail">' + escHtml(location) + ' \u00b7 ' + escHtml(device) + '</div></div>' +
-            '<div class="live-badge">' + fmtNum(users) + ' user' + (users > 1 ? 's' : '') + '</div></div>';
-    });
+    if (locRows.length) {
+        locRows.forEach(function(r) {
+            var country = dVal(r,0), city = dVal(r,1), users = mVal(r,0);
+            var location = country + (city && city !== '(not set)' ? ', ' + city : '');
+            h += '<div class="live-session" onclick="openDrilldown(\'country\',\'' + escHtml(country.replace(/'/g, "\\'")) + '\')">' +
+                '<div class="live-dot"></div>' +
+                '<div class="live-info"><div class="live-page">' + escHtml(location) + '</div><div class="live-detail">Active visitor</div></div>' +
+                '<div class="live-badge">' + fmtNum(users) + ' user' + (users > 1 ? 's' : '') + '</div></div>';
+        });
+    } else {
+        pgRows.forEach(function(r) {
+            var page = dVal(r,0), device = dVal(r,1), users = mVal(r,0);
+            h += '<div class="live-session">' +
+                '<div class="live-dot"></div>' +
+                '<div class="live-info"><div class="live-page">' + escHtml(page) + '</div><div class="live-detail">' + escHtml(device) + '</div></div>' +
+                '<div class="live-badge">' + fmtNum(users) + ' user' + (users > 1 ? 's' : '') + '</div></div>';
+        });
+    }
     $('rt-live-sessions').innerHTML = h;
 }
 
@@ -1736,7 +1748,7 @@ function openDrilldown(type, value) {
         dimensions: [
             { name:'dateHourMinute' }, { name:'country' }, { name:'city' },
             { name:'deviceCategory' }, { name:'operatingSystem' }, { name:'browser' },
-            { name:'pagePath' }, { name:'sessionDefaultChannelGroup' }, { name:'landingPage' },
+            { name:'pagePath' }, { name:'sessionDefaultChannelGroup' },
             { name:'newVsReturning' }
         ],
         metrics: [{ name:'sessions' }, { name:'screenPageViews' }, { name:'averageSessionDuration' }, { name:'engagedSessions' }],
