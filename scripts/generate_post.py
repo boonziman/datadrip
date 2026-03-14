@@ -103,10 +103,19 @@ def generate_image(image_prompt, slug="post"):
 
 
 def download_image(image_url, slug="post"):
-    """Download an image from a URL and save it to static/images/posts/. Returns the Hugo-relative path."""
+    """Download an image from a URL and save it to static/images/posts/.
+    Also creates WebP full, thumbnail (400w), and hero (800w) variants for PageSpeed.
+    Returns the Hugo-relative path (JPG filename)."""
+    import subprocess
+    import shutil
+
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     images_dir = os.path.join(project_root, "static", "images", "posts")
+    thumb_dir = os.path.join(images_dir, "thumb")
+    hero_dir = os.path.join(images_dir, "hero")
     os.makedirs(images_dir, exist_ok=True)
+    os.makedirs(thumb_dir, exist_ok=True)
+    os.makedirs(hero_dir, exist_ok=True)
 
     today = datetime.now(_PST).strftime("%Y-%m-%d")
     time_str = datetime.now(_PST).strftime("%H%M")
@@ -120,6 +129,38 @@ def download_image(image_url, slug="post"):
             with open(filepath, "wb") as f:
                 f.write(img_response.content)
             print(f"✅ Image saved: {filepath}")
+
+            # Create WebP variants for responsive images / PageSpeed
+            webp_name = filename.replace(".jpg", ".webp")
+            has_cwebp = shutil.which("cwebp") is not None
+
+            if has_cwebp:
+                # Full-size WebP (quality 55, max effort)
+                full_webp = os.path.join(images_dir, webp_name)
+                subprocess.run(
+                    ["cwebp", "-q", "55", "-m", "6", filepath, "-o", full_webp],
+                    capture_output=True,
+                )
+                print(f"  → WebP full: {webp_name}")
+
+                # Thumbnail 400px wide (quality 60)
+                thumb_webp = os.path.join(thumb_dir, webp_name)
+                subprocess.run(
+                    ["cwebp", "-q", "60", "-resize", "400", "0", filepath, "-o", thumb_webp],
+                    capture_output=True,
+                )
+                print(f"  → WebP thumb: thumb/{webp_name}")
+
+                # Hero 800px wide (quality 60)
+                hero_webp = os.path.join(hero_dir, webp_name)
+                subprocess.run(
+                    ["cwebp", "-q", "60", "-m", "6", "-resize", "800", "0", filepath, "-o", hero_webp],
+                    capture_output=True,
+                )
+                print(f"  → WebP hero: hero/{webp_name}")
+            else:
+                print("  ⚠️ cwebp not found — skipping WebP variants (install with: brew install webp)")
+
             # Return path without leading / so Hugo's absURL/relURL handles the base path
             return f"images/posts/{filename}"
         else:

@@ -51,7 +51,7 @@ params:
     - name: x
       url: "https://x.com/datadripco"
     - name: rss
-      url: "/index.xml"
+      url: "https://datadripco.com/index.xml"
 
 menu:
   main:

@@ -50,7 +50,7 @@
     {{- /* Mobile Menu */ -}}
     <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-inner">
-            <nav class="mobile-nav">
+            <nav class="mobile-nav" aria-label="Mobile navigation">
                 {{- range site.Menus.main }}
                 <a href="{{ .URL | absLangURL }}" class="mobile-nav-link">{{ .Name }}</a>
                 {{- end }}

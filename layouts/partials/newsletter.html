@@ -1,7 +1,6 @@
 <form class="newsletter-form" onsubmit="return mcRedirect(this);">
   <div class="newsletter-input-row">
     <input type="email"
-           id="nl-email"
            class="newsletter-email"
            required
            placeholder="you@example.com"
@@ -15,7 +14,7 @@
 </form>
 <script>
 function mcRedirect(form){
-  var email=document.getElementById('nl-email').value;
+  var email=form.querySelector('.newsletter-email').value;
   var url='https://gmail.us20.list-manage.com/subscribe?u=bef06fe2737e08e1c01ae0f28&id=b7103eb655&MERGE0='+encodeURIComponent(email)+'&EMAIL='+encodeURIComponent(email);
   window.location.href=url;
   return false;

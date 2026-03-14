@@ -94,9 +94,15 @@
                     {{- $img := or .Params.featuredImage .Params.cover.image }}
                     <div class="featured-image">
                         {{- if $img }}
+                        {{- $basename := replace $img "images/posts/" "" }}
                         <picture>
-                            <source srcset="{{ (replace $img ".jpg" ".webp") | relURL }}" type="image/webp">
-                            <img src="{{ $img | relURL }}" alt="{{ .Title }}" loading="eager" width="1213" height="768">
+                            <source
+                                srcset="{{ (printf "images/posts/thumb/%s" (replace $basename ".jpg" ".webp")) | relURL }} 400w,
+                                       {{ (printf "images/posts/hero/%s" (replace $basename ".jpg" ".webp")) | relURL }} 800w,
+                                       {{ (replace $img ".jpg" ".webp") | relURL }} 1408w"
+                                sizes="(max-width: 768px) 100vw, 860px"
+                                type="image/webp">
+                            <img src="{{ $img | relURL }}" alt="{{ .Title }}" loading="eager" width="1408" height="768" fetchpriority="high">
                         </picture>
                         {{- else }}
                         <div class="featured-image-placeholder">
@@ -138,8 +144,13 @@
                         {{- $img := or $page.Params.featuredImage $page.Params.cover.image }}
                         <div class="archive-card-image">
                             {{- if $img }}
+                            {{- $bn := replace $img "images/posts/" "" }}
                             <picture>
-                                <source srcset="{{ (replace $img ".jpg" ".webp") | relURL }}" type="image/webp">
+                                <source
+                                    srcset="{{ (printf "images/posts/thumb/%s" (replace $bn ".jpg" ".webp")) | relURL }} 400w,
+                                           {{ (replace $img ".jpg" ".webp") | relURL }} 1408w"
+                                    sizes="(max-width: 768px) 50vw, 280px"
+                                    type="image/webp">
                                 <img src="{{ $img | relURL }}" alt="{{ $page.Title }}" loading="lazy" width="640" height="360">
                             </picture>
                             {{- else }}

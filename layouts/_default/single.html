@@ -22,10 +22,16 @@
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- $coverImage := or .Params.featuredImage .Params.cover.image }}
   {{- if (and $coverImage (not $isHidden)) }}
+  {{- $bn := replace $coverImage "images/posts/" "" }}
   <figure class="post-cover">
     <picture>
-      <source srcset="{{ (replace $coverImage ".jpg" ".webp") | relURL }}" type="image/webp">
-      <img src="{{ $coverImage | relURL }}" alt="{{ .Title }}" loading="eager" width="1213" height="768" />
+      <source
+        srcset="{{ (printf "images/posts/thumb/%s" (replace $bn ".jpg" ".webp")) | relURL }} 400w,
+               {{ (printf "images/posts/hero/%s" (replace $bn ".jpg" ".webp")) | relURL }} 800w,
+               {{ (replace $coverImage ".jpg" ".webp") | relURL }} 1408w"
+        sizes="(max-width: 768px) 100vw, 800px"
+        type="image/webp">
+      <img src="{{ $coverImage | relURL }}" alt="{{ .Title }}" loading="eager" width="1408" height="768" fetchpriority="high" />
     </picture>
   </figure>
   {{- end }}

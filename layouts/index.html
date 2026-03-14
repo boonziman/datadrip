@@ -29,8 +29,13 @@
                     {{- if $img }}
                     <div class="hero-image">
                         <picture>
-                            <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
-                            <img src="/{{ $img }}" alt="{{ .Title }}" loading="eager" width="1213" height="768">
+                            <source
+                                srcset="/images/posts/thumb/{{ replace (replace $img "images/posts/" "") ".jpg" ".webp" }} 400w,
+                                       /images/posts/hero/{{ replace (replace $img "images/posts/" "") ".jpg" ".webp" }} 800w,
+                                       /{{ replace $img ".jpg" ".webp" }} 1408w"
+                                sizes="(max-width: 768px) 100vw, 860px"
+                                type="image/webp">
+                            <img src="/{{ $img }}" alt="{{ .Title }}" loading="eager" width="1408" height="768" fetchpriority="high">
                         </picture>
                     </div>
                     {{- else }}
@@ -64,8 +69,12 @@
                         {{- if $img }}
                         <div class="hero-card-image">
                             <picture>
-                                <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
-                                <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="640" height="360">
+                                <source
+                                    srcset="/images/posts/thumb/{{ replace (replace $img "images/posts/" "") ".jpg" ".webp" }} 400w,
+                                           /{{ replace $img ".jpg" ".webp" }} 1408w"
+                                    sizes="(max-width: 1023px) 280px, 140px"
+                                    type="image/webp">
+                                <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="400" height="218">
                             </picture>
                         </div>
                         {{- else }}
@@ -95,7 +104,7 @@
         <div class="container">
             <div class="content-grid">
                 {{- /* Feed */ -}}
-                <main class="main-feed">
+                <div class="main-feed" role="region" aria-label="Latest stories">
                     <header class="section-header">
                         <h2 class="section-title">Latest Stories</h2>
                         <a href="/posts/" class="section-link">View all →</a>
@@ -122,8 +131,12 @@
                                 {{- if $img }}
                                 <div class="story-image">
                                     <picture>
-                                        <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
-                                        <img src="/{{ $img }}" alt="{{ $post.Title }}" loading="lazy" width="640" height="360">
+                                        <source
+                                            srcset="/images/posts/thumb/{{ replace (replace $img "images/posts/" "") ".jpg" ".webp" }} 400w,
+                                                   /{{ replace $img ".jpg" ".webp" }} 1408w"
+                                            sizes="(max-width: 768px) 120px, 200px"
+                                            type="image/webp">
+                                        <img src="/{{ $img }}" alt="{{ $post.Title }}" loading="lazy" width="400" height="218">
                                     </picture>
                                 </div>
                                 {{- else }}
@@ -162,7 +175,7 @@
                         {{- end }}
                     </nav>
                     {{- end }}
-                </main>
+                </div>
 
                 {{- /* Sidebar */ -}}
                 <aside class="sidebar">
@@ -265,8 +278,12 @@
                             {{- if $img }}
                             <div class="category-card-image">
                                 <picture>
-                                    <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
-                                    <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="640" height="360">
+                                    <source
+                                        srcset="/images/posts/thumb/{{ replace (replace $img "images/posts/" "") ".jpg" ".webp" }} 400w,
+                                               /{{ replace $img ".jpg" ".webp" }} 1408w"
+                                        sizes="(max-width: 768px) 50vw, 280px"
+                                        type="image/webp">
+                                    <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="400" height="218">
                                 </picture>
                             </div>
                             {{- else }}
@@ -310,8 +327,12 @@
                             {{- if $img }}
                             <div class="category-card-image">
                                 <picture>
-                                    <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
-                                    <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="640" height="360">
+                                    <source
+                                        srcset="/images/posts/thumb/{{ replace (replace $img "images/posts/" "") ".jpg" ".webp" }} 400w,
+                                               /{{ replace $img ".jpg" ".webp" }} 1408w"
+                                        sizes="(max-width: 768px) 50vw, 280px"
+                                        type="image/webp">
+                                    <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="400" height="218">
                                 </picture>
                             </div>
                             {{- else }}
@@ -341,8 +362,12 @@
                             {{- if $img }}
                             <div class="category-card-image">
                                 <picture>
-                                    <source srcset="/{{ replace $img ".jpg" ".webp" }}" type="image/webp">
-                                    <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="640" height="360">
+                                    <source
+                                        srcset="/images/posts/thumb/{{ replace (replace $img "images/posts/" "") ".jpg" ".webp" }} 400w,
+                                               /{{ replace $img ".jpg" ".webp" }} 1408w"
+                                        sizes="(max-width: 768px) 50vw, 280px"
+                                        type="image/webp">
+                                    <img src="/{{ $img }}" alt="{{ .Title }}" loading="lazy" width="400" height="218">
                                 </picture>
                             </div>
                             {{- else }}
