@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 13) | 6 | **$1.7232** |
-| 📆 This Week (since Mar 09) | 34 | **$8.5312** |
-| 🗓️ This Month (March 2026) | 81 | **$19.0954** |
-| 🏦 Overall All-Time | 81 | **$19.0954** |
+| 📅 Today (March 13) | 7 | **$1.7574** |
+| 📆 This Week (since Mar 09) | 35 | **$8.5654** |
+| 🗓️ This Month (March 2026) | 82 | **$19.1296** |
+| 🏦 Overall All-Time | 82 | **$19.1296** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 13, 2026 at 10:00 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 14.6 seconds
+**Estimated cost:** $0.0342
+
+### What happened (step by step)
+
+1. **22:00:53 PST** — Tweet bot started
+2. **22:00:53 PST** — API keys validated
+3. **22:01:08 PST** — Tweet posted and logged (type: blog_teaser, ID: 2032683423694029002)
+4. **22:01:08 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Crypto's getting hammered with crackdowns from all sides, but the market's still on fire with yields spiking and big players doubling down. I broke down the regulatory mess and why it might actually fuel the next wave of innovation, with some eye-opening data on where the money's heading. Surprised me how resilient this space is.
+https://datadripco.com/posts/crypto-crackdowns-vs-market-heat-whats-next/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2032683423694029002
+**Blog post promoted:** https://datadripco.com/posts/crypto-crackdowns-vs-market-heat-whats-next/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,927 tokens, got back 123 tokens — **$0.0342**
+
+**💰 Total estimated cost: $0.0342**
 
 ---
 ## 🐦 Tweet Bot — March 13, 2026 at 08:35 PM PST

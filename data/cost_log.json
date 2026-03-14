@@ -3529,5 +3529,35 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0331
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-13",
+    "start_time": "2026-03-13T22:00:53.822046-07:00",
+    "end_time": "2026-03-13T22:01:08.420434-07:00",
+    "duration_seconds": 14.6,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2927,
+        "output_tokens": 123,
+        "cost": 0.03419
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Crypto's getting hammered with crackdowns from all sides, but the market's still on fire with yields spiking and big players doubling down. I broke down the regulatory mess and why it might actually fuel the next wave of innovation, with some eye-opening data on where the money's heading. Surprised me how resilient this space is.\nhttps://datadripco.com/posts/crypto-crackdowns-vs-market-heat-whats-next/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2032683423694029002",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/crypto-crackdowns-vs-market-heat-whats-next/"
+    },
+    "totals": {
+      "input_tokens": 2927,
+      "output_tokens": 123,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0342
+    }
   }
 ]
