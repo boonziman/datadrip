@@ -597,5 +597,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/crypto-crackdowns-vs-market-heat-whats-next/",
     "tweet_id": "2032683423694029002"
+  },
+  {
+    "timestamp": "2026-03-14 00:12 PST",
+    "tweet_type": "hot_take",
+    "tweet_text": "Nvidia's latest chip reveal has me skeptical. They're pushing AI hardware like it's endless, but with energy costs skyrocketing, I wonder if we're heading for a bubble burst. Feels like 2021 crypto all over again. Thoughts?",
+    "use_image": true,
+    "image_prompt": "Close-up of a modern GPU chip on a circuit board in a high-tech lab, with engineers in the background examining screens, natural overhead lighting, wide-angle lens for depth",
+    "promoted_url": "",
+    "tweet_id": "2032716552517152786"
   }
 ]

@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 13) | 7 | **$1.7574** |
-| 📆 This Week (since Mar 09) | 35 | **$8.5654** |
-| 🗓️ This Month (March 2026) | 82 | **$19.1296** |
-| 🏦 Overall All-Time | 82 | **$19.1296** |
+| 📅 Today (March 14) | 1 | **$0.1046** |
+| 📆 This Week (since Mar 09) | 36 | **$8.6700** |
+| 🗓️ This Month (March 2026) | 83 | **$19.2342** |
+| 🏦 Overall All-Time | 83 | **$19.2342** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 14, 2026 at 12:12 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 19.1 seconds
+**Estimated cost:** $0.1046
+
+### What happened (step by step)
+
+1. **00:12:27 PST** — Tweet bot started
+2. **00:12:27 PST** — API keys validated
+3. **00:12:47 PST** — Tweet posted and logged (type: hot_take, ID: 2032716552517152786)
+4. **00:12:47 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Nvidia's latest chip reveal has me skeptical. They're pushing AI hardware like it's endless, but with energy costs skyrocketing, I wonder if we're heading for a bubble burst. Feels like 2021 crypto all over again. Thoughts?
+
+**Tweet type:** hot_take
+**Tweet ID:** 2032716552517152786
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,975 tokens, got back 120 tokens — **$0.0345**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1046**
 
 ---
 ## 🐦 Tweet Bot — March 13, 2026 at 10:00 PM PST
