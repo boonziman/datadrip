@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 14) | 3 | **$1.4098** |
-| 📆 This Week (since Mar 09) | 38 | **$9.9752** |
-| 🗓️ This Month (March 2026) | 85 | **$20.5394** |
-| 🏦 Overall All-Time | 85 | **$20.5394** |
+| 📅 Today (March 14) | 4 | **$1.5163** |
+| 📆 This Week (since Mar 09) | 39 | **$10.0817** |
+| 🗓️ This Month (March 2026) | 86 | **$20.6459** |
+| 🏦 Overall All-Time | 86 | **$20.6459** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 14, 2026 at 12:44 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 25.8 seconds
+**Estimated cost:** $0.1065
+
+### What happened (step by step)
+
+1. **12:44:38 PST** — Tweet bot started
+2. **12:44:38 PST** — API keys validated
+3. **12:45:04 PST** — Tweet posted and logged (type: engagement, ID: 2032905870774808930)
+4. **12:45:04 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> ChatGPT's new app integrations are opening up all sorts of possibilities, but the risk debates are heating up fast. I've seen talks about data leaks and misuse popping up everywhere. Do you think this pushes AI safety forward, or just creates more headaches? What's your take?
+
+**Tweet type:** engagement
+**Tweet ID:** 2032905870774808930
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,136 tokens, got back 128 tokens — **$0.0365**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1065**
 
 ---
 ## 🐦 Tweet Bot — March 14, 2026 at 10:01 AM PST

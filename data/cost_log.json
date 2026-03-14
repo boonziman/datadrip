@@ -3735,5 +3735,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0362
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-14",
+    "start_time": "2026-03-14T12:44:38.247745-07:00",
+    "end_time": "2026-03-14T12:45:04.061783-07:00",
+    "duration_seconds": 25.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3136,
+        "output_tokens": 128,
+        "cost": 0.03648
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "ChatGPT's new app integrations are opening up all sorts of possibilities, but the risk debates are heating up fast. I've seen talks about data leaks and misuse popping up everywhere. Do you think this pushes AI safety forward, or just creates more headaches? What's your take?",
+      "tweet_type": "engagement",
+      "tweet_id": "2032905870774808930",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3136,
+      "output_tokens": 128,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1065
+    }
   }
 ]

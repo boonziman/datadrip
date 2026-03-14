@@ -615,5 +615,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/ais-war-machines-are-funding-biotech-miracles/",
     "tweet_id": "2032864752108540409"
+  },
+  {
+    "timestamp": "2026-03-14 12:45 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "ChatGPT's new app integrations are opening up all sorts of possibilities, but the risk debates are heating up fast. I've seen talks about data leaks and misuse popping up everywhere. Do you think this pushes AI safety forward, or just creates more headaches? What's your take?",
+    "use_image": true,
+    "image_prompt": "Close-up of a smartphone screen showing the ChatGPT app with integration notifications, held by a person's hand in a modern office setting, natural daylight filtering through windows, shallow focus on the screen",
+    "promoted_url": "",
+    "tweet_id": "2032905870774808930"
   }
 ]
