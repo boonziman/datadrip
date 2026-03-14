@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 14) | 2 | **$1.3736** |
-| 📆 This Week (since Mar 09) | 37 | **$9.9390** |
-| 🗓️ This Month (March 2026) | 84 | **$20.5032** |
-| 🏦 Overall All-Time | 84 | **$20.5032** |
+| 📅 Today (March 14) | 3 | **$1.4098** |
+| 📆 This Week (since Mar 09) | 38 | **$9.9752** |
+| 🗓️ This Month (March 2026) | 85 | **$20.5394** |
+| 🏦 Overall All-Time | 85 | **$20.5394** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 14, 2026 at 10:01 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 16.0 seconds
+**Estimated cost:** $0.0362
+
+### What happened (step by step)
+
+1. **10:01:24 PST** — Tweet bot started
+2. **10:01:24 PST** — API keys validated
+3. **10:01:40 PST** — Tweet posted and logged (type: blog_teaser, ID: 2032864752108540409)
+4. **10:01:40 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> I've been digging into how AI's push into military tech is actually bankrolling some wild breakthroughs in biotech. It's this weird cycle where war funding leads to medical wins, like better drug discovery tools. The numbers on investment flows caught me off guard.
+https://datadripco.com/posts/ais-war-machines-are-funding-biotech-miracles/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2032864752108540409
+**Blog post promoted:** https://datadripco.com/posts/ais-war-machines-are-funding-biotech-miracles/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,099 tokens, got back 131 tokens — **$0.0362**
+
+**💰 Total estimated cost: $0.0362**
 
 ---
 ## 📝 Blog Bot — March 14, 2026 at 06:46 AM PST

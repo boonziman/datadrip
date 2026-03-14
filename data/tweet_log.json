@@ -606,5 +606,14 @@
     "image_prompt": "Close-up of a modern GPU chip on a circuit board in a high-tech lab, with engineers in the background examining screens, natural overhead lighting, wide-angle lens for depth",
     "promoted_url": "",
     "tweet_id": "2032716552517152786"
+  },
+  {
+    "timestamp": "2026-03-14 10:01 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "I've been digging into how AI's push into military tech is actually bankrolling some wild breakthroughs in biotech. It's this weird cycle where war funding leads to medical wins, like better drug discovery tools. The numbers on investment flows caught me off guard.\nhttps://datadripco.com/posts/ais-war-machines-are-funding-biotech-miracles/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/ais-war-machines-are-funding-biotech-miracles/",
+    "tweet_id": "2032864752108540409"
   }
 ]

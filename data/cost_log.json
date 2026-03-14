@@ -3705,5 +3705,35 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.269
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-14",
+    "start_time": "2026-03-14T10:01:24.474525-07:00",
+    "end_time": "2026-03-14T10:01:40.503047-07:00",
+    "duration_seconds": 16.0,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3099,
+        "output_tokens": 131,
+        "cost": 0.03623
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "I've been digging into how AI's push into military tech is actually bankrolling some wild breakthroughs in biotech. It's this weird cycle where war funding leads to medical wins, like better drug discovery tools. The numbers on investment flows caught me off guard.\nhttps://datadripco.com/posts/ais-war-machines-are-funding-biotech-miracles/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2032864752108540409",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-war-machines-are-funding-biotech-miracles/"
+    },
+    "totals": {
+      "input_tokens": 3099,
+      "output_tokens": 131,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0362
+    }
   }
 ]
