@@ -1,4 +1,4 @@
-name: Daily Datadrip Post Generator
+name: Daily Datadripco Post Generator
 
 on:
   schedule:

@@ -92,4 +92,4 @@ Yes, by integrating compliance into core strategies, partnering with regulators,
 **How might these regulatory trends evolve globally in the coming years?**  
 Expect harmonized international frameworks, with bolder actions in emerging markets, leading to a more balanced tech landscape that prioritizes societal benefits alongside growth.
 
-What do you think—will these regulatory moves tame tech's wild side or spark a backlash? Drop a comment below, subscribe to Datadrip for more unfiltered insights, or share this with your network. Let's keep the conversation going.
+What do you think—will these regulatory moves tame tech's wild side or spark a backlash? Drop a comment below, subscribe to Datadripco for more unfiltered insights, or share this with your network. Let's keep the conversation going.

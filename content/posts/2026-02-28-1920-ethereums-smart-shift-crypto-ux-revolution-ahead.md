@@ -101,4 +101,4 @@ Key risks include smart contract hacks, regulatory clampdowns, and market swings
 **As a beginner, how can I get started with these emerging crypto features?**  
 Begin with user-friendly wallets like MetaMask for basics, then explore smart account demos on platforms like Safe. Follow updates from CoinDesk or Ethereum.org, join online communities for tips, and consider small investments in stables for low-risk entry.
 
-What do you think—will smart accounts finally make crypto mainstream, or is regulation the real key? Drop your thoughts in the comments, subscribe to Datadrip for more insights, and share this if it sparked ideas. Let's keep the conversation going.
+What do you think—will smart accounts finally make crypto mainstream, or is regulation the real key? Drop your thoughts in the comments, subscribe to Datadripco for more insights, and share this if it sparked ideas. Let's keep the conversation going.

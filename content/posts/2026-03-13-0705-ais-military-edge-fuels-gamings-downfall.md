@@ -103,4 +103,4 @@ Absolutely—adopting similar open tools could streamline game creation and redu
 **What are the biggest risks of unchecked military AI growth worldwide?**  
 It could spark arms races, enable misuse by non-state actors, and embed biases in decisions. International regulations, like updated arms control treaties, are crucial to direct it toward humanitarian ends.
 
-If this breakdown got you thinking about AI's wild ride, subscribe to Datadrip for more unfiltered insights. What's your take on military AI versus gaming's struggles—drop a comment below or share this with your network. Let's keep the conversation going.
+If this breakdown got you thinking about AI's wild ride, subscribe to Datadripco for more unfiltered insights. What's your take on military AI versus gaming's struggles—drop a comment below or share this with your network. Let's keep the conversation going.

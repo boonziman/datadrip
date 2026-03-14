@@ -1,4 +1,4 @@
-name: Daily Datadrip Smart Tweets
+name: Daily Datadripco Smart Tweets
 
 on:
   schedule:

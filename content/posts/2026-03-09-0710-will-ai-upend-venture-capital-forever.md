@@ -76,4 +76,4 @@ By diversifying training data, conducting regular audits, and incorporating ethi
 **What role does sustainability play in the AI-VC intersection?**  
 With AI's energy demands rising, VCs are prioritizing startups that balance innovation with low carbon footprints, influencing deals in climate tech and beyond.
 
-What do you think—will AI make VC more efficient or just more cutthroat? Drop a comment below, subscribe to Datadrip for more unfiltered tech insights, or share this with your network. Let's keep the conversation going.
+What do you think—will AI make VC more efficient or just more cutthroat? Drop a comment below, subscribe to Datadripco for more unfiltered tech insights, or share this with your network. Let's keep the conversation going.

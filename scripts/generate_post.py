@@ -214,7 +214,7 @@ def generate_post(category="AI", test_mode=False):
         tracker.log_event(f"Fetched {len(news)} RSS articles for {category}")
     context = "\n\n".join([f"Title: {a['title']}\nLink: {a['link']}\nSummary: {a['summary']}" for a in news])
 
-    system_prompt = f"""You are the lead editor and senior tech journalist at Datadrip — a respected, forward-thinking publication known for cutting through hype with sharp, original insights on AI, Crypto, and Tech that readers actually use to make better decisions.
+    system_prompt = f"""You are the lead editor and senior tech journalist at Datadripco — a respected, forward-thinking publication known for cutting through hype with sharp, original insights on AI, Crypto, and Tech that readers actually use to make better decisions.
 
 Your writing style:
 - Confident, authoritative, slightly conversational (blend of TechCrunch, Wired's best writers, and top Substack analysts)
@@ -265,7 +265,7 @@ Then the full post content."""
     user_prompt = f"""Today's top stories in {category} (focus on the most timely and viral ones):
 {context}{avoid_section}
 
-Write one original, high-value Datadrip article that ties 2–4 of these together with fresh analysis. Choose the most timely and impactful angle. Make it completely unique — no rehashing of previously published stories."""
+Write one original, high-value Datadripco article that ties 2–4 of these together with fresh analysis. Choose the most timely and impactful angle. Make it completely unique — no rehashing of previously published stories."""
 
     if test_mode:
         print("=== TEST MODE ===")
@@ -294,7 +294,7 @@ Write one original, high-value Datadrip article that ties 2–4 of these togethe
 
     # === SELF-GRADING & IMPROVEMENT PASS ===
     print(f"🤖 Pass 2: Self-review & improving for {category}...")
-    review_prompt = f"""You are reviewing and improving this Datadrip post. Your job is to make it SIGNIFICANTLY longer and better.
+    review_prompt = f"""You are reviewing and improving this Datadripco post. Your job is to make it SIGNIFICANTLY longer and better.
 
 STEP 1 — WORD COUNT CHECK:
 Count the body words (after the frontmatter). If the body is under 2,000 words, you MUST expand it to at least 2,200 words. Add substantial new paragraphs: deeper analysis, more real-world examples, additional expert insights, bold predictions, actionable takeaways, relevant data points, and richer context. Do NOT pad with filler — every addition must be high-value content a reader would appreciate.
@@ -351,7 +351,7 @@ Post to improve:
     # === PASS 3: SMART IMAGE PROMPT + GROK IMAGINE ===
     print(f"🎨 Pass 3: Generating unique image prompt for {category}...")
     title_match = re.search(r'title:\s*"?(.*?)"?\s*\n', final_content, re.IGNORECASE)
-    raw_title = title_match.group(1).strip('"').strip() if title_match else "Datadrip post"
+    raw_title = title_match.group(1).strip('"').strip() if title_match else "Datadripco post"
 
     # Extract first ~400 chars of body for context
     body_start = final_content.split('---', 2)[-1][:400].strip()

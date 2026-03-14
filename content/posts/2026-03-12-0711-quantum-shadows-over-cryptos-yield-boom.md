@@ -90,7 +90,7 @@ It highlights the need for advanced accounting amid institutional growth, helpin
 **How should users enhance self-custody against quantum threats and scams?**  
 Adopt hardware wallets with post-quantum features, use multi-sig, rotate keys, and enable robust authentication to counter AI-driven fraud like ATM scams.
 
-What do you think—will quantum fears accelerate crypto's evolution, or is it overblown? Drop your thoughts in the comments, subscribe to Datadrip for more unfiltered insights, and share this if it sparked ideas for your strategy.
+What do you think—will quantum fears accelerate crypto's evolution, or is it overblown? Drop your thoughts in the comments, subscribe to Datadripco for more unfiltered insights, and share this if it sparked ideas for your strategy.
 
 Sources:  
 - [Ark Invest on Bitcoin Quantum Risk](https://cointelegraph.com/news/ark-bitcoin-quantum-risk-supply-bip-360)  

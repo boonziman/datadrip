@@ -99,7 +99,7 @@ Approvals like Ondo's in Abu Dhabi enable on-chain trading of real-world assets,
 **How do stablecoin expansions counter global economic pressures?**  
 Initiatives like Visa's cards facilitate low-cost, borderless payments, offering stability in inflationary regions and reducing reliance on traditional finance amid conflicts.
 
-What do you think—will AI deflation make Bitcoin a multi-million-dollar asset, or is geopolitics set to dominate? Drop your thoughts in the comments, subscribe to Datadrip for more unfiltered crypto insights, and share this if it sparked an idea. Let's keep the conversation going.
+What do you think—will AI deflation make Bitcoin a multi-million-dollar asset, or is geopolitics set to dominate? Drop your thoughts in the comments, subscribe to Datadripco for more unfiltered crypto insights, and share this if it sparked an idea. Let's keep the conversation going.
 
 Sources:  
 - [CoinDesk on Iran Conflict and Dollar Surge](https://www.coindesk.com/markets/2026/03/03/dollar-surge-pressures-crypto-and-gold-after-escalation-in-iran-conflict)  

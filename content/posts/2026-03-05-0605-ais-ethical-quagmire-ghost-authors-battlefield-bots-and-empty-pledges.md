@@ -84,4 +84,4 @@ They could standardize consent, ethical audits, and energy limits, preventing a 
 **How can everyday users contribute to ethical AI development?**  
 By choosing transparent tools, participating in public consultations on AI laws, and supporting organizations advocating for responsible tech.
 
-What do you think—is AI's ethical slide inevitable, or can we course-correct? Drop a comment below, subscribe to Datadrip for more unfiltered takes on AI's twists and turns, and share this if it sparked some thoughts. Let's keep the conversation going.
+What do you think—is AI's ethical slide inevitable, or can we course-correct? Drop a comment below, subscribe to Datadripco for more unfiltered takes on AI's twists and turns, and share this if it sparked some thoughts. Let's keep the conversation going.

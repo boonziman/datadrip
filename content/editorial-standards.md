@@ -7,7 +7,7 @@ layout: "single"
 
 Last updated: February 27, 2026
 
-At Datadrip, our promise is simple: deliver **original, accurate, and valuable** content every day.
+At Datadripco, our promise is simple: deliver **original, accurate, and valuable** content every day.
 
 We use advanced research tools to stay on top of fast-moving topics in AI, crypto, and tech. Every article is carefully structured, fact-checked against multiple sources, and written to give you real insights you can use.
 

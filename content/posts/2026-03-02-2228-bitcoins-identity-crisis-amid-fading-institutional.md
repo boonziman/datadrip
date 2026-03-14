@@ -81,7 +81,7 @@ Volatility, underperformance relative to stocks, and geopolitical mining risks a
 **What makes NYSE's tokenization a game-changer for finance?**  
 It enables fractional, 24/7 trading of traditional assets on blockchain, reducing costs and risks, potentially drawing trillions from volatile crypto like Bitcoin.
 
-What do you think— is Bitcoin's identity crisis overblown, or is tokenization the real future? Drop a comment below, subscribe to Datadrip for more unfiltered takes on crypto's wild ride, and share this if it sparked some thoughts. Let's keep the conversation going.
+What do you think— is Bitcoin's identity crisis overblown, or is tokenization the real future? Drop a comment below, subscribe to Datadripco for more unfiltered takes on crypto's wild ride, and share this if it sparked some thoughts. Let's keep the conversation going.
 
 Sources:  
 - [CoinDesk on Bitcoin's Spike](https://www.coindesk.com/markets/2026/03/02/bitcoin-s-5-spike-higher-monday-driven-by-short-covering-not-fresh-buying-says-analyst)  

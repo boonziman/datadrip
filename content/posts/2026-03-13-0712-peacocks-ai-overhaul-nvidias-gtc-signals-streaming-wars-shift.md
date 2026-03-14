@@ -91,7 +91,7 @@ Absolutely—it tailors live NBA streams for mobile without rotation, using AI f
 **Are there privacy risks with AI in streaming?**  
 Yes, but Peacock emphasizes data safeguards; users can manage settings to limit personalization and protect their information.
 
-What do you think—will Peacock's AI moves finally put it on par with Netflix, or is this just more hype? Drop a comment, share this post, or subscribe to Datadrip for weekly insights on AI and tech trends that matter. Your thoughts fuel our next deep dive.
+What do you think—will Peacock's AI moves finally put it on par with Netflix, or is this just more hype? Drop a comment, share this post, or subscribe to Datadripco for weekly insights on AI and tech trends that matter. Your thoughts fuel our next deep dive.
 
 *Sources:*  
 - [TechCrunch on Peacock's Expansions](https://techcrunch.com/2026/03/13/peacock-expands-into-ai-driven-video-mobile-first-live-sports-and-gaming/)  

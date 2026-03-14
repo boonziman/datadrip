@@ -1,5 +1,5 @@
 /**
- * Datadrip Theme JS
+ * Datadripco Theme JS
  */
 
 (function() {

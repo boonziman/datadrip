@@ -72,7 +72,7 @@ Reliance on a few major hosting providers; a targeted attack could halve hashrat
 **Could escalating Middle East tensions accelerate crypto adoption globally?**  
 Absolutely—by exposing fiat weaknesses, driving demand for borderless assets, and highlighting crypto's role in humanitarian aid, potentially boosting valuations significantly.
 
-For more on crypto's evolving role, subscribe to Datadrip's newsletter—we'll keep you ahead of the curve. What do you think: Is crypto ready to be a geopolitical hero, or are the risks too high? Drop a comment below or share this with your network.
+For more on crypto's evolving role, subscribe to Datadripco's newsletter—we'll keep you ahead of the curve. What do you think: Is crypto ready to be a geopolitical hero, or are the risks too high? Drop a comment below or share this with your network.
 
 *Sources:*  
 - [CoinDesk: Bitcoin Holds $71,000 Despite Trump Warning](https://www.coindesk.com/markets/2026/03/14/bitcoin-holds-usd71-000-despite-trump-warning-after-iran-oil-strikes)  

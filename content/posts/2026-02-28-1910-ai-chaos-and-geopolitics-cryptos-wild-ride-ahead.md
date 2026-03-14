@@ -106,4 +106,4 @@ Sources:
 - [Goldman Sachs Bitcoin Report](https://www.goldmansachs.com/intelligence/pages/bitcoin-as-digital-gold.html)  
 - [World Economic Forum Jobs Report](https://www.weforum.org/reports/the-future-of-jobs-report-2023/)
 
-What do you think—will AI supercharge crypto or spark a backlash? Drop a comment below, subscribe to Datadrip for more unfiltered takes, and share this if it sparked some thoughts. Let's keep the conversation going.
+What do you think—will AI supercharge crypto or spark a backlash? Drop a comment below, subscribe to Datadripco for more unfiltered takes, and share this if it sparked some thoughts. Let's keep the conversation going.

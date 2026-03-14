@@ -97,4 +97,4 @@ Yes, it could pressure companies like Apple or Google to incorporate more fun, p
 **Is retro tech a smart investment for collectors?**  
 *This is for entertainment and educational purposes only and is not financial advice. Always do your own research and consult a professional advisor.* With markets growing rapidly, items from trusted brands like ModRetro could appreciate, but focus on authenticity and condition.
 
-What do you think— is nostalgia the antidote to tech burnout, or just a fleeting trend? Drop a comment below, subscribe to Datadrip for more sharp takes on AI and tech, and share this if it sparked some retro vibes. Let's keep the conversation going.
+What do you think— is nostalgia the antidote to tech burnout, or just a fleeting trend? Drop a comment below, subscribe to Datadripco for more sharp takes on AI and tech, and share this if it sparked some retro vibes. Let's keep the conversation going.

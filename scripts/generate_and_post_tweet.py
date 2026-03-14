@@ -163,7 +163,7 @@ def format_blog_context(posts, already_promoted):
     """Format recent blog posts for the system prompt, noting which are already promoted."""
     if not posts:
         return "Recent blog posts: None in the last 3 days."
-    lines = ["Recent Datadrip blog posts (last 3 days):"]
+    lines = ["Recent Datadripco blog posts (last 3 days):"]
     unpromoted = []
     for p in posts:
         status = "🆕 NEW TODAY" if p["is_today"] else f"📅 {p['date']}"
@@ -236,7 +236,7 @@ def upload_image_to_twitter(image_bytes, auth):
         return None
 
 # ====================== GROK SYSTEM PROMPT ======================
-SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a real human who runs an AI, Crypto & Tech blog called Datadrip. You're knowledgeable, opinionated, and genuinely passionate — not a corporate account, not a bot, not a news aggregator. Think of yourself like a sharp tech founder who tweets between deep work sessions.
+SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a real human who runs an AI, Crypto & Tech blog called Datadripco. You're knowledgeable, opinionated, and genuinely passionate — not a corporate account, not a bot, not a news aggregator. Think of yourself like a sharp tech founder who tweets between deep work sessions.
 
 ═══ YOUR VOICE ═══
 - You sound like a REAL PERSON. Short sentences. Casual but smart. Like texting a friend who happens to be a tech expert.
@@ -283,7 +283,7 @@ SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a 
 1. "hot_take" — React to something happening RIGHT NOW in AI/crypto/tech. Short, opinionated.
 2. "insight" — Share a genuine observation or prediction. "I've been thinking about..." energy.
 3. "engagement" — Ask a real question people want to answer. Polls, "which side are you on?", etc.
-4. "blog_teaser" — Promote a Datadrip article (ONLY if there's an unpromoted post, max ~25% of tweets).
+4. "blog_teaser" — Promote a Datadripco article (ONLY if there's an unpromoted post, max ~25% of tweets).
 5. "value_drop" — Quick fact, stat, or "did you know" that makes people go "huh, interesting."
 
 ═══ CONTEXT FOR THIS TWEET ═══
@@ -460,7 +460,7 @@ def post_to_x(tweet_text, image_prompt="", use_image=False):
 
     # Headers to reduce Cloudflare bot-detection blocks from data center IPs
     headers = {
-        "User-Agent": "DatadripBot/1.0",
+        "User-Agent": "DatadripcoBot/1.0",
         "Content-Type": "application/json",
     }
 
@@ -543,7 +543,7 @@ if __name__ == "__main__":
         time.sleep(_jitter)
 
     print("=" * 60)
-    print(f"🚀 Datadrip Tweet Bot — {get_current_pst_time()}")
+    print(f"🚀 Datadripco Tweet Bot — {get_current_pst_time()}")
     print("=" * 60)
 
     # Initialize cost & event tracker

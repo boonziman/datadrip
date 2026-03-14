@@ -8,7 +8,7 @@ hideMeta: true
 
 **Last updated: March 4, 2026**
 
-Datadrip ("we", "us", "our") operates the website [datadripco.com](https://datadripco.com). This policy explains what data we collect, why, and your rights.
+Datadripco ("we", "us", "our") operates the website [datadripco.com](https://datadripco.com). This policy explains what data we collect, why, and your rights.
 
 ## Information We Collect
 
@@ -33,19 +33,19 @@ We use cookies only for basic site functionality and analytics. We do not use ad
 
 By subscribing, you consent to us using your information to:
 - Send our newsletter containing AI, crypto, and tech insights
-- Send promotional content, product announcements, and updates about Datadrip and its services
+- Send promotional content, product announcements, and updates about Datadripco and its services
 - Send occasional sponsored content or partner recommendations that we believe are relevant to our audience
 - Personalize your experience and communications
 - Analyze subscriber engagement to improve our content and offerings
 
 ## Data Sharing & Sales
 
-**By providing your information, you acknowledge and agree that Datadrip may share, sell, license, or otherwise distribute your personal data — including your email address, name, and any other information you provide — to third parties.** This includes but is not limited to:
+**By providing your information, you acknowledge and agree that Datadripco may share, sell, license, or otherwise distribute your personal data — including your email address, name, and any other information you provide — to third parties.** This includes but is not limited to:
 
 - Selling or licensing email addresses and subscriber data to third-party companies, advertisers, marketers, or data brokers
 - Sharing aggregated or individual-level data with partners for marketing, analytics, or commercial purposes
 - Providing subscriber data to sponsors, affiliates, or other businesses
-- Transferring all data in the event of an acquisition, merger, or sale of Datadrip
+- Transferring all data in the event of an acquisition, merger, or sale of Datadripco
 
 We may share your data with service providers who help us operate (see Third-Party Services below).
 
@@ -80,7 +80,7 @@ We retain your email address and any information you provide for as long as you 
 
 ## Children's Privacy
 
-Datadrip is not directed at children under 16. We do not knowingly collect data from minors.
+Datadripco is not directed at children under 16. We do not knowingly collect data from minors.
 
 ## Changes to This Policy
 

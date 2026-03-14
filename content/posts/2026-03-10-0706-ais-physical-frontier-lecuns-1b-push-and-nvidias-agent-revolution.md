@@ -98,7 +98,7 @@ It's progressing with integrations for simulations in tools like Sheets, handlin
 **What safeguards are needed for physical AI's risks?**  
 Key measures include transparent algorithms, energy-efficient designs, and regulations like the EU AI Act to prevent misuse in surveillance or biased outcomes.
 
-If this exploration of AI's physical leap fired up your curiosity, subscribe to Datadrip for more raw takes on tech's frontiers. What's your view on these shifts? Comment below, share with peers, or email us—your input fuels the conversation.
+If this exploration of AI's physical leap fired up your curiosity, subscribe to Datadripco for more raw takes on tech's frontiers. What's your view on these shifts? Comment below, share with peers, or email us—your input fuels the conversation.
 
 Sources:  
 - [Wired on Yann LeCun's $1B Raise](https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/)  

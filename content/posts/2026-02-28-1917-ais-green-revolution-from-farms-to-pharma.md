@@ -71,5 +71,5 @@ Accessing personal data raises risks of breaches and misuse; even with encryptio
 **What's a major opportunity in AI-driven sustainability?**  
 Cross-domain integrations could generate trillions in value by enhancing efficiency and reducing emissions across agriculture, energy, and health sectors.
 
-What do you think— is AI the hero in our sustainability story, or just another hype cycle? Drop a comment below, subscribe to Datadrip for more unfiltered insights on AI's real-world impacts, and share this if it sparked some thoughts. Let's keep the conversation going.
+What do you think— is AI the hero in our sustainability story, or just another hype cycle? Drop a comment below, subscribe to Datadripco for more unfiltered insights on AI's real-world impacts, and share this if it sparked some thoughts. Let's keep the conversation going.
 ---

@@ -65,4 +65,4 @@ For investors, prioritize firms with transparent governance; entrepreneurs, weav
 
 This tangle of events—from defiant startups to insider betrayals and market freakouts—underscores AI's vibrant, volatile essence. It's not crisis; it's catalyst for maturity.
 
-What's your read on these developments? Could Anthropic's stance reshape military AI? Share below, spread the word, and subscribe to Datadrip for incisive AI insights that cut straight to the core.
+What's your read on these developments? Could Anthropic's stance reshape military AI? Share below, spread the word, and subscribe to Datadripco for incisive AI insights that cut straight to the core.

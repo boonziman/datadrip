@@ -85,7 +85,7 @@ They could lead to widespread job automation, skill mismatches, and morale issue
 **How might AI investments like Converge Bio impact global health?**  
 They promise faster, cheaper therapies for diseases, but ethical challenges like data bias must be addressed to ensure equitable benefits.
 
-What do you think—will these AI pivots redefine industries, or spark unforeseen backlashes? Drop a comment, share this with your network, or subscribe to Datadrip for more unfiltered takes on AI's wild ride. Your insights keep us sharp.
+What do you think—will these AI pivots redefine industries, or spark unforeseen backlashes? Drop a comment, share this with your network, or subscribe to Datadripco for more unfiltered takes on AI's wild ride. Your insights keep us sharp.
 
 Sources:  
 - [Jack Dorsey Explains Block Layoffs](https://www.wired.com/story/jack-dorsey-explains-block-layoffs/) (WIRED)  

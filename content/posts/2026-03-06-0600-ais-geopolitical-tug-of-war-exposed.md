@@ -88,4 +88,4 @@ It could set a precedent for AI integration in finance, leading to smarter predi
 **What steps can developers take to mitigate geopolitical AI risks?**  
 Focus on building flexible, hardware-agnostic models, collaborate internationally, and incorporate ethical audits to ensure adaptability in a fragmented global landscape.
 
-What do you think—is geopolitics AI's biggest threat or its greatest catalyst? Drop a comment below, subscribe to Datadrip for more unfiltered takes, or share this with your network to spark the conversation. Let's keep cutting through the hype together.
+What do you think—is geopolitics AI's biggest threat or its greatest catalyst? Drop a comment below, subscribe to Datadripco for more unfiltered takes, or share this with your network to spark the conversation. Let's keep cutting through the hype together.

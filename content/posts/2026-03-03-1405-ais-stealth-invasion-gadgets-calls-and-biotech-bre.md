@@ -78,7 +78,7 @@ The $25M infusion from Bessemer and tech leaders like those from Meta and OpenAI
 **What privacy issues unite these AI advancements?**  
 Common threads include data collection without clear consent, potential biases in AI processing, and surveillance risks—users should seek transparent policies, opt-out options, and support regulations like GDPR for protection.
 
-What do you think— is AI's stealth integration exciting or eerie? Drop a comment, share this post, or subscribe to Datadrip for more unfiltered takes on tech's wild ride. Your inbox will thank you.
+What do you think— is AI's stealth integration exciting or eerie? Drop a comment, share this post, or subscribe to Datadripco for more unfiltered takes on tech's wild ride. Your inbox will thank you.
 
 Sources:  
 - [Wired on Joe Gebbia's Device](https://www.wired.com/story/joe-gebbia-mystery-metallic-device/)  

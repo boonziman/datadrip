@@ -4,7 +4,7 @@ layout: "single"
 hideMeta: true
 ---
 
-# Welcome to Datadrip! 🎉
+# Welcome to Datadripco! 🎉
 
 **You're in.** Check your inbox for a confirmation email and click the link to activate your subscription.
 

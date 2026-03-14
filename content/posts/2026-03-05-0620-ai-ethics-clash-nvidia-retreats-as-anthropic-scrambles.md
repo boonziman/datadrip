@@ -106,4 +106,4 @@ Yes, likely favoring ethical funds and startups, with data indicating a surge in
 - [McKinsey Global Institute on AI's economic impact](https://www.mckinsey.com/featured-insights/artificial-intelligence/notes-from-the-ai-frontier-modeling-the-impact-of-ai-on-the-world-economy)  
 - [Statista on Nvidia's market share](https://www.statista.com/statistics/735884/worldwide-artificial-intelligence-chip-market-share-by-vendor/)
 
-What do you think—will transparency save AI, or is it just window dressing? Drop a comment below, subscribe to Datadrip for more unfiltered tech insights, and share this if it sparked your thoughts. Let's keep the conversation going.
+What do you think—will transparency save AI, or is it just window dressing? Drop a comment below, subscribe to Datadripco for more unfiltered tech insights, and share this if it sparked your thoughts. Let's keep the conversation going.

@@ -1,5 +1,5 @@
 """
-Datadrip Cost Tracker & Event Logger
+Datadripco Cost Tracker & Event Logger
 =====================================
 Shared module used by both the blog bot and tweet bot to track:
 - API costs (token usage per call, image generation)
@@ -342,7 +342,7 @@ class Tracker:
                 existing = ""  # file had no run reports yet — start fresh
 
             # Fixed title/description header
-            header = "# 📊 Datadrip Bot Reports\n\n"
+            header = "# 📊 Datadripco Bot Reports\n\n"
             header += "*This file is automatically updated every time the tweet bot or blog bot runs.*\n"
             header += "*Newest reports are at the top. Scroll down for older runs.*\n\n"
             header += "---\n\n"

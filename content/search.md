@@ -1,5 +1,5 @@
 ---
 title: "Search"
 layout: "search"
-summary: "Search Datadrip for AI, Crypto & Tech news"
+summary: "Search Datadripco for AI, Crypto & Tech news"
 ---
