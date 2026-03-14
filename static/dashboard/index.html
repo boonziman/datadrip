@@ -546,7 +546,7 @@
                     <div id="rt-active-pages"><div class="loading"><div class="spinner"></div> Loading...</div></div>
                 </div>
                 <div class="card">
-                    <div class="card-label">Active by Source <span class="badge">Live</span></div>
+                    <div class="card-label">Active by Platform <span class="badge">Live</span></div>
                     <div id="rt-sources"><div class="loading"><div class="spinner"></div> Loading...</div></div>
                 </div>
             </div>
@@ -1586,18 +1586,23 @@ function updateRTStatus(msg) {
     if (el) el.textContent = msg;
 }
 
+function safeRT(body) {
+    return gaRealtime(body).catch(function(err) {
+        console.warn('RT query failed:', body.dimensions ? body.dimensions.map(function(d){return d.name}).join(',') : 'total', err.message);
+        return null;
+    });
+}
+
 function fetchRT() {
     updateRTStatus('Fetching real-time data...');
-    var rtBody = {};
     Promise.all([
-        gaRealtime({ metrics: [{ name:'activeUsers' }] }),
-        gaRealtime({ dimensions: [{ name:'unifiedPagePathScreen' }], metrics: [{ name:'activeUsers' }], limit: 10 }),
-        gaRealtime({ dimensions: [{ name:'sessionDefaultChannelGroup' }], metrics: [{ name:'activeUsers' }], limit: 8 }),
-        gaRealtime({ dimensions: [{ name:'country' }], metrics: [{ name:'activeUsers' }], limit: 10 }),
-        gaRealtime({ dimensions: [{ name:'deviceCategory' }], metrics: [{ name:'activeUsers' }] }),
-        gaRealtime({ dimensions: [{ name:'minutesAgo' }], metrics: [{ name:'activeUsers' }], limit: 31 }),
-        gaRealtime({ dimensions: [{ name:'country' },{ name:'city' }], metrics: [{ name:'activeUsers' }], limit: 20 }),
-        gaRealtime({ dimensions: [{ name:'unifiedPagePathScreen' },{ name:'deviceCategory' }], metrics: [{ name:'activeUsers' }], limit: 20 })
+        safeRT({ metrics: [{ name:'activeUsers' }] }),
+        safeRT({ dimensions: [{ name:'unifiedScreenName' }], metrics: [{ name:'activeUsers' },{ name:'screenPageViews' }], limit: 10 }),
+        safeRT({ dimensions: [{ name:'platform' }], metrics: [{ name:'activeUsers' }], limit: 8 }),
+        safeRT({ dimensions: [{ name:'country' }], metrics: [{ name:'activeUsers' }], limit: 10 }),
+        safeRT({ dimensions: [{ name:'deviceCategory' }], metrics: [{ name:'activeUsers' }] }),
+        safeRT({ dimensions: [{ name:'minutesAgo' }], metrics: [{ name:'activeUsers' }], limit: 31 }),
+        safeRT({ dimensions: [{ name:'country' },{ name:'city' }], metrics: [{ name:'activeUsers' }], limit: 20 })
     ]).then(function(results) {
         rtRetryCount = 0;
         var now = new Date().toLocaleTimeString();
@@ -1618,15 +1623,15 @@ function fetchRT() {
 
         /* Tables */
         renderRTTable('rt-active-pages', results[1], 'Page', 'Users');
-        renderRTTable('rt-sources', results[2], 'Source', 'Users');
+        renderRTTable('rt-sources', results[2], 'Platform', 'Users');
         renderRTTable('rt-countries', results[3], 'Country', 'Users');
         renderRTTable('rt-devices', results[4], 'Device', 'Users');
 
         /* Timeline */
         renderRTTimeline(results[5]);
 
-        /* Live sessions - merge two 2-dim queries */
-        renderLiveSessions(results[6], results[7]);
+        /* Live sessions from country+city */
+        renderLiveSessions(results[6]);
 
         updateRTStatus('Live \u00b7 Last updated ' + now + ' \u00b7 Refreshes every 15s');
     }).catch(function(err) {
@@ -1687,33 +1692,21 @@ function renderRTTimeline(data) {
     });
 }
 
-function renderLiveSessions(locationData, pageData) {
-    var locRows = (locationData && locationData.rows) ? locationData.rows : [];
-    var pgRows = (pageData && pageData.rows) ? pageData.rows : [];
-    if (!locRows.length && !pgRows.length) {
+function renderLiveSessions(locationData) {
+    var rows = (locationData && locationData.rows) ? locationData.rows : [];
+    if (!rows.length) {
         $('rt-live-sessions').innerHTML = '<div class="empty-state" style="padding:20px">\uD83D\uDE34 No active sessions right now. When visitors arrive, they will appear here in real time.</div>';
         return;
     }
-    /* Use the longer list as primary display */
     var h = '';
-    if (locRows.length) {
-        locRows.forEach(function(r) {
-            var country = dVal(r,0), city = dVal(r,1), users = mVal(r,0);
-            var location = country + (city && city !== '(not set)' ? ', ' + city : '');
-            h += '<div class="live-session" onclick="openDrilldown(\'country\',\'' + escHtml(country.replace(/'/g, "\\'")) + '\')">' +
-                '<div class="live-dot"></div>' +
-                '<div class="live-info"><div class="live-page">' + escHtml(location) + '</div><div class="live-detail">Active visitor</div></div>' +
-                '<div class="live-badge">' + fmtNum(users) + ' user' + (users > 1 ? 's' : '') + '</div></div>';
-        });
-    } else {
-        pgRows.forEach(function(r) {
-            var page = dVal(r,0), device = dVal(r,1), users = mVal(r,0);
-            h += '<div class="live-session">' +
-                '<div class="live-dot"></div>' +
-                '<div class="live-info"><div class="live-page">' + escHtml(page) + '</div><div class="live-detail">' + escHtml(device) + '</div></div>' +
-                '<div class="live-badge">' + fmtNum(users) + ' user' + (users > 1 ? 's' : '') + '</div></div>';
-        });
-    }
+    rows.forEach(function(r) {
+        var country = dVal(r,0), city = dVal(r,1), users = mVal(r,0);
+        var location = country + (city && city !== '(not set)' ? ', ' + city : '');
+        h += '<div class="live-session" onclick="openDrilldown(\'country\',\'' + escHtml(country.replace(/'/g, "\\'")) + '\')">' +
+            '<div class="live-dot"></div>' +
+            '<div class="live-info"><div class="live-page">' + escHtml(location) + '</div><div class="live-detail">Active visitor \u00b7 ' + fmtNum(users) + ' user' + (users > 1 ? 's' : '') + '</div></div>' +
+            '<div class="live-badge" style="color:var(--green)">\u25CF LIVE</div></div>';
+    });
     $('rt-live-sessions').innerHTML = h;
 }
 

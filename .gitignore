@@ -1,5 +1,23 @@
+# Secrets & env files
 .env
 .env.local
 .env.*.local
+*.pem
+*.key
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Python
 .venv/
+venv/
+__pycache__/
+*.pyc
+
+# Hugo build output (deployed via GitHub Pages, not needed in repo)
+public/
+
+# IDE
+.idea/
+.vscode/
