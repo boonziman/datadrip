@@ -42,6 +42,8 @@
     {{- else }}{{ .Content }}{{ end }}
   </div>
 
+  {{- partial "ad-space.html" (dict "location" "in-article" "context" .) }}
+
   {{- partial "newsletter-inline.html" . }}
 
   {{- partial "related-posts.html" . }}

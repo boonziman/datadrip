@@ -4129,3 +4129,32 @@ body {
         width: 100%;
     }
 }
+
+/* ============================================
+   Ad Slots — hidden until AdSense code added
+   To activate: replace .dd-ad-placeholder with
+   real <ins class="adsbygoogle"> tags and
+   remove the display:none below.
+   ============================================ */
+.dd-ad {
+    width: 100%;
+    text-align: center;
+}
+
+.dd-ad-in-article {
+    margin: var(--space-8) 0;
+}
+
+.dd-ad-footer {
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Hide the "Advertisement" placeholder text — shows nothing until real ads inserted */
+.dd-ad-placeholder {
+    display: none;
+}
+
+@media print {
+    .dd-ad { display: none; }
+}
