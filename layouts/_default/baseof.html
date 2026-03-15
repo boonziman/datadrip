@@ -8,6 +8,9 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="light">
 <head>
+    {{- /* Critical CSS inlined for instant above-fold rendering */ -}}
+    {{- partial "critical-css.html" . }}
+
     {{- partial "head.html" . }}
     
     {{- /* Inter font — self-hosted for zero third-party latency */ -}}
