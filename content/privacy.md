@@ -37,6 +37,7 @@ By subscribing, you consent to us using your information to:
 - Send occasional sponsored content or partner recommendations that we believe are relevant to our audience
 - Personalize your experience and communications
 - Analyze subscriber engagement to improve our content and offerings
+- We may use AI tools to assist with anonymous usage pattern analysis to improve content and user experience.
 
 ## Data Sharing & Sales
 
@@ -85,6 +86,12 @@ Datadripco is not directed at children under 16. We do not knowingly collect dat
 ## Changes to This Policy
 
 We may update this policy from time to time. The "last updated" date at the top will always reflect the most recent version.
+
+## AI Tools & Content Generation
+
+Datadripco utilizes advanced AI tools to assist with research, analysis, drafting, and the creation or enhancement of images and visuals. All published material undergoes editorial review.
+
+The content on this website is provided for informational and educational purposes only. It does not constitute financial, investment, legal, or any other form of professional advice. Readers are encouraged to conduct their own independent research and consult qualified professionals before making any decisions based on the information presented. Datadripco and its operators assume no liability for any actions taken or decisions made based on this content.
 
 ## Contact
 
