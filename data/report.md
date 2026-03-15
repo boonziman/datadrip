@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 14) | 5 | **$1.5521** |
-| 📆 This Week (since Mar 09) | 40 | **$10.1175** |
-| 🗓️ This Month (March 2026) | 87 | **$20.6817** |
-| 🏦 Overall All-Time | 87 | **$20.6817** |
+| 📅 Today (March 14) | 6 | **$1.6571** |
+| 📆 This Week (since Mar 09) | 41 | **$10.2225** |
+| 🗓️ This Month (March 2026) | 88 | **$20.7867** |
+| 🏦 Overall All-Time | 88 | **$20.7867** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 14, 2026 at 09:06 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 32.1 seconds
+**Estimated cost:** $0.1050
+
+### What happened (step by step)
+
+1. **21:06:09 PST** — Tweet bot started
+2. **21:06:09 PST** — API keys validated
+3. **21:06:41 PST** — Tweet posted and logged (type: hot_take, ID: 2033032109346951235)
+4. **21:06:41 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Bitcoin's proving its worth amid these Iran tensions. Reports show it's helping folks dodge sanctions and move money quietly. I've always thought crypto had this geopolitical edge, but seeing it play out in real time? Kinda impressive, even if it's messy.
+
+**Tweet type:** hot_take
+**Tweet ID:** 2033032109346951235
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,960 tokens, got back 135 tokens — **$0.0350**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1050**
 
 ---
 ## 🐦 Tweet Bot — March 14, 2026 at 03:00 PM PST

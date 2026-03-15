@@ -3802,5 +3802,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0358
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-14",
+    "start_time": "2026-03-14T21:06:09.588084-07:00",
+    "end_time": "2026-03-14T21:06:41.688742-07:00",
+    "duration_seconds": 32.1,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2960,
+        "output_tokens": 135,
+        "cost": 0.035
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Bitcoin's proving its worth amid these Iran tensions. Reports show it's helping folks dodge sanctions and move money quietly. I've always thought crypto had this geopolitical edge, but seeing it play out in real time? Kinda impressive, even if it's messy.",
+      "tweet_type": "hot_take",
+      "tweet_id": "2033032109346951235",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 2960,
+      "output_tokens": 135,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.105
+    }
   }
 ]
