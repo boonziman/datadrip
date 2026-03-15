@@ -368,15 +368,20 @@ body {
 /* Mobile Menu */
 .mobile-menu {
     position: fixed;
-    top: 64px;
+    top: 108px; /* ticker 36px + header 72px */
     left: 0;
     right: 0;
     bottom: 0;
     background: var(--color-bg);
-    z-index: 99;
+    z-index: 200;
     transform: translateX(100%);
     transition: transform var(--transition-base);
     overflow-y: auto;
+}
+
+/* When ticker hides, header snaps to top: 0, so menu top = header height only */
+.mobile-menu.no-ticker {
+    top: 72px;
 }
 
 .mobile-menu.is-open {

@@ -46,21 +46,21 @@
             </div>
         </div>
     </div>
+</header>
 
-    {{- /* Mobile Menu */ -}}
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="mobile-menu-inner">
-            <nav class="mobile-nav" aria-label="Mobile navigation">
-                {{- range site.Menus.main }}
-                <a href="{{ .URL | absLangURL }}" class="mobile-nav-link">{{ .Name }}</a>
-                {{- end }}
-            </nav>
-            <div class="mobile-topics">
-                <span class="mobile-label">Topics</span>
-                <a href="/categories/ai/">Artificial Intelligence</a>
-                <a href="/categories/crypto/">Cryptocurrency</a>
-                <a href="/categories/tech/">Technology</a>
-            </div>
+{{- /* Mobile Menu — outside header to avoid backdrop-filter containing block */ -}}
+<div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner">
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+            {{- range site.Menus.main }}
+            <a href="{{ .URL | absLangURL }}" class="mobile-nav-link">{{ .Name }}</a>
+            {{- end }}
+        </nav>
+        <div class="mobile-topics">
+            <span class="mobile-label">Topics</span>
+            <a href="/categories/ai/">Artificial Intelligence</a>
+            <a href="/categories/crypto/">Cryptocurrency</a>
+            <a href="/categories/tech/">Technology</a>
         </div>
     </div>
-</header>
+</div>

@@ -63,6 +63,13 @@
     // ── Ticker bar: stick through hero, then hide ──────────────────────────────
     const ticker = document.querySelector('.ticker-bar');
     const siteHeader = document.querySelector('.site-header');
+    const mobileMenuEl = document.getElementById('mobile-menu');
+
+    function updateTickerState(hidden) {
+        if (ticker) ticker.classList.toggle('ticker-hidden', hidden);
+        if (siteHeader) siteHeader.classList.toggle('no-ticker', hidden);
+        if (mobileMenuEl) mobileMenuEl.classList.toggle('no-ticker', hidden);
+    }
 
     if (ticker) {
         const heroSection = document.querySelector('.hero-section');
@@ -72,8 +79,7 @@
             const heroObserver = new IntersectionObserver(
                 ([entry]) => {
                     const pastHero = entry.boundingClientRect.bottom <= 0;
-                    ticker.classList.toggle('ticker-hidden', pastHero);
-                    siteHeader && siteHeader.classList.toggle('no-ticker', pastHero);
+                    updateTickerState(pastHero);
                 },
                 { threshold: 0 }
             );
@@ -83,12 +89,10 @@
             let tickerHidden = false;
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 80 && !tickerHidden) {
-                    ticker.classList.add('ticker-hidden');
-                    siteHeader && siteHeader.classList.add('no-ticker');
+                    updateTickerState(true);
                     tickerHidden = true;
                 } else if (window.scrollY <= 80 && tickerHidden) {
-                    ticker.classList.remove('ticker-hidden');
-                    siteHeader && siteHeader.classList.remove('no-ticker');
+                    updateTickerState(false);
                     tickerHidden = false;
                 }
             }, { passive: true });
