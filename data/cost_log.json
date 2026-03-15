@@ -3839,5 +3839,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.105
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-14",
+    "start_time": "2026-03-14T22:21:39.131265-07:00",
+    "end_time": "2026-03-14T22:21:50.938079-07:00",
+    "duration_seconds": 11.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2922,
+        "output_tokens": 149,
+        "cost": 0.03518
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Bitcoin's holding strong against these Iran tensions, acting like a shield for folks dodging sanctions and keeping transactions under the radar. I looked into how crypto's building this geopolitical muscle, with real examples from recent moves that show its resilience. It's not all smooth, but the staying power is real.\nhttps://datadripco.com/posts/cryptos-geopolitical-armor-bitcoins-stand-amid-iran-tensions/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2033051023053316580",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/cryptos-geopolitical-armor-bitcoins-stand-amid-iran-tensions/"
+    },
+    "totals": {
+      "input_tokens": 2922,
+      "output_tokens": 149,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0352
+    }
   }
 ]

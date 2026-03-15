@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 14) | 6 | **$1.6571** |
-| 📆 This Week (since Mar 09) | 41 | **$10.2225** |
-| 🗓️ This Month (March 2026) | 88 | **$20.7867** |
-| 🏦 Overall All-Time | 88 | **$20.7867** |
+| 📅 Today (March 14) | 7 | **$1.6923** |
+| 📆 This Week (since Mar 09) | 42 | **$10.2577** |
+| 🗓️ This Month (March 2026) | 89 | **$20.8219** |
+| 🏦 Overall All-Time | 89 | **$20.8219** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 14, 2026 at 10:21 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 11.8 seconds
+**Estimated cost:** $0.0352
+
+### What happened (step by step)
+
+1. **22:21:39 PST** — Tweet bot started
+2. **22:21:39 PST** — API keys validated
+3. **22:21:50 PST** — Tweet posted and logged (type: blog_teaser, ID: 2033051023053316580)
+4. **22:21:50 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Bitcoin's holding strong against these Iran tensions, acting like a shield for folks dodging sanctions and keeping transactions under the radar. I looked into how crypto's building this geopolitical muscle, with real examples from recent moves that show its resilience. It's not all smooth, but the staying power is real.
+https://datadripco.com/posts/cryptos-geopolitical-armor-bitcoins-stand-amid-iran-tensions/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2033051023053316580
+**Blog post promoted:** https://datadripco.com/posts/cryptos-geopolitical-armor-bitcoins-stand-amid-iran-tensions/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,922 tokens, got back 149 tokens — **$0.0352**
+
+**💰 Total estimated cost: $0.0352**
 
 ---
 ## 🐦 Tweet Bot — March 14, 2026 at 09:06 PM PST
