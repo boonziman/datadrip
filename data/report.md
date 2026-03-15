@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 15) | 2 | **$1.4408** |
-| 📆 This Week (since Mar 09) | 44 | **$11.6985** |
-| 🗓️ This Month (March 2026) | 91 | **$22.2627** |
-| 🏦 Overall All-Time | 91 | **$22.2627** |
+| 📅 Today (March 15) | 3 | **$1.4775** |
+| 📆 This Week (since Mar 09) | 45 | **$11.7352** |
+| 🗓️ This Month (March 2026) | 92 | **$22.2994** |
+| 🏦 Overall All-Time | 92 | **$22.2994** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 15, 2026 at 10:01 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 18.0 seconds
+**Estimated cost:** $0.0367
+
+### What happened (step by step)
+
+1. **10:01:39 PST** — Tweet bot started
+2. **10:01:39 PST** — API keys validated
+3. **10:01:57 PST** — Tweet posted and logged (type: blog_teaser, ID: 2033227211239571564)
+4. **10:01:57 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI's search tools are getting smarter, but they're also stirring up this global gold rush mess with biased results and info overload. I broke down how it's hitting everything from markets to daily decisions, with some examples that surprised me. The chaos is real, but so are the opportunities if we navigate it right.
+https://datadripco.com/posts/ais-self-serving-search-fuels-global-gold-rush-chaos/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2033227211239571564
+**Blog post promoted:** https://datadripco.com/posts/ais-self-serving-search-fuels-global-gold-rush-chaos/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,089 tokens, got back 144 tokens — **$0.0367**
+
+**💰 Total estimated cost: $0.0367**
 
 ---
 ## 📝 Blog Bot — March 15, 2026 at 06:48 AM PST

@@ -4015,5 +4015,35 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.336
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-15",
+    "start_time": "2026-03-15T10:01:39.556827-07:00",
+    "end_time": "2026-03-15T10:01:57.505927-07:00",
+    "duration_seconds": 17.9,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3089,
+        "output_tokens": 144,
+        "cost": 0.03665
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI's search tools are getting smarter, but they're also stirring up this global gold rush mess with biased results and info overload. I broke down how it's hitting everything from markets to daily decisions, with some examples that surprised me. The chaos is real, but so are the opportunities if we navigate it right.\nhttps://datadripco.com/posts/ais-self-serving-search-fuels-global-gold-rush-chaos/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2033227211239571564",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ais-self-serving-search-fuels-global-gold-rush-chaos/"
+    },
+    "totals": {
+      "input_tokens": 3089,
+      "output_tokens": 144,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0367
+    }
   }
 ]
