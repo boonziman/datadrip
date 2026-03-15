@@ -2,6 +2,9 @@
 title: "Bitcoin's Identity Crisis Amid Fading Institutional Hype"
 date: 2026-03-02
 draft: false
+slug: "bitcoins-identity-crisis-amid-fading-institutional-hype"
+aliases:
+  - /posts/2026-03-02-2228-bitcoins-identity-crisis-amid-fading-institutional/
 categories:
   - Crypto
 tags:

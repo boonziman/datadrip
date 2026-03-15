@@ -2,6 +2,9 @@
 title: "AI's Stealth Invasion: Gadgets, Calls, and Biotech Breakthroughs"
 date: 2026-03-03
 draft: false
+slug: "ais-stealth-invasion-gadgets-calls-and-biotech-breakthroughs"
+aliases:
+  - /posts/2026-03-03-1405-ais-stealth-invasion-gadgets-calls-and-biotech-bre/
 categories:
   - AI
 tags:

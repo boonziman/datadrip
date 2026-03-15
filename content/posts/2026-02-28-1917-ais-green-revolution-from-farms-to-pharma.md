@@ -2,6 +2,9 @@
 title: "AI's Green Revolution: From Farms to Pharma"
 date: 2026-02-28
 draft: false
+slug: "ais-green-revolution-from-farms-to-pharma"
+aliases:
+  - /posts/2026-02-28-1917-ais-green-revolution-from-farms-to-pharma/
 categories:
   - AI
 tags:

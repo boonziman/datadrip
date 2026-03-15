@@ -2,6 +2,9 @@
 title: "Ethereum's Smart Shift: Crypto UX Revolution Ahead"
 date: 2026-02-28
 draft: false
+slug: "ethereums-smart-shift-crypto-ux-revolution-ahead"
+aliases:
+  - /posts/2026-02-28-1920-ethereums-smart-shift-crypto-ux-revolution-ahead/
 categories:
   - Crypto
 tags:

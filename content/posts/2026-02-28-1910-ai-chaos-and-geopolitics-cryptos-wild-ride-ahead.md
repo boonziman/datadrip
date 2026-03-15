@@ -2,6 +2,9 @@
 title: "AI Chaos and Geopolitics: Crypto's Wild Ride Ahead"
 date: 2026-02-28
 draft: false
+slug: "ai-chaos-and-geopolitics-cryptos-wild-ride-ahead"
+aliases:
+  - /posts/2026-02-28-1910-ai-chaos-and-geopolitics-cryptos-wild-ride-ahead/
 categories:
   - Crypto
 tags:

@@ -2,6 +2,9 @@
 title: "AI's Turbulent Week: Bans, Scandals, and Market Jitters"
 date: 2026-02-28
 draft: false
+slug: "ais-turbulent-week-bans-scandals-and-market-jitters"
+aliases:
+  - /posts/2026-02-28-1905-ais-turbulent-week-bans-scandals-and-market-jitter/
 categories:
   - AI
 tags:

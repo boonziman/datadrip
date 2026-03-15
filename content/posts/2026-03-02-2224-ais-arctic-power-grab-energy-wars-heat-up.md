@@ -2,6 +2,9 @@
 title: "AI's Arctic Power Grab: Energy Wars Heat Up"
 date: 2026-03-02
 draft: false
+slug: "ais-arctic-power-grab-energy-wars-heat-up"
+aliases:
+  - /posts/2026-03-02-2224-ais-arctic-power-grab-energy-wars-heat-up/
 categories:
   - AI
 tags:

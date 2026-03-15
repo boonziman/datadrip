@@ -2,6 +2,9 @@
 title: "Geopolitics Crushes Crypto: Bitcoin's Path to $11M"
 date: 2026-03-03
 draft: false
+slug: "geopolitics-crushes-crypto-bitcoins-path-to-11m"
+aliases:
+  - /posts/2026-03-03-1409-geopolitics-crushes-crypto-bitcoins-path-to-11m/
 categories:
   - Crypto
 tags:

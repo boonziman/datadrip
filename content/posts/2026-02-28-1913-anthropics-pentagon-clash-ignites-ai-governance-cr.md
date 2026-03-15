@@ -2,6 +2,9 @@
 title: "Anthropic's Pentagon Clash Ignites AI Governance Crisis"
 date: 2026-02-28
 draft: false
+slug: "anthropics-pentagon-clash-ignites-ai-governance-crisis"
+aliases:
+  - /posts/2026-02-28-1913-anthropics-pentagon-clash-ignites-ai-governance-cr/
 categories:
   - Tech
 tags:

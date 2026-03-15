@@ -2,6 +2,9 @@
 title: "AI User Exodus: Why Claude's Winning as Siri Eyes Google"
 date: 2026-03-02
 draft: false
+slug: "ai-user-exodus-why-claudes-winning-as-siri-eyes-google"
+aliases:
+  - /posts/2026-03-02-2231-ai-user-exodus-why-claudes-winning-as-siri-eyes-go/
 categories:
   - Tech
 tags:

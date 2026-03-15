@@ -2,6 +2,9 @@
 title: "Politics Reshaping Tech: Trump's Deal Influence and AI's Infra Surge"
 date: 2026-02-28
 draft: false
+slug: "politics-reshaping-tech-trumps-deal-influence-and-ais-infra-surge"
+aliases:
+  - /posts/2026-02-28-1923-politics-reshaping-tech-trumps-deal-influence-and-/
 categories:
   - Tech
 tags:

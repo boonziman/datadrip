@@ -2,6 +2,9 @@
 title: "AI Backlash Hits OpenAI Hard as Startups Cash In"
 date: 2026-03-03
 draft: false
+slug: "ai-backlash-hits-openai-hard-as-startups-cash-in"
+aliases:
+  - /posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups-cash-in/
 categories:
   - Tech
 tags:
