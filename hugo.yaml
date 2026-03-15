@@ -35,6 +35,15 @@ params:
   ShowToc: true          # table of contents on every post — better on-page SEO & readability
   ShowCanonicalLink: true  # prevents duplicate-content penalties
 
+  schema:
+    publisherType: "Organization"
+    sameAs:
+      - "https://x.com/datadripco"
+      - "https://github.com/boonziman/datadrip"
+
+  assets:
+    favicon: "/images/logo.png"
+
   homeInfoParams:
     Title: "Datadripco"
     Content: "Your daily source for original, high-value insights on Artificial Intelligence, Cryptocurrency, and Emerging Technology. Fresh news. Real analysis. Built for forward-thinkers who want to stay ahead."
