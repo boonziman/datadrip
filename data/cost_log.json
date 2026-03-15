@@ -4045,5 +4045,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0367
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-15",
+    "start_time": "2026-03-15T12:45:52.242057-07:00",
+    "end_time": "2026-03-15T12:46:20.857529-07:00",
+    "duration_seconds": 28.6,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3132,
+        "output_tokens": 115,
+        "cost": 0.03592
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Seeing this shift where AI defense is exploding while EVs and social apps are losing steam. Kinda wild how priorities flip so fast in tech. What's one area you think is next to boom or bust?",
+      "tweet_type": "engagement",
+      "tweet_id": "2033268580574224762",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3132,
+      "output_tokens": 115,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1059
+    }
   }
 ]

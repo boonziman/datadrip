@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 15) | 3 | **$1.4775** |
-| 📆 This Week (since Mar 09) | 45 | **$11.7352** |
-| 🗓️ This Month (March 2026) | 92 | **$22.2994** |
-| 🏦 Overall All-Time | 92 | **$22.2994** |
+| 📅 Today (March 15) | 4 | **$1.5834** |
+| 📆 This Week (since Mar 09) | 46 | **$11.8411** |
+| 🗓️ This Month (March 2026) | 93 | **$22.4053** |
+| 🏦 Overall All-Time | 93 | **$22.4053** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 15, 2026 at 12:45 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 28.6 seconds
+**Estimated cost:** $0.1059
+
+### What happened (step by step)
+
+1. **12:45:52 PST** — Tweet bot started
+2. **12:45:52 PST** — API keys validated
+3. **12:46:20 PST** — Tweet posted and logged (type: engagement, ID: 2033268580574224762)
+4. **12:46:20 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Seeing this shift where AI defense is exploding while EVs and social apps are losing steam. Kinda wild how priorities flip so fast in tech. What's one area you think is next to boom or bust?
+
+**Tweet type:** engagement
+**Tweet ID:** 2033268580574224762
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,132 tokens, got back 115 tokens — **$0.0359**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1059**
 
 ---
 ## 🐦 Tweet Bot — March 15, 2026 at 10:01 AM PST
