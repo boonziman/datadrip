@@ -3906,5 +3906,114 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1048
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-15",
+    "start_time": "2026-03-15T06:48:16.311658-07:00",
+    "end_time": "2026-03-15T06:58:35.397412-07:00",
+    "duration_seconds": 619.1,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3104,
+        "output_tokens": 3652,
+        "cost": 0.17712
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4001,
+        "output_tokens": 3935,
+        "cost": 0.19741
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 331,
+        "output_tokens": 210,
+        "cost": 0.01171
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3213,
+        "output_tokens": 3140,
+        "cost": 0.15773
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3489,
+        "output_tokens": 3830,
+        "cost": 0.18809
+      },
+      {
+        "label": "Crypto Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 330,
+        "output_tokens": 275,
+        "cost": 0.0143
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3276,
+        "output_tokens": 3505,
+        "cost": 0.17296
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3854,
+        "output_tokens": 3821,
+        "cost": 0.19138
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 333,
+        "output_tokens": 300,
+        "cost": 0.01533
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "post_ai": "[AI] AI's Self-Serving Search Fuels Global Gold Rush Chaos",
+      "post_crypto": "[Crypto] AI Agents Reshape Crypto Amid Geopolitical Wins",
+      "post_tech": "[Tech] Tech's Brutal Pivot: AI Defense Booms as EVs and Social Fade",
+      "posts_generated": "3 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 21931,
+      "output_tokens": 22668,
+      "images_generated": 3,
+      "estimated_cost_usd": 1.336
+    }
   }
 ]

@@ -9,12 +9,59 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 15) | 1 | **$0.1048** |
-| 📆 This Week (since Mar 09) | 43 | **$10.3625** |
-| 🗓️ This Month (March 2026) | 90 | **$20.9267** |
-| 🏦 Overall All-Time | 90 | **$20.9267** |
+| 📅 Today (March 15) | 2 | **$1.4408** |
+| 📆 This Week (since Mar 09) | 44 | **$11.6985** |
+| 🗓️ This Month (March 2026) | 91 | **$22.2627** |
+| 🏦 Overall All-Time | 91 | **$22.2627** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 15, 2026 at 06:48 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 619.1 seconds
+**Estimated cost:** $1.3360
+
+### What happened (step by step)
+
+1. **06:48:16 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **06:48:16 PST** — Starting AI post generation
+3. **06:48:16 PST** — Fetched 8 RSS articles for AI
+4. **06:52:00 PST** — ✅ AI post saved: 2026-03-15-0652-ais-self-serving-search-fuels-global-gold-rush-chaos.md
+5. **06:52:00 PST** — Starting Crypto post generation
+6. **06:52:01 PST** — Fetched 8 RSS articles for Crypto
+7. **06:55:08 PST** — ✅ Crypto post saved: 2026-03-15-0655-ai-agents-reshape-crypto-amid-geopolitical-wins.md
+8. **06:55:08 PST** — Starting Tech post generation
+9. **06:55:09 PST** — Fetched 8 RSS articles for Tech
+10. **06:58:35 PST** — ✅ Tech post saved: 2026-03-15-0658-techs-brutal-pivot-ai-defense-booms-as-evs-and-social-fade.md
+11. **06:58:35 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 3 of 3 posts generated successfully
+  - [AI] AI's Self-Serving Search Fuels Global Gold Rush Chaos
+  - [Crypto] AI Agents Reshape Crypto Amid Geopolitical Wins
+  - [Tech] Tech's Brutal Pivot: AI Defense Booms as EVs and Social Fade
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 3,104 tokens, got back 3,652 tokens — **$0.1771**
+- **AI Review (Pass 2)** — sent 4,001 tokens, got back 3,935 tokens — **$0.1974**
+- **AI Image Prompt (Pass 3)** — sent 331 tokens, got back 210 tokens — **$0.0117**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 3,213 tokens, got back 3,140 tokens — **$0.1577**
+- **Crypto Review (Pass 2)** — sent 3,489 tokens, got back 3,830 tokens — **$0.1881**
+- **Crypto Image Prompt (Pass 3)** — sent 330 tokens, got back 275 tokens — **$0.0143**
+- **Image generation** — 1 image created — **$0.0700**
+- **Tech Draft (Pass 1)** — sent 3,276 tokens, got back 3,505 tokens — **$0.1730**
+- **Tech Review (Pass 2)** — sent 3,854 tokens, got back 3,821 tokens — **$0.1914**
+- **Tech Image Prompt (Pass 3)** — sent 333 tokens, got back 300 tokens — **$0.0153**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.3360**
 
 ---
 ## 🐦 Tweet Bot — March 15, 2026 at 12:27 AM PST
