@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 15) | 4 | **$1.5834** |
-| 📆 This Week (since Mar 09) | 46 | **$11.8411** |
-| 🗓️ This Month (March 2026) | 93 | **$22.4053** |
-| 🏦 Overall All-Time | 93 | **$22.4053** |
+| 📅 Today (March 15) | 5 | **$1.6196** |
+| 📆 This Week (since Mar 09) | 47 | **$11.8773** |
+| 🗓️ This Month (March 2026) | 94 | **$22.4415** |
+| 🏦 Overall All-Time | 94 | **$22.4415** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 15, 2026 at 03:01 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 21.6 seconds
+**Estimated cost:** $0.0362
+
+### What happened (step by step)
+
+1. **15:01:25 PST** — Tweet bot started
+2. **15:01:25 PST** — API keys validated
+3. **15:01:47 PST** — Tweet posted and logged (type: blog_teaser, ID: 2033302665376178505)
+4. **15:01:47 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI agents are shaking up crypto in ways I didn't expect, tying into these geopolitical wins that keep the market resilient. I checked out how they're automating trades and navigating regulations smarter, with real cases from recent events. It's got me rethinking the future of both spaces.
+https://datadripco.com/posts/ai-agents-reshape-crypto-amid-geopolitical-wins/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2033302665376178505
+**Blog post promoted:** https://datadripco.com/posts/ai-agents-reshape-crypto-amid-geopolitical-wins/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,088 tokens, got back 134 tokens — **$0.0362**
+
+**💰 Total estimated cost: $0.0362**
 
 ---
 ## 🐦 Tweet Bot — March 15, 2026 at 12:45 PM PST

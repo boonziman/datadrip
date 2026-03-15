@@ -4082,5 +4082,35 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1059
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-15",
+    "start_time": "2026-03-15T15:01:25.565010-07:00",
+    "end_time": "2026-03-15T15:01:47.143803-07:00",
+    "duration_seconds": 21.6,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3088,
+        "output_tokens": 134,
+        "cost": 0.03624
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI agents are shaking up crypto in ways I didn't expect, tying into these geopolitical wins that keep the market resilient. I checked out how they're automating trades and navigating regulations smarter, with real cases from recent events. It's got me rethinking the future of both spaces.\nhttps://datadripco.com/posts/ai-agents-reshape-crypto-amid-geopolitical-wins/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2033302665376178505",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/ai-agents-reshape-crypto-amid-geopolitical-wins/"
+    },
+    "totals": {
+      "input_tokens": 3088,
+      "output_tokens": 134,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0362
+    }
   }
 ]
