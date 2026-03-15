@@ -651,5 +651,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/cryptos-geopolitical-armor-bitcoins-stand-amid-iran-tensions/",
     "tweet_id": "2033051023053316580"
+  },
+  {
+    "timestamp": "2026-03-15 00:28 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "I've noticed AI's military push is funding some real biotech advances, like faster drug discoveries. But it's got me wondering - does the upside make up for the war ties, or is that a dealbreaker? What's your view on this?",
+    "use_image": true,
+    "image_prompt": "Photo-realistic image of a scientist in a modern biotech lab analyzing data on a computer screen showing AI algorithms and molecular structures, with subtle military funding logos on documents nearby, bright fluorescent lighting, medium shot from behind the scientist",
+    "promoted_url": "",
+    "tweet_id": "2033082797687009431"
   }
 ]

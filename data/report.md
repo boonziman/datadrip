@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 14) | 7 | **$1.6923** |
-| 📆 This Week (since Mar 09) | 42 | **$10.2577** |
-| 🗓️ This Month (March 2026) | 89 | **$20.8219** |
-| 🏦 Overall All-Time | 89 | **$20.8219** |
+| 📅 Today (March 15) | 1 | **$0.1048** |
+| 📆 This Week (since Mar 09) | 43 | **$10.3625** |
+| 🗓️ This Month (March 2026) | 90 | **$20.9267** |
+| 🏦 Overall All-Time | 90 | **$20.9267** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 15, 2026 at 12:27 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 23.6 seconds
+**Estimated cost:** $0.1048
+
+### What happened (step by step)
+
+1. **00:27:43 PST** — Tweet bot started
+2. **00:27:43 PST** — API keys validated
+3. **00:28:06 PST** — Tweet posted and logged (type: engagement, ID: 2033082797687009431)
+4. **00:28:06 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> I've noticed AI's military push is funding some real biotech advances, like faster drug discoveries. But it's got me wondering - does the upside make up for the war ties, or is that a dealbreaker? What's your view on this?
+
+**Tweet type:** engagement
+**Tweet ID:** 2033082797687009431
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,965 tokens, got back 128 tokens — **$0.0348**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1048**
 
 ---
 ## 🐦 Tweet Bot — March 14, 2026 at 10:21 PM PST
