@@ -9,12 +9,42 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 16) | 2 | **$1.4051** |
-| 📆 This Week (since Mar 16) | 2 | **$1.4051** |
-| 🗓️ This Month (March 2026) | 98 | **$24.0555** |
-| 🏦 Overall All-Time | 98 | **$24.0555** |
+| 📅 Today (March 16) | 3 | **$1.8519** |
+| 📆 This Week (since Mar 16) | 3 | **$1.8519** |
+| 🗓️ This Month (March 2026) | 99 | **$24.5023** |
+| 🏦 Overall All-Time | 99 | **$24.5023** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 16, 2026 at 08:02 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 464.0 seconds
+**Estimated cost:** $0.4468
+
+### What happened (step by step)
+
+1. **08:02:03 PST** — Manual tech post generation (fixing failed post)
+2. **08:02:03 PST** — Fetched 8 RSS articles for Tech
+3. **08:09:47 PST** — ✅ Tech post saved: 2026-03-16-0809-nvidia-gtc-2026-5-ai-chips-powering-apples-airpods-max-2-and-netflix-oscars.md
+4. **08:09:47 PST** — Blog bot finished
+
+### Details
+
+  - [Tech] Nvidia GTC 2026: 5 AI Chips Powering Apple's AirPods Max 2 and Netflix Oscars
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tech Draft (Pass 1)** — sent 3,952 tokens, got back 3,593 tokens — **$0.1832**
+- **Tech Review (Pass 2)** — sent 3,943 tokens, got back 3,470 tokens — **$0.1782**
+- **Tech Description Fix** — sent 114 tokens, got back 50 tokens — **$0.0031**
+- **Tech Image Prompt (Pass 3)** — sent 569 tokens, got back 162 tokens — **$0.0122**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.4468**
 
 ---
 ## 📝 Blog Bot — March 16, 2026 at 07:20 AM PST

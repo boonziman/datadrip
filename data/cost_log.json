@@ -4332,5 +4332,60 @@
       "images_generated": 2,
       "estimated_cost_usd": 1.3004
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-16",
+    "start_time": "2026-03-16T08:02:03.448494-07:00",
+    "end_time": "2026-03-16T08:09:47.467912-07:00",
+    "duration_seconds": 464.0,
+    "api_calls": [
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3952,
+        "output_tokens": 3593,
+        "cost": 0.18324
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3943,
+        "output_tokens": 3470,
+        "cost": 0.17823
+      },
+      {
+        "label": "Tech Description Fix",
+        "model": "grok-4",
+        "input_tokens": 114,
+        "output_tokens": 50,
+        "cost": 0.00314
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 569,
+        "output_tokens": 162,
+        "cost": 0.01217
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "post_tech": "[Tech] Nvidia GTC 2026: 5 AI Chips Powering Apple's AirPods Max 2 and Netflix Oscars"
+    },
+    "totals": {
+      "input_tokens": 8578,
+      "output_tokens": 7275,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.4468
+    }
   }
 ]

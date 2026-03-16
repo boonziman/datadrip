@@ -244,11 +244,19 @@ def validate_description(desc):
         return False, f"Too long ({len(desc)} chars, need 120-160)"
     return True, "OK"
 
-def call_api(url, headers, payload, timeout=300, retries=2):
-    """Wrapper for API calls using streaming to prevent connection drops on long generations."""
+def call_api(url, headers, payload, timeout=300, retries=3):
+    """Wrapper for API calls using streaming to prevent connection drops on long generations.
+    
+    Uses exponential backoff: 15s, 30s, 60s between retries.
+    Catches all exceptions including those during streaming.
+    """
     import time
     import json as _json
     payload_with_stream = {**payload, "stream": True}
+    
+    # Exponential backoff delays (seconds)
+    backoff_delays = [15, 30, 60]
+    
     for attempt in range(1, retries + 1):
         try:
             response = requests.post(url, headers=headers, json=payload_with_stream, timeout=timeout, stream=True)
@@ -280,11 +288,13 @@ def call_api(url, headers, payload, timeout=300, retries=2):
                 def json(self):
                     return {"choices": [{"message": {"content": self._content}}]}
             return StreamedResponse(200, "".join(full_content))
-        except requests.exceptions.RequestException as e:
+        except (requests.exceptions.RequestException, ConnectionError, TimeoutError, OSError) as e:
+            delay = backoff_delays[min(attempt - 1, len(backoff_delays) - 1)]
             if attempt < retries:
-                print(f"⚠️  Connection error (attempt {attempt}/{retries}): {e} — retrying in 10s...")
-                time.sleep(10)
+                print(f"⚠️  Connection error (attempt {attempt}/{retries}): {e} — retrying in {delay}s...")
+                time.sleep(delay)
             else:
+                print(f"❌ All {retries} attempts failed. Last error: {e}")
                 raise
 
 def generate_post(category="AI", test_mode=False):
@@ -465,7 +475,7 @@ Post to improve:
 
 Current ({len(desc_text)} chars): \"{desc_text}\""""
             fix_payload = {"model": "grok-4", "messages": [{"role": "user", "content": fix_prompt}], "temperature": 0.5, "max_tokens": 100}
-            fix_resp = call_api(url, headers, fix_payload, timeout=30)
+            fix_resp = call_api(url, headers, fix_payload, timeout=90)
             if fix_resp.status_code == 200:
                 new_desc = fix_resp.json()["choices"][0]["message"]["content"].strip().strip('"')
                 if 100 <= len(new_desc) <= 170:  # accept slightly wider range from AI
@@ -510,7 +520,7 @@ Article title: {raw_title}
 Opening: {body_start}"""
 
     prompt_payload = {"model": "grok-4", "messages": [{"role": "user", "content": image_prompt_request}], "temperature": 0.9, "max_tokens": 300}
-    prompt_response = call_api(url, headers, prompt_payload, timeout=60)
+    prompt_response = call_api(url, headers, prompt_payload, timeout=120)
 
     if prompt_response.status_code == 200:
         image_prompt = prompt_response.json()["choices"][0]["message"]["content"].strip()
