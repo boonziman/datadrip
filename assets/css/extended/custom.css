@@ -1319,6 +1319,21 @@ body {
 
 .footer-brand {
     max-width: 280px;
+    position: relative;
+}
+
+.footer-brand::after {
+    content: '28';
+    position: absolute;
+    right: -8px;
+    top: -12px;
+    font-size: 72px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    letter-spacing: -0.04em;
 }
 
 .footer-logo {

@@ -3,7 +3,7 @@ title: "About Datadripco"
 layout: "single"
 ---
 
-Datadripco is a modern news platform dedicated to delivering **original, timely, and insightful coverage** of the most important developments in Artificial Intelligence, Cryptocurrency, and Cutting-Edge Technology.
+**Established February 28, 2026.** Datadripco is a modern news platform dedicated to delivering **original, timely, and insightful coverage** of the most important developments in Artificial Intelligence, Cryptocurrency, and Cutting-Edge Technology.
 
 We cut through the hype and noise to bring you smart analysis that actually matters — whether you're an investor, developer, executive, or simply curious about the future.
 
@@ -25,4 +25,4 @@ The content on this website is provided for informational and educational purpos
 
 ---
 
-**Datadripco © 2026** • Independent • Transparent • Future-focused
+**Datadripco © 2026** • Est. February 28, 2026 • Independent • Transparent • Future-focused
