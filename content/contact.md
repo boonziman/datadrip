@@ -5,11 +5,9 @@ layout: "single"
 
 # Get in Touch
 
-Have a tip, partnership idea, or feedback? We'd love to hear from you.
+Have a tip, partnership idea, or feedback? Slide into our DMs — we'd love to hear from you.
 
-**Email:** hello@datadrip.co
-
-**X (Twitter):** [@Datadripco](https://x.com/Datadripco)
+**X (Twitter):** [DM @Datadripco](https://x.com/messages/compose?recipient_id=Datadripco)
 
 We typically reply within 24 hours.
 
