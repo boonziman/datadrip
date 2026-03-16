@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 15) | 7 | **$1.8285** |
-| 📆 This Week (since Mar 09) | 49 | **$12.0862** |
-| 🗓️ This Month (March 2026) | 96 | **$22.6504** |
-| 🏦 Overall All-Time | 96 | **$22.6504** |
+| 📅 Today (March 16) | 1 | **$0.1047** |
+| 📆 This Week (since Mar 16) | 1 | **$0.1047** |
+| 🗓️ This Month (March 2026) | 97 | **$22.7551** |
+| 🏦 Overall All-Time | 97 | **$22.7551** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 16, 2026 at 12:54 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 31.1 seconds
+**Estimated cost:** $0.1047
+
+### What happened (step by step)
+
+1. **00:54:33 PST** — Tweet bot started
+2. **00:54:33 PST** — API keys validated
+3. **00:55:04 PST** — Tweet posted and logged (type: engagement, ID: 2033451972867809417)
+4. **00:55:04 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI's supposed to automate everything, but I'm still debugging prompts half the time. Anyone actually saving hours a day with it, or is it mostly for fun demos? What's your real workflow win?
+
+**Tweet type:** engagement
+**Tweet ID:** 2033451972867809417
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,875 tokens, got back 148 tokens — **$0.0347**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1047**
 
 ---
 ## 🐦 Tweet Bot — March 15, 2026 at 10:33 PM PST

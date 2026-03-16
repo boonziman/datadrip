@@ -705,5 +705,14 @@
     "image_prompt": "A realistic photograph of a sleek autonomous drone prototype on a workbench in a dimly lit military lab, with scattered EV battery components in the background foregrounding neglect; shot on a 50mm lens with soft overhead lighting and shallow depth of field, cool blue-gray color palette, like a candid industrial shot.",
     "promoted_url": "",
     "tweet_id": "2033416455178584534"
+  },
+  {
+    "timestamp": "2026-03-16 00:55 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "AI's supposed to automate everything, but I'm still debugging prompts half the time. Anyone actually saving hours a day with it, or is it mostly for fun demos? What's your real workflow win?",
+    "use_image": true,
+    "image_prompt": "Realistic photograph of a modern home office desk during evening hours, featuring a laptop with an open AI chat interface on screen, scattered notes and a half-empty coffee cup beside it, soft overhead lamp casting warm light from above, shot with a 35mm lens, shallow depth of field focusing on the screen, neutral color palette with hints of blue from the display.",
+    "promoted_url": "",
+    "tweet_id": "2033451972867809417"
   }
 ]
