@@ -9,12 +9,62 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 16) | 1 | **$0.1047** |
-| 📆 This Week (since Mar 16) | 1 | **$0.1047** |
-| 🗓️ This Month (March 2026) | 97 | **$22.7551** |
-| 🏦 Overall All-Time | 97 | **$22.7551** |
+| 📅 Today (March 16) | 2 | **$1.4051** |
+| 📆 This Week (since Mar 16) | 2 | **$1.4051** |
+| 🗓️ This Month (March 2026) | 98 | **$24.0555** |
+| 🏦 Overall All-Time | 98 | **$24.0555** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 16, 2026 at 07:20 AM PST
+
+**Status:** ⚠️ 1 error(s) occurred
+**Total time:** 1040.5 seconds
+**Estimated cost:** $1.3004
+
+### What happened (step by step)
+
+1. **07:20:52 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **07:20:52 PST** — Starting AI post generation
+3. **07:20:52 PST** — Fetched 8 RSS articles for AI
+4. **07:29:53 PST** — ✅ AI post saved: 2026-03-16-0729-ai-scams-exploit-real-models-for-deepfake-faces-palantirs-25m-war-tech-twist-and-biotechs-bright-future.md
+5. **07:29:53 PST** — Starting Crypto post generation
+6. **07:29:53 PST** — Fetched 8 RSS articles for Crypto
+7. **07:33:50 PST** — ✅ Crypto post saved: 2026-03-16-0733-ethereum-eyes-28k-bitmines-61k-eth-buy-fuels-abras-750m-spac-surge.md
+8. **07:33:50 PST** — Starting Tech post generation
+9. **07:33:51 PST** — Fetched 8 RSS articles for Tech
+10. **07:38:13 PST** — ❌ ERROR: Tech post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out.
+11. **07:38:13 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 2 of 3 posts generated successfully
+  - [AI] AI Scams Exploit Real Models for Deepfake Faces: Palantir's $25M War Tech Twist and Biotech's Bright Future
+  - [Crypto] Ethereum Eyes $2.8K: Bitmine's 61K ETH Buy Fuels Abra's $750M SPAC Surge
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 3,744 tokens, got back 3,959 tokens — **$0.1958**
+- **AI Review (Pass 2)** — sent 4,308 tokens, got back 3,849 tokens — **$0.1970**
+- **AI Description Fix** — sent 121 tokens, got back 50 tokens — **$0.0032**
+- **AI Image Prompt (Pass 3)** — sent 577 tokens, got back 241 tokens — **$0.0154**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 3,850 tokens, got back 3,793 tokens — **$0.1902**
+- **Crypto Review (Pass 2)** — sent 4,142 tokens, got back 3,463 tokens — **$0.1799**
+- **Crypto Description Fix** — sent 113 tokens, got back 50 tokens — **$0.0031**
+- **Crypto Image Prompt (Pass 3)** — sent 568 tokens, got back 169 tokens — **$0.0124**
+- **Image generation** — 1 image created — **$0.0700**
+- **Tech Draft (Pass 1)** — sent 4,015 tokens, got back 3,296 tokens — **$0.1720**
+- **Tech Review (Pass 2)** — sent 3,645 tokens, got back 3,869 tokens — **$0.1912**
+
+**💰 Total estimated cost: $1.3004**
+
+### ⚠️ Errors
+
+- ❌ Tech post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out.
 
 ---
 ## 🐦 Tweet Bot — March 16, 2026 at 12:54 AM PST

@@ -4223,5 +4223,114 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1047
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-16",
+    "start_time": "2026-03-16T07:20:52.710679-07:00",
+    "end_time": "2026-03-16T07:38:13.211964-07:00",
+    "duration_seconds": 1040.5,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3744,
+        "output_tokens": 3959,
+        "cost": 0.1958
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4308,
+        "output_tokens": 3849,
+        "cost": 0.19704
+      },
+      {
+        "label": "AI Description Fix",
+        "model": "grok-4",
+        "input_tokens": 121,
+        "output_tokens": 50,
+        "cost": 0.00321
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 577,
+        "output_tokens": 241,
+        "cost": 0.01541
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3850,
+        "output_tokens": 3793,
+        "cost": 0.19022
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4142,
+        "output_tokens": 3463,
+        "cost": 0.17994
+      },
+      {
+        "label": "Crypto Description Fix",
+        "model": "grok-4",
+        "input_tokens": 113,
+        "output_tokens": 50,
+        "cost": 0.00313
+      },
+      {
+        "label": "Crypto Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 568,
+        "output_tokens": 169,
+        "cost": 0.01244
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4015,
+        "output_tokens": 3296,
+        "cost": 0.17199
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3645,
+        "output_tokens": 3869,
+        "cost": 0.19121
+      }
+    ],
+    "errors": [
+      "Tech post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out."
+    ],
+    "details": {
+      "post_ai": "[AI] AI Scams Exploit Real Models for Deepfake Faces: Palantir's $25M War Tech Twist and Biotech's Bright Future",
+      "post_crypto": "[Crypto] Ethereum Eyes $2.8K: Bitmine's 61K ETH Buy Fuels Abra's $750M SPAC Surge",
+      "posts_generated": "2 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 25083,
+      "output_tokens": 22739,
+      "images_generated": 2,
+      "estimated_cost_usd": 1.3004
+    }
   }
 ]
