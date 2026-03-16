@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 15) | 5 | **$1.6196** |
-| 📆 This Week (since Mar 09) | 47 | **$11.8773** |
-| 🗓️ This Month (March 2026) | 94 | **$22.4415** |
-| 🏦 Overall All-Time | 94 | **$22.4415** |
+| 📅 Today (March 15) | 6 | **$1.7245** |
+| 📆 This Week (since Mar 09) | 48 | **$11.9822** |
+| 🗓️ This Month (March 2026) | 95 | **$22.5464** |
+| 🏦 Overall All-Time | 95 | **$22.5464** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 15, 2026 at 09:12 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 41.0 seconds
+**Estimated cost:** $0.1049
+
+### What happened (step by step)
+
+1. **21:12:38 PST** — Tweet bot started
+2. **21:12:38 PST** — API keys validated
+3. **21:13:19 PST** — Tweet posted and logged (type: insight, ID: 2033396167103455388)
+4. **21:13:19 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI's defense boom is sucking capital from EVs and social apps. Governments are dropping billions on autonomous drones while Tesla fights for scraps. That's the pivot  -  war tech pays better than likes.
+
+**Tweet type:** insight
+**Tweet ID:** 2033396167103455388
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,940 tokens, got back 137 tokens — **$0.0349**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1049**
 
 ---
 ## 🐦 Tweet Bot — March 15, 2026 at 03:01 PM PST
