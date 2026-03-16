@@ -206,6 +206,44 @@ def load_past_topics(category, limit=20):
             break
     return entries
 
+def get_existing_posts_for_linking(category, limit=10):
+    """Return recent posts in the same category for internal linking context."""
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    posts_dir = os.path.join(project_root, "content", "posts")
+    if not os.path.exists(posts_dir):
+        return []
+    posts = []
+    for filename in sorted(os.listdir(posts_dir), reverse=True):
+        if not filename.endswith(".md"):
+            continue
+        filepath = os.path.join(posts_dir, filename)
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                content = f.read(2000)
+        except IOError:
+            continue
+        cat_match = re.search(r'categories:\s*\n\s*-\s*(.*)', content, re.IGNORECASE)
+        if cat_match and cat_match.group(1).strip().lower() != category.lower():
+            continue
+        slug_match = re.search(r'^slug:\s*["\']?(.+?)["\']?\s*$', content, re.MULTILINE)
+        title_match = re.search(r'^title:\s*["\']?(.+?)["\']?\s*$', content, re.MULTILINE)
+        if slug_match and title_match:
+            posts.append({
+                "title": title_match.group(1).strip('"').strip(),
+                "url": f"https://datadripco.com/posts/{slug_match.group(1).strip().strip('\"').strip('-')}/"
+            })
+            if len(posts) >= limit:
+                break
+    return posts
+
+def validate_description(desc):
+    """Ensure meta description is 120-160 chars for optimal SERP display."""
+    if len(desc) < 120:
+        return False, f"Too short ({len(desc)} chars, need 120-160)"
+    if len(desc) > 160:
+        return False, f"Too long ({len(desc)} chars, need 120-160)"
+    return True, "OK"
+
 def call_api(url, headers, payload, timeout=300, retries=2):
     """Wrapper for API calls using streaming to prevent connection drops on long generations."""
     import time
@@ -263,21 +301,45 @@ Your writing style:
 - Always have a clear opinion and unique angle — never just summarize the news
 - Every post must feel like it came from a human expert who has been following these topics for years
 
+TITLE RULES (CRITICAL FOR GOOGLE CLICKS):
+- Titles MUST promise a specific answer or reveal. NOT vague mood-setting.
+- BAD: "AI's Turbulent Week: Bans, Scandals, and Market Jitters"
+- GOOD: "Trump Bans Anthropic from Pentagon Deals: 3 Things Every AI Investor Should Know"
+- BAD: "Yield-Bearing Stablecoins: Crypto's New Power Play"
+- GOOD: "Sui's New Stablecoin Pays 5% APY — How Yield-Bearing Tokens Are Replacing Banks"
+- Include a specific number, name, or data point in EVERY title
+- Front-load the most important keyword (what someone would Google)
+- Keep under 60 characters when possible for full display in search results
+- The description (meta description) should expand on the title with a clear value proposition in 120-160 characters. Not too short, not too long.
+
+STRUCTURE VARIETY (MANDATORY — Google penalizes cookie-cutter content):
+- NEVER start with "Let's kick things off" or "Shifting gears" or "Diving into" or "Picture this" or "Imagine a world" or "From my vantage point"
+- Vary your article structure. Not every post needs 3-4 equal sections.
+- Options: listicle, comparison, timeline, deep-dive on ONE topic, contrarian take, data analysis, narrative arc
+- Vary your opening: start with a shocking stat, a question, a contrarian opinion, a mini-anecdote, or a news event — NEVER a generic summary paragraph
+- Each article should feel like it was written for a specific reason, not because it was Tuesday
+- Use different section counts (3-7 H2s), different paragraph rhythms, different levels of data density per post
+
+INTERNAL LINKING (MANDATORY):
+- Link to 2-3 related Datadripco posts within each article using the URLs provided in the context
+- Use natural anchor text, e.g. "as we explored in our [analysis of AI governance](https://datadripco.com/posts/slug/)"
+- Prioritize linking to posts in the same category
+- Also link to category pages: /categories/ai/, /categories/crypto/, /categories/tech/
+- This is critical for SEO — it helps Google discover and rank our content
+
 Requirements for every post (2026 context):
 - CRITICAL: The main body content (everything AFTER the frontmatter closing ---) must be AT LEAST 2,000 words and ideally 2,200-2,500 words. This is a HARD minimum. Write long, detailed, in-depth content. Do NOT be brief. Expand every section with analysis, examples, data, and predictions. If in doubt, write MORE.
-- Extremely strong hook in the first 2-3 sentences — but NEVER start with "Picture this", "Imagine a world", "From my vantage point", or any cliché opener. Each post must begin differently: try a hard stat, a blunt opinion, a short punchy sentence, a question to the reader, a mini-anecdote, a news peg, or jump straight into the story. Match the opener to THIS article's unique tone.
-- Clear SEO-friendly H1 title (under 60 chars)
-- 4–7 subheadings (H2) — but vary the number and rhythm per post. Not every post needs the same count or pacing.
+- Extremely strong hook in the first 2-3 sentences — match the opener to THIS article's unique tone.
+- 3–7 subheadings (H2) — vary the number and rhythm per post. Not every post needs the same count or pacing.
 - Bullet lists, short paragraphs, bold key points for scannability
 - Deep original analysis: risks, opportunities, future implications, your personal take, actionable steps
 - ALWAYS include a FAQ section at the bottom of every post (before the CTA) with 3–5 relevant questions and concise answers. This is mandatory for SEO and reader engagement. Comparison tables are optional — only include one when it genuinely adds value.
 - Cite 4–6 real sources with proper links
 - Strong CTA at the end (newsletter, share, comment, "What do you think?")
-- SEO: primary keyword in title/first paragraph, related terms throughout, multiple internal links to /categories/ai/ etc.
+- SEO: primary keyword in title/first paragraph, related terms throughout
 - Zero obvious AI patterns: no "delve", no "realm of", no repetitive phrases, no "pivotal shift", no "landscape"
 - NEVER give direct financial advice, specific portfolio allocations, or investment recommendations (e.g. "put 35% in crypto"). If the post discusses investing, trading, portfolios, or token picks, include a brief disclaimer near the relevant section: "*This is for entertainment and educational purposes only and is not financial advice. Always do your own research and consult a professional advisor.*"
 - ALWAYS create a FRESH, UNIQUE angle — never repeat topics or phrasing from previous posts
-- VARY the structure and flow of each post. Do not follow the same section order every time. Some posts should lead with analysis then bring in news; some should be narrative-driven; some should open with a bold prediction; some can weave data tables into the middle. Each post should feel like its own unique story, not a template. The FAQ section must always appear near the bottom, just before the CTA.
 
 Output ONLY valid Hugo Markdown with this exact frontmatter at the top (use today's real date in 2026 format):
 
@@ -290,7 +352,7 @@ categories:
 tags:
   - keyword1
   - keyword2
-description: "Natural, conversational meta description under 160 chars — do NOT force the year into it unless it fits naturally"
+description: "Specific, compelling meta description in 120-160 characters that expands on the title's promise"
 ---
 
 Then the full post content."""
@@ -303,8 +365,16 @@ Then the full post content."""
     else:
         avoid_section = ""
 
+    # Load related posts for internal linking
+    linkable_posts = get_existing_posts_for_linking(category, limit=8)
+    if linkable_posts:
+        link_list = "\n".join([f"- \"{p['title']}\" → {p['url']}" for p in linkable_posts])
+        linking_section = f"""\n\n📎 RELATED DATADRIPCO POSTS (link to 2-3 of these naturally within the article):\n{link_list}\nUse natural anchor text when linking. Don't just dump URLs — weave them into sentences."""
+    else:
+        linking_section = ""
+
     user_prompt = f"""Today's top stories in {category} (focus on the most timely and viral ones):
-{context}{avoid_section}
+{context}{avoid_section}{linking_section}
 
 Write one original, high-value Datadripco article that ties 2–4 of these together with fresh analysis. Choose the most timely and impactful angle. Make it completely unique — no rehashing of previously published stories."""
 
@@ -383,6 +453,32 @@ Post to improve:
 
     actual_words = count_words(final_content)
     print(f"📊 Actual body word count for {category}: {actual_words}")
+
+    # Validate meta description length (120-160 chars optimal for SERP)
+    desc_match = re.search(r'description:\s*"(.*?)"', final_content)
+    if desc_match:
+        desc_text = desc_match.group(1)
+        desc_ok, desc_reason = validate_description(desc_text)
+        if not desc_ok:
+            print(f"⚠️  Meta description {desc_reason} — asking Grok to fix...")
+            fix_prompt = f"""Rewrite this meta description to be EXACTLY 130-155 characters. Keep the same meaning and keywords. Output ONLY the new description text, nothing else.
+
+Current ({len(desc_text)} chars): \"{desc_text}\""""
+            fix_payload = {"model": "grok-4", "messages": [{"role": "user", "content": fix_prompt}], "temperature": 0.5, "max_tokens": 100}
+            fix_resp = call_api(url, headers, fix_payload, timeout=30)
+            if fix_resp.status_code == 200:
+                new_desc = fix_resp.json()["choices"][0]["message"]["content"].strip().strip('"')
+                if 100 <= len(new_desc) <= 170:  # accept slightly wider range from AI
+                    final_content = final_content.replace(f'description: "{desc_text}"', f'description: "{new_desc}"')
+                    print(f"   ✅ Fixed description: {len(new_desc)} chars")
+                else:
+                    print(f"   ⚠️  AI returned {len(new_desc)} chars — keeping original")
+            if tracker:
+                tracker.log_api_call(
+                    f"{category} Description Fix", model="grok-4",
+                    input_tokens=tracker.estimate_tokens(fix_prompt),
+                    output_tokens=50,
+                )
 
     # Force correct frontmatter and date
     today = datetime.now(_PST).strftime("%Y-%m-%d")
