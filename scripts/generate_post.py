@@ -397,15 +397,18 @@ Post to improve:
     # Extract first ~400 chars of body for context
     body_start = final_content.split('---', 2)[-1][:400].strip()
 
-    image_prompt_request = f"""Read this article title and opening and create ONE highly specific, visually descriptive image prompt for an AI image generator. The image must look completely unique to THIS article — not generic tech, not dark cyberpunk, not glowing AI figures.
+    image_prompt_request = f"""Read this article title and opening, then create ONE highly specific, visually descriptive photo prompt for an AI image generator. The image must look completely unique to THIS article.
 
 Rules:
-- Match the EXACT theme, setting, and mood of this article
-- Use real-world scenes, real objects, real environments (e.g. a busy trading floor, a courtroom with lawyers and screens, a rural community using solar panels, a boardroom debate, a phone screen showing an app)
-- Photo-realistic editorial style, like a high-quality news photo or magazine cover
-- NO neon glows, NO purple/blue dark tech aesthetic, NO floating holograms, NO generic security shields
-- Be SPECIFIC: name the objects, people, setting, action, lighting, and camera angle
-- Output ONLY the image prompt text, nothing else
+1. Describe a REAL, grounded scene — real objects, real settings, real lighting. It should look like an actual photograph, not an AI art piece.
+2. Include camera details: lens focal length, lighting direction, depth of field, and color palette. This keeps images looking like real photography.
+3. Be specific to THIS article — use relevant objects, symbols, devices, locations, or scenarios from the topic. Relevant logos and brand symbols (like the Bitcoin logo, Apple logo, Ethereum symbol, etc.) are encouraged when they fit the story.
+4. AVOID the typical AI-image look: no neon glows, no glowing holograms, no floating UI elements, no dark purple/blue cyberpunk backgrounds, no futuristic cityscapes. Keep it grounded and realistic.
+5. NEVER put fake magazine titles, newspaper mastheads, headline text, or watermark-style text onto the image. Do NOT create images that look like a magazine cover with a title on it. If the scene naturally contains screens, signs, or documents, that's fine — just don't fabricate fake publication branding.
+6. AVOID recognizable faces of real public figures.
+7. VARY the visual approach every time — rotate between: macro close-up, wide establishing shot, street photography, aerial/bird's-eye, portrait-framing of objects, documentary candid, over-the-shoulder, or detail shot. Don't repeat the same style back to back.
+8. Keep it clean and not too busy. A strong simple composition beats a cluttered scene. Think editorial photojournalism, not stock photo collage.
+- Output ONLY the image prompt text. No preamble, no explanation, no labels.
 
 Article title: {raw_title}
 Opening: {body_start}"""
@@ -424,7 +427,11 @@ Opening: {body_start}"""
             )
     else:
         # Fallback: build a specific prompt from the title
-        image_prompt = f"Editorial photo-realistic image for a news article titled '{raw_title}'. Professional lighting, clean composition, magazine quality."
+        image_prompt = (
+            f"A realistic editorial photograph related to: {raw_title}. "
+            f"Shot on a 35mm lens at f/2.8, natural ambient lighting, shallow depth of field. "
+            f"Clean composition, not too busy. Real-world scene, no fake magazine titles or AI glow effects."
+        )
         if tracker:
             tracker.log_error(f"{category} Pass 3 failed (HTTP {prompt_response.status_code}), using fallback prompt")
 
