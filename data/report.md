@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 15) | 6 | **$1.7245** |
-| 📆 This Week (since Mar 09) | 48 | **$11.9822** |
-| 🗓️ This Month (March 2026) | 95 | **$22.5464** |
-| 🏦 Overall All-Time | 95 | **$22.5464** |
+| 📅 Today (March 15) | 7 | **$1.8285** |
+| 📆 This Week (since Mar 09) | 49 | **$12.0862** |
+| 🗓️ This Month (March 2026) | 96 | **$22.6504** |
+| 🏦 Overall All-Time | 96 | **$22.6504** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 15, 2026 at 10:33 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 20.2 seconds
+**Estimated cost:** $0.1040
+
+### What happened (step by step)
+
+1. **22:33:36 PST** — Tweet bot started
+2. **22:33:36 PST** — API keys validated
+3. **22:33:56 PST** — Tweet posted and logged (type: hot_take, ID: 2033416455178584534)
+4. **22:33:56 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI defense is booming because wars pay better than likes. EVs and social apps are getting crushed. I say good riddance to the hype cycles.
+
+**Tweet type:** hot_take
+**Tweet ID:** 2033416455178584534
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,891 tokens, got back 126 tokens — **$0.0340**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1040**
 
 ---
 ## 🐦 Tweet Bot — March 15, 2026 at 09:12 PM PST
