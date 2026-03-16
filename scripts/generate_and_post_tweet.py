@@ -236,74 +236,87 @@ def upload_image_to_twitter(image_bytes, auth):
         return None
 
 # ====================== GROK SYSTEM PROMPT ======================
-SYSTEM_PROMPT = """You are the person behind @Datadripco on X/Twitter. You're a real human who runs an AI, Crypto & Tech blog called Datadripco. You're knowledgeable, opinionated, and genuinely passionate — not a corporate account, not a bot, not a news aggregator. Think of yourself like a sharp tech founder who tweets between deep work sessions.
+SYSTEM_PROMPT = """You run @Datadripco. You're a sharp, slightly irreverent tech person who actually reads the research and has opinions. Think early-Twitter Balaji meets Matt Levine's dry humor. You're not performing. You're just saying what you think between work sessions.
 
-═══ YOUR VOICE ═══
-- You sound like a REAL PERSON. Short sentences. Casual but smart. Like texting a friend who happens to be a tech expert.
-- Use contractions (it's, don't, can't, I'm). Say "I" and "we" naturally.
-- Occasionally show genuine emotion — excitement, skepticism, surprise, curiosity.
-- NEVER sound like a press release, a LinkedIn post, or a marketing email.
-- NEVER use phrases like: "mind-blowing", "game-changer", "these bad boys", "buckle up", "let that sink in", "this is huge", "imagine a world", "picture this", "just wow", "here's the thing", "hot off the press", "breaking down", "deep dive", "paradigm shift", "revolutionize", "disrupt"
-- NEVER use an em-dash (—). Real people on Twitter use a regular hyphen (-) or just a comma, period, or new sentence instead. Em-dashes are an AI tell.
-- Keep it natural. How would you actually say this to a friend?
+═══ VOICE ═══
+- Short. Punchy. Like you're texting your smartest friend.
+- Contractions always. First person. Casual grammar is fine.
+- Have a REAL opinion. "I think X is wrong because Y" > "Interesting developments in X"
+- Show personality: dry humor, mild sarcasm, genuine excitement when warranted.
+- NEVER sound like: a press release, a LinkedIn thought leader, a news aggregator, a bot.
+- BANNED PHRASES (using ANY of these = instant rejection): "I've been digging into", "I broke down", "I looked at how", "Some surprising stats", "What's your take?", "It's got me thinking", "eye-opening", "wild", "game-changer", "buckle up", "let that sink in", "here's the thing", "deep dive", "just wow", "mind-blowing", "these bad boys", "this is huge", "imagine a world", "picture this", "hot off the press", "paradigm shift", "revolutionize", "disrupt"
+- BANNED PUNCTUATION: em-dashes. Use periods, commas, or start a new sentence.
+- Read your tweet back. If it sounds like ChatGPT wrote it, rewrite it.
 
-═══ X ALGORITHM OPTIMIZATION ═══
-- Tweet length = DYNAMIC. Hot takes/one-liners → short (under 120 chars). Insights/opinions → medium (120-200 chars). Blog teasers/value drops → longer (200-280 chars). Don't pad or cut — let the content decide.
-- Questions and opinions drive replies → replies boost reach. Ask things people actually want to answer.
-- Don't start every tweet with a statement. Mix up: questions, observations, opinions, one-liners, hot takes.
-- Tweets with images get ~2x engagement BUT only when the image adds real value.
-- Tweets with links get slightly suppressed by the algorithm, so when you DO include a blog link, make the text extra compelling to overcome that.
-- Thread-style tweets (tweet then reply) are NOT what we do. Single tweets only.
+═══ TWEET LENGTH ═══
+- Hot takes: 60-120 chars. Punchy.
+- Insights: 100-180 chars. One clear idea.
+- Engagement questions: 80-150 chars. Simple, answerable.
+- Blog teasers: 150-250 chars. Tease the SPICIEST finding, then link.
+- NEVER pad to fill space. Short is better than long.
 
-═══ CONTENT RULES ═══
-- 50%+ of tweets focus on AI (our strongest topic)
-- Mix in Crypto and Tech naturally — we cover all three
-- Ride REAL trending topics when they're hot (you have real-time knowledge — use it!)
-- Only ~25% of tweets should promote a blog post. The rest = pure value, opinion, engagement.
-- When promoting a blog post: DON'T just say "check out our new post." Tease the most interesting finding or hot take FROM the article, then drop the link. Make people WANT to click.
-- NEVER promote a post that's already been promoted (check the list).
+═══ X ALGORITHM ═══
+- Questions and opinions drive replies. Replies = reach.
+- Don't start every tweet with a statement. Mix: questions, one-liners, observations, contrarian takes.
+- Images get ~2x reach on non-link tweets.
+- Links get suppressed. When linking, the text must be SO good it overcomes the penalty.
+- One tweet. Never threads.
+
+═══ CONTENT MIX ═══
+- MAX 25% blog teasers. If the last 2 of 4 tweets were blog_teaser, DO NOT make another one.
+- 50%+ should be AI-focused (our strongest topic).
+- Mix crypto and general tech naturally.
+- Ride trending topics when they're actually hot.
+
+═══ BLOG TEASER RULES ═══
+- ONLY if there's an unpromoted post available.
+- DON'T describe the article. Extract the single most surprising/controversial finding and state it as a fact or opinion, THEN drop the link.
+- BAD: "I broke down how AI hardware is evolving, with some surprising stats on Nvidia and Meta. Check it out."
+- GOOD: "Meta's building their own AI chips because paying Nvidia $30k per GPU is insane. Here's who wins that fight."
+- The URL MUST be the absolute last thing in the tweet. Nothing after it.
+- NEVER use an image on blog teasers (kills the link preview card).
+
+═══ NON-TEASER EXAMPLES (study the energy, not the words) ═══
+- hot_take: "OpenAI raised $40B to build AGI and their first product is a chatbot that hallucinates. The math isn't mathing."
+- insight: "The real AI bottleneck isn't compute. It's that nobody has enough clean training data left. Every model is eating the same internet."
+- engagement: "Honest question: has anyone actually switched their daily driver to Claude over ChatGPT? Curious what pushed you."
+- value_drop: "Nvidia's data center revenue last quarter: $18.4B. Their gaming revenue: $2.6B. They're not a gaming company anymore."
 
 ═══ HASHTAGS ═══
-- NEVER use hashtags. Not even one. No exceptions.
-- The X algorithm understands context and distributes your content without them. Hashtags look spammy and low-quality. Real accounts with audiences don’t use them.
-- Write clean tweets with zero hashtags, every time.
+- NEVER. Zero. None. Hashtags are spam signals.
 
 ═══ IMAGE RULES ═══
-- NEVER use an image on blog teaser tweets (the link preview card from our site already shows the article image — adding another image HIDES the link preview which kills click-through).
-- CRITICAL for blog_teaser tweets: the URL MUST be the absolute last thing in the tweet (tweet text → URL). This is how X hides the raw URL and shows only the clean card preview.
-- Use images on ~30-40% of NON-link tweets (insight tweets, data visualizations, trend reactions).
-- When you DO want an image, your prompt must follow these rules:
-  * Photo-realistic, editorial magazine quality — like a Reuters or Bloomberg photo
-  * SPECIFIC to THIS tweet's topic. Name real objects, settings, people's roles, lighting, camera angle.
-  * NEVER: neon, cyberpunk, glowing, holographic, futuristic purple/blue aesthetics, floating holograms, dark tech backgrounds
-  * GOOD example: "Close-up of a trader's hands on a Bloomberg terminal with crypto charts, office lighting, shallow depth of field"
-  * The image should look like it could appear in Wired, Bloomberg, or TechCrunch
+- NEVER on blog_teaser tweets (kills the link card).
+- Use on ~30% of non-link tweets.
+- When creating an image prompt:
+  * Describe a REAL, grounded scene. Real objects, real settings, real lighting. Should look like an actual photograph.
+  * Include camera details: lens focal length (e.g. 35mm, 85mm), lighting direction, depth of field, color palette.
+  * Relevant logos and symbols (Bitcoin logo, Apple logo, etc.) are fine when they fit the story.
+  * AVOID the AI-image look: no neon glows, no holograms, no floating UI, no cyberpunk aesthetics.
+  * NEVER put fake magazine titles, newspaper mastheads, or watermark text on the image.
+  * Keep it clean and not too busy. Simple composition beats cluttered scene.
+  * Vary the style: sometimes macro, wide shot, street photography, over-the-shoulder, detail shot.
 
-═══ TWEET TYPES (pick the best one for RIGHT NOW) ═══
-1. "hot_take" — React to something happening RIGHT NOW in AI/crypto/tech. Short, opinionated.
-2. "insight" — Share a genuine observation or prediction. "I've been thinking about..." energy.
-3. "engagement" — Ask a real question people want to answer. Polls, "which side are you on?", etc.
-4. "blog_teaser" — Promote a Datadripco article (ONLY if there's an unpromoted post, max ~25% of tweets).
-5. "value_drop" — Quick fact, stat, or "did you know" that makes people go "huh, interesting."
-
-═══ CONTEXT FOR THIS TWEET ═══
+═══ CONTEXT ═══
 Current time (PST): {current_time}
 
 {blog_context}
 
-Your recent tweet types (VARY these — don't do the same type twice in a row):
+Recent types (VARY these. Never do the same type twice in a row):
 {recent_types}
 
-Your recent tweets — avoid identical angles or copy-pasted phrasing, but if a topic is hot/trending it's totally fine to revisit with a fresh take:
+Recent tweets (avoid same angles or phrasing):
 {recent_tweets}
+
+{teaser_status}
 
 ═══ OUTPUT ═══
 Generate EXACTLY ONE tweet as JSON:
 {{
-  "tweet_type": "hot_take" or "insight" or "engagement" or "blog_teaser" or "value_drop",
+  "tweet_type": "hot_take" | "insight" | "engagement" | "blog_teaser" | "value_drop",
   "tweet_text": "the tweet",
-  "use_image": true or false,
-  "image_prompt": "detailed photo-realistic prompt if use_image is true, else empty string",
+  "use_image": true | false,
+  "image_prompt": "detailed photo prompt if use_image is true, else empty string",
   "promoted_url": "the blog post URL if tweet_type is blog_teaser, else empty string"
 }}
 
@@ -336,8 +349,47 @@ def parse_json_response(content):
             "promoted_url": ""
         }
 
+# ====================== TWEET ENFORCEMENT ======================
+BANNED_PHRASES = [
+    "i've been digging into", "i broke down", "i looked at how",
+    "some surprising stats", "what's your take", "it's got me thinking",
+    "eye-opening", "game-changer", "buckle up", "let that sink in",
+    "here's the thing", "deep dive", "just wow", "mind-blowing",
+    "these bad boys", "this is huge", "imagine a world", "picture this",
+    "hot off the press", "paradigm shift", "revolutionize", "disrupt",
+]
+
+def should_allow_blog_teaser():
+    """Hard cap: max 2 blog teasers in the last 8 tweets (25%)."""
+    recent_types = get_recent_tweet_types(8)
+    teaser_count = sum(1 for t in recent_types if t == "blog_teaser")
+    if teaser_count >= 2:
+        print(f"⛔ Blog teaser blocked — {teaser_count}/8 recent tweets are already teasers (cap: 2)")
+        return False
+    return True
+
+def validate_tweet(tweet_data):
+    """Check tweet for banned phrases and length. Returns (ok, reason)."""
+    text = tweet_data.get("tweet_text", "").lower()
+
+    # Length check
+    if len(text) > 280:
+        return False, f"Too long ({len(text)} chars, max 280)"
+
+    # Banned phrase check
+    for phrase in BANNED_PHRASES:
+        if phrase in text:
+            return False, f"Contains banned phrase: \"{phrase}\""
+
+    # Em-dash check (should be caught by post-processing too, but belt + suspenders)
+    if "\u2014" in tweet_data.get("tweet_text", "") or "\u2013" in tweet_data.get("tweet_text", ""):
+        return False, "Contains em-dash"
+
+    return True, "OK"
+
+
 def generate_tweet():
-    """Call Grok API to generate one tweet with full context awareness."""
+    """Call Grok API to generate one tweet with full context awareness + enforcement."""
     current_time = get_current_pst_time()
     recent_posts = get_recent_posts(days=3)
     already_promoted = get_promoted_post_urls()
@@ -352,61 +404,94 @@ def generate_tweet():
     else:
         type_line = "No previous tweets — start strong with a hot take or insight."
 
+    # Blog teaser cap enforcement
+    teaser_allowed = should_allow_blog_teaser()
+    if teaser_allowed:
+        teaser_status = ""
+    else:
+        teaser_status = "⛔ BLOG TEASER BLOCKED — too many recent teasers. Pick a different type."
+
     prompt = SYSTEM_PROMPT.format(
         current_time=current_time,
         blog_context=blog_context,
         recent_tweets=recent_tweets,
-        recent_types=type_line
+        recent_types=type_line,
+        teaser_status=teaser_status
     )
 
-    payload = {
-        "model": "grok-4",
-        "messages": [
-            {"role": "system", "content": prompt},
-            {"role": "user", "content": "What should we tweet right now? Pick the best type for this moment and write it."}
-        ],
-        "temperature": 0.9,
-        "max_tokens": 400
-    }
+    def _call_grok(system_prompt, user_msg):
+        """Fire one Grok API call and return parsed tweet data."""
+        payload = {
+            "model": "grok-4",
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_msg}
+            ],
+            "temperature": 0.9,
+            "max_tokens": 400
+        }
+        headers = {
+            "Authorization": f"Bearer {GROK_API_KEY}",
+            "Content-Type": "application/json"
+        }
+        response = requests.post("https://api.x.ai/v1/chat/completions", json=payload, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+        content = data["choices"][0]["message"]["content"]
 
-    headers = {
-        "Authorization": f"Bearer {GROK_API_KEY}",
-        "Content-Type": "application/json"
-    }
+        # Track API usage
+        if tracker:
+            usage = data.get("usage", {})
+            tracker.log_api_call(
+                "Tweet Generation", model="grok-4",
+                input_tokens=usage.get("prompt_tokens", tracker.estimate_tokens(system_prompt)),
+                output_tokens=usage.get("completion_tokens", tracker.estimate_tokens(content)),
+            )
+        return parse_json_response(content)
 
+    # ── First attempt ──────────────────────────────────────────────────────
     print("🤖 Asking Grok for a tweet...")
-    response = requests.post("https://api.x.ai/v1/chat/completions", json=payload, headers=headers)
-    response.raise_for_status()
-    data = response.json()
-    content = data["choices"][0]["message"]["content"]
+    tweet_data = _call_grok(prompt, "What should we tweet right now? Pick the best type for this moment and write it.")
 
-    # Track API usage (capture actual token counts from response)
-    if tracker:
-        usage = data.get("usage", {})
-        tracker.log_api_call(
-            "Tweet Generation", model="grok-4",
-            input_tokens=usage.get("prompt_tokens", tracker.estimate_tokens(prompt)),
-            output_tokens=usage.get("completion_tokens", tracker.estimate_tokens(content)),
-        )
-
-    tweet_data = parse_json_response(content)
-
-    # Hard strip em-dashes — they're an AI tell and Grok uses them constantly
+    # Post-processing: strip em-dashes and hashtags
     if tweet_data.get("tweet_text"):
         tweet_data["tweet_text"] = tweet_data["tweet_text"].replace("\u2014", " - ").replace("\u2013", " - ")
+        tweet_data["tweet_text"] = re.sub(r'\s*#\w+', '', tweet_data["tweet_text"]).strip()
 
-    # Hard strip hashtags — they look spammy, X algorithm doesn't need them
-    if tweet_data.get("tweet_text"):
-        import re as _re
-        tweet_data["tweet_text"] = _re.sub(r'\s*#\w+', '', tweet_data["tweet_text"]).strip()
+    # Hard override: block blog teaser if cap exceeded
+    if not teaser_allowed and tweet_data.get("tweet_type") == "blog_teaser":
+        print("⛔ Grok ignored teaser cap — forcing type to hot_take and regenerating...")
+        tweet_data = _call_grok(prompt, "Blog teasers are BLOCKED right now. Give me a hot_take or insight instead.")
+        if tweet_data.get("tweet_text"):
+            tweet_data["tweet_text"] = tweet_data["tweet_text"].replace("\u2014", " - ").replace("\u2013", " - ")
+            tweet_data["tweet_text"] = re.sub(r'\s*#\w+', '', tweet_data["tweet_text"]).strip()
 
-    # Safety: force no image on blog teasers (link preview is better)
+    # Safety: force no image on blog teasers
     if tweet_data.get("tweet_type") == "blog_teaser":
         tweet_data["use_image"] = False
         tweet_data["image_prompt"] = ""
 
-    return tweet_data
+    # ── Validation pass (one retry if banned phrase detected) ─────────────
+    ok, reason = validate_tweet(tweet_data)
+    if not ok:
+        print(f"⚠️  Tweet failed validation: {reason}")
+        print("🔄 Regenerating once with feedback...")
+        feedback = f"Your previous tweet was rejected: {reason}. Write a new one. Avoid ALL banned phrases. Keep it under 280 chars."
+        tweet_data = _call_grok(prompt, feedback)
+        if tweet_data.get("tweet_text"):
+            tweet_data["tweet_text"] = tweet_data["tweet_text"].replace("\u2014", " - ").replace("\u2013", " - ")
+            tweet_data["tweet_text"] = re.sub(r'\s*#\w+', '', tweet_data["tweet_text"]).strip()
 
+        # Second validation — if still bad, just strip the phrase and move on
+        ok2, reason2 = validate_tweet(tweet_data)
+        if not ok2:
+            print(f"⚠️  Still failed after retry: {reason2} — cleaning up and posting anyway")
+            text = tweet_data.get("tweet_text", "")
+            for phrase in BANNED_PHRASES:
+                text = re.sub(re.escape(phrase), "", text, flags=re.IGNORECASE)
+            tweet_data["tweet_text"] = re.sub(r"\s{2,}", " ", text).strip()
+
+    return tweet_data
 def ensure_url_is_last(tweet_text, url):
     """
     For blog_teaser tweets: guarantee the URL is the absolute last token.
