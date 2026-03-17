@@ -4412,5 +4412,135 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-17",
+    "start_time": "2026-03-17T07:23:41.798252-07:00",
+    "end_time": "2026-03-17T07:39:01.715159-07:00",
+    "duration_seconds": 919.9,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3887,
+        "output_tokens": 4148,
+        "cost": 0.20479
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4498,
+        "output_tokens": 3643,
+        "cost": 0.1907
+      },
+      {
+        "label": "AI Description Fix",
+        "model": "grok-4",
+        "input_tokens": 153,
+        "output_tokens": 50,
+        "cost": 0.00353
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 572,
+        "output_tokens": 186,
+        "cost": 0.01316
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3926,
+        "output_tokens": 4030,
+        "cost": 0.20046
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4379,
+        "output_tokens": 3776,
+        "cost": 0.19483
+      },
+      {
+        "label": "Crypto Description Fix",
+        "model": "grok-4",
+        "input_tokens": 113,
+        "output_tokens": 50,
+        "cost": 0.00313
+      },
+      {
+        "label": "Crypto Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 574,
+        "output_tokens": 217,
+        "cost": 0.01442
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4073,
+        "output_tokens": 3775,
+        "cost": 0.19173
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4124,
+        "output_tokens": 2953,
+        "cost": 0.15936
+      },
+      {
+        "label": "Tech Description Fix",
+        "model": "grok-4",
+        "input_tokens": 120,
+        "output_tokens": 50,
+        "cost": 0.0032
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 573,
+        "output_tokens": 229,
+        "cost": 0.01489
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "post_ai": "[AI] Sears Leaks 1M AI Chats: 3 Privacy Lessons from Retail's Fiasco and Invisalign's 3D Boom",
+      "post_crypto": "[Crypto] Mastercard's $1.8B BVNK Buy: 4 Ways It's Accelerating Crypto's TradFi Takeover Amid Tally's Demise",
+      "post_tech": "[Tech] Apple's iPhone 17e at $499: 4 Ways It Crushes Budget Phones Amid Amazon's 1-Hour Delivery Boom",
+      "posts_generated": "3 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 26992,
+      "output_tokens": 23107,
+      "images_generated": 3,
+      "estimated_cost_usd": 1.4042
+    }
   }
 ]

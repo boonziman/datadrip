@@ -9,12 +9,62 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 17) | 1 | **$0.0000** |
-| 📆 This Week (since Mar 16) | 4 | **$1.8519** |
-| 🗓️ This Month (March 2026) | 100 | **$24.5023** |
-| 🏦 Overall All-Time | 100 | **$24.5023** |
+| 📅 Today (March 17) | 2 | **$1.4042** |
+| 📆 This Week (since Mar 16) | 5 | **$3.2561** |
+| 🗓️ This Month (March 2026) | 101 | **$25.9065** |
+| 🏦 Overall All-Time | 101 | **$25.9065** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 17, 2026 at 07:23 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 919.9 seconds
+**Estimated cost:** $1.4042
+
+### What happened (step by step)
+
+1. **07:23:41 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **07:23:41 PST** — Starting AI post generation
+3. **07:23:42 PST** — Fetched 8 RSS articles for AI
+4. **07:30:39 PST** — ✅ AI post saved: 2026-03-17-0730-sears-leaks-1m-ai-chats-3-privacy-lessons-from-retails-fiasco-and-invisaligns-3d-boom.md
+5. **07:30:39 PST** — Starting Crypto post generation
+6. **07:30:39 PST** — Fetched 8 RSS articles for Crypto
+7. **07:35:02 PST** — ✅ Crypto post saved: 2026-03-17-0735-mastercards-18b-bvnk-buy-4-ways-its-accelerating-cryptos-tradfi-takeover-amid-tallys-demise.md
+8. **07:35:02 PST** — Starting Tech post generation
+9. **07:35:02 PST** — Fetched 8 RSS articles for Tech
+10. **07:39:01 PST** — ✅ Tech post saved: 2026-03-17-0739-apples-iphone-17e-at-499-4-ways-it-crushes-budget-phones-amid-amazons-1-hour-delivery-boom.md
+11. **07:39:01 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 3 of 3 posts generated successfully
+  - [AI] Sears Leaks 1M AI Chats: 3 Privacy Lessons from Retail's Fiasco and Invisalign's 3D Boom
+  - [Crypto] Mastercard's $1.8B BVNK Buy: 4 Ways It's Accelerating Crypto's TradFi Takeover Amid Tally's Demise
+  - [Tech] Apple's iPhone 17e at $499: 4 Ways It Crushes Budget Phones Amid Amazon's 1-Hour Delivery Boom
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 3,887 tokens, got back 4,148 tokens — **$0.2048**
+- **AI Review (Pass 2)** — sent 4,498 tokens, got back 3,643 tokens — **$0.1907**
+- **AI Description Fix** — sent 153 tokens, got back 50 tokens — **$0.0035**
+- **AI Image Prompt (Pass 3)** — sent 572 tokens, got back 186 tokens — **$0.0132**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 3,926 tokens, got back 4,030 tokens — **$0.2005**
+- **Crypto Review (Pass 2)** — sent 4,379 tokens, got back 3,776 tokens — **$0.1948**
+- **Crypto Description Fix** — sent 113 tokens, got back 50 tokens — **$0.0031**
+- **Crypto Image Prompt (Pass 3)** — sent 574 tokens, got back 217 tokens — **$0.0144**
+- **Image generation** — 1 image created — **$0.0700**
+- **Tech Draft (Pass 1)** — sent 4,073 tokens, got back 3,775 tokens — **$0.1917**
+- **Tech Review (Pass 2)** — sent 4,124 tokens, got back 2,953 tokens — **$0.1594**
+- **Tech Description Fix** — sent 120 tokens, got back 50 tokens — **$0.0032**
+- **Tech Image Prompt (Pass 3)** — sent 573 tokens, got back 229 tokens — **$0.0149**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.4042**
 
 ---
 ## 📝 Blog Bot — March 17, 2026 at 07:18 AM PST
