@@ -723,5 +723,14 @@
     "image_prompt": "A realistic photograph of a leaked document folder spilling out printed chat logs on a wooden retail store counter, with a Sears logo visible in the background, captured with a 50mm lens, soft overhead lighting, shallow depth of field blurring the edges, neutral color palette with blues and grays.",
     "promoted_url": "",
     "tweet_id": "2033961814199795756"
+  },
+  {
+    "timestamp": "2026-03-17 13:01 PST",
+    "tweet_type": "hot_take",
+    "tweet_text": "Nvidia's GTC chips are powering Apple's AirPods Max 2, but cramming AI into earbuds feels like overkill. We're force-feeding intelligence to every device, privacy be damned.",
+    "use_image": true,
+    "image_prompt": "A realistic close-up photograph of a pair of sleek over-ear headphones like AirPods Max on a wooden desk next to an Nvidia GPU chip, soft natural window light from the side, shallow depth of field with 85mm lens, neutral color palette with metallic accents, no text or logos added.",
+    "promoted_url": "",
+    "tweet_id": "2033997171519873149"
   }
 ]

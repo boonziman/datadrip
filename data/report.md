@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 17) | 3 | **$1.5107** |
-| 📆 This Week (since Mar 16) | 6 | **$3.3626** |
-| 🗓️ This Month (March 2026) | 102 | **$26.0130** |
-| 🏦 Overall All-Time | 102 | **$26.0130** |
+| 📅 Today (March 17) | 4 | **$1.6174** |
+| 📆 This Week (since Mar 16) | 7 | **$3.4693** |
+| 🗓️ This Month (March 2026) | 103 | **$26.1197** |
+| 🏦 Overall All-Time | 103 | **$26.1197** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 17, 2026 at 01:01 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 29.2 seconds
+**Estimated cost:** $0.1067
+
+### What happened (step by step)
+
+1. **13:01:01 PST** — Tweet bot started
+2. **13:01:01 PST** — API keys validated
+3. **13:01:30 PST** — Tweet posted and logged (type: hot_take, ID: 2033997171519873149)
+4. **13:01:30 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Nvidia's GTC chips are powering Apple's AirPods Max 2, but cramming AI into earbuds feels like overkill. We're force-feeding intelligence to every device, privacy be damned.
+
+**Tweet type:** hot_take
+**Tweet ID:** 2033997171519873149
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,125 tokens, got back 135 tokens — **$0.0367**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1067**
 
 ---
 ## 🐦 Tweet Bot — March 17, 2026 at 10:40 AM PST
