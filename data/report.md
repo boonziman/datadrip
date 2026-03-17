@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 17) | 4 | **$1.6174** |
-| 📆 This Week (since Mar 16) | 7 | **$3.4693** |
-| 🗓️ This Month (March 2026) | 103 | **$26.1197** |
-| 🏦 Overall All-Time | 103 | **$26.1197** |
+| 📅 Today (March 17) | 5 | **$1.7236** |
+| 📆 This Week (since Mar 16) | 8 | **$3.5755** |
+| 🗓️ This Month (March 2026) | 104 | **$26.2259** |
+| 🏦 Overall All-Time | 104 | **$26.2259** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 17, 2026 at 03:19 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 20.5 seconds
+**Estimated cost:** $0.1062
+
+### What happened (step by step)
+
+1. **15:19:20 PST** — Tweet bot started
+2. **15:19:20 PST** — API keys validated
+3. **15:19:40 PST** — Tweet posted and logged (type: engagement, ID: 2034031944502030627)
+4. **15:19:40 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Crypto's TradFi push with Mastercard buying BVNK for $1.8B has me wondering: anyone actually using stablecoins for cross-border payments now, or is it all still speculation? What's your setup?
+
+**Tweet type:** engagement
+**Tweet ID:** 2034031944502030627
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,087 tokens, got back 132 tokens — **$0.0362**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1062**
 
 ---
 ## 🐦 Tweet Bot — March 17, 2026 at 01:01 PM PST

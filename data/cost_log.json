@@ -4616,5 +4616,42 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1067
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-17",
+    "start_time": "2026-03-17T15:19:20.465758-07:00",
+    "end_time": "2026-03-17T15:19:40.962688-07:00",
+    "duration_seconds": 20.5,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3087,
+        "output_tokens": 132,
+        "cost": 0.03615
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Crypto's TradFi push with Mastercard buying BVNK for $1.8B has me wondering: anyone actually using stablecoins for cross-border payments now, or is it all still speculation? What's your setup?",
+      "tweet_type": "engagement",
+      "tweet_id": "2034031944502030627",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3087,
+      "output_tokens": 132,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1062
+    }
   }
 ]
