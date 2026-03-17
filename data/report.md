@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 17) | 2 | **$1.4042** |
-| 📆 This Week (since Mar 16) | 5 | **$3.2561** |
-| 🗓️ This Month (March 2026) | 101 | **$25.9065** |
-| 🏦 Overall All-Time | 101 | **$25.9065** |
+| 📅 Today (March 17) | 3 | **$1.5107** |
+| 📆 This Week (since Mar 16) | 6 | **$3.3626** |
+| 🗓️ This Month (March 2026) | 102 | **$26.0130** |
+| 🏦 Overall All-Time | 102 | **$26.0130** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 17, 2026 at 10:40 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 25.6 seconds
+**Estimated cost:** $0.1065
+
+### What happened (step by step)
+
+1. **10:40:34 PST** — Tweet bot started
+2. **10:40:34 PST** — API keys validated
+3. **10:41:00 PST** — Tweet posted and logged (type: insight, ID: 2033961814199795756)
+4. **10:41:00 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI's privacy messes like the Sears leak show retail's not ready for chat data. They're collecting millions of convos without real safeguards. I figure we'll see lawsuits force better encryption soon.
+
+**Tweet type:** insight
+**Tweet ID:** 2033961814199795756
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,128 tokens, got back 131 tokens — **$0.0365**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1065**
 
 ---
 ## 📝 Blog Bot — March 17, 2026 at 07:23 AM PST

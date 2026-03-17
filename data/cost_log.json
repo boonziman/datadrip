@@ -4542,5 +4542,42 @@
       "images_generated": 3,
       "estimated_cost_usd": 1.4042
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-17",
+    "start_time": "2026-03-17T10:40:34.953731-07:00",
+    "end_time": "2026-03-17T10:41:00.594672-07:00",
+    "duration_seconds": 25.6,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3128,
+        "output_tokens": 131,
+        "cost": 0.03652
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI's privacy messes like the Sears leak show retail's not ready for chat data. They're collecting millions of convos without real safeguards. I figure we'll see lawsuits force better encryption soon.",
+      "tweet_type": "insight",
+      "tweet_id": "2033961814199795756",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3128,
+      "output_tokens": 131,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1065
+    }
   }
 ]

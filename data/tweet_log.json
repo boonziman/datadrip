@@ -714,5 +714,14 @@
     "image_prompt": "Realistic photograph of a modern home office desk during evening hours, featuring a laptop with an open AI chat interface on screen, scattered notes and a half-empty coffee cup beside it, soft overhead lamp casting warm light from above, shot with a 35mm lens, shallow depth of field focusing on the screen, neutral color palette with hints of blue from the display.",
     "promoted_url": "",
     "tweet_id": "2033451972867809417"
+  },
+  {
+    "timestamp": "2026-03-17 10:41 PST",
+    "tweet_type": "insight",
+    "tweet_text": "AI's privacy messes like the Sears leak show retail's not ready for chat data. They're collecting millions of convos without real safeguards. I figure we'll see lawsuits force better encryption soon.",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of a leaked document folder spilling out printed chat logs on a wooden retail store counter, with a Sears logo visible in the background, captured with a 50mm lens, soft overhead lighting, shallow depth of field blurring the edges, neutral color palette with blues and grays.",
+    "promoted_url": "",
+    "tweet_id": "2033961814199795756"
   }
 ]
