@@ -777,5 +777,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/justice-dept-slams-anthropic-as-unfit-for-war-ai-5-trust-cracks-shaking-the-industry/",
     "tweet_id": "2034324677535949036"
+  },
+  {
+    "timestamp": "2026-03-18 12:56 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "DOD just labeled Anthropic a security risk over Russian iPhone hacks. Who's actually building AI that governments can trust for defense now? Palantir? Or is it all hype?",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of the Pentagon building in Washington DC on a cloudy day, taken with a 35mm lens from street level, showing the entrance with American flags and security barriers in the foreground, natural daylight lighting from the side, shallow depth of field focusing on the flags, muted color palette of grays and blues.",
+    "promoted_url": "",
+    "tweet_id": "2034358272812060930"
   }
 ]

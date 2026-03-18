@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 18) | 3 | **$1.3929** |
-| 📆 This Week (since Mar 16) | 13 | **$5.1453** |
-| 🗓️ This Month (March 2026) | 109 | **$27.7957** |
-| 🏦 Overall All-Time | 109 | **$27.7957** |
+| 📅 Today (March 18) | 4 | **$1.5003** |
+| 📆 This Week (since Mar 16) | 14 | **$5.2527** |
+| 🗓️ This Month (March 2026) | 110 | **$27.9031** |
+| 🏦 Overall All-Time | 110 | **$27.9031** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 18, 2026 at 12:55 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 26.0 seconds
+**Estimated cost:** $0.1074
+
+### What happened (step by step)
+
+1. **12:55:57 PST** — Tweet bot started
+2. **12:55:57 PST** — API keys validated
+3. **12:56:23 PST** — Tweet posted and logged (type: engagement, ID: 2034358272812060930)
+4. **12:56:23 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> DOD just labeled Anthropic a security risk over Russian iPhone hacks. Who's actually building AI that governments can trust for defense now? Palantir? Or is it all hype?
+
+**Tweet type:** engagement
+**Tweet ID:** 2034358272812060930
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,190 tokens, got back 137 tokens — **$0.0374**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1074**
 
 ---
 ## 🐦 Tweet Bot — March 18, 2026 at 10:42 AM PST

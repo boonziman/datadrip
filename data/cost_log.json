@@ -4903,5 +4903,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0356
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-18",
+    "start_time": "2026-03-18T12:55:57.787424-07:00",
+    "end_time": "2026-03-18T12:56:23.800141-07:00",
+    "duration_seconds": 26.0,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3190,
+        "output_tokens": 137,
+        "cost": 0.03738
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "DOD just labeled Anthropic a security risk over Russian iPhone hacks. Who's actually building AI that governments can trust for defense now? Palantir? Or is it all hype?",
+      "tweet_type": "engagement",
+      "tweet_id": "2034358272812060930",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3190,
+      "output_tokens": 137,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1074
+    }
   }
 ]
