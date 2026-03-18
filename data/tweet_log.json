@@ -768,5 +768,14 @@
     "image_prompt": "A realistic photograph of a computer screen showing a deepfake video of a person's face morphing slightly, set on a cluttered office desk with scattered papers and a coffee mug, taken with a 50mm lens, soft side lighting from a window, shallow depth of field, neutral color palette with blue tones.",
     "promoted_url": "",
     "tweet_id": "2034172168720757181"
+  },
+  {
+    "timestamp": "2026-03-18 10:42 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Justice Dept says Anthropic's unfit for war AI because their trust model's full of holes. I think that's nuking the whole industry's credibility on defense deals. Russian iPhone hacks aren't helping.\nhttps://datadripco.com/posts/justice-dept-slams-anthropic-as-unfit-for-war-ai-5-trust-cracks-shaking-the-industry/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/justice-dept-slams-anthropic-as-unfit-for-war-ai-5-trust-cracks-shaking-the-industry/",
+    "tweet_id": "2034324677535949036"
   }
 ]

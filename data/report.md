@@ -9,12 +9,45 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 18) | 2 | **$1.3573** |
-| 📆 This Week (since Mar 16) | 12 | **$5.1097** |
-| 🗓️ This Month (March 2026) | 108 | **$27.7601** |
-| 🏦 Overall All-Time | 108 | **$27.7601** |
+| 📅 Today (March 18) | 3 | **$1.3929** |
+| 📆 This Week (since Mar 16) | 13 | **$5.1453** |
+| 🗓️ This Month (March 2026) | 109 | **$27.7957** |
+| 🏦 Overall All-Time | 109 | **$27.7957** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 18, 2026 at 10:42 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 20.8 seconds
+**Estimated cost:** $0.0356
+
+### What happened (step by step)
+
+1. **10:42:33 PST** — Tweet bot started
+2. **10:42:33 PST** — API keys validated
+3. **10:42:53 PST** — Tweet posted and logged (type: blog_teaser, ID: 2034324677535949036)
+4. **10:42:53 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Justice Dept says Anthropic's unfit for war AI because their trust model's full of holes. I think that's nuking the whole industry's credibility on defense deals. Russian iPhone hacks aren't helping.
+https://datadripco.com/posts/justice-dept-slams-anthropic-as-unfit-for-war-ai-5-trust-cracks-shaking-the-industry/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2034324677535949036
+**Blog post promoted:** https://datadripco.com/posts/justice-dept-slams-anthropic-as-unfit-for-war-ai-5-trust-cracks-shaking-the-industry/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,123 tokens, got back 110 tokens — **$0.0356**
+
+**💰 Total estimated cost: $0.0356**
 
 ---
 ## 📝 Blog Bot — March 18, 2026 at 07:22 AM PST

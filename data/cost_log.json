@@ -4873,5 +4873,35 @@
       "images_generated": 2,
       "estimated_cost_usd": 1.2522
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-18",
+    "start_time": "2026-03-18T10:42:33.081938-07:00",
+    "end_time": "2026-03-18T10:42:53.885690-07:00",
+    "duration_seconds": 20.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3123,
+        "output_tokens": 110,
+        "cost": 0.03563
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Justice Dept says Anthropic's unfit for war AI because their trust model's full of holes. I think that's nuking the whole industry's credibility on defense deals. Russian iPhone hacks aren't helping.\nhttps://datadripco.com/posts/justice-dept-slams-anthropic-as-unfit-for-war-ai-5-trust-cracks-shaking-the-industry/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2034324677535949036",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/justice-dept-slams-anthropic-as-unfit-for-war-ai-5-trust-cracks-shaking-the-industry/"
+    },
+    "totals": {
+      "input_tokens": 3123,
+      "output_tokens": 110,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0356
+    }
   }
 ]
