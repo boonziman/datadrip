@@ -741,5 +741,14 @@
     "image_prompt": "A close-up photograph of a Mastercard credit card lying on a wooden desk next to a Bitcoin symbol etched on a metal coin, with soft natural light from a window on the left, shallow depth of field using a 50mm lens, warm color tones and realistic textures.",
     "promoted_url": "",
     "tweet_id": "2034031944502030627"
+  },
+  {
+    "timestamp": "2026-03-17 20:50 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "Sears leaked 1M AI chat logs because their retail setup treated data like yesterday's clearance rack. I think that's forcing a privacy reckoning for every store bot. Invisalign's dodging the mess with smarter 3D scans.\nhttps://datadripco.com/posts/sears-leaks-1m-ai-chats-3-privacy-lessons-from-retails-fiasco-and-invisaligns-3d-boom/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/sears-leaks-1m-ai-chats-3-privacy-lessons-from-retails-fiasco-and-invisaligns-3d-boom/",
+    "tweet_id": "2034115291458777429"
   }
 ]

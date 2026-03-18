@@ -9,12 +9,46 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 17) | 5 | **$1.7236** |
-| 📆 This Week (since Mar 16) | 8 | **$3.5755** |
-| 🗓️ This Month (March 2026) | 104 | **$26.2259** |
-| 🏦 Overall All-Time | 104 | **$26.2259** |
+| 📅 Today (March 17) | 6 | **$1.7944** |
+| 📆 This Week (since Mar 16) | 9 | **$3.6463** |
+| 🗓️ This Month (March 2026) | 105 | **$26.2967** |
+| 🏦 Overall All-Time | 105 | **$26.2967** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 17, 2026 at 08:50 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 49.9 seconds
+**Estimated cost:** $0.0708
+
+### What happened (step by step)
+
+1. **20:50:02 PST** — Tweet bot started
+2. **20:50:02 PST** — API keys validated
+3. **20:50:52 PST** — Tweet posted and logged (type: blog_teaser, ID: 2034115291458777429)
+4. **20:50:52 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Sears leaked 1M AI chat logs because their retail setup treated data like yesterday's clearance rack. I think that's forcing a privacy reckoning for every store bot. Invisalign's dodging the mess with smarter 3D scans.
+https://datadripco.com/posts/sears-leaks-1m-ai-chats-3-privacy-lessons-from-retails-fiasco-and-invisaligns-3d-boom/
+
+**Tweet type:** blog_teaser
+**Tweet ID:** 2034115291458777429
+**Blog post promoted:** https://datadripco.com/posts/sears-leaks-1m-ai-chats-3-privacy-lessons-from-retails-fiasco-and-invisaligns-3d-boom/
+**Image attached:** No
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,894 tokens, got back 157 tokens — **$0.0352**
+- **Tweet Generation** — sent 2,909 tokens, got back 163 tokens — **$0.0356**
+
+**💰 Total estimated cost: $0.0708**
 
 ---
 ## 🐦 Tweet Bot — March 17, 2026 at 03:19 PM PST

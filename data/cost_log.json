@@ -4653,5 +4653,42 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1062
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-17",
+    "start_time": "2026-03-17T20:50:02.464182-07:00",
+    "end_time": "2026-03-17T20:50:52.331635-07:00",
+    "duration_seconds": 49.9,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2894,
+        "output_tokens": 157,
+        "cost": 0.03522
+      },
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2909,
+        "output_tokens": 163,
+        "cost": 0.03561
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Sears leaked 1M AI chat logs because their retail setup treated data like yesterday's clearance rack. I think that's forcing a privacy reckoning for every store bot. Invisalign's dodging the mess with smarter 3D scans.\nhttps://datadripco.com/posts/sears-leaks-1m-ai-chats-3-privacy-lessons-from-retails-fiasco-and-invisaligns-3d-boom/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2034115291458777429",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/sears-leaks-1m-ai-chats-3-privacy-lessons-from-retails-fiasco-and-invisaligns-3d-boom/"
+    },
+    "totals": {
+      "input_tokens": 5803,
+      "output_tokens": 320,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0708
+    }
   }
 ]
