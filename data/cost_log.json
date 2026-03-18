@@ -4690,5 +4690,42 @@
       "images_generated": 0,
       "estimated_cost_usd": 0.0708
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-17",
+    "start_time": "2026-03-17T22:16:51.362002-07:00",
+    "end_time": "2026-03-17T22:17:22.314851-07:00",
+    "duration_seconds": 31.0,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2983,
+        "output_tokens": 157,
+        "cost": 0.03611
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "AI scams stealing real models' faces for deepfakes is sneaky, but it exposes how thin the line is between legit tech and fraud. Palantir's $25M war deals just make it all feel grimmer. Biotech might be the only bright spot left.",
+      "tweet_type": "insight",
+      "tweet_id": "2034137059569594741",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 2983,
+      "output_tokens": 157,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1061
+    }
   }
 ]

@@ -750,5 +750,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/sears-leaks-1m-ai-chats-3-privacy-lessons-from-retails-fiasco-and-invisaligns-3d-boom/",
     "tweet_id": "2034115291458777429"
+  },
+  {
+    "timestamp": "2026-03-17 22:17 PST",
+    "tweet_type": "insight",
+    "tweet_text": "AI scams stealing real models' faces for deepfakes is sneaky, but it exposes how thin the line is between legit tech and fraud. Palantir's $25M war deals just make it all feel grimmer. Biotech might be the only bright spot left.",
+    "use_image": true,
+    "image_prompt": "A realistic close-up photograph of a woman's face reflected in a cracked smartphone screen on a cluttered desk, with subtle digital glitch effects on the reflection; shot with a 50mm lens, soft side lighting from a window, shallow depth of field, muted color palette of grays and blues, natural indoor setting like a dimly lit office.",
+    "promoted_url": "",
+    "tweet_id": "2034137059569594741"
   }
 ]

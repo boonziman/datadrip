@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 17) | 6 | **$1.7944** |
-| 📆 This Week (since Mar 16) | 9 | **$3.6463** |
-| 🗓️ This Month (March 2026) | 105 | **$26.2967** |
-| 🏦 Overall All-Time | 105 | **$26.2967** |
+| 📅 Today (March 17) | 7 | **$1.9005** |
+| 📆 This Week (since Mar 16) | 10 | **$3.7524** |
+| 🗓️ This Month (March 2026) | 106 | **$26.4028** |
+| 🏦 Overall All-Time | 106 | **$26.4028** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 17, 2026 at 10:16 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 31.0 seconds
+**Estimated cost:** $0.1061
+
+### What happened (step by step)
+
+1. **22:16:51 PST** — Tweet bot started
+2. **22:16:51 PST** — API keys validated
+3. **22:17:22 PST** — Tweet posted and logged (type: insight, ID: 2034137059569594741)
+4. **22:17:22 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> AI scams stealing real models' faces for deepfakes is sneaky, but it exposes how thin the line is between legit tech and fraud. Palantir's $25M war deals just make it all feel grimmer. Biotech might be the only bright spot left.
+
+**Tweet type:** insight
+**Tweet ID:** 2034137059569594741
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,983 tokens, got back 157 tokens — **$0.0361**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1061**
 
 ---
 ## 🐦 Tweet Bot — March 17, 2026 at 08:50 PM PST
