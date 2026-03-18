@@ -9,12 +9,62 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 18) | 1 | **$0.1051** |
-| 📆 This Week (since Mar 16) | 11 | **$3.8575** |
-| 🗓️ This Month (March 2026) | 107 | **$26.5079** |
-| 🏦 Overall All-Time | 107 | **$26.5079** |
+| 📅 Today (March 18) | 2 | **$1.3573** |
+| 📆 This Week (since Mar 16) | 12 | **$5.1097** |
+| 🗓️ This Month (March 2026) | 108 | **$27.7601** |
+| 🏦 Overall All-Time | 108 | **$27.7601** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 18, 2026 at 07:22 AM PST
+
+**Status:** ⚠️ 1 error(s) occurred
+**Total time:** 1340.7 seconds
+**Estimated cost:** $1.2522
+
+### What happened (step by step)
+
+1. **07:22:05 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **07:22:05 PST** — Starting AI post generation
+3. **07:22:06 PST** — Fetched 8 RSS articles for AI
+4. **07:28:33 PST** — ✅ AI post saved: 2026-03-18-0728-justice-dept-slams-anthropic-as-unfit-for-war-ai-5-trust-cracks-shaking-the-industry.md
+5. **07:28:33 PST** — Starting Crypto post generation
+6. **07:28:33 PST** — Fetched 8 RSS articles for Crypto
+7. **07:37:00 PST** — ❌ ERROR: Crypto post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out.
+8. **07:37:00 PST** — Starting Tech post generation
+9. **07:37:01 PST** — Fetched 8 RSS articles for Tech
+10. **07:44:26 PST** — ✅ Tech post saved: 2026-03-18-0744-dod-labels-anthropic-a-security-risk-4-ways-russian-iphone-hacks-are-accelerating-ai-enterprise-pivots.md
+11. **07:44:26 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 2 of 3 posts generated successfully
+  - [AI] Justice Dept Slams Anthropic as Unfit for War AI: 5 Trust Cracks Shaking the Industry
+  - [Tech] DOD Labels Anthropic a Security Risk: 4 Ways Russian iPhone Hacks Are Accelerating AI Enterprise Pivots
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 3,992 tokens, got back 4,003 tokens — **$0.2000**
+- **AI Review (Pass 2)** — sent 4,352 tokens, got back 2,988 tokens — **$0.1630**
+- **AI Description Fix** — sent 115 tokens, got back 50 tokens — **$0.0032**
+- **AI Image Prompt (Pass 3)** — sent 571 tokens, got back 170 tokens — **$0.0125**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 4,047 tokens, got back 2,990 tokens — **$0.1601**
+- **Crypto Review (Pass 2)** — sent 3,339 tokens, got back 3,997 tokens — **$0.1933**
+- **Tech Draft (Pass 1)** — sent 4,260 tokens, got back 3,716 tokens — **$0.1912**
+- **Tech Review (Pass 2)** — sent 4,066 tokens, got back 3,297 tokens — **$0.1725**
+- **Tech Description Fix** — sent 124 tokens, got back 50 tokens — **$0.0032**
+- **Tech Image Prompt (Pass 3)** — sent 576 tokens, got back 183 tokens — **$0.0131**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.2522**
+
+### ⚠️ Errors
+
+- ❌ Crypto post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out.
 
 ---
 ## 🐦 Tweet Bot — March 18, 2026 at 12:35 AM PST

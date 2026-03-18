@@ -4764,5 +4764,114 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1051
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-18",
+    "start_time": "2026-03-18T07:22:05.817501-07:00",
+    "end_time": "2026-03-18T07:44:26.537439-07:00",
+    "duration_seconds": 1340.7,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 3992,
+        "output_tokens": 4003,
+        "cost": 0.20004
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4352,
+        "output_tokens": 2988,
+        "cost": 0.16304
+      },
+      {
+        "label": "AI Description Fix",
+        "model": "grok-4",
+        "input_tokens": 115,
+        "output_tokens": 50,
+        "cost": 0.00315
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 571,
+        "output_tokens": 170,
+        "cost": 0.01251
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4047,
+        "output_tokens": 2990,
+        "cost": 0.16007
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3339,
+        "output_tokens": 3997,
+        "cost": 0.19327
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4260,
+        "output_tokens": 3716,
+        "cost": 0.19124
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4066,
+        "output_tokens": 3297,
+        "cost": 0.17254
+      },
+      {
+        "label": "Tech Description Fix",
+        "model": "grok-4",
+        "input_tokens": 124,
+        "output_tokens": 50,
+        "cost": 0.00324
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 576,
+        "output_tokens": 183,
+        "cost": 0.01308
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [
+      "Crypto post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out."
+    ],
+    "details": {
+      "post_ai": "[AI] Justice Dept Slams Anthropic as Unfit for War AI: 5 Trust Cracks Shaking the Industry",
+      "post_tech": "[Tech] DOD Labels Anthropic a Security Risk: 4 Ways Russian iPhone Hacks Are Accelerating AI Enterprise Pivots",
+      "posts_generated": "2 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 25442,
+      "output_tokens": 21444,
+      "images_generated": 2,
+      "estimated_cost_usd": 1.2522
+    }
   }
 ]
