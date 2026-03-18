@@ -4940,5 +4940,42 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1074
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-18",
+    "start_time": "2026-03-18T15:18:19.052344-07:00",
+    "end_time": "2026-03-18T15:18:41.447582-07:00",
+    "duration_seconds": 22.4,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3184,
+        "output_tokens": 137,
+        "cost": 0.03732
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "DOD slapping Anthropic with a security risk label over Russian iPhone hacks is peak bureaucracy. I think it's code for 'we don't trust your AI ethics spiel anymore.'",
+      "tweet_type": "hot_take",
+      "tweet_id": "2034394082894909574",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3184,
+      "output_tokens": 137,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1073
+    }
   }
 ]

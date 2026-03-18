@@ -786,5 +786,14 @@
     "image_prompt": "A realistic photograph of the Pentagon building in Washington DC on a cloudy day, taken with a 35mm lens from street level, showing the entrance with American flags and security barriers in the foreground, natural daylight lighting from the side, shallow depth of field focusing on the flags, muted color palette of grays and blues.",
     "promoted_url": "",
     "tweet_id": "2034358272812060930"
+  },
+  {
+    "timestamp": "2026-03-18 15:18 PST",
+    "tweet_type": "hot_take",
+    "tweet_text": "DOD slapping Anthropic with a security risk label over Russian iPhone hacks is peak bureaucracy. I think it's code for 'we don't trust your AI ethics spiel anymore.'",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of a cluttered government desk in a dimly lit office, with a redacted document labeled 'Security Risk Assessment' next to an iPhone with a cracked screen, taken with a 50mm lens, soft overhead lighting, shallow depth of field focusing on the document, neutral color palette with hints of red accents.",
+    "promoted_url": "",
+    "tweet_id": "2034394082894909574"
   }
 ]

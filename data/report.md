@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 18) | 4 | **$1.5003** |
-| 📆 This Week (since Mar 16) | 14 | **$5.2527** |
-| 🗓️ This Month (March 2026) | 110 | **$27.9031** |
-| 🏦 Overall All-Time | 110 | **$27.9031** |
+| 📅 Today (March 18) | 5 | **$1.6076** |
+| 📆 This Week (since Mar 16) | 15 | **$5.3600** |
+| 🗓️ This Month (March 2026) | 111 | **$28.0104** |
+| 🏦 Overall All-Time | 111 | **$28.0104** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 18, 2026 at 03:18 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 22.4 seconds
+**Estimated cost:** $0.1073
+
+### What happened (step by step)
+
+1. **15:18:19 PST** — Tweet bot started
+2. **15:18:19 PST** — API keys validated
+3. **15:18:41 PST** — Tweet posted and logged (type: hot_take, ID: 2034394082894909574)
+4. **15:18:41 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> DOD slapping Anthropic with a security risk label over Russian iPhone hacks is peak bureaucracy. I think it's code for 'we don't trust your AI ethics spiel anymore.'
+
+**Tweet type:** hot_take
+**Tweet ID:** 2034394082894909574
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,184 tokens, got back 137 tokens — **$0.0373**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1073**
 
 ---
 ## 🐦 Tweet Bot — March 18, 2026 at 12:55 PM PST
