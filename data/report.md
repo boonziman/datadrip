@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 17) | 7 | **$1.9005** |
-| 📆 This Week (since Mar 16) | 10 | **$3.7524** |
-| 🗓️ This Month (March 2026) | 106 | **$26.4028** |
-| 🏦 Overall All-Time | 106 | **$26.4028** |
+| 📅 Today (March 18) | 1 | **$0.1051** |
+| 📆 This Week (since Mar 16) | 11 | **$3.8575** |
+| 🗓️ This Month (March 2026) | 107 | **$26.5079** |
+| 🏦 Overall All-Time | 107 | **$26.5079** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 18, 2026 at 12:35 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 72.2 seconds
+**Estimated cost:** $0.1051
+
+### What happened (step by step)
+
+1. **00:35:40 PST** — Tweet bot started
+2. **00:35:40 PST** — API keys validated
+3. **00:36:52 PST** — Tweet posted and logged (type: engagement, ID: 2034172168720757181)
+4. **00:36:52 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> What's the creepiest AI thing you've run into lately? For me, it's scammers using real models' faces for deepfake fraud. War tech deals don't help. Your turn.
+
+**Tweet type:** engagement
+**Tweet ID:** 2034172168720757181
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,977 tokens, got back 133 tokens — **$0.0351**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1051**
 
 ---
 ## 🐦 Tweet Bot — March 17, 2026 at 10:16 PM PST

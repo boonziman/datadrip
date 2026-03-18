@@ -759,5 +759,14 @@
     "image_prompt": "A realistic close-up photograph of a woman's face reflected in a cracked smartphone screen on a cluttered desk, with subtle digital glitch effects on the reflection; shot with a 50mm lens, soft side lighting from a window, shallow depth of field, muted color palette of grays and blues, natural indoor setting like a dimly lit office.",
     "promoted_url": "",
     "tweet_id": "2034137059569594741"
+  },
+  {
+    "timestamp": "2026-03-18 00:36 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "What's the creepiest AI thing you've run into lately? For me, it's scammers using real models' faces for deepfake fraud. War tech deals don't help. Your turn.",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of a computer screen showing a deepfake video of a person's face morphing slightly, set on a cluttered office desk with scattered papers and a coffee mug, taken with a 50mm lens, soft side lighting from a window, shallow depth of field, neutral color palette with blue tones.",
+    "promoted_url": "",
+    "tweet_id": "2034172168720757181"
   }
 ]
