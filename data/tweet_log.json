@@ -840,5 +840,14 @@
     "image_prompt": "A realistic photograph of a Tesla car on a busy urban street during a rainy day, with visible satellite imagery overlay on the windshield like a heads-up display, captured with a 35mm lens, soft natural lighting from overcast sky, shallow depth of field focusing on the car, cool blue and gray color palette.",
     "promoted_url": "",
     "tweet_id": "2034720852361556087"
+  },
+  {
+    "timestamp": "2026-03-19 15:03 PST",
+    "tweet_type": "hot_take",
+    "tweet_text": "DOD slapping Anthropic with a security risk label amid Russian iPhone hacks? I think it's spot on. AI for war needs ironclad trust, and these cracks are forcing enterprise to pick sides fast.",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of a cracked iPhone screen displaying a red security alert icon with a faint Russian flag symbol in the background, taken with a 50mm lens, soft overhead lighting in a dimly lit office setting, shallow depth of field focusing on the screen, neutral color palette with cool tones.",
+    "promoted_url": "",
+    "tweet_id": "2034752598520279548"
   }
 ]
