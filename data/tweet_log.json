@@ -831,5 +831,14 @@
     "image_prompt": "",
     "promoted_url": "https://datadripco.com/posts/openai-hit-with-lawsuits-over-teen-suicides-4-pivots-shaping-safer-consumer-ai/",
     "tweet_id": "2034686465637327038"
+  },
+  {
+    "timestamp": "2026-03-19 12:57 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "Tesla's FSD recall is a mess. Do you think space satellites like K2's are the fix for AI's real-world data crunch? Or is it all hype?",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of a Tesla car on a busy urban street during a rainy day, with visible satellite imagery overlay on the windshield like a heads-up display, captured with a 35mm lens, soft natural lighting from overcast sky, shallow depth of field focusing on the car, cool blue and gray color palette.",
+    "promoted_url": "",
+    "tweet_id": "2034720852361556087"
   }
 ]
