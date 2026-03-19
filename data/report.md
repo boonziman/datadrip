@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 18) | 6 | **$1.7131** |
-| 📆 This Week (since Mar 16) | 16 | **$5.4655** |
-| 🗓️ This Month (March 2026) | 112 | **$28.1159** |
-| 🏦 Overall All-Time | 112 | **$28.1159** |
+| 📅 Today (March 18) | 7 | **$1.8180** |
+| 📆 This Week (since Mar 16) | 17 | **$5.5704** |
+| 🗓️ This Month (March 2026) | 113 | **$28.2208** |
+| 🏦 Overall All-Time | 113 | **$28.2208** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 18, 2026 at 10:12 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 23.5 seconds
+**Estimated cost:** $0.1049
+
+### What happened (step by step)
+
+1. **22:12:36 PST** — Tweet bot started
+2. **22:12:36 PST** — API keys validated
+3. **22:13:00 PST** — Tweet posted and logged (type: hot_take, ID: 2034498348317642826)
+4. **22:13:00 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Mastercard's $1.8B grab of BVNK while Tally flops? Crypto's not crashing, it's just getting absorbed by the suits. Tradfi takeover is real, and I'm not mad about it.
+
+**Tweet type:** hot_take
+**Tweet ID:** 2034498348317642826
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,944 tokens, got back 137 tokens — **$0.0349**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1049**
 
 ---
 ## 🐦 Tweet Bot — March 18, 2026 at 08:49 PM PST

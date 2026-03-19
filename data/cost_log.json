@@ -5014,5 +5014,42 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1055
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-18",
+    "start_time": "2026-03-18T22:12:36.851238-07:00",
+    "end_time": "2026-03-18T22:13:00.308861-07:00",
+    "duration_seconds": 23.5,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2944,
+        "output_tokens": 137,
+        "cost": 0.03492
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Mastercard's $1.8B grab of BVNK while Tally flops? Crypto's not crashing, it's just getting absorbed by the suits. Tradfi takeover is real, and I'm not mad about it.",
+      "tweet_type": "hot_take",
+      "tweet_id": "2034498348317642826",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 2944,
+      "output_tokens": 137,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1049
+    }
   }
 ]
