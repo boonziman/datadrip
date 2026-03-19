@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 18) | 5 | **$1.6076** |
-| 📆 This Week (since Mar 16) | 15 | **$5.3600** |
-| 🗓️ This Month (March 2026) | 111 | **$28.0104** |
-| 🏦 Overall All-Time | 111 | **$28.0104** |
+| 📅 Today (March 18) | 6 | **$1.7131** |
+| 📆 This Week (since Mar 16) | 16 | **$5.4655** |
+| 🗓️ This Month (March 2026) | 112 | **$28.1159** |
+| 🏦 Overall All-Time | 112 | **$28.1159** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 18, 2026 at 08:49 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 21.5 seconds
+**Estimated cost:** $0.1055
+
+### What happened (step by step)
+
+1. **20:49:09 PST** — Tweet bot started
+2. **20:49:09 PST** — API keys validated
+3. **20:49:31 PST** — Tweet posted and logged (type: insight, ID: 2034477339242058209)
+4. **20:49:31 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Nvidia's GTC showed off AI chips that could power Apple's next AirPods, but I think Netflix winning Oscars with AI scripts is the real flex. Streaming's about to eat Hollywood whole.
+
+**Tweet type:** insight
+**Tweet ID:** 2034477339242058209
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,960 tokens, got back 147 tokens — **$0.0355**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1055**
 
 ---
 ## 🐦 Tweet Bot — March 18, 2026 at 03:18 PM PST
