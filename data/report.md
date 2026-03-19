@@ -9,12 +9,62 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 19) | 1 | **$0.1053** |
-| 📆 This Week (since Mar 16) | 18 | **$5.6757** |
-| 🗓️ This Month (March 2026) | 114 | **$28.3261** |
-| 🏦 Overall All-Time | 114 | **$28.3261** |
+| 📅 Today (March 19) | 2 | **$1.4030** |
+| 📆 This Week (since Mar 16) | 19 | **$6.9734** |
+| 🗓️ This Month (March 2026) | 115 | **$29.6238** |
+| 🏦 Overall All-Time | 115 | **$29.6238** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 19, 2026 at 07:08 AM PST
+
+**Status:** ⚠️ 1 error(s) occurred
+**Total time:** 971.6 seconds
+**Estimated cost:** $1.2977
+
+### What happened (step by step)
+
+1. **07:08:03 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **07:08:03 PST** — Starting AI post generation
+3. **07:08:03 PST** — Fetched 8 RSS articles for AI
+4. **07:12:16 PST** — ✅ AI post saved: 2026-03-19-0712-openai-hit-with-lawsuits-over-teen-suicides-4-pivots-shaping-safer-consumer-ai.md
+5. **07:12:16 PST** — Starting Crypto post generation
+6. **07:12:16 PST** — Fetched 8 RSS articles for Crypto
+7. **07:20:33 PST** — ❌ ERROR: Crypto post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out.
+8. **07:20:33 PST** — Starting Tech post generation
+9. **07:20:34 PST** — Fetched 8 RSS articles for Tech
+10. **07:24:14 PST** — ✅ Tech post saved: 2026-03-19-0724-k2s-space-satellite-5-ways-it-supercharges-ai-amid-tesla-fsd-recall-chaos.md
+11. **07:24:14 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 2 of 3 posts generated successfully
+  - [AI] OpenAI Hit with Lawsuits Over Teen Suicides: 4 Pivots Shaping Safer Consumer AI
+  - [Tech] K2's Space Satellite: 5 Ways It Supercharges AI Amid Tesla FSD Recall Chaos
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 4,098 tokens, got back 3,464 tokens — **$0.1795**
+- **AI Review (Pass 2)** — sent 3,813 tokens, got back 4,171 tokens — **$0.2050**
+- **AI Description Fix** — sent 128 tokens, got back 50 tokens — **$0.0033**
+- **AI Image Prompt (Pass 3)** — sent 570 tokens, got back 169 tokens — **$0.0125**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 4,097 tokens, got back 3,599 tokens — **$0.1849**
+- **Crypto Review (Pass 2)** — sent 3,948 tokens, got back 3,622 tokens — **$0.1844**
+- **Tech Draft (Pass 1)** — sent 4,355 tokens, got back 3,696 tokens — **$0.1914**
+- **Tech Review (Pass 2)** — sent 4,045 tokens, got back 3,467 tokens — **$0.1791**
+- **Tech Description Fix** — sent 111 tokens, got back 50 tokens — **$0.0031**
+- **Tech Image Prompt (Pass 3)** — sent 568 tokens, got back 222 tokens — **$0.0146**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.2977**
+
+### ⚠️ Errors
+
+- ❌ Crypto post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out.
 
 ---
 ## 🐦 Tweet Bot — March 19, 2026 at 12:31 AM PST

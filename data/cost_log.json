@@ -5088,5 +5088,114 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1053
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-19",
+    "start_time": "2026-03-19T07:08:03.064624-07:00",
+    "end_time": "2026-03-19T07:24:14.631855-07:00",
+    "duration_seconds": 971.6,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4098,
+        "output_tokens": 3464,
+        "cost": 0.17954
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3813,
+        "output_tokens": 4171,
+        "cost": 0.20497
+      },
+      {
+        "label": "AI Description Fix",
+        "model": "grok-4",
+        "input_tokens": 128,
+        "output_tokens": 50,
+        "cost": 0.00328
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 570,
+        "output_tokens": 169,
+        "cost": 0.01246
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4097,
+        "output_tokens": 3599,
+        "cost": 0.18493
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3948,
+        "output_tokens": 3622,
+        "cost": 0.18436
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4355,
+        "output_tokens": 3696,
+        "cost": 0.19139
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 4045,
+        "output_tokens": 3467,
+        "cost": 0.17913
+      },
+      {
+        "label": "Tech Description Fix",
+        "model": "grok-4",
+        "input_tokens": 111,
+        "output_tokens": 50,
+        "cost": 0.00311
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 568,
+        "output_tokens": 222,
+        "cost": 0.01456
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [
+      "Crypto post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out."
+    ],
+    "details": {
+      "post_ai": "[AI] OpenAI Hit with Lawsuits Over Teen Suicides: 4 Pivots Shaping Safer Consumer AI",
+      "post_tech": "[Tech] K2's Space Satellite: 5 Ways It Supercharges AI Amid Tesla FSD Recall Chaos",
+      "posts_generated": "2 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 25733,
+      "output_tokens": 22510,
+      "images_generated": 2,
+      "estimated_cost_usd": 1.2977
+    }
   }
 ]
