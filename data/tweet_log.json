@@ -822,5 +822,14 @@
     "image_prompt": "A realistic photograph of a computer monitor showing a split-screen: one side a real person's portrait photo, the other a deepfake version with subtle distortions, set on a cluttered desk in a dimly lit home office, captured with a 35mm lens, soft overhead lighting, shallow depth of field, neutral color palette.",
     "promoted_url": "",
     "tweet_id": "2034533393354895561"
+  },
+  {
+    "timestamp": "2026-03-19 10:40 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "OpenAI lawsuits tying their AI to teen suicides? I think it's pushing consumer AI toward real safety nets like strict age checks and kill switches. Four pivots that could reshape the game.\nhttps://datadripco.com/posts/openai-hit-with-lawsuits-over-teen-suicides-4-pivots-shaping-safer-consumer-ai/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/openai-hit-with-lawsuits-over-teen-suicides-4-pivots-shaping-safer-consumer-ai/",
+    "tweet_id": "2034686465637327038"
   }
 ]

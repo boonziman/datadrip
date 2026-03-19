@@ -5197,5 +5197,42 @@
       "images_generated": 2,
       "estimated_cost_usd": 1.2977
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-19",
+    "start_time": "2026-03-19T10:39:49.957695-07:00",
+    "end_time": "2026-03-19T10:40:30.843505-07:00",
+    "duration_seconds": 40.9,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3032,
+        "output_tokens": 139,
+        "cost": 0.03588
+      },
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3047,
+        "output_tokens": 137,
+        "cost": 0.03595
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "OpenAI lawsuits tying their AI to teen suicides? I think it's pushing consumer AI toward real safety nets like strict age checks and kill switches. Four pivots that could reshape the game.\nhttps://datadripco.com/posts/openai-hit-with-lawsuits-over-teen-suicides-4-pivots-shaping-safer-consumer-ai/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2034686465637327038",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/openai-hit-with-lawsuits-over-teen-suicides-4-pivots-shaping-safer-consumer-ai/"
+    },
+    "totals": {
+      "input_tokens": 6079,
+      "output_tokens": 276,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0718
+    }
   }
 ]
