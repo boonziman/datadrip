@@ -813,5 +813,14 @@
     "image_prompt": "A realistic photograph of a sleek corporate office desk with a Mastercard credit card placed next to a Bitcoin physical coin and scattered financial documents, shot with a 50mm lens, soft natural window light from the side, shallow depth of field blurring the background, neutral color palette with metallic accents.",
     "promoted_url": "",
     "tweet_id": "2034498348317642826"
+  },
+  {
+    "timestamp": "2026-03-19 00:32 PST",
+    "tweet_type": "insight",
+    "tweet_text": "AI scams stealing real models' faces for deepfakes is nasty. I think it kills trust in any online video. Palantir's $25M war tech pivot says the deepfake arms race is just heating up.",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of a computer monitor showing a split-screen: one side a real person's portrait photo, the other a deepfake version with subtle distortions, set on a cluttered desk in a dimly lit home office, captured with a 35mm lens, soft overhead lighting, shallow depth of field, neutral color palette.",
+    "promoted_url": "",
+    "tweet_id": "2034533393354895561"
   }
 ]
