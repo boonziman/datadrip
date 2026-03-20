@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 20) | 2 | **$1.3252** |
-| 📆 This Week (since Mar 16) | 26 | **$8.7919** |
-| 🗓️ This Month (March 2026) | 122 | **$31.4423** |
-| 🏦 Overall All-Time | 122 | **$31.4423** |
+| 📅 Today (March 20) | 3 | **$1.4309** |
+| 📆 This Week (since Mar 16) | 27 | **$8.8976** |
+| 🗓️ This Month (March 2026) | 123 | **$31.5480** |
+| 🏦 Overall All-Time | 123 | **$31.5480** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 20, 2026 at 10:22 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 22.8 seconds
+**Estimated cost:** $0.1057
+
+### What happened (step by step)
+
+1. **10:22:25 PST** — Tweet bot started
+2. **10:22:25 PST** — API keys validated
+3. **10:22:48 PST** — Tweet posted and logged (type: insight, ID: 2035044396828106994)
+4. **10:22:48 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Nvidia's GTC just unloaded AI agents that plan and act on their own. I think this kills off half the enterprise tools overnight. LinkedIn's probably sweating as bots take over networking.
+
+**Tweet type:** insight
+**Tweet ID:** 2035044396828106994
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,022 tokens, got back 137 tokens — **$0.0357**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1057**
 
 ---
 ## 📝 Blog Bot — March 20, 2026 at 07:01 AM PST

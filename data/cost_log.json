@@ -5535,5 +5535,42 @@
       "images_generated": 2,
       "estimated_cost_usd": 1.2205
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-20",
+    "start_time": "2026-03-20T10:22:25.544494-07:00",
+    "end_time": "2026-03-20T10:22:48.386585-07:00",
+    "duration_seconds": 22.8,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3022,
+        "output_tokens": 137,
+        "cost": 0.0357
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Nvidia's GTC just unloaded AI agents that plan and act on their own. I think this kills off half the enterprise tools overnight. LinkedIn's probably sweating as bots take over networking.",
+      "tweet_type": "insight",
+      "tweet_id": "2035044396828106994",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3022,
+      "output_tokens": 137,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1057
+    }
   }
 ]

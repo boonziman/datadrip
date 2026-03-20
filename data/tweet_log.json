@@ -876,5 +876,14 @@
     "image_prompt": "A realistic photograph of a Mastercard credit card lying on a wooden desk next to a Bitcoin logo etched on a metal coin, with soft natural light from a window casting shadows, shot with a 50mm lens, shallow depth of field focusing on the card, neutral color palette with metallic accents.",
     "promoted_url": "",
     "tweet_id": "2034895107443335399"
+  },
+  {
+    "timestamp": "2026-03-20 10:22 PST",
+    "tweet_type": "insight",
+    "tweet_text": "Nvidia's GTC just unloaded AI agents that plan and act on their own. I think this kills off half the enterprise tools overnight. LinkedIn's probably sweating as bots take over networking.",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of a modern tech conference stage with Nvidia's logo projected on a large screen, showing abstract AI agent diagrams, taken from a 35mm lens with soft stage lighting from above, shallow depth of field focusing on the screen, neutral color palette with green accents, conference attendees blurred in the foreground.",
+    "promoted_url": "",
+    "tweet_id": "2035044396828106994"
   }
 ]
