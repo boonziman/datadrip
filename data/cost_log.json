@@ -5426,5 +5426,114 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1047
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-20",
+    "start_time": "2026-03-20T07:01:25.986724-07:00",
+    "end_time": "2026-03-20T07:16:18.412178-07:00",
+    "duration_seconds": 892.4,
+    "api_calls": [
+      {
+        "label": "AI Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4180,
+        "output_tokens": 3217,
+        "cost": 0.17048
+      },
+      {
+        "label": "AI Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3566,
+        "output_tokens": 3292,
+        "cost": 0.16734
+      },
+      {
+        "label": "AI Description Fix",
+        "model": "grok-4",
+        "input_tokens": 112,
+        "output_tokens": 50,
+        "cost": 0.00312
+      },
+      {
+        "label": "AI Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 570,
+        "output_tokens": 175,
+        "cost": 0.0127
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      },
+      {
+        "label": "Crypto Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4053,
+        "output_tokens": 3570,
+        "cost": 0.18333
+      },
+      {
+        "label": "Crypto Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3919,
+        "output_tokens": 3273,
+        "cost": 0.17011
+      },
+      {
+        "label": "Tech Draft (Pass 1)",
+        "model": "grok-4",
+        "input_tokens": 4392,
+        "output_tokens": 3648,
+        "cost": 0.18984
+      },
+      {
+        "label": "Tech Review (Pass 2)",
+        "model": "grok-4",
+        "input_tokens": 3997,
+        "output_tokens": 3144,
+        "cost": 0.16573
+      },
+      {
+        "label": "Tech Description Fix",
+        "model": "grok-4",
+        "input_tokens": 114,
+        "output_tokens": 50,
+        "cost": 0.00314
+      },
+      {
+        "label": "Tech Image Prompt (Pass 3)",
+        "model": "grok-4",
+        "input_tokens": 571,
+        "output_tokens": 224,
+        "cost": 0.01467
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [
+      "Crypto post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out."
+    ],
+    "details": {
+      "post_ai": "[AI] Nvidia's GTC Drops 4 AI Agent Bombshells: Why Google and LinkedIn Are Scrambling",
+      "post_tech": "[Tech] Amazon's $100B AI Overhaul: 4 Ways Bezos Targets Manufacturing Amid Power Shortages",
+      "posts_generated": "2 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 25474,
+      "output_tokens": 20643,
+      "images_generated": 2,
+      "estimated_cost_usd": 1.2205
+    }
   }
 ]

@@ -9,12 +9,62 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 20) | 1 | **$0.1047** |
-| 📆 This Week (since Mar 16) | 25 | **$7.5714** |
-| 🗓️ This Month (March 2026) | 121 | **$30.2218** |
-| 🏦 Overall All-Time | 121 | **$30.2218** |
+| 📅 Today (March 20) | 2 | **$1.3252** |
+| 📆 This Week (since Mar 16) | 26 | **$8.7919** |
+| 🗓️ This Month (March 2026) | 122 | **$31.4423** |
+| 🏦 Overall All-Time | 122 | **$31.4423** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 20, 2026 at 07:01 AM PST
+
+**Status:** ⚠️ 1 error(s) occurred
+**Total time:** 892.4 seconds
+**Estimated cost:** $1.2205
+
+### What happened (step by step)
+
+1. **07:01:25 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **07:01:25 PST** — Starting AI post generation
+3. **07:01:26 PST** — Fetched 8 RSS articles for AI
+4. **07:04:46 PST** — ✅ AI post saved: 2026-03-20-0704-nvidias-gtc-drops-4-ai-agent-bombshells-why-google-and-linkedin-are-scrambling.md
+5. **07:04:46 PST** — Starting Crypto post generation
+6. **07:04:46 PST** — Fetched 8 RSS articles for Crypto
+7. **07:13:01 PST** — ❌ ERROR: Crypto post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out.
+8. **07:13:01 PST** — Starting Tech post generation
+9. **07:13:01 PST** — Fetched 8 RSS articles for Tech
+10. **07:16:18 PST** — ✅ Tech post saved: 2026-03-20-0716-amazons-100b-ai-overhaul-4-ways-bezos-targets-manufacturing-amid-power-shortages.md
+11. **07:16:18 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 2 of 3 posts generated successfully
+  - [AI] Nvidia's GTC Drops 4 AI Agent Bombshells: Why Google and LinkedIn Are Scrambling
+  - [Tech] Amazon's $100B AI Overhaul: 4 Ways Bezos Targets Manufacturing Amid Power Shortages
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **AI Draft (Pass 1)** — sent 4,180 tokens, got back 3,217 tokens — **$0.1705**
+- **AI Review (Pass 2)** — sent 3,566 tokens, got back 3,292 tokens — **$0.1673**
+- **AI Description Fix** — sent 112 tokens, got back 50 tokens — **$0.0031**
+- **AI Image Prompt (Pass 3)** — sent 570 tokens, got back 175 tokens — **$0.0127**
+- **Image generation** — 1 image created — **$0.0700**
+- **Crypto Draft (Pass 1)** — sent 4,053 tokens, got back 3,570 tokens — **$0.1833**
+- **Crypto Review (Pass 2)** — sent 3,919 tokens, got back 3,273 tokens — **$0.1701**
+- **Tech Draft (Pass 1)** — sent 4,392 tokens, got back 3,648 tokens — **$0.1898**
+- **Tech Review (Pass 2)** — sent 3,997 tokens, got back 3,144 tokens — **$0.1657**
+- **Tech Description Fix** — sent 114 tokens, got back 50 tokens — **$0.0031**
+- **Tech Image Prompt (Pass 3)** — sent 571 tokens, got back 224 tokens — **$0.0147**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $1.2205**
+
+### ⚠️ Errors
+
+- ❌ Crypto post failed: HTTPSConnectionPool(host='api.x.ai', port=443): Read timed out.
 
 ---
 ## 🐦 Tweet Bot — March 20, 2026 at 12:29 AM PST
