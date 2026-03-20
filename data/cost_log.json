@@ -5308,5 +5308,49 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1065
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-19",
+    "start_time": "2026-03-19T20:39:14.667832-07:00",
+    "end_time": "2026-03-19T20:39:52.775588-07:00",
+    "duration_seconds": 38.1,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2856,
+        "output_tokens": 149,
+        "cost": 0.03452
+      },
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2871,
+        "output_tokens": 140,
+        "cost": 0.03431
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Tesla's FSD recall shows AI needs better real-world data. K2's space satellites might deliver it globally, nonstop. I think that's why they're gunning for AI dominance over earthbound players.",
+      "tweet_type": "insight",
+      "tweet_id": "2034837300568277258",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 5727,
+      "output_tokens": 289,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1388
+    }
   }
 ]

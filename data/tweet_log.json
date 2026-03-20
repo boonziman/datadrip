@@ -849,5 +849,14 @@
     "image_prompt": "A realistic photograph of a cracked iPhone screen displaying a red security alert icon with a faint Russian flag symbol in the background, taken with a 50mm lens, soft overhead lighting in a dimly lit office setting, shallow depth of field focusing on the screen, neutral color palette with cool tones.",
     "promoted_url": "",
     "tweet_id": "2034752598520279548"
+  },
+  {
+    "timestamp": "2026-03-19 20:39 PST",
+    "tweet_type": "insight",
+    "tweet_text": "Tesla's FSD recall shows AI needs better real-world data. K2's space satellites might deliver it globally, nonstop. I think that's why they're gunning for AI dominance over earthbound players.",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of a sleek space satellite orbiting Earth, captured from a low Earth orbit perspective with a 35mm lens, soft natural lighting from the sun casting shadows on the satellite's solar panels, shallow depth of field blurring the distant blue planet in the background, cool metallic color palette with hints of white and gray.",
+    "promoted_url": "",
+    "tweet_id": "2034837300568277258"
   }
 ]
