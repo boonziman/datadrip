@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 19) | 7 | **$1.8963** |
-| 📆 This Week (since Mar 16) | 24 | **$7.4667** |
-| 🗓️ This Month (March 2026) | 120 | **$30.1171** |
-| 🏦 Overall All-Time | 120 | **$30.1171** |
+| 📅 Today (March 20) | 1 | **$0.1047** |
+| 📆 This Week (since Mar 16) | 25 | **$7.5714** |
+| 🗓️ This Month (March 2026) | 121 | **$30.2218** |
+| 🏦 Overall All-Time | 121 | **$30.2218** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 20, 2026 at 12:29 AM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 26.1 seconds
+**Estimated cost:** $0.1047
+
+### What happened (step by step)
+
+1. **00:29:09 PST** — Tweet bot started
+2. **00:29:09 PST** — API keys validated
+3. **00:29:35 PST** — Tweet posted and logged (type: hot_take, ID: 2034895107443335399)
+4. **00:29:35 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Mastercard's $1.8B BVNK buy? Crypto's straight-up invading TradFi. I think stablecoins win because they move money faster than banks without the fees or delays. Old payment rails are toast.
+
+**Tweet type:** hot_take
+**Tweet ID:** 2034895107443335399
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 2,915 tokens, got back 139 tokens — **$0.0347**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1047**
 
 ---
 ## 🐦 Tweet Bot — March 19, 2026 at 10:06 PM PST
