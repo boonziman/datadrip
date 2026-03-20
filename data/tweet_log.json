@@ -858,5 +858,14 @@
     "image_prompt": "A realistic photograph of a sleek space satellite orbiting Earth, captured from a low Earth orbit perspective with a 35mm lens, soft natural lighting from the sun casting shadows on the satellite's solar panels, shallow depth of field blurring the distant blue planet in the background, cool metallic color palette with hints of white and gray.",
     "promoted_url": "",
     "tweet_id": "2034837300568277258"
+  },
+  {
+    "timestamp": "2026-03-19 22:07 PST",
+    "tweet_type": "blog_teaser",
+    "tweet_text": "DOD calling Anthropic a security risk over Russian iPhone hacks? I think it's accelerating AI pivots to enterprise-safe players. Four ways this mess is reshaping the field.\nhttps://datadripco.com/posts/dod-labels-anthropic-a-security-risk-4-ways-russian-iphone-hacks-are-accelerating-ai-enterprise-pivots/",
+    "use_image": false,
+    "image_prompt": "",
+    "promoted_url": "https://datadripco.com/posts/dod-labels-anthropic-a-security-risk-4-ways-russian-iphone-hacks-are-accelerating-ai-enterprise-pivots/",
+    "tweet_id": "2034859238883745893"
   }
 ]

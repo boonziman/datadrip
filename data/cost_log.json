@@ -5352,5 +5352,42 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1388
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-19",
+    "start_time": "2026-03-19T22:06:15.019162-07:00",
+    "end_time": "2026-03-19T22:07:03.206047-07:00",
+    "duration_seconds": 48.2,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2852,
+        "output_tokens": 163,
+        "cost": 0.03504
+      },
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 2867,
+        "output_tokens": 151,
+        "cost": 0.03471
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "DOD calling Anthropic a security risk over Russian iPhone hacks? I think it's accelerating AI pivots to enterprise-safe players. Four ways this mess is reshaping the field.\nhttps://datadripco.com/posts/dod-labels-anthropic-a-security-risk-4-ways-russian-iphone-hacks-are-accelerating-ai-enterprise-pivots/",
+      "tweet_type": "blog_teaser",
+      "tweet_id": "2034859238883745893",
+      "had_image": false,
+      "promoted_url": "https://datadripco.com/posts/dod-labels-anthropic-a-security-risk-4-ways-russian-iphone-hacks-are-accelerating-ai-enterprise-pivots/"
+    },
+    "totals": {
+      "input_tokens": 5719,
+      "output_tokens": 314,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0698
+    }
   }
 ]
