@@ -885,5 +885,14 @@
     "image_prompt": "A realistic photograph of a modern tech conference stage with Nvidia's logo projected on a large screen, showing abstract AI agent diagrams, taken from a 35mm lens with soft stage lighting from above, shallow depth of field focusing on the screen, neutral color palette with green accents, conference attendees blurred in the foreground.",
     "promoted_url": "",
     "tweet_id": "2035044396828106994"
+  },
+  {
+    "timestamp": "2026-03-20 12:52 PST",
+    "tweet_type": "engagement",
+    "tweet_text": "Nvidia's new AI agents sound like they'll automate half your workflow. Anyone already using something similar to ditch manual tasks? What broke for you without it?",
+    "use_image": true,
+    "image_prompt": "A realistic photograph of a cluttered office desk with a laptop screen showing code and AI interface elements, a coffee mug nearby, soft natural light from a window on the left, shot with a 50mm lens, shallow depth of field focusing on the screen, neutral color palette with blues and grays.",
+    "promoted_url": "",
+    "tweet_id": "2035082117458121200"
   }
 ]

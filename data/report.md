@@ -9,12 +9,44 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 20) | 3 | **$1.4309** |
-| 📆 This Week (since Mar 16) | 27 | **$8.8976** |
-| 🗓️ This Month (March 2026) | 123 | **$31.5480** |
-| 🏦 Overall All-Time | 123 | **$31.5480** |
+| 📅 Today (March 20) | 4 | **$1.5362** |
+| 📆 This Week (since Mar 16) | 28 | **$9.0029** |
+| 🗓️ This Month (March 2026) | 124 | **$31.6533** |
+| 🏦 Overall All-Time | 124 | **$31.6533** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 🐦 Tweet Bot — March 20, 2026 at 12:52 PM PST
+
+**Status:** ✅ Everything ran successfully
+**Total time:** 20.0 seconds
+**Estimated cost:** $0.1053
+
+### What happened (step by step)
+
+1. **12:52:21 PST** — Tweet bot started
+2. **12:52:21 PST** — API keys validated
+3. **12:52:41 PST** — Tweet posted and logged (type: engagement, ID: 2035082117458121200)
+4. **12:52:41 PST** — Tweet bot finished
+
+### Details
+
+**Tweet posted:**
+> Nvidia's new AI agents sound like they'll automate half your workflow. Anyone already using something similar to ditch manual tasks? What broke for you without it?
+
+**Tweet type:** engagement
+**Tweet ID:** 2035082117458121200
+**Image attached:** Yes
+
+### Cost breakdown
+
+What we paid for (estimated):
+
+- **Tweet Generation** — sent 3,025 tokens, got back 127 tokens — **$0.0353**
+- **Image generation** — 1 image created — **$0.0700**
+
+**💰 Total estimated cost: $0.1053**
 
 ---
 ## 🐦 Tweet Bot — March 20, 2026 at 10:22 AM PST

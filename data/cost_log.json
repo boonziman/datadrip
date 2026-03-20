@@ -5572,5 +5572,42 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1057
     }
+  },
+  {
+    "bot": "tweet",
+    "date": "2026-03-20",
+    "start_time": "2026-03-20T12:52:21.727309-07:00",
+    "end_time": "2026-03-20T12:52:41.688835-07:00",
+    "duration_seconds": 20.0,
+    "api_calls": [
+      {
+        "label": "Tweet Generation",
+        "model": "grok-4",
+        "input_tokens": 3025,
+        "output_tokens": 127,
+        "cost": 0.03533
+      },
+      {
+        "label": "Image Generation (success)",
+        "model": "grok-imagine-image",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost": 0.07,
+        "success": true
+      }
+    ],
+    "errors": [],
+    "details": {
+      "tweet_text": "Nvidia's new AI agents sound like they'll automate half your workflow. Anyone already using something similar to ditch manual tasks? What broke for you without it?",
+      "tweet_type": "engagement",
+      "tweet_id": "2035082117458121200",
+      "had_image": true
+    },
+    "totals": {
+      "input_tokens": 3025,
+      "output_tokens": 127,
+      "images_generated": 1,
+      "estimated_cost_usd": 0.1053
+    }
   }
 ]
