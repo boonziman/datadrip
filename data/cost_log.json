@@ -5609,5 +5609,30 @@
       "images_generated": 1,
       "estimated_cost_usd": 0.1053
     }
+  },
+  {
+    "bot": "blog",
+    "date": "2026-03-21",
+    "start_time": "2026-03-21T06:42:12.679297-07:00",
+    "end_time": "2026-03-21T06:42:14.294356-07:00",
+    "duration_seconds": 1.6,
+    "api_calls": [],
+    "errors": [
+      "AI Pass 1 failed (HTTP 429)",
+      "AI post was skipped",
+      "Crypto Pass 1 failed (HTTP 429)",
+      "Crypto post was skipped",
+      "Tech Pass 1 failed (HTTP 429)",
+      "Tech post was skipped"
+    ],
+    "details": {
+      "posts_generated": "0 of 3 posts generated successfully"
+    },
+    "totals": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "images_generated": 0,
+      "estimated_cost_usd": 0.0
+    }
   }
 ]
