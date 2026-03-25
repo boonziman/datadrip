@@ -9,12 +9,49 @@
 
 | Period | Bot Runs | Estimated Cost |
 |--------|----------|----------------|
-| 📅 Today (March 24) | 1 | **$0.0000** |
-| 📆 This Week (since Mar 23) | 2 | **$0.0000** |
-| 🗓️ This Month (March 2026) | 128 | **$31.6533** |
-| 🏦 Overall All-Time | 128 | **$31.6533** |
+| 📅 Today (March 25) | 1 | **$0.0000** |
+| 📆 This Week (since Mar 23) | 3 | **$0.0000** |
+| 🗓️ This Month (March 2026) | 129 | **$31.6533** |
+| 🏦 Overall All-Time | 129 | **$31.6533** |
 
 *Recalculated automatically on every bot run. Includes tweet bot and blog bot costs.*
+
+---
+## 📝 Blog Bot — March 25, 2026 at 07:18 AM PST
+
+**Status:** ⚠️ 6 error(s) occurred
+**Total time:** 1.0 seconds
+**Estimated cost:** $0.0000
+
+### What happened (step by step)
+
+1. **07:18:03 PST** — Blog bot started — generating 3 posts (AI, Crypto, Tech)
+2. **07:18:03 PST** — Starting AI post generation
+3. **07:18:03 PST** — Fetched 8 RSS articles for AI
+4. **07:18:03 PST** — ❌ ERROR: AI Pass 1 failed (HTTP 429)
+5. **07:18:03 PST** — ❌ ERROR: AI post was skipped
+6. **07:18:03 PST** — Starting Crypto post generation
+7. **07:18:04 PST** — Fetched 8 RSS articles for Crypto
+8. **07:18:04 PST** — ❌ ERROR: Crypto Pass 1 failed (HTTP 429)
+9. **07:18:04 PST** — ❌ ERROR: Crypto post was skipped
+10. **07:18:04 PST** — Starting Tech post generation
+11. **07:18:04 PST** — Fetched 8 RSS articles for Tech
+12. **07:18:04 PST** — ❌ ERROR: Tech Pass 1 failed (HTTP 429)
+13. **07:18:04 PST** — ❌ ERROR: Tech post was skipped
+14. **07:18:04 PST** — Blog bot finished
+
+### Details
+
+**Posts generated:** 0 of 3 posts generated successfully
+
+### ⚠️ Errors
+
+- ❌ AI Pass 1 failed (HTTP 429)
+- ❌ AI post was skipped
+- ❌ Crypto Pass 1 failed (HTTP 429)
+- ❌ Crypto post was skipped
+- ❌ Tech Pass 1 failed (HTTP 429)
+- ❌ Tech post was skipped
 
 ---
 ## 📝 Blog Bot — March 24, 2026 at 07:19 AM PST
