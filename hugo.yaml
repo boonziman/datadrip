@@ -1,6 +1,6 @@
 baseURL: 'https://datadripco.com/'
 languageCode: 'en-us'
-title: 'Datadripco'
+title: 'Datadripco | Daily AI, Crypto & Tech News'
 theme: 'PaperMod'
 paginate: 6
 enableRobotsTXT: true

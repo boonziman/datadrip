@@ -127,4 +127,29 @@
 </script>
 {{- end }}{{/* .IsPage end */}}
 
+{{- /* FAQPage schema — reads structured faq: frontmatter added by the blog bot */ -}}
+{{- if .IsPage }}
+{{- with .Params.faq }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{- range $i, $faq := . -}}
+    {{- if $i }},{{ end }}
+    {
+      "@type": "Question",
+      "name": {{ .q | plainify | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ .a | plainify | jsonify }}
+      }
+    }
+    {{- end }}
+  ]
+}
+</script>
+{{- end }}
+{{- end }}
+
 {{- end -}}

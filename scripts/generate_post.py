@@ -491,6 +491,57 @@ Current ({len(desc_text)} chars): \"{desc_text}\""""
                     output_tokens=50,
                 )
 
+    # === TAG SANITIZATION ===
+    # Prevent junk tags: sentences, data points, markdown, or overly long strings
+    tag_block = re.search(r'(tags:\s*\n(?:\s*-\s*.+\n?)+)', final_content)
+    if tag_block:
+        original_block = tag_block.group(1)
+        tag_lines = re.findall(r'^\s*-\s*(.+)$', original_block, re.MULTILINE)
+        clean_tags = []
+        for t in tag_lines:
+            t = t.strip().strip('"').strip("'")
+            # Skip tags that are too long (likely sentences), contain markdown,
+            # or have data-like patterns (numbers with units, colons with stats)
+            if len(t) > 40:
+                continue
+            if re.search(r'\*\*|\[|\]|\d+%|\$\d|:\s', t):
+                continue
+            if len(t.split()) > 5:
+                continue
+            clean_tags.append(t)
+        if clean_tags:
+            new_block = 'tags:\n' + ''.join(f'  - {t}\n' for t in clean_tags)
+            final_content = final_content.replace(original_block, new_block)
+            if len(clean_tags) < len(tag_lines):
+                print(f"   🏷️  Cleaned tags: removed {len(tag_lines) - len(clean_tags)} junk tag(s)")
+
+    # === FAQ SCHEMA EXTRACTION ===
+    # Extract FAQ Q&A pairs from markdown body and add as structured frontmatter.
+    # The Hugo template reads this to output FAQPage JSON-LD schema, which can
+    # earn expandable FAQ results in Google search.
+    faq_section = re.search(r'## FAQ\s*\n(.*?)(?=\n## |\Z)', final_content, re.DOTALL)
+    if faq_section:
+        faq_text = faq_section.group(1)
+        faq_pairs = re.findall(r'\*\*(.+?)\*\*\s*\n(.+?)(?=\n\*\*|\n## |\Z)', faq_text, re.DOTALL)
+        if faq_pairs:
+            faq_yaml = 'faq:\n'
+            for q, a in faq_pairs:
+                q = q.strip().rstrip('?').strip() + '?'
+                a = re.sub(r'\s+', ' ', a.strip())  # flatten to single line
+                # Remove any markdown links but keep text
+                a = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', a)
+                # Escape double quotes for YAML
+                q = q.replace('"', '\\"')
+                a = a.replace('"', '\\"')
+                if len(q) > 10 and len(a) > 10:  # skip empty/broken pairs
+                    faq_yaml += f'  - q: "{q}"\n    a: "{a}"\n'
+            # Inject into frontmatter (before the closing ---)
+            parts = final_content.split('---', 2)
+            if len(parts) == 3:
+                final_content = '---' + parts[1] + faq_yaml + '---' + parts[2]
+                faq_count = faq_yaml.count('  - q:')
+                print(f"   📋 Extracted {faq_count} FAQ pair(s) into frontmatter for schema")
+
     # Force correct frontmatter and date
     today = datetime.now(_PST).strftime("%Y-%m-%d")
     final_content = re.sub(r'date:\s*\d{4}-\d{2}-\d{2}', f'date: {today}', final_content)
