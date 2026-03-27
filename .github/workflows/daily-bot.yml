@@ -1,8 +1,8 @@
 name: Daily Datadripco Post Generator
 
 on:
-  schedule:
-    - cron: '0 13 * * *'      # 5:00 AM PST — optimal news time
+  # schedule:
+  #   - cron: '0 13 * * *'    # 5:00 AM PST — PAUSED for SEO fixes
   workflow_dispatch:           # Allows you to test manually anytime
 
 permissions:

@@ -340,7 +340,7 @@ INTERNAL LINKING (MANDATORY):
 Requirements for every post (2026 context):
 - CRITICAL: The main body content (everything AFTER the frontmatter closing ---) must be AT LEAST 2,000 words and ideally 2,200-2,500 words. This is a HARD minimum. Write long, detailed, in-depth content. Do NOT be brief. Expand every section with analysis, examples, data, and predictions. If in doubt, write MORE.
 - Extremely strong hook in the first 2-3 sentences — match the opener to THIS article's unique tone.
-- 3–7 subheadings (H2) — vary the number and rhythm per post. Not every post needs the same count or pacing.
+- HEADING HIERARCHY (CRITICAL FOR SEO): Use EXACTLY two hash marks (##) for all section headings. NEVER use ### for main sections. The page title is already H1, so your sections MUST be ## (H2). Write it as: ## Section Title. This is non-negotiable — Google penalizes pages that skip heading levels (H1 → H3). Use 3–7 H2 subheadings — vary the number and rhythm per post.
 - Bullet lists, short paragraphs, bold key points for scannability
 - Deep original analysis: risks, opportunities, future implications, your personal take, actionable steps
 - ALWAYS include a FAQ section at the bottom of every post (before the CTA) with 3–5 relevant questions and concise answers. This is mandatory for SEO and reader engagement. Comparison tables are optional — only include one when it genuinely adds value.
@@ -425,6 +425,7 @@ STEP 2 — QUALITY FIXES:
 2. META DESCRIPTION: Must sound natural and conversational, not templated.
 3. FAQ: Must have 3–5 questions near the bottom before the CTA. Add if missing.
 4. STRUCTURE: Vary section order and pacing. No rigid templates.
+5. HEADING LEVELS: ALL section headings MUST use exactly ## (two hash marks, H2). If any heading uses ### (three hashes, H3), change it to ## (two hashes). This is critical for SEO — the page title is H1, so sections must be H2. Do NOT skip heading levels.
 
 STEP 3 — OUTPUT RULES:
 - Output ONLY the improved full Hugo Markdown post

@@ -17,7 +17,7 @@ In an era where AI's appetite for computational power is outpacing our planet's 
 
 This isn't mere speculation—it's grounded in the realities of exploding AI demands and regulatory hurdles. As data centers on Earth strain against power grids and environmental regulations, space offers a tantalizing alternative: unlimited solar energy, zero land costs, and scalability unbound by geography. Yet, as Tesla's FSD saga reminds us, cutting-edge tech must navigate safety and oversight pitfalls. Similarly, Anori's mission to streamline city planning highlights AI's role in everyday efficiencies. In the sections ahead, we'll dissect these intersections, uncovering how orbital compute could be the catalyst for breakthroughs, while addressing the thorny challenges that could ground it all.
 
-### Unpacking the Tech: What Makes Gravitas a Powerhouse for AI
+## Unpacking the Tech: What Makes Gravitas a Powerhouse for AI
 
 At its core, K2's Gravitas satellite represents a paradigm shift in computing infrastructure. Equipped with radiation-hardened processors from AMD delivering up to 10 teraflops of performance, this solar-powered marvel is engineered to handle intensive AI workloads directly in orbit. Unlike traditional satellites focused on communication or imaging, Gravitas integrates server-grade hardware with laser-based downlinks capable of 100 Gbps speeds, enabling near-real-time data transfer back to Earth. According to K2's whitepaper, this setup could reduce latency for global AI operations by leveraging orbital positioning, bypassing the bottlenecks of terrestrial fiber optics.
 
@@ -27,7 +27,7 @@ Now, layer in Tesla's FSD challenges. The NHTSA's expanded investigation, as rep
 
 Alphabet's Anori spinout adds another dimension. Emerging from X lab, Anori employs AI to unify disparate stakeholders in urban planning—developers, regulators, and communities—cutting through bureaucratic delays that often stretch years. TechCrunch highlights how its platform uses machine learning to forecast compliance issues, resolving them in weeks. Integrating with space compute could elevate this: orbital data feeds from satellites like Gravitas might provide hyper-accurate environmental simulations, modeling urban expansion with variables like climate change impacts or traffic patterns. This synergy isn't hypothetical; it's akin to how Google's Project Loon once aimed to beam internet from the skies, now evolved into tools for smarter cities.
 
-### Five Transformative Ways Gravitas Supercharges AI Landscapes
+## Five Transformative Ways Gravitas Supercharges AI Landscapes
 
 Diving deeper, here are five key ways K2's satellite could reshape AI amid these headlines:
 
@@ -41,7 +41,7 @@ Diving deeper, here are five key ways K2's satellite could reshape AI amid these
 
 5. **Integration with Emerging Tech Ecosystems**: Linking to media shifts, like Paramount's $110B Warner Bros. Discovery merger, space compute could power AI-driven content personalization. Forrester predicts a $50B market by 2030; orbital servers might crunch viewer analytics in real-time, enhancing streaming without Earth-bound delays.
 
-### Navigating the Risks: Orbital Hazards and Ethical Quandaries
+## Navigating the Risks: Orbital Hazards and Ethical Quandaries
 
 Ambition in space comes with gravity-defying risks. The Kessler syndrome—where debris cascades into chain reactions—looms large, with NASA's tracking showing over 27,000 pieces of orbital junk growing 5% yearly. Gravitas, with its high-power operations, could contribute to electromagnetic interference, disrupting other satellites as noted in SpaceNews. Cybersecurity is another frontier: a hacked orbital data center could paralyze AI-dependent sectors, echoing the SolarWinds incident but amplified in scope. Experts from the Center for Strategic and International Studies warn that quantum-resistant encryption, while promising, remains untested at this scale.
 
@@ -49,7 +49,7 @@ Parallels with Tesla are stark. Just as FSD's failures stem from over-reliance o
 
 On the flip side, opportunities abound. A McKinsey report suggests offloading 20% of AI compute to space could save industries 15-25% in costs. For urban planning, Anori integrated with Gravitas might prevent billion-dollar project overruns, as seen in real-world cases like Boston's Big Dig delays.
 
-### Broader Ties: Media, Privacy, and Tech Pivots
+## Broader Ties: Media, Privacy, and Tech Pivots
 
 Zooming out, Gravitas intersects with media consolidations. The Paramount-Warner merger, valued at $110B, aims to leverage AI for hit prediction and personalization. Space compute could supercharge this by handling petabyte-scale data without latency, enabling real-time ad targeting. Tubi's partnership with TikTok for creator-driven content further illustrates: AI analytics on short-form video could thrive in orbit, processing trends faster than ever.
 
@@ -57,7 +57,7 @@ Privacy plays a pivotal role here. Cloaked's expansion into enterprise tools add
 
 We've seen tech pivots elsewhere, like the shift from EVs to AI defense, where space compute could enhance simulations for military applications, boosting reliability in chaotic environments akin to Tesla's fog-bound woes.
 
-### Bold Predictions and Actionable Takeaways
+## Bold Predictions and Actionable Takeaways
 
 Looking ahead, I boldly predict that by 2028, space compute will capture 15% of global AI workloads, fueled by a 30% annual surge in demand (OpenAI data). Tesla might rebound with "FSD 2.0," incorporating orbital simulations to slash accident rates by 25%, per projections from Carnegie Mellon's robotics lab. Anori could hit unicorn status by integrating space data, revolutionizing smart cities and averting planning disasters like those in overbuilt flood zones.
 
@@ -69,7 +69,7 @@ Deeper data points: A Morgan Stanley forecast pegs the space economy at $1 trill
 
 Risks evolve too: Potential EU probes into Tesla's FSD could mirror U.S. actions, while China's Tiangong station advances rival space compute, per state media.
 
-### FAQ
+## FAQ
 
 **How could Gravitas impact everyday AI applications beyond big tech?**  
 By democratizing access to high-powered compute, small teams could train models for apps like personalized health AI or local traffic predictors, reducing costs and barriers to entry.

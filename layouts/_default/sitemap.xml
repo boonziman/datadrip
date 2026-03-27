@@ -2,7 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   {{- range .Data.Pages }}
+  {{- /* Exclude thin/utility pages from sitemap to focus crawl budget */ -}}
   {{- if not (hasPrefix .RelPermalink "/tags/") }}
+  {{- if not (eq .RelPermalink "/search/") }}
+  {{- if not (eq .RelPermalink "/thank-you/") }}
+  {{- if not (eq .RelPermalink "/categories/") }}
+  {{- /* Skip paginator pages (page/2, page/3, etc.) */ -}}
+  {{- if not (in .RelPermalink "/page/") }}
   <url>
     <loc>{{ .Permalink }}</loc>
     {{- if not .Lastmod.IsZero }}
@@ -15,6 +21,10 @@
     <priority>{{ .Sitemap.Priority }}</priority>
     {{- end }}
   </url>
+  {{- end }}
+  {{- end }}
+  {{- end }}
+  {{- end }}
   {{- end }}
   {{- end }}
 </urlset>

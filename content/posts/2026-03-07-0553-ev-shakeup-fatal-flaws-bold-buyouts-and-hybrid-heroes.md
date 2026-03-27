@@ -32,15 +32,15 @@ Delving into risks and opportunities, Rivian's incident could amplify calls for 
 
 Expanding on future scenarios, imagine a 2030 where Rivian uses blockchain for transparent safety audits, Life EV dominates app-based transport in megacities like Tokyo, and hybrid tech powers everything from family sedans to racing circuits. Data from the International Energy Agency suggests global EV sales could plateau at 30% without hybrid support, emphasizing their role in transition. Expert consensus, including from Tesla alumni now at hybrid startups, points to a blended future where pure EVs shine in urban settings, but hybrids conquer highways.
 
-### The Broader Ecosystem: Tariffs, Tech Hacks, and Sustainability Shifts
+## The Broader Ecosystem: Tariffs, Tech Hacks, and Sustainability Shifts
 
 Tariffs remain a wildcard, with Nintendo's push for refunds on Switch imports mirroring EV struggles—Chinese batteries face 25% duties, per the U.S. Trade Representative, inflating prices by 10-15%. A win here could save the industry $2 billion annually, fueling R&D. Meanwhile, hacks like DJI's expose IoT risks; for EVs, this means fortifying over-the-air updates to prevent fleet-wide disruptions. Sustainability-wise, hybrids reduce rare earth dependency, aligning with circular economy goals—recycling rates for hybrid batteries could reach 80% by 2030, versus 50% for pure EVs.
 
-### Consumer Perspectives and Market Dynamics
+## Consumer Perspectives and Market Dynamics
 
 From a buyer's viewpoint, these shifts empower choices: Test hybrids for versatility, or opt for e-bikes for city life. Market data shows 60% of potential EV buyers hesitate due to charging woes, per a 2025 Consumer Reports survey, bolstering hybrids' appeal.
 
-### FAQ
+## FAQ
 
 **What's driving the OSHA investigation at Rivian?**  
 It's centered on a fatal accident involving loading equipment, highlighting safety gaps in EV production scaling, with potential for fines and reforms.

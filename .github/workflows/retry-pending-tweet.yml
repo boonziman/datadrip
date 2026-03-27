@@ -5,8 +5,8 @@ name: Retry Pending Tweet
 # If not found, exits instantly — no cost, no work done.
 
 on:
-  schedule:
-    - cron: '*/15 * * * *'   # every 15 minutes — checks for pending tweet, exits in 10s if none
+  # schedule:
+  #   - cron: '*/15 * * * *' # PAUSED for SEO fixes
   workflow_dispatch:         # manual trigger for testing
 
 permissions:

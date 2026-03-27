@@ -1,5 +1,15 @@
-<!-- Noindex tag pages — prevents Google from indexing thin tag listing pages -->
+<!-- Noindex thin/low-value pages to focus Google's crawl budget on real content -->
 {{- if eq .Section "tags" }}
+<meta name="robots" content="noindex, follow">
+{{- end }}
+
+{{- /* Noindex pagination pages (/page/2/, /page/3/, etc.) — thin listing content */ -}}
+{{- if in .RelPermalink "/page/" }}
+<meta name="robots" content="noindex, follow">
+{{- end }}
+
+{{- /* Noindex utility pages that don't need search visibility */ -}}
+{{- if or (eq .RelPermalink "/search/") (eq .RelPermalink "/thank-you/") }}
 <meta name="robots" content="noindex, follow">
 {{- end }}
 
