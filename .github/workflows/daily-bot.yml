@@ -89,3 +89,10 @@ jobs:
         run: |
           curl -s "https://www.google.com/ping?sitemap=https://datadripco.com/sitemap.xml" || true
           echo "✅ Pinged Google sitemap"
+
+      - name: Ping Bing IndexNow
+        if: steps.commit.outputs.new_posts == 'true'
+        run: |
+          # Notify Bing/Yandex/DuckDuckGo about new content via IndexNow
+          curl -s "https://api.indexnow.org/indexnow?url=https://datadripco.com&key=9dbe156a43d449c38434fe21472a08be&keyLocation=https://datadripco.com/9dbe156a43d449c38434fe21472a08be.txt&urlList=https://datadripco.com/sitemap.xml" || true
+          echo "✅ Pinged Bing IndexNow"
