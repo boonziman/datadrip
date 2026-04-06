@@ -12,6 +12,17 @@ tags:
   - OpenAI backlash
 description: "OpenAI's latest deal with the Department of Defense has users ditching ChatGPT in droves, sending uninstalls skyrocketing and giving a huge boost to competitors like Claude. Meanwhile, startups like Cursor are hitting massive revenue milestones, and Stripe's turning AI expenses into smart profits. Let's dive into how this is shaking up the future of tech."
 featuredImage: "images/posts/2026-03-03-1414-ai-backlash-hits-openai-hard-as-startups.jpg"
+faq:
+  - q: 'Why has the OpenAI-DoD deal caused such a massive user backlash?'
+    a: 'The partnership raises alarms about AI''s potential role in military operations, privacy breaches, and ethical lapses, resulting in a 295% uninstall surge as users migrate to more transparent alternatives like Claude.'
+  - q: 'What''s driving Cursor''s jump to $2 billion in revenue?'
+    a: 'Their specialized focus on coding efficiency, combined with timely positioning amid ethical concerns over generalist tools, has attracted enterprise clients and doubled their growth in months.'
+  - q: 'How does Stripe''s new feature help AI businesses make money?'
+    a: 'It enables seamless tracking and markup of API costs from models like GPT, converting operational expenses into profitable billing streams with real-time metering.'
+  - q: 'What makes Google''s Live Search a game-changer for smart homes?'
+    a: 'By using Gemini to provide real-time, descriptive analysis of camera feeds, it elevates home security from alerts to intelligent insights, though it sparks privacy debates.'
+  - q: 'Could this backlash permanently damage OpenAI''s dominance?'
+    a: 'While it erodes trust short-term, OpenAI''s resources might enable a rebound through reforms, but persistent issues could solidify gains for rivals in the long run.'
 ---
 
 ChatGPT's user base took a serious hit almost instantly—uninstalls jumped a staggering 295% right after the Department of Defense partnership news dropped. This isn't some minor glitch; it's a full-blown user uprising. People are switching to options like Claude in record numbers, while innovative startups such as Cursor are pulling in billions in revenue without breaking a sweat. On top of that, Stripe's rolling out tools that flip AI costs into actual earnings, and Google's pushing Gemini further into our everyday lives by making smart homes even smarter with real-time camera analysis. We're right in the middle of AI's turbulent evolution, where ethical dilemmas are colliding head-on with groundbreaking advancements, and the real winners are emerging from unexpected corners.

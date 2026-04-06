@@ -14,6 +14,17 @@ tags:
   - AI market volatility
 description: "Buckle up for a wild ride through AI's latest chaos—Trump's bold move to ban Anthropic from government deals, OpenAI's messy insider trading fallout, and Wall Street's panic over a simple thought experiment. We're breaking it all down and exploring what it signals for the tech world's future."
 featuredImage: "images/posts/2026-02-28-1905-ais-turbulent-week-bans-scandals-and-market-jitter.jpg"
+faq:
+  - q: 'What exactly prompted Trump''s executive order against Anthropic?'
+    a: 'The order followed failed talks with the Pentagon, where Anthropic''s refusal to ease restrictions on military AI uses led to its labeling as a supply chain risk, amid broader U.S. efforts to counter China''s AI advancements.'
+  - q: 'How might OpenAI''s insider trading issue impact prediction markets?'
+    a: 'It could lead to tighter regulations on these platforms, requiring enhanced verification for users in tech roles, while highlighting the need for AI companies to enforce strict no-trading policies on internal info.'
+  - q: 'What''s driving Wall Street''s extreme reactions to AI news?'
+    a: 'A mix of overhype, speculative fears about disruption, and real risks like regulations or ethical lapses create amplified volatility, as investors grapple with AI''s unproven long-term value.'
+  - q: 'Will these developments hinder overall AI progress?'
+    a: 'Short-term setbacks like funding dips are possible, but they may accelerate ethical innovations, leading to more resilient and widely adopted technologies in the long run.'
+  - q: 'How can individuals in the AI field protect themselves amid this uncertainty?'
+    a: 'Stay informed on regulations, prioritize ethical training, and diversify skills into emerging areas like AI sustainability to remain adaptable.'
 ---
 
 In a single whirlwind week, the AI landscape has been rocked by executive orders, corporate firings, and stock market spasms that expose the industry's fragile underbelly. President Trump's push to exclude Anthropic from U.S. government contracts has ignited debates on ethics versus national security, while OpenAI's swift dismissal of an employee for insider trading on prediction markets highlights the perils of blending cutting-edge tech with financial speculation. Add to that Wall Street's overreaction to a speculative blog post, and you've got a perfect storm signaling that AI's era of unchecked enthusiasm is giving way to scrutiny and realism.

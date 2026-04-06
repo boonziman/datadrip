@@ -14,6 +14,15 @@ tags:
   - Tokenization
 description: "With Iran tensions spiking oil prices and strengthening the dollar, Bitcoin's dipping hard right now—but AI-driven deflation, tokenized assets, and stablecoin expansions might just propel it to $11 million by 2036. Let's break it all down."
 featuredImage: "images/posts/2026-03-03-1409-geopolitics-crushes-crypto-bitcoins-path.jpg"
+faq:
+  - q: 'How is the Iran conflict directly impacting Bitcoin and other cryptos?'
+    a: 'Escalating tensions have driven up oil prices and strengthened the dollar, causing an 8% Bitcoin drop and pushing Ethereum toward lower supports. It''s a liquidity squeeze, but historical patterns suggest recoveries follow.'
+  - q: 'Is Joe Burnett''s $11 million Bitcoin prediction realistic?'
+    a: 'It''s bold, based on AI deflation leading to loose monetary policies that favor scarce assets like Bitcoin. Supported by productivity data, though skeptics highlight potential inflationary risks from AI energy use.'
+  - q: 'What role will tokenized assets play in crypto''s future?'
+    a: 'Approvals like Ondo''s in Abu Dhabi enable on-chain trading of real-world assets, attracting traditional capital and providing hedges against geopolitical volatility, potentially growing the market to $10 trillion by 2030.'
+  - q: 'How do stablecoin expansions counter global economic pressures?'
+    a: 'Initiatives like Visa''s cards facilitate low-cost, borderless payments, offering stability in inflationary regions and reducing reliance on traditional finance amid conflicts.'
 ---
 
 # Geopolitics Crushes Crypto: Bitcoin's Path to $11M

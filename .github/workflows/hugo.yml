@@ -40,7 +40,7 @@ jobs:
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
-        run: hugo --minify
+        run: hugo --minify --cleanDestinationDir --gc
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -60,3 +60,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Ping Google with updated sitemap
+        if: success()
+        run: |
+          curl -s "https://www.google.com/ping?sitemap=https://datadripco.com/sitemap.xml" || true
+          echo "✅ Pinged Google sitemap"

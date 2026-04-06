@@ -139,10 +139,10 @@
     {{- if $i }},{{ end }}
     {
       "@type": "Question",
-      "name": {{ .q | plainify | jsonify }},
+      "name": {{ .q | plainify }},
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": {{ .a | plainify | jsonify }}
+        "text": {{ .a | plainify }}
       }
     }
     {{- end }}

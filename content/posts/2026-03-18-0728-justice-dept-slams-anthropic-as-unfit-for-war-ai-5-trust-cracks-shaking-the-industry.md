@@ -12,6 +12,15 @@ tags:
 description: "Ever wonder why trust in AI feels like it's crumbling? From the Justice Department's takedown of Anthropic over military limits to Google's self-looping searches and scam artists hijacking real faces, we're unpacking five major trust issues and what they signal for the future of tech."
 slug: "justice-dept-slams-anthropic-as-unfit-for-war-ai-5-trust-cracks-shaking-the-industry"
 featuredImage: "images/posts/2026-03-18-0728-justice-dept-slams-anthropic-as-unfit-fo.jpg"
+faq:
+  - q: 'Q: How might the Anthropic lawsuit influence other AI companies?'
+    a: 'A: It could pressure firms to relax ethical constraints for government contracts, or inspire alliances for stronger advocacy against overreach.'
+  - q: 'Q: What steps can users take to avoid Google''s search biases?'
+    a: 'A: Opt for privacy-focused alternatives, use tools to filter results, and cross-reference with multiple sources for balanced info.'
+  - q: 'Q: How are AI scams evolving, and what''s the best defense?'
+    a: 'A: They''re incorporating more realistic deepfakes; defenses include education on red flags, AI detection apps, and reporting suspicious activity promptly.'
+  - q: 'Q: Can positive AI developments in biotech offset the trust issues?'
+    a: 'A: Absolutely—they showcase ethical potential, but only if scaled with robust safeguards to prevent misuse in other sectors.'
 ---
 
 The foundations of AI are trembling under the weight of mounting skepticism, and recent events are accelerating the quake. When the Justice Department publicly deems Anthropic unfit for military applications, it's not just a headline—it's a clarion call exposing vulnerabilities across the entire ecosystem. From ethical standoffs with governments to manipulative search algorithms and exploitative scams, these issues are interconnected, challenging the very reliability of AI in our daily lives. Drawing from years of observing AI's evolution at Datadripco, I've seen promise turn to peril, and this moment feels like a crossroads where innovation must confront accountability head-on.

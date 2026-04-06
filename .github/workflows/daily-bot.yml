@@ -22,6 +22,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive   # In case you ever add any
+          fetch-depth: 0          # full history for accurate git dates
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -67,7 +68,7 @@ jobs:
         if: steps.commit.outputs.new_posts == 'true'
         env:
           HUGO_ENVIRONMENT: production
-        run: hugo --minify
+        run: hugo --minify --cleanDestinationDir --gc
 
       - name: Setup Pages
         if: steps.commit.outputs.new_posts == 'true'
@@ -82,3 +83,9 @@ jobs:
       - name: Deploy to GitHub Pages
         if: steps.commit.outputs.new_posts == 'true'
         uses: actions/deploy-pages@v4
+
+      - name: Ping Google with updated sitemap
+        if: steps.commit.outputs.new_posts == 'true'
+        run: |
+          curl -s "https://www.google.com/ping?sitemap=https://datadripco.com/sitemap.xml" || true
+          echo "✅ Pinged Google sitemap"

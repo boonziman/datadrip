@@ -519,10 +519,10 @@ Current ({len(desc_text)} chars): \"{desc_text}\""""
     # Extract FAQ Q&A pairs from markdown body and add as structured frontmatter.
     # The Hugo template reads this to output FAQPage JSON-LD schema, which can
     # earn expandable FAQ results in Google search.
-    faq_section = re.search(r'## FAQ\s*\n(.*?)(?=\n## |\Z)', final_content, re.DOTALL)
+    faq_section = re.search(r'## (?:FAQ|Frequently Asked Questions)\s*\n(.*?)(?=\n## |\Z)', final_content, re.DOTALL)
     if faq_section:
         faq_text = faq_section.group(1)
-        faq_pairs = re.findall(r'\*\*(.+?)\*\*\s*\n(.+?)(?=\n\*\*|\n## |\Z)', faq_text, re.DOTALL)
+        faq_pairs = re.findall(r'\*\*(.+?)\*\*\s*\n?(.+?)(?=\n\*\*|\n## |\n\n|\Z)', faq_text, re.DOTALL)
         if faq_pairs:
             faq_yaml = 'faq:\n'
             for q, a in faq_pairs:
@@ -530,11 +530,13 @@ Current ({len(desc_text)} chars): \"{desc_text}\""""
                 a = re.sub(r'\s+', ' ', a.strip())  # flatten to single line
                 # Remove any markdown links but keep text
                 a = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', a)
-                # Escape double quotes for YAML
-                q = q.replace('"', '\\"')
-                a = a.replace('"', '\\"')
+                # Strip trailing CTA/boilerplate text
+                a = re.sub(r'\s*(?:What do you think|Drop a comment|Subscribe to|Share this|Let.s keep|If this|Sources?:).*$', '', a, flags=re.IGNORECASE|re.DOTALL)
+                # Escape single quotes for YAML single-quoted strings
+                q = q.replace("'", "''")
+                a = a.replace("'", "''")
                 if len(q) > 10 and len(a) > 10:  # skip empty/broken pairs
-                    faq_yaml += f'  - q: "{q}"\n    a: "{a}"\n'
+                    faq_yaml += f"  - q: '{q}'\n    a: '{a}'\n"
             # Inject into frontmatter (before the closing ---)
             parts = final_content.split('---', 2)
             if len(parts) == 3:

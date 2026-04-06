@@ -6,6 +6,15 @@ paginate: 6
 enableRobotsTXT: true
 enableGitInfo: true   # accurate lastmod dates for sitemap SEO
 
+# Use each post's date as lastmod (not bulk git commit timestamps).
+# This gives every page a unique lastmod in the sitemap, which Google needs
+# to trust the freshness signals.  Falls back to git only when no date exists.
+frontmatter:
+  lastmod:
+    - lastmod       # explicit lastmod in frontmatter wins
+    - date          # fall back to publish date (unique per post)
+    - :git          # last resort: git commit timestamp
+
 sitemap:
   changefreq: daily   # ideal for daily bot posts
   priority: 0.8
@@ -20,6 +29,7 @@ outputs:
 copyright: "© 2026 Datadripco. All rights reserved."
 
 params:
+  env: production      # ensures index,follow + OpenGraph + schema render in ALL builds (not just CI)
   description: "Datadripco — Daily original insights on AI, Crypto & Tech. Smart analysis, zero fluff."
   author: "Datadripco Team"
   keywords: ["AI news", "crypto news", "tech news", "artificial intelligence", "machine learning", "bitcoin", "ethereum", "grok", "blockchain", "tech trends", "ai trends", "crypto trends"]

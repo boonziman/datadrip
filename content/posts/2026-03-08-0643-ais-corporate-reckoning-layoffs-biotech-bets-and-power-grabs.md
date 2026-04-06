@@ -12,6 +12,17 @@ tags:
 description: "Ever wonder how AI is forcing tech giants to slash jobs, chase biotech breakthroughs, and hoard solar power? From Jack Dorsey's bold moves at Block to Meta's energy empire-building, we're diving into the gritty shifts reshaping the industry."
 slug: "ais-corporate-reckoning-layoffs-biotech-bets-and-power-grabs"
 featuredImage: "images/posts/2026-03-08-0643-ais-corporate-reckoning-layoffs-biotech-.jpg"
+faq:
+  - q: 'What drives Jack Dorsey''s vision of Block as an ''intelligence''?'
+    a: 'Dorsey aims to integrate AI deeply into operations, streamlining fintech, crypto, and other services for greater autonomy and efficiency, as shared in his WIRED interview.'
+  - q: 'How is AI transforming drug discovery at Converge Bio?'
+    a: 'By using machine learning to model molecular behaviors, Converge Bio accelerates candidate identification, cutting costs and time compared to conventional methods.'
+  - q: 'Why is Meta prioritizing solar energy acquisitions?'
+    a: 'To meet the massive power demands of AI data centers sustainably, reducing reliance on grids and mitigating environmental impacts through large-scale U.S. deals.'
+  - q: 'What risks do these AI corporate shifts pose to workers?'
+    a: 'They could lead to widespread job automation, skill mismatches, and morale issues, though opportunities arise in AI-specialized roles with proper upskilling.'
+  - q: 'How might AI investments like Converge Bio impact global health?'
+    a: 'They promise faster, cheaper therapies for diseases, but ethical challenges like data bias must be addressed to ensure equitable benefits.'
 ---
 
 In the high-stakes arena of tech innovation, seismic shifts are underway as AI redefines corporate strategies. Jack Dorsey's drastic layoffs at Block, framing it as a rebirth into "intelligence," highlight a ruthless pivot toward AI dominance. At the same time, AI-powered biotech startup Converge Bio secures a hefty $25 million from industry titans, signaling a gold rush in drug discovery. And Meta's aggressive acquisition of a gigawatt of solar energy underscores the escalating battle for resources to fuel AI's insatiable appetite. These developments aren't mere headlines; they're interconnected signals of a profound corporate reckoning in the AI era, where companies must adapt or perish. This isn't just about cutting costs or chasing trends—it's a fundamental overhaul of how businesses operate, invest, and sustain themselves amid unprecedented technological demands.
