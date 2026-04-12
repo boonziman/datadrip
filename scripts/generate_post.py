@@ -347,7 +347,7 @@ Requirements for every post (2026 context):
 - Cite 4–6 real sources with proper links
 - Strong CTA at the end (newsletter, share, comment, "What do you think?")
 - SEO: primary keyword in title/first paragraph, related terms throughout
-- Zero obvious AI patterns. BANNED PHRASES (never use these): "delve", "realm of", "pivotal shift", "the landscape", "deep dive", "in an era", "game-changer", "seismic shift", "in a world where", "buckle up", "double-edged sword", "paradigm shift", "in the whirlwind", "in the high-stakes", "wild ride", "in the ever-evolving", "make no mistake", "it's no secret", "at the intersection". Write like a sharp human journalist, not an AI.
+- Write like a sharp, experienced human journalist. Vary your sentence structure and rhythm naturally. Avoid overusing em dashes (—), and don't lean on dramatic filler phrases. Every sentence should carry real information or genuine opinion — not padding. Read it back and ask: would a real tech reporter actually write this?
 - NEVER give direct financial advice, specific portfolio allocations, or investment recommendations (e.g. "put 35% in crypto"). If the post discusses investing, trading, portfolios, or token picks, include a brief disclaimer near the relevant section: "*This is for entertainment and educational purposes only and is not financial advice. Always do your own research and consult a professional advisor.*"
 - ALWAYS create a FRESH, UNIQUE angle — never repeat topics or phrasing from previous posts
 

@@ -2,7 +2,7 @@ name: Daily Datadripco Post Generator
 
 on:
   schedule:
-    - cron: '0 13 * * *'      # 5:00 AM PST daily
+    # - cron: '0 13 * * *'      # 5:00 AM PST daily
   workflow_dispatch:           # Allows you to test manually anytime
 
 permissions:
