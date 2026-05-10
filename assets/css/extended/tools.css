@@ -1,0 +1,106 @@
+/* ============================================
+   Datadripco — Tools (SaaS Directory) section
+   ============================================ */
+
+.tools-page { background: var(--color-bg); }
+
+.tools-hero {
+  padding: var(--space-12) 0 var(--space-8);
+  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+.tools-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent); margin: 0 0 var(--space-3); }
+.tools-title { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 var(--space-4); }
+.tools-lead { font-size: 18px; line-height: 1.6; color: var(--color-text-secondary); max-width: 640px; margin: 0 0 var(--space-6); }
+
+.tools-search-wrap { max-width: 540px; }
+.tools-search {
+  width: 100%; padding: var(--space-4) var(--space-5); font-size: 15px;
+  border: 1px solid var(--color-border-strong); background: #fff;
+  font-family: inherit;
+}
+.tools-search:focus { outline: none; border-color: var(--color-text); }
+
+/* Section eyebrow */
+.section-eyebrow { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6); }
+.section-eyebrow > span:first-child { font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text); }
+.section-eyebrow .rule { flex: 1; height: 1px; background: var(--color-border); }
+
+/* Featured */
+.tools-featured { padding: var(--space-12) 0 var(--space-8); }
+.featured-grid {
+  display: grid; gap: var(--space-5);
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+}
+.featured-card {
+  position: relative; padding: var(--space-6);
+  background: #fff; border: 1px solid var(--color-border);
+  color: inherit; display: flex; flex-direction: column; min-height: 240px;
+  transition: all var(--transition-base);
+}
+.featured-card:hover { border-color: var(--color-text); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.featured-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4); }
+.featured-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); border: 1px solid var(--color-accent); padding: 3px 8px; }
+
+/* Tool cards (shared) */
+.tool-logo {
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 20px; color: #fff;
+}
+.tool-name { font-size: 18px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+.tool-tagline { font-size: 13px; color: var(--color-text-muted); margin: 2px 0 0; font-weight: 500; }
+.tool-desc { font-size: 14px; line-height: 1.55; color: var(--color-text-secondary); margin: var(--space-3) 0 var(--space-4); flex: 1; }
+.tool-meta { display: flex; gap: var(--space-3); align-items: center; justify-content: space-between; font-size: 12px; }
+.tool-cat { font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.tool-cat--ai-tools { color: var(--color-ai); }
+.tool-cat--developer-tools { color: var(--color-tech); }
+.tool-cat--productivity { color: #0a0a0a; }
+.tool-cat--design { color: #db2777; }
+.tool-cat--analytics { color: #0891b2; }
+.tool-cat--marketing { color: #ea580c; }
+.tool-cat--payments { color: #16a34a; }
+.tool-pricing { color: var(--color-text-muted); }
+
+/* Directory */
+.tools-directory { padding: var(--space-8) 0 var(--space-12); }
+.tools-filters { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-6); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+.filter-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: var(--space-2) var(--space-4); font-size: 13px; font-weight: 600;
+  background: #fff; border: 1px solid var(--color-border-strong); cursor: pointer;
+  font-family: inherit; transition: all var(--transition-fast); color: var(--color-text-secondary);
+}
+.filter-chip:hover { border-color: var(--color-text); color: var(--color-text); }
+.filter-chip.is-active { background: var(--color-text); color: #fff; border-color: var(--color-text); }
+.filter-chip .chip-count { opacity: 0.6; font-weight: 500; }
+
+.tools-grid {
+  display: grid; gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+}
+.tool-card {
+  display: flex; flex-direction: column; padding: var(--space-5);
+  background: #fff; border: 1px solid var(--color-border); color: inherit;
+  transition: all var(--transition-base);
+}
+.tool-card:hover { border-color: var(--color-text); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.tool-card-head { display: flex; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-2); }
+.tool-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: var(--space-3); }
+.tool-tag { font-size: 11px; padding: 2px 8px; background: #f5f5f5; color: var(--color-text-secondary); }
+
+.tools-empty { text-align: center; color: var(--color-text-muted); padding: var(--space-12) 0; }
+
+/* Submit CTA */
+.tools-submit { padding: var(--space-12) 0 var(--space-16); }
+.submit-card {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
+  padding: var(--space-8); background: var(--color-text); color: #fff; flex-wrap: wrap;
+}
+.submit-card h3 { font-size: 24px; font-weight: 800; margin: 0 0 var(--space-2); letter-spacing: -0.02em; }
+.submit-card p { color: rgba(255,255,255,0.7); margin: 0; max-width: 480px; }
+.submit-card .btn-primary { background: #fff; color: var(--color-text); border-color: #fff; }
+.submit-card .btn-primary:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+
+@media (max-width: 600px) {
+  .submit-card { flex-direction: column; align-items: flex-start; text-align: left; }
+}

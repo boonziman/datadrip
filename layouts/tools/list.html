@@ -1,0 +1,150 @@
+{{- define "main" }}
+{{- $tools := site.Data.tools.items }}
+{{- $featured := where $tools "featured" true }}
+{{- $cats := slice }}
+{{- range $tools }}{{ $cats = $cats | append .category }}{{ end }}
+{{- $cats = uniq $cats | sort }}
+<div class="tools-page">
+  <header class="tools-hero">
+    <div class="container">
+      {{- partial "breadcrumbs.html" . }}
+      <p class="tools-eyebrow">Curated Directory</p>
+      <h1 class="tools-title">Tools worth your stack.</h1>
+      <p class="tools-lead">{{ .Content | plainify }}</p>
+      <div class="tools-search-wrap">
+        <input type="search" id="tools-search" class="tools-search" placeholder="Search tools, categories, use cases…" aria-label="Search tools">
+      </div>
+    </div>
+  </header>
+
+  {{- if $featured }}
+  <section class="tools-featured">
+    <div class="container">
+      <div class="section-eyebrow"><span>Featured</span><span class="rule"></span></div>
+      <div class="featured-grid">
+        {{- range $featured }}
+        <a class="featured-card" href="{{ .url }}" target="_blank" rel="sponsored noopener" data-name="{{ .name }}" data-category="{{ .category }}" data-tags="{{ delimit .tags " " }}">
+          <div class="featured-card-head">
+            <div class="tool-logo" style="background:{{ .color | default "#0a0a0a" }}">{{ substr .name 0 1 }}</div>
+            <span class="featured-badge">Featured</span>
+          </div>
+          <h3 class="tool-name">{{ .name }}</h3>
+          <p class="tool-tagline">{{ .tagline }}</p>
+          <p class="tool-desc">{{ .description }}</p>
+          <div class="tool-meta">
+            <span class="tool-cat tool-cat--{{ .category | urlize }}">{{ .category }}</span>
+            <span class="tool-pricing">{{ .pricing }}</span>
+          </div>
+        </a>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+  {{- end }}
+
+  <section class="tools-directory">
+    <div class="container">
+      <div class="section-eyebrow"><span>All Tools</span><span class="rule"></span></div>
+
+      <div class="tools-filters" id="tools-filters">
+        <button class="filter-chip is-active" data-filter="all" type="button">All <span class="chip-count">{{ len $tools }}</span></button>
+        {{- range $cats }}
+        {{- $count := len (where $tools "category" .) }}
+        <button class="filter-chip" data-filter="{{ . }}" type="button">{{ . }} <span class="chip-count">{{ $count }}</span></button>
+        {{- end }}
+      </div>
+
+      <div class="tools-grid" id="tools-grid">
+        {{- range $tools }}
+        <a class="tool-card" href="{{ .url }}" target="_blank" rel="sponsored noopener" data-name="{{ .name | lower }}" data-category="{{ .category }}" data-tags="{{ delimit .tags " " | lower }}" data-desc="{{ .description | lower }}">
+          <div class="tool-card-head">
+            <div class="tool-logo" style="background:{{ .color | default "#0a0a0a" }}">{{ substr .name 0 1 }}</div>
+            <div>
+              <h3 class="tool-name">{{ .name }}</h3>
+              <p class="tool-tagline">{{ .tagline }}</p>
+            </div>
+          </div>
+          <p class="tool-desc">{{ .description }}</p>
+          <div class="tool-tags">
+            {{- range first 3 .tags }}<span class="tool-tag">{{ . }}</span>{{ end }}
+          </div>
+          <div class="tool-meta">
+            <span class="tool-cat tool-cat--{{ .category | urlize }}">{{ .category }}</span>
+            <span class="tool-pricing">{{ .pricing }}</span>
+          </div>
+        </a>
+        {{- end }}
+      </div>
+      <p class="tools-empty" id="tools-empty" hidden>No tools match. Try another search.</p>
+    </div>
+  </section>
+
+  <section class="tools-submit">
+    <div class="container">
+      <div class="submit-card">
+        <div>
+          <h3>Built something useful?</h3>
+          <p>We list tools that genuinely help our AI, crypto, and tech readers. Reach out to be featured in the directory or sponsor a slot.</p>
+        </div>
+        <a href="/contact/" class="btn btn-primary">Submit your tool →</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+{{- /* Tiny inline JS — filter + search */ -}}
+<script>
+(function(){
+  var grid = document.getElementById('tools-grid');
+  if(!grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.tool-card'));
+  var filters = document.getElementById('tools-filters');
+  var search = document.getElementById('tools-search');
+  var empty = document.getElementById('tools-empty');
+  var activeFilter = 'all';
+  var query = '';
+  function apply(){
+    var visible = 0;
+    cards.forEach(function(c){
+      var matchCat = activeFilter === 'all' || c.dataset.category === activeFilter;
+      var hay = (c.dataset.name + ' ' + c.dataset.tags + ' ' + c.dataset.desc + ' ' + c.dataset.category).toLowerCase();
+      var matchQ = !query || hay.indexOf(query) !== -1;
+      var show = matchCat && matchQ;
+      c.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+    if(empty) empty.hidden = visible !== 0;
+  }
+  filters.addEventListener('click', function(e){
+    var b = e.target.closest('.filter-chip');
+    if(!b) return;
+    filters.querySelectorAll('.filter-chip').forEach(function(x){x.classList.remove('is-active');});
+    b.classList.add('is-active');
+    activeFilter = b.dataset.filter;
+    apply();
+  });
+  if(search){
+    search.addEventListener('input', function(e){
+      query = (e.target.value || '').trim().toLowerCase();
+      apply();
+    });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{{ .Title }}",
+  "description": "{{ .Description }}",
+  "url": "{{ .Permalink }}",
+  "numberOfItems": {{ len $tools }},
+  "itemListElement": [
+    {{- range $i, $t := $tools }}{{ if $i }},{{ end }}
+    { "@type": "ListItem", "position": {{ add $i 1 }}, "url": "{{ $t.url }}", "name": "{{ $t.name }}" }
+    {{- end }}
+  ]
+}
+</script>
+{{- end }}

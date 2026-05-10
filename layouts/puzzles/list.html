@@ -1,0 +1,85 @@
+{{- define "main" }}
+{{- $games := slice
+    (dict "slug" "drop-five" "name" "Drop Five" "tagline" "Five letters. Six tries." "blurb" "A fresh five-letter word every day. Color hints guide your guesses. Six chances to crack it.") 
+    (dict "slug" "trackback" "name" "Trackback" "tagline" "Name that song." "blurb" "Five clues reveal the mystery track — year, genre, artist hint, album, chart peak. Guess in as few as you can.")
+    (dict "slug" "buzzword" "name" "Buzzword" "tagline" "Build words from seven letters." "blurb" "A hex of seven letters. Find every word four-plus letters long. Use all seven for a pangram.")
+    (dict "slug" "trendline" "name" "Trendline" "tagline" "Higher or lower?" "blurb" "Compare real-world data points — search interest, market caps, populations. How long can you streak?")
+    (dict "slug" "decode" "name" "Decode" "tagline" "Crack the mystery word." "blurb" "Five progressive clues. The earlier you guess, the higher your score. One word a day.")
+}}
+<div class="puzzles-page">
+  <header class="puzzles-hero">
+    <div class="container">
+      {{- partial "breadcrumbs.html" . }}
+      <p class="puzzles-eyebrow">Daily Puzzles</p>
+      <h1 class="puzzles-title">Five games. One a day. Zero fluff.</h1>
+      <p class="puzzles-lead">{{ .Content | plainify }}</p>
+      <div class="puzzles-stats">
+        <div class="pstat"><span class="pstat-num">5</span><span class="pstat-label">games</span></div>
+        <div class="pstat"><span class="pstat-num">∞</span><span class="pstat-label">days of puzzles</span></div>
+        <div class="pstat"><span class="pstat-num">0</span><span class="pstat-label">sign-ups</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="puzzles-grid-wrap">
+    <div class="container">
+      <div class="puzzles-grid">
+        {{- range $i, $g := $games }}
+        <a class="puzzle-card puzzle-card--{{ $g.slug }}" href="/puzzles/{{ $g.slug }}/">
+          <div class="puzzle-card-art" aria-hidden="true">
+            {{- if eq $g.slug "drop-five" }}
+              <div class="art-tiles"><span class="t t-g">D</span><span class="t t-y">R</span><span class="t">O</span><span class="t t-g">P</span><span class="t">5</span></div>
+            {{- else if eq $g.slug "trackback" }}
+              <div class="art-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            {{- else if eq $g.slug "buzzword" }}
+              <div class="art-hex"><span class="hx hx-c">B</span><span class="hx">U</span><span class="hx">Z</span><span class="hx">Z</span><span class="hx">W</span><span class="hx">R</span><span class="hx">D</span></div>
+            {{- else if eq $g.slug "trendline" }}
+              <div class="art-chart"><svg viewBox="0 0 120 60" preserveAspectRatio="none"><polyline points="0,45 20,40 40,28 60,32 80,18 100,22 120,8" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></div>
+            {{- else if eq $g.slug "decode" }}
+              <div class="art-decode"><span>?</span><span>?</span><span class="rev">D</span><span>?</span><span>?</span></div>
+            {{- end }}
+          </div>
+          <div class="puzzle-card-body">
+            <p class="puzzle-card-tagline">{{ $g.tagline }}</p>
+            <h2 class="puzzle-card-name">{{ $g.name }}</h2>
+            <p class="puzzle-card-blurb">{{ $g.blurb }}</p>
+            <span class="puzzle-card-cta">Play today's puzzle →</span>
+          </div>
+        </a>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="puzzles-cta">
+    <div class="container">
+      <div class="puzzles-cta-inner">
+        <h3>While you're here…</h3>
+        <p>Catch up on today's headlines from the worlds you care about.</p>
+        <div class="puzzles-cta-links">
+          <a href="/categories/ai/" class="cta-link cta-link--ai">AI News →</a>
+          <a href="/categories/crypto/" class="cta-link cta-link--crypto">Crypto Trends →</a>
+          <a href="/categories/tech/" class="cta-link cta-link--tech">Tech Innovations →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{{- /* Schema: CollectionPage listing 5 games */ -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ .Title }}",
+  "description": "{{ .Description }}",
+  "url": "{{ .Permalink }}",
+  "isPartOf": { "@type": "WebSite", "name": "{{ site.Title }}", "url": "{{ site.BaseURL }}" },
+  "hasPart": [
+    {{- range $i, $g := $games }}{{ if $i }},{{ end }}
+    { "@type": "Game", "name": "{{ $g.name }}", "url": "{{ site.BaseURL }}puzzles/{{ $g.slug }}/", "description": "{{ $g.blurb }}" }
+    {{- end }}
+  ]
+}
+</script>
+{{- end }}

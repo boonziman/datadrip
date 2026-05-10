@@ -86,15 +86,21 @@ menu:
     - name: Tech Innovations
       url: /categories/tech/
       weight: 4
+    - name: Puzzles
+      url: /puzzles/
+      weight: 5
+    - name: Tools
+      url: /tools/
+      weight: 6
     - name: About
       url: /about/
-      weight: 5
+      weight: 7
     - name: Contact
       url: /contact/
-      weight: 6
+      weight: 8
     - name: Search
       url: /search/
-      weight: 7
+      weight: 9
 
   footer:
     - name: About

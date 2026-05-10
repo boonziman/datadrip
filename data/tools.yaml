@@ -1,0 +1,183 @@
+# Datadripco SaaS / Tools Directory
+# Each entry follows the same shape. Add new tools here — page rebuilds automatically.
+# Keep descriptions under ~160 chars for clean cards.
+items:
+  - name: "Notion"
+    tagline: "Docs, wikis & projects in one place."
+    description: "All-in-one workspace for notes, docs, databases, and team wikis. Used by millions of teams and indie builders."
+    url: "https://www.notion.so/"
+    category: "Productivity"
+    pricing: "Free tier"
+    tags: ["docs", "wiki", "team", "personal"]
+    color: "#000000"
+    featured: true
+
+  - name: "Linear"
+    tagline: "The issue tracker built for speed."
+    description: "Beautifully fast project & issue tracking for software teams. Keyboard-first UI, opinionated workflow."
+    url: "https://linear.app/"
+    category: "Developer Tools"
+    pricing: "Free tier"
+    tags: ["issues", "sprints", "engineering"]
+    color: "#5e6ad2"
+    featured: true
+
+  - name: "Vercel"
+    tagline: "Deploy frontend apps instantly."
+    description: "Frontend-as-a-service hosting with global CDN, preview deploys, and best-in-class Next.js support."
+    url: "https://vercel.com/"
+    category: "Developer Tools"
+    pricing: "Free tier"
+    tags: ["hosting", "nextjs", "deploy"]
+    color: "#0a0a0a"
+    featured: true
+
+  - name: "Supabase"
+    tagline: "Open-source Firebase alternative."
+    description: "Postgres database, auth, storage, edge functions, and realtime — fully managed and developer-friendly."
+    url: "https://supabase.com/"
+    category: "Developer Tools"
+    pricing: "Free tier"
+    tags: ["database", "backend", "auth"]
+    color: "#3ecf8e"
+    featured: false
+
+  - name: "Cursor"
+    tagline: "AI-powered code editor."
+    description: "VS Code fork with first-class AI pair-programming. Refactor, write, and chat with your codebase natively."
+    url: "https://cursor.com/"
+    category: "AI Tools"
+    pricing: "Freemium"
+    tags: ["ai", "ide", "coding"]
+    color: "#000000"
+    featured: true
+
+  - name: "Perplexity"
+    tagline: "Answer engine with live sources."
+    description: "AI-powered search that cites real sources. Quick answers for research, news, and quick fact-checking."
+    url: "https://www.perplexity.ai/"
+    category: "AI Tools"
+    pricing: "Freemium"
+    tags: ["search", "ai", "research"]
+    color: "#1f1e1d"
+    featured: false
+
+  - name: "Claude"
+    tagline: "Anthropic's helpful AI assistant."
+    description: "Conversational AI for writing, analysis, coding, and reasoning. Long context, strong safety guardrails."
+    url: "https://claude.ai/"
+    category: "AI Tools"
+    pricing: "Freemium"
+    tags: ["ai", "chat", "writing"]
+    color: "#cc785c"
+    featured: false
+
+  - name: "ElevenLabs"
+    tagline: "Natural-sounding AI voices."
+    description: "Generate human-quality voiceovers, dub videos in 30+ languages, clone voices for podcasts and apps."
+    url: "https://elevenlabs.io/"
+    category: "AI Tools"
+    pricing: "Freemium"
+    tags: ["voice", "audio", "tts"]
+    color: "#0a0a0a"
+    featured: false
+
+  - name: "Stripe"
+    tagline: "Payments infrastructure for the web."
+    description: "Accept payments, manage subscriptions, send invoices. The default for SaaS billing worldwide."
+    url: "https://stripe.com/"
+    category: "Payments"
+    pricing: "Pay-as-you-go"
+    tags: ["payments", "billing", "subscriptions"]
+    color: "#635bff"
+    featured: false
+
+  - name: "Plausible"
+    tagline: "Lightweight, privacy-first analytics."
+    description: "Cookie-free, GDPR-compliant analytics in a single script. A friendly Google Analytics alternative."
+    url: "https://plausible.io/"
+    category: "Analytics"
+    pricing: "Paid"
+    tags: ["analytics", "privacy", "stats"]
+    color: "#5850ec"
+    featured: false
+
+  - name: "PostHog"
+    tagline: "All-in-one product analytics."
+    description: "Funnels, heatmaps, session replay, A/B tests, feature flags. Open-source and self-hostable."
+    url: "https://posthog.com/"
+    category: "Analytics"
+    pricing: "Free tier"
+    tags: ["analytics", "product", "experiments"]
+    color: "#1d4aff"
+    featured: false
+
+  - name: "Resend"
+    tagline: "Email API for developers."
+    description: "Send transactional and marketing email with React templates and a delightful API. Great deliverability."
+    url: "https://resend.com/"
+    category: "Developer Tools"
+    pricing: "Free tier"
+    tags: ["email", "api", "transactional"]
+    color: "#000000"
+    featured: false
+
+  - name: "Beehiiv"
+    tagline: "The newsletter platform built for growth."
+    description: "Newsletter publishing with built-in audience growth, monetization, and recommendation network."
+    url: "https://www.beehiiv.com/"
+    category: "Marketing"
+    pricing: "Freemium"
+    tags: ["newsletter", "email", "creator"]
+    color: "#facc15"
+    featured: false
+
+  - name: "Framer"
+    tagline: "Design and ship websites visually."
+    description: "Drag-and-drop website builder with real CMS, animations, and deploy-anywhere code export."
+    url: "https://www.framer.com/"
+    category: "Design"
+    pricing: "Free tier"
+    tags: ["design", "website", "no-code"]
+    color: "#0099ff"
+    featured: false
+
+  - name: "Figma"
+    tagline: "Collaborative interface design."
+    description: "Real-time multiplayer UI design, prototyping, and dev handoff. Industry-standard for product teams."
+    url: "https://www.figma.com/"
+    category: "Design"
+    pricing: "Free tier"
+    tags: ["design", "collaboration", "ui"]
+    color: "#f24e1e"
+    featured: false
+
+  - name: "Lovable"
+    tagline: "Build apps by chatting with AI."
+    description: "Describe the app you want, get a working full-stack codebase. Fast prototyping for non-engineers."
+    url: "https://lovable.dev/"
+    category: "AI Tools"
+    pricing: "Freemium"
+    tags: ["ai", "no-code", "builder"]
+    color: "#ff5a36"
+    featured: false
+
+  - name: "Gumroad"
+    tagline: "Sell what you make, anywhere."
+    description: "Indie-creator storefront for digital products, courses, memberships. Zero-friction setup, simple payouts."
+    url: "https://gumroad.com/"
+    category: "Payments"
+    pricing: "Pay-as-you-go"
+    tags: ["digital products", "creator", "ecommerce"]
+    color: "#ff90e8"
+    featured: false
+
+  - name: "Cal.com"
+    tagline: "Open-source scheduling infrastructure."
+    description: "Calendly alternative with full white-labeling, embeddable widgets, and a robust developer API."
+    url: "https://cal.com/"
+    category: "Productivity"
+    pricing: "Freemium"
+    tags: ["scheduling", "calendar", "open-source"]
+    color: "#111827"
+    featured: false
