@@ -1,12 +1,16 @@
 ---
-title: "Daily Puzzles & Word Games"
-description: "Free daily puzzles from Datadripco — a fresh word game, spelling challenge, song mystery, and trivia higher/lower every single day. No sign-up, mobile-friendly, plays in your browser."
-keywords: ["daily puzzles", "word game", "spelling bee game", "higher lower game", "daily word puzzle", "free browser games", "datadripco puzzles"]
+title: "Daily Puzzles — Five Free Word, Audio & Trivia Games"
+description: "Five fresh daily puzzles every day: Wordless, Spelling Bee, More/less, Clueless, and Songless. No sign-up. No paywall. New puzzles at midnight."
+keywords: ["daily puzzles", "word games", "wordle alternative", "spelling bee", "song guessing game", "trivia"]
 url: "/puzzles/"
+ShowReadingTime: false
+ShowToc: false
+ShowBreadCrumbs: false
+hidemeta: true
+disableShare: true
 sitemap:
+  priority: 0.95
   changefreq: daily
-  priority: 0.9
-hiddenInHomeList: true
 ---
 
-A new puzzle drops every day at midnight. Five different games — quick to play, hard to put down. Perfect with your morning coffee and the day's headlines.
+A new puzzle every day at local midnight. Train your brain across words, sounds, numbers, and song knowledge. Free forever. No login. Share results with one tap.

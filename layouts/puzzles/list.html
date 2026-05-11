@@ -1,10 +1,10 @@
 {{- define "main" }}
 {{- $games := slice
-    (dict "slug" "drop-five" "name" "Drop Five" "tagline" "Five letters. Six tries." "blurb" "A fresh five-letter word every day. Color hints guide your guesses. Six chances to crack it.") 
-    (dict "slug" "trackback" "name" "Trackback" "tagline" "Name that song." "blurb" "Five clues reveal the mystery track — year, genre, artist hint, album, chart peak. Guess in as few as you can.")
-    (dict "slug" "buzzword" "name" "Buzzword" "tagline" "Build words from seven letters." "blurb" "A hex of seven letters. Find every word four-plus letters long. Use all seven for a pangram.")
-    (dict "slug" "trendline" "name" "Trendline" "tagline" "Higher or lower?" "blurb" "Compare real-world data points — search interest, market caps, populations. How long can you streak?")
-    (dict "slug" "decode" "name" "Decode" "tagline" "Crack the mystery word." "blurb" "Five progressive clues. The earlier you guess, the higher your score. One word a day.")
+    (dict "slug" "wordless"      "name" "Wordless"      "tagline" "Word-guessing, your length." "blurb" "Pick 3 to 8 letters. Six guesses. Color hints reveal letter positions. New target every day.")
+    (dict "slug" "spelling-bee"  "name" "Spelling Bee"  "tagline" "Hear it. Spell it." "blurb" "Five rounds, ramping difficulty. Listen to the audio, type the word. Definition and example sentence on demand.")
+    (dict "slug" "more-less"     "name" "More/less"     "tagline" "Higher or lower?" "blurb" "Compare real-world data — subscribers, market caps, populations. Survive 15 rounds. One miss ends the run.")
+    (dict "slug" "clueless"      "name" "Clueless"      "tagline" "Closer is better." "blurb" "Guess the secret word using semantic similarity. Every guess gets a heat score. Use hints if you stall.")
+    (dict "slug" "songless"      "name" "Songless"      "tagline" "Name that tune." "blurb" "Six snippets, getting longer. Guess the song from a 1-second clip if you can. Apple Music previews.")
 }}
 <div class="puzzles-page">
   <header class="puzzles-hero">
@@ -27,16 +27,16 @@
         {{- range $i, $g := $games }}
         <a class="puzzle-card puzzle-card--{{ $g.slug }}" href="/puzzles/{{ $g.slug }}/">
           <div class="puzzle-card-art" aria-hidden="true">
-            {{- if eq $g.slug "drop-five" }}
-              <div class="art-tiles"><span class="t t-g">D</span><span class="t t-y">R</span><span class="t">O</span><span class="t t-g">P</span><span class="t">5</span></div>
-            {{- else if eq $g.slug "trackback" }}
-              <div class="art-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            {{- else if eq $g.slug "buzzword" }}
-              <div class="art-hex"><span class="hx hx-c">B</span><span class="hx">U</span><span class="hx">Z</span><span class="hx">Z</span><span class="hx">W</span><span class="hx">R</span><span class="hx">D</span></div>
-            {{- else if eq $g.slug "trendline" }}
+            {{- if eq $g.slug "wordless" }}
+              <div class="art-tiles"><span class="t t-g">W</span><span class="t t-y">O</span><span class="t">R</span><span class="t t-g">D</span><span class="t">S</span></div>
+            {{- else if eq $g.slug "spelling-bee" }}
+              <div class="art-bee"><span class="art-bee-emoji">🐝</span><span class="art-wave">≋ ≋ ≋</span></div>
+            {{- else if eq $g.slug "more-less" }}
               <div class="art-chart"><svg viewBox="0 0 120 60" preserveAspectRatio="none"><polyline points="0,45 20,40 40,28 60,32 80,18 100,22 120,8" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></div>
-            {{- else if eq $g.slug "decode" }}
-              <div class="art-decode"><span>?</span><span>?</span><span class="rev">D</span><span>?</span><span>?</span></div>
+            {{- else if eq $g.slug "clueless" }}
+              <div class="art-decode"><span>?</span><span>?</span><span class="rev">C</span><span>?</span><span>?</span></div>
+            {{- else if eq $g.slug "songless" }}
+              <div class="art-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
             {{- end }}
           </div>
           <div class="puzzle-card-body">
@@ -66,18 +66,17 @@
   </section>
 </div>
 
-{{- /* Schema: CollectionPage listing 5 games */ -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "{{ .Title }}",
-  "description": "{{ .Description }}",
+  "name": {{ .Title | jsonify }},
+  "description": {{ .Description | jsonify }},
   "url": "{{ .Permalink }}",
-  "isPartOf": { "@type": "WebSite", "name": "{{ site.Title }}", "url": "{{ site.BaseURL }}" },
+  "isPartOf": { "@type": "WebSite", "name": {{ site.Title | jsonify }}, "url": "{{ site.BaseURL }}" },
   "hasPart": [
     {{- range $i, $g := $games }}{{ if $i }},{{ end }}
-    { "@type": "Game", "name": "{{ $g.name }}", "url": "{{ site.BaseURL }}puzzles/{{ $g.slug }}/", "description": "{{ $g.blurb }}" }
+    { "@type": "Game", "name": {{ $g.name | jsonify }}, "url": "{{ site.BaseURL }}puzzles/{{ $g.slug }}/", "description": {{ $g.blurb | jsonify }} }
     {{- end }}
   ]
 }

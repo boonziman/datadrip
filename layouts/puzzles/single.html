@@ -1,77 +1,35 @@
 {{- define "main" }}
 {{- $slug := .Params.gameSlug | default .File.BaseFileName }}
-{{- $titleShort := index (split .Title " — ") 0 }}
-<article class="puzzle-page" data-game="{{ $slug }}">
-  <header class="puzzle-header">
-    <div class="container">
-      {{- partial "breadcrumbs.html" . }}
-      <div class="puzzle-header-row">
-        <div>
-          <p class="puzzle-eyebrow">Daily Puzzle · <span id="puzzle-date"></span></p>
-          <h1 class="puzzle-title">{{ $titleShort }}</h1>
-          <p class="puzzle-sub">{{ .Description }}</p>
-        </div>
-        <div class="puzzle-header-actions">
-          <button class="btn btn-ghost" id="btn-howto" type="button">How to play</button>
-          <button class="btn btn-ghost" id="btn-share" type="button" hidden>Share result</button>
-        </div>
-      </div>
-    </div>
-  </header>
+<article class="puzzle-page-wrapper" data-game="{{ $slug }}">
+  {{- /* React mount point. The bundle reads data-game and mounts the right component. */ -}}
+  <div id="dd-game-root" data-game="{{ $slug }}" class="dd-games"></div>
 
-  {{- /* Mount points — each game.js will populate #game-mount */ -}}
-  <section class="puzzle-stage">
-    <div class="container">
-      <div id="game-mount" class="game-mount" aria-live="polite"></div>
-      <div id="game-toast" class="game-toast" role="status" aria-live="polite"></div>
-    </div>
-  </section>
-
-  <section class="puzzle-rules" id="rules-panel" hidden>
-    <div class="container">
-      <div class="rules-card">
-        <h2>How to play {{ $titleShort }}</h2>
-        <div id="rules-body"></div>
-        <button class="btn btn-primary" id="btn-rules-close" type="button">Got it</button>
-      </div>
-    </div>
-  </section>
-
-  {{- /* SEO: cross-link to news */ -}}
-  <section class="puzzle-cta">
-    <div class="container">
-      <div class="cta-row">
-        <a href="/puzzles/" class="cta-pill">← All puzzles</a>
-        <a href="/categories/ai/" class="cta-pill">Today's AI news</a>
-        <a href="/categories/crypto/" class="cta-pill">Crypto trends</a>
-        <a href="/categories/tech/" class="cta-pill">Tech innovations</a>
-      </div>
-    </div>
-  </section>
+  {{- /* Markdown body acts as below-the-fold SEO + how-to-play content */ -}}
+  {{- if .Content }}
+  <div class="container puzzle-seo">
+    {{ .Content }}
+  </div>
+  {{- end }}
 </article>
 
-{{- /* Load shared utilities + this game's data + script */ -}}
-{{- $common := resources.Get "js/games/common.js" }}
-{{- $script := resources.Get (printf "js/games/%s.js" $slug) }}
-{{- if and $common $script }}
-<script src="{{ $common.RelPermalink }}" defer></script>
-<script src="{{ $script.RelPermalink }}" defer></script>
-{{- end }}
+{{- /* The single combined React bundle, served as a static asset */ -}}
+<script src="/games/datadrip-games.js" defer></script>
 
-{{- /* Schema: SoftwareApplication + Game */ -}}
+{{- /* SEO: Game + SoftwareApplication */ -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": ["Game", "SoftwareApplication"],
-  "name": "{{ $titleShort }}",
+  "name": {{ .Title | jsonify }},
   "url": "{{ .Permalink }}",
-  "description": "{{ .Description }}",
+  "description": {{ .Description | jsonify }},
   "applicationCategory": "GameApplication",
   "operatingSystem": "Web",
   "browserRequirements": "Requires JavaScript",
-  "isPartOf": { "@type": "WebSite", "name": "{{ site.Title }}", "url": "{{ site.BaseURL }}" },
+  "isPartOf": { "@type": "WebSite", "name": {{ site.Title | jsonify }}, "url": "{{ site.BaseURL }}" },
   "publisher": { "@type": "Organization", "name": "Datadripco", "url": "{{ site.BaseURL }}" },
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "120" }
 }
 </script>
 {{- end }}

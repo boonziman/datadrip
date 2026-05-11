@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+ * Datadrip Games - global tweaks (scoped under .dd-games)
+ * ============================================ */
+.dd-games {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #1e2021;
+  color: #fff;
+  min-height: 70vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dd-games * {
+  box-sizing: border-box;
+}
+
+.dd-games button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.dd-games input {
+  font-family: inherit;
+}
+
+/* Tile flip stack - used by Wordless */
+.dd-games .tile-flip {
+  perspective: 600px;
+}
+
+/* Hide scrollbar on small overflow elements */
+.dd-games .no-scrollbar::-webkit-scrollbar { display: none; }
+.dd-games .no-scrollbar { scrollbar-width: none; }
+
+/* Dark mode site override - puzzle pages keep dark even on light theme */
+body.dd-puzzle-page {
+  background: #1e2021 !important;
+}
+body.dd-puzzle-page .header,
+body.dd-puzzle-page #footer,
+body.dd-puzzle-page .footer {
+  background: #1e2021 !important;
+  color: #fff !important;
+  border-color: #303436 !important;
+}
+body.dd-puzzle-page .header a,
+body.dd-puzzle-page #footer a,
+body.dd-puzzle-page .footer a {
+  color: #ccc !important;
+}
+body.dd-puzzle-page .header .logo a {
+  color: #fff !important;
+}
