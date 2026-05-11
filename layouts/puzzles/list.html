@@ -1,68 +1,64 @@
 {{- define "main" }}
 {{- $games := slice
-    (dict "slug" "wordless"      "name" "Wordguess"     "tagline" "Word-guessing, your length." "blurb" "Pick 3 to 8 letters. Six guesses. Color hints reveal letter positions. New target every day at midnight Pacific.")
-    (dict "slug" "spelling-bee"  "name" "SpellIt"       "tagline" "Hear it. Spell it." "blurb" "Five rounds, ramping difficulty. Listen to the audio, type the word. Definition and example sentence on demand.")
-    (dict "slug" "more-less"     "name" "HighLow"       "tagline" "Higher or lower?" "blurb" "Compare real-world data — subscribers, streams, ratings, market caps. Build the longest streak across four categories.")
-    (dict "slug" "clueless"      "name" "Clueless"      "tagline" "Closer is better." "blurb" "Guess the secret word using semantic similarity. Every guess gets a heat score. Use hints if you stall.")
-    (dict "slug" "songless"      "name" "Songless"      "tagline" "Name that tune." "blurb" "Six snippets, getting longer. Guess the song from a 1-second clip if you can. Apple Music previews.")
+    (dict "slug" "wordless"      "name" "Wordguess"  "tagline" "Six tries. Your length.")
+    (dict "slug" "spelling-bee"  "name" "SpellIt"    "tagline" "Hear it. Spell it.")
+    (dict "slug" "more-less"     "name" "HighLow"    "tagline" "Higher or lower?")
+    (dict "slug" "clueless"      "name" "Clueless"   "tagline" "Closer is better.")
+    (dict "slug" "songless"      "name" "Songless"   "tagline" "Name that tune.")
 }}
 <div class="puzzles-page">
   <header class="puzzles-hero">
-    <div class="container">
-      {{- partial "breadcrumbs.html" . }}
-      <p class="puzzles-eyebrow">Daily Puzzles</p>
-      <h1 class="puzzles-title">Five games. New every day. Zero fluff.</h1>
-      <p class="puzzles-lead">{{ .Content | plainify }}</p>
-      <div class="puzzles-stats">
-        <div class="pstat"><span class="pstat-num">5</span><span class="pstat-label">games</span></div>
-        <div class="pstat"><span class="pstat-num">12am</span><span class="pstat-label">PT reset</span></div>
-        <div class="pstat"><span class="pstat-num">0</span><span class="pstat-label">sign-ups</span></div>
-      </div>
+    <div class="puzzles-hero-inner">
+      <p class="puzzles-eyebrow"><span class="dot"></span> Daily · resets at midnight PT</p>
+      <h1 class="puzzles-title">Datadrip<span class="puzzles-title-accent">.games</span></h1>
+      <p class="puzzles-lead">Five small games. New every day. No accounts, no nags, no fluff &mdash; just something to think about with your morning coffee.</p>
     </div>
   </header>
 
   <section class="puzzles-grid-wrap">
-    <div class="container">
-      <div class="puzzles-grid">
-        {{- range $i, $g := $games }}
-        <a class="puzzle-card puzzle-card--{{ $g.slug }}" href="/puzzles/{{ $g.slug }}/">
-          <div class="puzzle-card-art" aria-hidden="true">
+    <div class="puzzles-grid">
+      {{- range $i, $g := $games }}
+      <a class="pcard pcard--{{ $g.slug }}" href="/puzzles/{{ $g.slug }}/" style="--i: {{ $i }};">
+        <div class="pcard-inner">
+          <h2 class="pcard-name">{{ $g.name }}</h2>
+          <div class="pcard-art" aria-hidden="true">
             {{- if eq $g.slug "wordless" }}
-              <div class="art-tiles"><span class="t t-g">W</span><span class="t t-y">O</span><span class="t">R</span><span class="t t-g">D</span><span class="t">S</span></div>
+              <div class="art-tiles">
+                <span class="t"></span><span class="t t-y"></span><span class="t"></span><span class="t t-g"></span>
+                <span class="t t-g"></span><span class="t"></span><span class="t t-y"></span><span class="t"></span>
+              </div>
             {{- else if eq $g.slug "spelling-bee" }}
-              <div class="art-bee"><span class="art-bee-emoji">🐝</span><span class="art-wave">≋ ≋ ≋</span></div>
+              <div class="art-spell">
+                <span class="art-spell-spk">🔊</span>
+                <span class="art-spell-blanks">_ _ _ _</span>
+              </div>
             {{- else if eq $g.slug "more-less" }}
-              <div class="art-chart"><svg viewBox="0 0 120 60" preserveAspectRatio="none"><polyline points="0,45 20,40 40,28 60,32 80,18 100,22 120,8" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></div>
+              <div class="art-arrows">
+                <span class="art-arrow art-arrow-up">▲</span>
+                <span class="art-arrow art-arrow-dn">▼</span>
+              </div>
             {{- else if eq $g.slug "clueless" }}
-              <div class="art-decode"><span>?</span><span>?</span><span class="rev">C</span><span>?</span><span>?</span></div>
+              <div class="art-bars-clue">
+                <span style="--w:92%; --c:#55B725"></span>
+                <span style="--w:74%; --c:#55B725"></span>
+                <span style="--w:52%; --c:#DAC316"></span>
+                <span style="--w:26%; --c:#C62121"></span>
+              </div>
             {{- else if eq $g.slug "songless" }}
-              <div class="art-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="art-player">
+                <span class="art-player-bar"><span class="art-player-fill"></span></span>
+                <span class="art-player-btns">
+                  <span class="abtn">⏮</span><span class="abtn abtn-play">▶</span><span class="abtn">⏭</span>
+                </span>
+              </div>
             {{- end }}
           </div>
-          <div class="puzzle-card-body">
-            <p class="puzzle-card-tagline">{{ $g.tagline }}</p>
-            <h2 class="puzzle-card-name">{{ $g.name }}</h2>
-            <p class="puzzle-card-blurb">{{ $g.blurb }}</p>
-            <span class="puzzle-card-cta">Play today's puzzle →</span>
-          </div>
-        </a>
-        {{- end }}
-      </div>
-    </div>
-  </section>
-
-  <section class="puzzles-cta">
-    <div class="container">
-      <div class="puzzles-cta-inner">
-        <h3>While you're here…</h3>
-        <p>Catch up on today's headlines from the worlds you care about.</p>
-        <div class="puzzles-cta-links">
-          <a href="/categories/ai/" class="cta-link cta-link--ai">AI News →</a>
-          <a href="/categories/crypto/" class="cta-link cta-link--crypto">Crypto Trends →</a>
-          <a href="/categories/tech/" class="cta-link cta-link--tech">Tech Innovations →</a>
+          <p class="pcard-tagline">{{ $g.tagline }}</p>
         </div>
-      </div>
+      </a>
+      {{- end }}
     </div>
+    <p class="puzzles-foot">Same puzzle for everyone, everywhere · <a href="/about/">about</a></p>
   </section>
 </div>
 
@@ -76,7 +72,7 @@
   "isPartOf": { "@type": "WebSite", "name": {{ site.Title | jsonify }}, "url": "{{ site.BaseURL }}" },
   "hasPart": [
     {{- range $i, $g := $games }}{{ if $i }},{{ end }}
-    { "@type": "Game", "name": {{ $g.name | jsonify }}, "url": "{{ site.BaseURL }}puzzles/{{ $g.slug }}/", "description": {{ $g.blurb | jsonify }} }
+    { "@type": "Game", "name": {{ $g.name | jsonify }}, "url": "{{ site.BaseURL }}puzzles/{{ $g.slug }}/", "description": {{ $g.tagline | jsonify }} }
     {{- end }}
   ]
 }

@@ -5,13 +5,18 @@ import { ResultsScreen } from '../components/ResultsScreen';
 import { HelpModal, IconBtn } from '../components/HelpModal';
 import { CATEGORIES, MoreLessItem, MoreLessCategory } from './data/moreless-data';
 import { fetchEntityImage, getCachedImage } from '../lib/images';
-import { sndWin, sndLose, sndCount, sndBloop, sndError } from '../lib/sound';
+import { sndWin, sndLose, sndCount, sndBloop, sndPop } from '../lib/sound';
 
-// Four stages — order is fixed daily but the items inside are shuffled per day.
-const STAGE_IDS = ['youtube', 'spotify', 'movies', 'companies'] as const;
-type StageId = typeof STAGE_IDS[number];
+// Four stages — fixed daily order; items inside shuffled per day.
+const STAGE_IDS = ['google', 'spotify', 'movies', 'random'] as const;
+const STAGE_LABELS: Record<string, string> = {
+  google: 'Google Searches',
+  spotify: 'Spotify Streams',
+  movies: 'Box Office',
+  random: 'Random',
+};
 
-interface StageResult { stageId: string; correct: number; total: number; }
+interface StageResult { stageId: string; correct: number; }
 interface SavedState {
   stageIdx: number;
   stageResults: StageResult[];
@@ -27,38 +32,38 @@ function shuffle<T>(arr: T[], rand: () => number) {
   return a;
 }
 
-function formatValue(n: number, fmt: MoreLessCategory['format']) {
-  if (fmt === 'compact') {
-    if (n >= 1e9) return (n / 1e9).toFixed(n >= 1e10 ? 0 : 1) + 'B';
-    if (n >= 1e6) return (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + 'M';
-    if (n >= 1e3) return (n / 1e3).toFixed(0) + 'K';
-    return String(n);
-  }
-  if (fmt === 'currency-bn') return '$' + (n / 1e9).toFixed(0) + 'B';
-  if (fmt === 'currency-m')  return '$' + (n / 1e6).toFixed(0) + 'M';
+// Build a deck of pairs that always have distinct values, no repeats within stage.
+function buildStageDeck(category: MoreLessCategory, dayIndex: number): MoreLessItem[] {
+  const rand = mulberry32(dayIndex * 0x85ebca6b ^ category.id.length * 0xc2b2ae35);
+  // Filter unique values
+  const seen = new Set<number>();
+  const dedup = category.items.filter(it => { if (seen.has(it.value)) return false; seen.add(it.value); return true; });
+  return shuffle(dedup, rand);
+}
+
+// Format full integer with thousands commas (no abbreviations)
+function formatFull(n: number, fmt: MoreLessCategory['format']) {
   if (fmt === 'decimal') return n.toFixed(1);
-  return n.toLocaleString();
+  return Math.round(n).toLocaleString('en-US');
 }
 
 // ─── Counter rollup hook ─────────────────────
 function useRollup(target: number, active: boolean, fmt: MoreLessCategory['format']) {
-  const [val, setVal] = useState(0);
   const [text, setText] = useState('0');
   useEffect(() => {
-    if (!active) { setVal(0); setText('0'); return; }
-    const dur = 1300;
+    if (!active) { setText('0'); return; }
+    const dur = 1500;
     const start = performance.now();
     let raf = 0;
     let lastTick = 0;
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / dur);
       const eased = 1 - Math.pow(1 - t, 3);
-      const cur = Math.round(eased * target);
-      setVal(cur);
-      setText(formatValue(cur, fmt));
-      if (now - lastTick > 70 && t < 1) { sndCount(); lastTick = now; }
+      const cur = eased * target;
+      setText(formatFull(cur, fmt));
+      if (now - lastTick > 60 && t < 1) { sndCount(); lastTick = now; }
       if (t < 1) raf = requestAnimationFrame(tick);
-      else { setText(formatValue(target, fmt)); }
+      else setText(formatFull(target, fmt));
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
@@ -66,69 +71,59 @@ function useRollup(target: number, active: boolean, fmt: MoreLessCategory['forma
   return text;
 }
 
-// ─── Card component ──────────────────────────
+// ─── Card ────────────────────────────────────
+type RevealKind = null | 'self' | 'other';
 const Card: React.FC<{
   item: MoreLessItem;
   category: MoreLessCategory;
   reveal: boolean;
+  rollupActive: boolean;
+  outcome: 'win' | 'lose' | null;
   onPick?: () => void;
-  highlight?: 'win' | 'lose' | null;
-  side: 'top' | 'bottom';
   disabled?: boolean;
-}> = ({ item, category, reveal, onPick, highlight, side, disabled }) => {
+  enterAnim?: 'right' | 'left' | null;
+}> = ({ item, category, reveal, rollupActive, outcome, onPick, disabled, enterAnim }) => {
   const [imgUrl, setImgUrl] = useState<string | null | undefined>(() => getCachedImage(item.name));
-
   useEffect(() => {
     let alive = true;
-    if (imgUrl === undefined) {
+    if (imgUrl === undefined || imgUrl === null) {
       fetchEntityImage(item.name, item.wiki).then(u => { if (alive) setImgUrl(u); });
-    } else if (imgUrl === null && item.wiki) {
-      fetchEntityImage(item.name, item.wiki).then(u => { if (alive && u) setImgUrl(u); });
     }
     return () => { alive = false; };
   }, [item.name, item.wiki]);
 
-  const text = useRollup(item.value, reveal, category.format);
+  const text = useRollup(item.value, rollupActive, category.format);
 
-  const ringCls = highlight === 'win' ? 'ring-4 ring-accent shadow-[0_0_40px_rgba(85,183,37,0.5)]'
-                : highlight === 'lose' ? 'ring-4 ring-bad shadow-[0_0_40px_rgba(198,33,33,0.4)]'
-                : '';
+  const ringCls =
+    outcome === 'win'  ? 'hl-card--win'  :
+    outcome === 'lose' ? 'hl-card--lose' : '';
+  const enterCls = enterAnim === 'right' ? 'hl-card--enter-right' : enterAnim === 'left' ? 'hl-card--enter-left' : '';
 
   return (
     <button
       onClick={() => !disabled && onPick && onPick()}
       disabled={disabled}
-      className={`group relative w-full overflow-hidden rounded-2xl border border-line/50 bg-panel transition-all ${ringCls} ${!disabled && onPick ? 'hover:border-accent active:scale-[0.99] cursor-pointer' : ''}`}
+      className={`hl-card ${ringCls} ${enterCls} ${!disabled && onPick ? 'hl-card--clickable' : ''}`}
     >
-      <div className="relative h-40 sm:h-48 w-full bg-panel2 flex items-center justify-center overflow-hidden">
+      <div className="hl-card-img">
         {imgUrl
-          ? <img src={imgUrl} alt={item.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-          : <span className="text-7xl">{item.image || '❓'}</span>}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-3 text-left">
-          <p className="text-white font-extrabold text-lg sm:text-xl tracking-tight leading-tight">{item.name}</p>
-        </div>
-      </div>
-      <div className="p-4 text-center min-h-[88px] flex flex-col items-center justify-center">
-        <p className="text-[10px] sm:text-xs text-gray-400 uppercase tracking-wider mb-1">{category.unit}</p>
-        {reveal ? (
-          <p className={`text-3xl sm:text-4xl font-extrabold tabular-nums tracking-tight ${highlight === 'win' ? 'text-accent' : highlight === 'lose' ? 'text-bad' : 'text-white'}`}>{text}</p>
-        ) : (
-          <p className="text-3xl sm:text-4xl font-extrabold text-gray-500 tracking-wider">?</p>
+          ? <img src={imgUrl} alt={item.name} loading="lazy" />
+          : <span className="hl-card-emoji">{item.image || '❓'}</span>}
+        {outcome && (
+          <span className={`hl-badge animate-check-pop ${outcome === 'win' ? 'hl-badge--win' : 'hl-badge--lose'}`}>
+            {outcome === 'win' ? '✓' : '✗'}
+          </span>
         )}
+      </div>
+      <div className="hl-card-name">"{item.name}"</div>
+      <div className={`hl-card-num ${reveal ? 'hl-card-num--show' : ''}`}>
+        {reveal ? text : '?'}
       </div>
     </button>
   );
 };
 
-// ─── Helpers ─────────────────────────────────
-function buildStageDeck(category: MoreLessCategory, dayIndex: number) {
-  const rand = mulberry32(dayIndex * 0x85ebca6b ^ category.id.length * 0xc2b2ae35);
-  // Filter out items with same value as another (so no ties), then shuffle.
-  const items = shuffle(category.items, rand);
-  return items;
-}
-
+// ─── Game ────────────────────────────────────
 export const MoreLess: React.FC = () => {
   const day = useMemo(() => getPuzzleDay(), []);
   const stages = useMemo(() => STAGE_IDS.map(id => CATEGORIES.find(c => c.id === id)!).filter(Boolean), []);
@@ -139,169 +134,227 @@ export const MoreLess: React.FC = () => {
   const [finished, setFinished] = useState(initial?.finished ?? false);
   const [showHelp, setShowHelp] = useState(false);
 
-  // Per-stage state
   const stage = stages[stageIdx];
   const deck = useMemo(() => stage ? buildStageDeck(stage, day.index + stageIdx * 17) : [], [stage, day.index, stageIdx]);
-  const [deckPos, setDeckPos] = useState(1);     // index of bottom card; top is `keeper`
-  const [keeper, setKeeper] = useState<MoreLessItem | null>(deck[0] ?? null);
-  const [bottom, setBottom] = useState<MoreLessItem | null>(deck[1] ?? null);
-  const [streak, setStreak] = useState(0);
-  const [phase, setPhase] = useState<'guess' | 'reveal' | 'next' | 'stage-end'>('guess');
-  const [pickedSide, setPickedSide] = useState<null | 'top' | 'bottom'>(null);
-  const [stageOver, setStageOver] = useState(false);
 
-  // Reset board whenever we switch stages
+  const [deckPos, setDeckPos] = useState(2);              // index of NEXT contender to bring in
+  const [leftItem, setLeftItem]   = useState<MoreLessItem | null>(deck[0] ?? null);
+  const [rightItem, setRightItem] = useState<MoreLessItem | null>(deck[1] ?? null);
+  const [streak, setStreak] = useState(0);
+  // phase:
+  //  guess     – user choosing
+  //  reveal-pick – picked card's number rolling up
+  //  reveal-other – the other card's number rolling up
+  //  outcome   – show ✓/✗ (correct goes to advancing; wrong goes to stage-end)
+  //  advancing – sliding to next pair
+  //  stage-end – modal/CTA to next stage
+  const [phase, setPhase] = useState<'guess' | 'reveal-pick' | 'reveal-other' | 'outcome' | 'advancing' | 'stage-end'>('guess');
+  const [pickedSide, setPickedSide] = useState<null | 'left' | 'right'>(null);
+  const [enterAnim, setEnterAnim] = useState<'right' | null>(null);
+  const [stageStart, setStageStart] = useState(false);
+
+  // First card always shows '?' until first pick. After first round, the surviving "left" card
+  // already had its number revealed in the previous round, so leave it visible.
+  const [leftRevealed, setLeftRevealed] = useState(false);
+  const [rightRevealed, setRightRevealed] = useState(false);
+  const [leftRollup, setLeftRollup]   = useState(false);
+  const [rightRollup, setRightRollup] = useState(false);
+
+  // Reset on stage switch
   useEffect(() => {
-    setKeeper(deck[0] ?? null);
-    setBottom(deck[1] ?? null);
-    setDeckPos(1);
+    setLeftItem(deck[0] ?? null);
+    setRightItem(deck[1] ?? null);
+    setDeckPos(2);
     setStreak(0);
     setPhase('guess');
     setPickedSide(null);
-    setStageOver(false);
+    setLeftRevealed(false);
+    setRightRevealed(false);
+    setLeftRollup(false);
+    setRightRollup(false);
+    setEnterAnim(null);
+    setStageStart(s => !s);
   }, [stageIdx, deck]);
 
   useEffect(() => {
     saveState<SavedState>('more-less', day.key, { stageIdx, stageResults, finished });
   }, [stageIdx, stageResults, finished, day.key]);
 
-  if (!stage || finished) return <FinishedView day={day} stageResults={stageResults} stages={stages} onHelp={() => setShowHelp(true)} showHelp={showHelp} setShowHelp={setShowHelp} />;
+  if (!stage || finished) {
+    return <FinishedView day={day} stageResults={stageResults} stages={stages} onHelp={() => setShowHelp(true)} showHelp={showHelp} setShowHelp={setShowHelp} />;
+  }
 
-  const pick = (which: 'top' | 'bottom') => {
-    if (phase !== 'guess' || !keeper || !bottom) return;
-    const pickedItem = which === 'top' ? keeper : bottom;
-    const otherItem  = which === 'top' ? bottom : keeper;
-    const correct = pickedItem.value > otherItem.value || (pickedItem.value === otherItem.value); // ties favor player
+  // Determine question's "MORE/LESS" wording (always MORE for our game)
+  const questionText = (() => {
+    // category.question has shape "has MORE monthly Google searches"
+    const parts = stage.question.split(/(MORE|LESS)/i);
+    return parts;
+  })();
+
+  const pick = (which: 'left' | 'right') => {
+    if (phase !== 'guess' || !leftItem || !rightItem) return;
     setPickedSide(which);
-    setPhase('reveal');
 
+    // 1) Reveal picked card's number first
+    setPhase('reveal-pick');
+    if (which === 'left')  { setLeftRevealed(true);  setLeftRollup(true); }
+    else                   { setRightRevealed(true); setRightRollup(true); }
+
+    // 2) After a beat, reveal the other card's number
     setTimeout(() => {
+      setPhase('reveal-other');
+      if (which === 'left') { setRightRevealed(true); setRightRollup(true); }
+      else                  { setLeftRevealed(true);  setLeftRollup(true); }
+    }, 1700);
+
+    // 3) Determine outcome and react
+    setTimeout(() => {
+      const pickedItem = which === 'left' ? leftItem : rightItem;
+      const otherItem  = which === 'left' ? rightItem : leftItem;
+      const correct = pickedItem.value >= otherItem.value;
+      setPhase('outcome');
       if (correct) {
-        sndWin();
+        sndPop(); sndWin();
         setStreak(s => s + 1);
-        setPhase('next');
-        setTimeout(() => {
-          // Keep the card with the higher value; the loser is replaced with the next deck item.
-          const winner = pickedItem.value >= otherItem.value ? pickedItem : otherItem;
-          const nextPos = deckPos + 1;
-          const nextItem = deck[nextPos];
-          if (!nextItem) {
-            endStage(true);
-            return;
-          }
-          // The winner becomes the new keeper (always shown on top)
-          setKeeper(winner);
-          setBottom(nextItem);
-          setDeckPos(nextPos);
-          setPickedSide(null);
-          setPhase('guess');
-        }, 1400);
+        // 4) After a beat, advance: winner slides left, new contender slides in right
+        setTimeout(() => advancePair(which, pickedItem, otherItem), 1300);
       } else {
         sndLose();
-        setPhase('stage-end');
-        setStageOver(true);
+        // Stage ends
+        setTimeout(() => {
+          const result: StageResult = { stageId: stage.id, correct: streak };
+          const newResults = [...stageResults, result];
+          setStageResults(newResults);
+          setPhase('stage-end');
+        }, 1500);
       }
-    }, 1500);
+    }, 3500);
   };
 
-  const endStage = (completedFully: boolean) => {
-    const result: StageResult = { stageId: stage.id, correct: streak + (completedFully ? 1 : 0), total: deck.length - 1 };
-    const newResults = [...stageResults, result];
-    setStageResults(newResults);
-    advance(newResults);
+  const advancePair = (winnerSide: 'left' | 'right', winnerItem: MoreLessItem, _loserItem: MoreLessItem) => {
+    const nextItem = deck[deckPos];
+    if (!nextItem) {
+      // Deck exhausted — finish stage successfully
+      const result: StageResult = { stageId: stage.id, correct: streak + 1 };
+      const newResults = [...stageResults, result];
+      setStageResults(newResults);
+      setPhase('stage-end');
+      return;
+    }
+    setPhase('advancing');
+    // Move winner to left, new contender enters from right
+    setTimeout(() => {
+      setLeftItem(winnerItem);
+      setLeftRevealed(true);   // winner's number stays visible
+      setLeftRollup(false);    // not animating anymore
+      setRightItem(nextItem);
+      setRightRevealed(false);
+      setRightRollup(false);
+      setEnterAnim('right');
+      setDeckPos(p => p + 1);
+      setPickedSide(null);
+      setPhase('guess');
+      setTimeout(() => setEnterAnim(null), 500);
+    }, 250);
   };
 
   const goNextStage = () => {
     sndBloop();
-    const result: StageResult = { stageId: stage.id, correct: streak, total: deck.length - 1 };
-    const newResults = [...stageResults, result];
-    setStageResults(newResults);
-    advance(newResults);
-  };
-
-  const advance = (newResults: StageResult[]) => {
     if (stageIdx + 1 >= stages.length) {
       setFinished(true);
-      const totalCorrect = newResults.reduce((s, r) => s + r.correct, 0);
+      const totalCorrect = stageResults.reduce((s, r) => s + r.correct, 0);
       recordResult('more-less', day.key, totalCorrect >= 8);
     } else {
       setStageIdx(stageIdx + 1);
     }
   };
 
+  const stageOver = phase === 'stage-end';
+
   return (
-    <div className="dd-games min-h-screen pb-24">
+    <div className="dd-games hl-screen">
       <Header onHelp={() => setShowHelp(true)} title="HighLow" date={formatDate(day.date)} />
 
-      {/* Stage progress dots */}
-      <div className="flex justify-center gap-2 mt-3 mb-2">
+      {/* Tabs */}
+      <nav className="hl-tabs" aria-label="Stages">
         {stages.map((s, i) => {
           const r = stageResults[i];
-          const cls = r ? 'bg-accent' : i === stageIdx ? 'bg-white' : 'bg-panel2';
-          return <div key={s.id} className={`h-1.5 rounded-full transition-all ${cls}`} style={{ width: i === stageIdx ? 32 : 18 }} />;
+          const isActive = i === stageIdx;
+          const isDone = !!r;
+          return (
+            <div key={s.id} className={`hl-tab ${isActive ? 'hl-tab--active' : ''} ${isDone ? 'hl-tab--done' : ''}`}>
+              {STAGE_LABELS[s.id]}
+              {isDone && <span className="hl-tab-score">{r.correct}</span>}
+            </div>
+          );
         })}
-      </div>
-      <p className="text-center text-xs text-gray-400 uppercase tracking-wider mb-1">Stage {stageIdx + 1} of {stages.length}</p>
-      <p className="text-center text-base sm:text-lg text-white font-semibold mb-4">Which {stage.question}?</p>
+      </nav>
 
-      <div className="flex justify-between items-center max-w-md mx-auto px-4 mb-3">
-        <div className="text-xs text-gray-400">Streak: <span className="text-white font-bold">{streak}</span></div>
-        <div className="text-xs text-gray-400">{stage.name}</div>
+      {/* Stage badge + question */}
+      <div className="hl-question">
+        <div className="hl-stage-badge">{stageIdx + 1}</div>
+        <h2 className="hl-question-text">
+          Which {questionText.map((p, i) =>
+            /^MORE$/i.test(p) ? <span key={i} className="hl-q-more">MORE</span> :
+            /^LESS$/i.test(p) ? <span key={i} className="hl-q-less">LESS</span> :
+            <span key={i}>{p}</span>
+          )}?
+        </h2>
       </div>
 
-      {/* Stacked cards */}
-      <div className="max-w-md mx-auto px-4 space-y-3">
-        {keeper && (
+      <div className="hl-streak">Streak: <strong>{streak}</strong></div>
+
+      {/* Cards side-by-side */}
+      <div key={`stage-${stageIdx}-${stageStart}`} className="hl-cards">
+        {leftItem && (
           <Card
-            item={keeper}
+            item={leftItem}
             category={stage}
-            // First round: keeper's value is hidden until reveal. After streak>0 the
-            // keeper has already been revealed in a previous round, so keep it visible.
-            reveal={streak > 0 || phase !== 'guess'}
-            onPick={() => phase === 'guess' && streak === 0 ? pick('top') : undefined}
-            disabled={phase !== 'guess' || streak > 0}
-            side="top"
-            highlight={phase === 'reveal' || phase === 'next' || phase === 'stage-end' ? (pickedSide === 'top' ? (bottom && (keeper.value >= bottom.value) ? 'win' : 'lose') : (bottom && (keeper.value > bottom.value) ? 'win' : null)) : null}
-          />
-        )}
-        <div className="text-center text-xs uppercase tracking-widest text-gray-500 font-bold">vs</div>
-        {bottom && (
-          <Card
-            item={bottom}
-            category={stage}
-            reveal={phase !== 'guess'}
-            onPick={() => pick('bottom')}
+            reveal={leftRevealed}
+            rollupActive={leftRollup}
+            outcome={
+              phase === 'outcome' || phase === 'advancing' || phase === 'stage-end'
+                ? (pickedSide === 'left'
+                    ? (leftItem && rightItem && leftItem.value >= rightItem.value ? 'win' : 'lose')
+                    : (leftItem && rightItem && leftItem.value > rightItem.value  ? 'win' : null))
+                : null
+            }
+            onPick={() => pick('left')}
             disabled={phase !== 'guess'}
-            side="bottom"
-            highlight={phase !== 'guess' ? (pickedSide === 'bottom' ? (keeper && bottom.value >= keeper.value ? 'win' : 'lose') : (keeper && bottom.value > keeper.value ? 'win' : null)) : null}
+            enterAnim={null}
           />
         )}
-
-        {phase === 'guess' && (
-          <p className="text-center text-xs text-gray-500 pt-1">
-            {streak === 0 ? 'Tap the card you think is higher' : 'Is the bottom card higher than the top?'}
-          </p>
-        )}
-
-        {phase === 'guess' && streak > 0 && (
-          <div className="grid grid-cols-2 gap-2 pt-2">
-            <button onClick={() => pick('bottom')} className="bg-accent hover:bg-accentDark text-white font-bold rounded-xl py-3 active:scale-[0.99]">Higher ↑</button>
-            <button onClick={() => pick('top')}    className="bg-panel2 hover:bg-panel3 text-white font-bold rounded-xl py-3 active:scale-[0.99]">Lower ↓</button>
-          </div>
-        )}
-
-        {phase === 'stage-end' && (
-          <div className="bg-panel border border-line/50 rounded-xl p-5 text-center animate-fade-up">
-            <p className="text-bad font-bold text-lg mb-1">End of round</p>
-            <p className="text-sm text-gray-400 mb-4">You made {streak} correct guess{streak === 1 ? '' : 'es'} in {stage.name}.</p>
-            <button onClick={goNextStage} className="w-full bg-accent hover:bg-accentDark text-white font-bold rounded-xl py-3 active:scale-[0.99]">
-              {stageIdx + 1 >= stages.length ? 'See Final Results' : 'Next Category →'}
-            </button>
-          </div>
+        {rightItem && (
+          <Card
+            item={rightItem}
+            category={stage}
+            reveal={rightRevealed}
+            rollupActive={rightRollup}
+            outcome={
+              phase === 'outcome' || phase === 'advancing' || phase === 'stage-end'
+                ? (pickedSide === 'right'
+                    ? (leftItem && rightItem && rightItem.value >= leftItem.value ? 'win' : 'lose')
+                    : (leftItem && rightItem && rightItem.value > leftItem.value  ? 'win' : null))
+                : null
+            }
+            onPick={() => pick('right')}
+            disabled={phase !== 'guess'}
+            enterAnim={enterAnim}
+          />
         )}
       </div>
+
+      {stageOver && (
+        <div className="hl-stage-end animate-fade-up">
+          <p className="hl-stage-end-title">{streak} correct in {STAGE_LABELS[stage.id]}</p>
+          <button onClick={goNextStage} className="hl-next-btn">
+            {stageIdx + 1 >= stages.length ? 'See Final Results →' : `Next: ${STAGE_LABELS[stages[stageIdx + 1].id]} →`}
+          </button>
+        </div>
+      )}
 
       <HelpModal open={showHelp} onClose={() => setShowHelp(false)} title="How to Play"><HelpBody /></HelpModal>
+      <style>{hlInlineCSS}</style>
     </div>
   );
 };
@@ -316,29 +369,22 @@ const FinishedView: React.FC<{
 }> = ({ day, stageResults, stages, onHelp, showHelp, setShowHelp }) => {
   const stats = loadStats('more-less');
   const totalCorrect = stageResults.reduce((s, r) => s + r.correct, 0);
-  const totalPossible = stageResults.reduce((s, r) => s + r.total, 0);
   const grid = stageResults.map(r => r.correct >= 5 ? '🟩' : r.correct >= 3 ? '🟨' : '🟥').join('');
   const shareText = `HighLow · ${day.key} · ${totalCorrect}\n${grid}\nhttps://datadripco.com/puzzles/more-less/`;
   return (
-    <div className="dd-games min-h-screen pb-10">
+    <div className="dd-games hl-screen">
       <Header onHelp={onHelp} title="HighLow" date={formatDate(day.date)} />
-      <div className="max-w-md mx-auto px-4 mt-4">
-        <h2 className="text-2xl font-bold text-white text-center mb-1">Final Score</h2>
-        <p className="text-center text-5xl font-extrabold text-accent tabular-nums mb-1">{totalCorrect}</p>
-        <p className="text-center text-xs text-gray-500 mb-5">correct guesses across {stageResults.length} categories</p>
-        <div className="space-y-2 mb-6">
+      <div className="hl-finished">
+        <h2 className="hl-fin-title">Final Score</h2>
+        <p className="hl-fin-score">{totalCorrect}</p>
+        <p className="hl-fin-sub">correct guesses across {stageResults.length} categories</p>
+        <div className="hl-fin-grid">
           {stageResults.map((r, i) => {
             const stage = stages.find(s => s.id === r.stageId)!;
             return (
-              <div key={i} className="bg-panel rounded-xl px-4 py-3 flex items-center justify-between border border-line/40">
-                <div>
-                  <p className="text-white font-semibold text-sm">{stage?.name}</p>
-                  <p className="text-[11px] text-gray-500">{stage?.question}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-accent font-bold tabular-nums">{r.correct}</p>
-                  <p className="text-[10px] text-gray-500 uppercase">streak</p>
-                </div>
+              <div key={i} className="hl-fin-row">
+                <span>{STAGE_LABELS[stage?.id || '']}</span>
+                <strong>{r.correct}</strong>
               </div>
             );
           })}
@@ -356,29 +402,162 @@ const FinishedView: React.FC<{
         />
       </div>
       <HelpModal open={showHelp} onClose={() => setShowHelp(false)} title="How to Play"><HelpBody /></HelpModal>
+      <style>{hlInlineCSS}</style>
     </div>
   );
 };
 
 const Header: React.FC<{ onHelp: () => void; title: string; date: string }> = ({ onHelp, title, date }) => (
-  <>
-    <div className="w-full max-w-3xl mx-auto px-4 pt-4 flex items-start justify-between">
-      <IconBtn onClick={onHelp} ariaLabel="How to play">?</IconBtn>
-      <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tighter text-white text-center flex-1">{title}</h1>
-      <div className="w-10" />
+  <div className="hl-header">
+    <IconBtn onClick={onHelp} ariaLabel="How to play">?</IconBtn>
+    <div className="hl-header-mid">
+      <h1>{title}</h1>
+      <p>Daily · {date}</p>
     </div>
-    <p className="text-center text-xs text-gray-500 mt-1">Daily · {date}</p>
-  </>
+    <div style={{ width: 40 }} />
+  </div>
 );
 
-const HelpBody: React.FC = () => (
-  <>
-    <p className="text-center text-gray-300 mb-4">Pick which one has the higher number.</p>
-    <ul className="space-y-3">
-      <li className="flex items-center gap-3"><span className="w-9 h-9 rounded bg-accent flex items-center justify-center text-white font-bold">✓</span><span>Right? Keep going — winner stays.</span></li>
-      <li className="flex items-center gap-3"><span className="w-9 h-9 rounded bg-bad flex items-center justify-center text-white font-bold">✗</span><span>Wrong? Move on to the next category.</span></li>
-      <li className="flex items-center gap-3"><span className="w-9 h-9 rounded bg-panel2 flex items-center justify-center text-white">📊</span><span>4 categories per day · build the longest streak.</span></li>
-    </ul>
-    <p className="text-center text-xs text-gray-500 mt-5">YouTube · Spotify · Movies · Companies</p>
-  </>
-);
+const HelpBody: React.FC = () => {
+  const [page, setPage] = useState<1 | 2>(1);
+  return (
+    <div>
+      {page === 1 ? (
+        <>
+          <p className="text-center text-gray-300 mb-5">Pick the card with the higher value.</p>
+          <ul className="space-y-3">
+            <li className="flex items-center gap-3"><span className="w-9 h-9 rounded-md bg-accent flex items-center justify-center text-white font-bold">✓</span><span>Right? Winner stays. New challenger slides in.</span></li>
+            <li className="flex items-center gap-3"><span className="w-9 h-9 rounded-md bg-bad flex items-center justify-center text-white font-bold">✗</span><span>Wrong? Move on to the next category.</span></li>
+            <li className="flex items-center gap-3"><span className="w-9 h-9 rounded-md bg-panel2 flex items-center justify-center text-white">📊</span><span>4 categories · build the longest streak.</span></li>
+          </ul>
+        </>
+      ) : (
+        <>
+          <p className="text-center text-gray-300 mb-4">Today's categories</p>
+          <ul className="space-y-3">
+            <li className="flex items-center gap-3"><span className="text-accent font-bold w-7">1</span><span>Google Searches — monthly U.S. search volume</span></li>
+            <li className="flex items-center gap-3"><span className="text-accent font-bold w-7">2</span><span>Spotify Streams — total artist streams</span></li>
+            <li className="flex items-center gap-3"><span className="text-accent font-bold w-7">3</span><span>Box Office — worldwide gross</span></li>
+            <li className="flex items-center gap-3"><span className="text-accent font-bold w-7">4</span><span>Random — Wikipedia popularity</span></li>
+          </ul>
+        </>
+      )}
+      <div className="flex items-center justify-between mt-6">
+        <button className={`text-xs ${page === 1 ? 'opacity-30' : 'text-gray-300'}`} onClick={() => setPage(1)} disabled={page === 1}>← Basics</button>
+        <div className="flex gap-1.5">
+          <span className={`w-2 h-2 rounded-full ${page === 1 ? 'bg-white' : 'bg-panel3'}`} />
+          <span className={`w-2 h-2 rounded-full ${page === 2 ? 'bg-white' : 'bg-panel3'}`} />
+        </div>
+        <button className={`text-xs ${page === 2 ? 'opacity-30' : 'text-gray-300'}`} onClick={() => setPage(2)} disabled={page === 2}>More →</button>
+      </div>
+    </div>
+  );
+};
+
+// ─── Inline scoped CSS ─────────────────────────
+const hlInlineCSS = `
+.hl-screen { min-height: 100vh; padding-bottom: 40px; background: #1e2021; }
+.hl-header { display: flex; align-items: center; padding: 14px 14px 6px; }
+.hl-header-mid { flex: 1; text-align: center; }
+.hl-header-mid h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 900; letter-spacing: -.04em; margin: 0; color: #fff; line-height: 1; }
+.hl-header-mid p  { font-size: 11px; color: #777; margin: 4px 0 0; letter-spacing: .04em; }
+
+.hl-tabs {
+  display: flex; gap: 4px; padding: 6px; margin: 12px auto 0; max-width: 720px;
+  background: #27282a; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05);
+}
+.hl-tab {
+  flex: 1; padding: 10px 8px; text-align: center; border-radius: 10px;
+  font-size: 12px; color: #8a8e92; font-weight: 600; letter-spacing: .01em;
+  position: relative;
+}
+@media (min-width: 640px) { .hl-tab { font-size: 13px; } }
+.hl-tab--active { background: #1e2021; color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+.hl-tab--done { color: #cfd2d4; }
+.hl-tab-score { position: absolute; top: 2px; right: 6px; background: #55B725; color: #fff; font-size: 9px; padding: 1px 5px; border-radius: 8px; }
+
+.hl-question { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 24px 16px 6px; max-width: 720px; margin: 0 auto; }
+.hl-stage-badge {
+  width: 52px; height: 52px; border-radius: 50%; background: #fff; color: #1e2021;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 900; flex-shrink: 0;
+}
+.hl-question-text {
+  font-size: clamp(1.2rem, 3.5vw, 1.6rem); font-weight: 800; color: #fff;
+  letter-spacing: -.02em; line-height: 1.15; margin: 0;
+}
+.hl-q-more { color: #55B725; }
+.hl-q-less { color: #C62121; }
+
+.hl-streak { text-align: center; font-size: 12px; color: #8a8e92; padding: 4px 0 14px; letter-spacing: .04em; }
+.hl-streak strong { color: #fff; font-weight: 800; margin-left: 4px; }
+
+.hl-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  padding: 0 14px; max-width: 720px; margin: 0 auto;
+}
+
+.hl-card {
+  display: flex; flex-direction: column; background: #27282a;
+  border: 2px solid rgba(255,255,255,0.04); border-radius: 14px; overflow: hidden;
+  text-align: center; padding: 0; transition: transform .2s ease, border-color .2s ease, box-shadow .25s ease;
+}
+.hl-card--clickable:hover { transform: translateY(-3px); border-color: #55B725; box-shadow: 0 14px 30px rgba(0,0,0,0.35); cursor: pointer; }
+.hl-card--clickable:active { transform: scale(.98); }
+.hl-card--win  { border-color: #55B725; box-shadow: 0 0 0 3px rgba(85,183,37,0.4), 0 12px 30px rgba(85,183,37,0.25); }
+.hl-card--lose { border-color: #C62121; box-shadow: 0 0 0 3px rgba(198,33,33,0.35), 0 12px 30px rgba(198,33,33,0.2); opacity: .85; }
+
+.hl-card--enter-right { animation: hlEnterRight 480ms cubic-bezier(.34,1.4,.64,1) both; }
+@keyframes hlEnterRight { 0% { transform: translateX(110%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+.hl-card--enter-left { animation: hlEnterLeft 480ms cubic-bezier(.34,1.4,.64,1) both; }
+@keyframes hlEnterLeft { 0% { transform: translateX(-110%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+
+.hl-card-img {
+  position: relative; aspect-ratio: 1/1; width: 100%;
+  background: #1e2021; display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hl-card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hl-card-emoji { font-size: 4rem; }
+
+.hl-badge {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px; font-weight: 900; color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.hl-badge--win  { background: #55B725; }
+.hl-badge--lose { background: #C62121; }
+
+.hl-card-name {
+  padding: 14px 10px 6px; color: #fff; font-size: clamp(1rem, 2.5vw, 1.2rem); font-weight: 700; letter-spacing: -.01em;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.hl-card-num {
+  padding: 6px 10px 18px; color: #fff;
+  font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+  font-weight: 900; letter-spacing: -.02em; font-variant-numeric: tabular-nums;
+  min-height: 2.4em;
+}
+.hl-card-num--show { color: #fff; }
+
+.hl-stage-end {
+  max-width: 480px; margin: 24px auto 0; padding: 0 16px;
+}
+.hl-stage-end-title { text-align: center; color: #cfd2d4; font-size: 1rem; margin: 0 0 12px; }
+.hl-next-btn {
+  width: 100%; background: #55B725; color: #fff; font-weight: 800; padding: 14px 18px;
+  border-radius: 12px; font-size: 1rem; transition: transform .1s ease, background .15s ease;
+}
+.hl-next-btn:hover { background: #4a9e1f; }
+.hl-next-btn:active { transform: scale(.99); }
+
+.hl-finished { max-width: 480px; margin: 16px auto 0; padding: 0 16px; }
+.hl-fin-title { text-align: center; color: #fff; font-size: 1.5rem; font-weight: 800; margin: 8px 0 4px; }
+.hl-fin-score { text-align: center; color: #55B725; font-size: 4rem; font-weight: 900; margin: 0; line-height: 1; font-variant-numeric: tabular-nums; }
+.hl-fin-sub   { text-align: center; color: #777; font-size: 12px; margin: 4px 0 18px; }
+.hl-fin-grid  { display: flex; flex-direction: column; gap: 6px; margin: 0 0 18px; }
+.hl-fin-row   { display: flex; justify-content: space-between; padding: 12px 14px; background: #27282a; border-radius: 10px; color: #cfd2d4; font-size: 13px; }
+.hl-fin-row strong { color: #55B725; font-weight: 800; font-variant-numeric: tabular-nums; }
+`;

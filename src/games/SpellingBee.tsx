@@ -5,7 +5,7 @@ import { ResultsScreen } from '../components/ResultsScreen';
 import { Toast } from '../components/Toast';
 import { HelpModal, IconBtn } from '../components/HelpModal';
 import { SPELLING_BANK, SpellingRound } from './data/spelling-bank';
-import { sndType, sndDelete, sndReveal, sndWin, sndLose, sndError, sndBloop } from '../lib/sound';
+import { sndType, sndDelete, sndReveal, sndWin, sndLose, sndError, sndBloop, sndPop } from '../lib/sound';
 
 interface RoundResult {
   word: string;
@@ -177,7 +177,7 @@ export const SpellingBee: React.FC = () => {
     const total = len * REVEAL_STAGGER + 400;
     setTimeout(() => {
       const correct = guess === target;
-      if (correct) { sndWin(); setPhase('correct'); finishRound({ word: target, userAnswer: guess, correct: true }); }
+      if (correct) { sndPop(); sndWin(); setPhase('correct'); finishRound({ word: target, userAnswer: guess, correct: true }); }
       else         { sndLose(); setPhase('wrong'); }
     }, total);
   };
@@ -235,22 +235,32 @@ export const SpellingBee: React.FC = () => {
     const guess = input.trim().toLowerCase();
     const target = currentWord.word.toLowerCase();
     const len = Math.max(guess.length, target.length);
+    const showFinal = phase === 'correct' || phase === 'wrong';
     return (
       <div className="text-center">
-        <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Checking your spelling…</p>
-        <div className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-          {Array.from({ length: len }).map((_, i) => {
-            const c = guess[i] || '';
-            const matches = c === target[i];
-            const cls = matches ? 'text-accent' : 'text-bad';
-            return (
-              <span
-                key={i}
-                className={`inline-block animate-bounce-letter ${cls}`}
-                style={{ animationDelay: `${i * REVEAL_STAGGER}ms`, animationFillMode: 'both' }}
-              >{c || '·'}</span>
-            );
-          })}
+        <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">{showFinal ? (phase === 'correct' ? 'Nailed it' : 'Not quite') : 'Checking your spelling…'}</p>
+        <div className="inline-flex items-center justify-center gap-3 text-3xl sm:text-4xl font-extrabold tracking-tight">
+          <div>
+            {Array.from({ length: len }).map((_, i) => {
+              const c = guess[i] || '';
+              const matches = c === target[i];
+              const cls = matches ? 'text-accent' : 'text-bad';
+              return (
+                <span
+                  key={i}
+                  className={`inline-block animate-bounce-letter ${cls}`}
+                  style={{ animationDelay: `${i * REVEAL_STAGGER}ms`, animationFillMode: 'both' }}
+                >{(c || '·').toUpperCase()}</span>
+              );
+            })}
+          </div>
+          {phase === 'correct' && (
+            <span
+              className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-accent text-white text-xl shadow-lg shadow-accent/40 animate-check-pop"
+              style={{ animationDelay: `${len * REVEAL_STAGGER + 60}ms` }}
+              aria-hidden="true"
+            >✓</span>
+          )}
         </div>
       </div>
     );
@@ -367,7 +377,7 @@ export const SpellingBee: React.FC = () => {
         </div>
       )}
       {phase === 'correct' && (
-        <p className="text-center text-accent font-bold text-xl mt-4 animate-fade-up">CORRECT</p>
+        <p className="text-center text-accent font-extrabold text-2xl mt-4 animate-fade-up tracking-tight">CORRECT ✓</p>
       )}
 
       <HelpModal open={showHelp} onClose={() => setShowHelp(false)} title="How to Play"><HelpBody /></HelpModal>
