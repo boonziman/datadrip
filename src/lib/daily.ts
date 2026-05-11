@@ -1,36 +1,50 @@
 /**
  * Daily-puzzle utilities — deterministic per-day rotation everyone shares.
+ *
+ * Day boundary is **midnight America/Los_Angeles** (not user local), so every
+ * player worldwide gets the same daily puzzle on the same calendar day.
  * Allows ?day=YYYY-MM-DD or ?day=N override for dev/testing.
  */
 
-export const EPOCH = new Date('2024-01-01T00:00:00Z');
+const TZ = 'America/Los_Angeles';
+// Day 0 = 2024-01-01 in LA.
+const EPOCH_KEY = '2024-01-01';
 
+/** YYYY-MM-DD in America/Los_Angeles for the given Date. */
 export function dayKey(date = new Date()): string {
-  // YYYY-MM-DD in user's local time so the day rolls at local midnight.
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, '0');
-  const d = String(date.getDate()).padStart(2, '0');
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(date);
+  const y = parts.find(p => p.type === 'year')!.value;
+  const m = parts.find(p => p.type === 'month')!.value;
+  const d = parts.find(p => p.type === 'day')!.value;
   return `${y}-${m}-${d}`;
 }
 
+function keyToUtc(key: string): number {
+  return Date.UTC(Number(key.slice(0, 4)), Number(key.slice(5, 7)) - 1, Number(key.slice(8, 10)));
+}
+
+/** # of LA days since 2024-01-01 — used as a deterministic seed. */
 export function dayNumber(date = new Date()): number {
-  // # of days since EPOCH — used as a deterministic seed for everything.
-  const ms = date.getTime() - EPOCH.getTime();
+  const ms = keyToUtc(dayKey(date)) - keyToUtc(EPOCH_KEY);
   return Math.max(0, Math.floor(ms / 86_400_000));
 }
 
 export function getPuzzleDay(): { date: Date; key: string; index: number; isDev: boolean } {
-  const params = new URLSearchParams(window.location.search);
-  const override = params.get('day');
-  if (override) {
-    if (/^\d{4}-\d{2}-\d{2}$/.test(override)) {
-      const d = new Date(override + 'T00:00:00');
-      return { date: d, key: dayKey(d), index: dayNumber(d), isDev: true };
-    }
-    const n = parseInt(override, 10);
-    if (!Number.isNaN(n)) {
-      const d = new Date(EPOCH.getTime() + n * 86_400_000);
-      return { date: d, key: dayKey(d), index: n, isDev: true };
+  if (typeof window !== 'undefined') {
+    const params = new URLSearchParams(window.location.search);
+    const override = params.get('day');
+    if (override) {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(override)) {
+        const d = new Date(override + 'T20:00:00Z'); // safely inside that LA day
+        return { date: d, key: override, index: dayNumber(d), isDev: true };
+      }
+      const n = parseInt(override, 10);
+      if (!Number.isNaN(n)) {
+        const d = new Date(keyToUtc(EPOCH_KEY) + n * 86_400_000 + 12 * 3600_000);
+        return { date: d, key: dayKey(d), index: n, isDev: true };
+      }
     }
   }
   const today = new Date();
@@ -64,11 +78,26 @@ export function shuffle<T>(arr: T[], rand: () => number): T[] {
 }
 
 export function formatDate(d: Date): string {
-  return d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  return d.toLocaleDateString(undefined, {
+    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: TZ,
+  });
 }
 
+/** Milliseconds until the next midnight in America/Los_Angeles. */
 export function msUntilNextLocalMidnight(): number {
   const now = new Date();
-  const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
-  return tomorrow.getTime() - now.getTime();
+  // Find LA's current UTC offset in minutes by reconstructing "now in LA" as UTC.
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: TZ, hour12: false,
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit',
+  }).formatToParts(now);
+  const get = (t: string) => Number(parts.find(p => p.type === t)!.value);
+  const laAsUtc = Date.UTC(get('year'), get('month') - 1, get('day'),
+                           get('hour') % 24, get('minute'), get('second'));
+  const offsetMin = Math.round((laAsUtc - now.getTime()) / 60000);
+  // Tomorrow's LA midnight, expressed as a UTC instant:
+  const todayKey = dayKey(now);
+  const tomorrowUtc = keyToUtc(todayKey) + 86_400_000 - offsetMin * 60_000;
+  return Math.max(0, tomorrowUtc - now.getTime());
 }

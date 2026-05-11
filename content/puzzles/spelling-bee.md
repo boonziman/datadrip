@@ -1,7 +1,7 @@
 ---
-title: "Spelling Bee — Daily Audio Spelling Challenge"
-description: "Listen to five words a day, ramping in difficulty, and spell them. Definitions and example sentences on demand. Free, no sign-up."
-keywords: ["spelling bee", "spelling game", "audio spelling", "vocabulary game", "free spelling practice"]
+title: "SpellIt — Daily Audio Spelling Challenge"
+description: "Listen to five words a day, ramping in difficulty, and spell them. Definitions and example sentences on demand. Free, no sign-up. New words every day at midnight Pacific."
+keywords: ["spellit", "spelling bee", "spelling game", "audio spelling", "vocabulary game", "free spelling practice"]
 gameSlug: "spelling-bee"
 url: "/puzzles/spelling-bee/"
 ShowReadingTime: false

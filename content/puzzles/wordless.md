@@ -1,7 +1,7 @@
 ---
-title: "Wordless — Daily Word Puzzle, 3 to 8 Letters"
-description: "A daily word-guessing puzzle. Pick your length (3–8 letters), six guesses, color hints. Like Wordle, but you choose how hard."
-keywords: ["wordless", "wordle alternative", "daily word game", "word puzzle", "free word game"]
+title: "Wordguess — Daily Word Puzzle, 3 to 8 Letters"
+description: "A daily word-guessing puzzle. Pick your length (3–8 letters), six guesses, color hints. Like Wordle, but you choose how hard. New word every day at midnight Pacific."
+keywords: ["wordguess", "wordless", "wordle alternative", "daily word game", "word puzzle", "free word game"]
 gameSlug: "wordless"
 url: "/puzzles/wordless/"
 ShowReadingTime: false

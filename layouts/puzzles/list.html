@@ -1,8 +1,8 @@
 {{- define "main" }}
 {{- $games := slice
-    (dict "slug" "wordless"      "name" "Wordless"      "tagline" "Word-guessing, your length." "blurb" "Pick 3 to 8 letters. Six guesses. Color hints reveal letter positions. New target every day.")
-    (dict "slug" "spelling-bee"  "name" "Spelling Bee"  "tagline" "Hear it. Spell it." "blurb" "Five rounds, ramping difficulty. Listen to the audio, type the word. Definition and example sentence on demand.")
-    (dict "slug" "more-less"     "name" "More/less"     "tagline" "Higher or lower?" "blurb" "Compare real-world data — subscribers, market caps, populations. Survive 15 rounds. One miss ends the run.")
+    (dict "slug" "wordless"      "name" "Wordguess"     "tagline" "Word-guessing, your length." "blurb" "Pick 3 to 8 letters. Six guesses. Color hints reveal letter positions. New target every day at midnight Pacific.")
+    (dict "slug" "spelling-bee"  "name" "SpellIt"       "tagline" "Hear it. Spell it." "blurb" "Five rounds, ramping difficulty. Listen to the audio, type the word. Definition and example sentence on demand.")
+    (dict "slug" "more-less"     "name" "HighLow"       "tagline" "Higher or lower?" "blurb" "Compare real-world data — subscribers, streams, ratings, market caps. Build the longest streak across four categories.")
     (dict "slug" "clueless"      "name" "Clueless"      "tagline" "Closer is better." "blurb" "Guess the secret word using semantic similarity. Every guess gets a heat score. Use hints if you stall.")
     (dict "slug" "songless"      "name" "Songless"      "tagline" "Name that tune." "blurb" "Six snippets, getting longer. Guess the song from a 1-second clip if you can. Apple Music previews.")
 }}
@@ -11,11 +11,11 @@
     <div class="container">
       {{- partial "breadcrumbs.html" . }}
       <p class="puzzles-eyebrow">Daily Puzzles</p>
-      <h1 class="puzzles-title">Five games. One a day. Zero fluff.</h1>
+      <h1 class="puzzles-title">Five games. New every day. Zero fluff.</h1>
       <p class="puzzles-lead">{{ .Content | plainify }}</p>
       <div class="puzzles-stats">
         <div class="pstat"><span class="pstat-num">5</span><span class="pstat-label">games</span></div>
-        <div class="pstat"><span class="pstat-num">∞</span><span class="pstat-label">days of puzzles</span></div>
+        <div class="pstat"><span class="pstat-num">12am</span><span class="pstat-label">PT reset</span></div>
         <div class="pstat"><span class="pstat-num">0</span><span class="pstat-label">sign-ups</span></div>
       </div>
     </div>

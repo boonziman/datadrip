@@ -24,16 +24,27 @@ export default {
         display: ['Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
-        'pop-in': 'popIn 220ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'pop-in': 'popIn 180ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'tile-pop': 'tilePop 140ms cubic-bezier(0.34, 1.56, 0.64, 1)',
         'flip': 'flip 600ms ease forwards',
         'shake': 'shake 420ms ease-in-out',
         'fade-up': 'fadeUp 360ms ease forwards',
+        'fade-in': 'fadeIn 200ms ease forwards',
         'pulse-soft': 'pulseSoft 1.6s ease-in-out infinite',
+        'bounce-letter': 'bounceLetter 380ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'slide-in-r': 'slideInR 320ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'wiggle': 'wiggle 380ms ease-in-out',
+        'glow': 'glow 1.6s ease-in-out infinite',
       },
       keyframes: {
         popIn: {
           '0%': { transform: 'scale(0.86)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        tilePop: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.12)' },
+          '100%': { transform: 'scale(1)' },
         },
         flip: {
           '0%': { transform: 'rotateX(0)' },
@@ -49,9 +60,31 @@ export default {
           '0%': { transform: 'translateY(8px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         pulseSoft: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.6' },
+        },
+        bounceLetter: {
+          '0%':   { transform: 'translateY(0)',    color: 'inherit' },
+          '40%':  { transform: 'translateY(-12px) scale(1.15)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        slideInR: {
+          '0%':   { transform: 'translateX(20px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)',    opacity: '1' },
+        },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(0)' },
+          '25%':      { transform: 'rotate(-3deg)' },
+          '75%':      { transform: 'rotate(3deg)' },
+        },
+        glow: {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(85,183,37,0.0)' },
+          '50%':      { boxShadow: '0 0 24px 4px rgba(85,183,37,0.45)' },
         },
       },
     },

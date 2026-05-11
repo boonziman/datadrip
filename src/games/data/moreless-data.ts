@@ -5,7 +5,8 @@
 export interface MoreLessItem {
   name: string;
   value: number;
-  image?: string; // optional emoji or short text label
+  image?: string; // emoji fallback shown until/if a real image loads
+  wiki?: string;  // optional Wikipedia page slug hint for image lookup
 }
 
 export interface MoreLessCategory {

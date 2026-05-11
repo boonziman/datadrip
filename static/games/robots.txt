@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /dashboard/
+Sitemap: https://datadripco.com/sitemap.xml

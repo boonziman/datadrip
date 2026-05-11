@@ -1,7 +1,7 @@
 ---
-title: "More/less — Daily Higher-or-Lower Trivia Game"
-description: "Compare two real-world data points — subscribers, market caps, populations. One miss ends your run. Survive 15 rounds for a perfect day."
-keywords: ["more or less", "higher or lower", "trivia game", "comparison game", "daily quiz"]
+title: "HighLow — Daily Higher-or-Lower Trivia Game"
+description: "Compare two real-world data points — YouTube subscribers, Spotify streams, movie ratings, market caps. Build the longest streak across four categories. New comparisons every day at midnight Pacific."
+keywords: ["highlow", "higher or lower", "more or less", "trivia game", "comparison game", "daily quiz"]
 gameSlug: "more-less"
 url: "/puzzles/more-less/"
 ShowReadingTime: false
