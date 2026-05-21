@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getPuzzleDay, mulberry32, formatDate } from '../lib/daily';
 import { loadState, saveState, recordResult, loadStats } from '../lib/storage';
 import { ResultsScreen } from '../components/ResultsScreen';
+import { DailyRankCard } from '../components/DailyRankCard';
+import { computeDailyRank } from '../lib/dailyRank';
 import { Toast } from '../components/Toast';
 import { HelpModal, IconBtn } from '../components/HelpModal';
 import { SPELLING_BANK, SpellingRound } from './data/spelling-bank';
@@ -76,14 +78,25 @@ function pickVoice(): SpeechSynthesisVoice | null {
 
 function speak(text: string, rate = 0.85) {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.rate = rate;
-  u.pitch = 1.0;
-  u.lang = 'en-US';
-  const v = pickVoice();
-  if (v) u.voice = v;
-  window.speechSynthesis.speak(u);
+  const doSpeak = () => {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = rate;
+    u.pitch = 1.0;
+    u.lang = 'en-US';
+    const v = pickVoice();
+    if (v) u.voice = v;
+    window.speechSynthesis.speak(u);
+  };
+  // Guarantee voice consistency: if voices not loaded yet, wait one tick.
+  if (!cachedVoice && !window.speechSynthesis.getVoices().length) {
+    const onReady = () => { window.speechSynthesis.onvoiceschanged = null; doSpeak(); };
+    window.speechSynthesis.onvoiceschanged = onReady;
+    // Fallback in case event never fires
+    setTimeout(() => { if (!cachedVoice) doSpeak(); }, 250);
+    return;
+  }
+  doSpeak();
 }
 
 export const SpellingBee: React.FC = () => {
@@ -224,6 +237,7 @@ export const SpellingBee: React.FC = () => {
               { value: stats.bestStreak, label: 'Best' },
             ]}
             shareText={shareText}
+            extras={<DailyRankCard rank={computeDailyRank('spelling-bee', day.index, correctCount, { higherIsBetter: true, mean: 3.4, stdev: 1.2 })} metric="by correct words" />}
           />
         </div>
         <HelpModal open={showHelp} onClose={() => setShowHelp(false)} title="How to Play"><HelpBody /></HelpModal>

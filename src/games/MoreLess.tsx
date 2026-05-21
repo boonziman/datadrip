@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getPuzzleDay, mulberry32, formatDate } from '../lib/daily';
 import { loadState, saveState, recordResult, loadStats } from '../lib/storage';
 import { ResultsScreen } from '../components/ResultsScreen';
+import { DailyRankCard } from '../components/DailyRankCard';
+import { computeDailyRank } from '../lib/dailyRank';
 import { HelpModal, IconBtn } from '../components/HelpModal';
 import { CATEGORIES, MoreLessItem, MoreLessCategory } from './data/moreless-data';
 import { fetchEntityImage, getCachedImage } from '../lib/images';
@@ -82,7 +84,9 @@ const Card: React.FC<{
   onPick?: () => void;
   disabled?: boolean;
   enterAnim?: 'right' | 'left' | null;
-}> = ({ item, category, reveal, rollupActive, outcome, onPick, disabled, enterAnim }) => {
+  exitAnim?: 'left' | 'right' | null;
+  slideToLeft?: boolean;
+}> = ({ item, category, reveal, rollupActive, outcome, onPick, disabled, enterAnim, exitAnim, slideToLeft }) => {
   const [imgUrl, setImgUrl] = useState<string | null | undefined>(() => getCachedImage(item.name));
   useEffect(() => {
     let alive = true;
@@ -98,12 +102,14 @@ const Card: React.FC<{
     outcome === 'win'  ? 'hl-card--win'  :
     outcome === 'lose' ? 'hl-card--lose' : '';
   const enterCls = enterAnim === 'right' ? 'hl-card--enter-right' : enterAnim === 'left' ? 'hl-card--enter-left' : '';
+  const exitCls  = exitAnim === 'left' ? 'hl-card--exit-left' : exitAnim === 'right' ? 'hl-card--exit-right' : '';
+  const slideCls = slideToLeft ? 'hl-card--slide-to-left' : '';
 
   return (
     <button
       onClick={() => !disabled && onPick && onPick()}
       disabled={disabled}
-      className={`hl-card ${ringCls} ${enterCls} ${!disabled && onPick ? 'hl-card--clickable' : ''}`}
+      className={`hl-card ${ringCls} ${enterCls} ${exitCls} ${slideCls} ${!disabled && onPick ? 'hl-card--clickable' : ''}`}
     >
       <div className="hl-card-img">
         {imgUrl
@@ -151,6 +157,9 @@ export const MoreLess: React.FC = () => {
   const [phase, setPhase] = useState<'guess' | 'reveal-pick' | 'reveal-other' | 'outcome' | 'advancing' | 'stage-end'>('guess');
   const [pickedSide, setPickedSide] = useState<null | 'left' | 'right'>(null);
   const [enterAnim, setEnterAnim] = useState<'right' | null>(null);
+  const [leftExit, setLeftExit] = useState<'left' | null>(null);
+  const [rightExit, setRightExit] = useState<'right' | null>(null);
+  const [rightSlideToLeft, setRightSlideToLeft] = useState(false);
   const [stageStart, setStageStart] = useState(false);
 
   // First card always shows '?' until first pick. After first round, the surviving "left" card
@@ -242,20 +251,44 @@ export const MoreLess: React.FC = () => {
       return;
     }
     setPhase('advancing');
-    // Move winner to left, new contender enters from right
-    setTimeout(() => {
-      setLeftItem(winnerItem);
-      setLeftRevealed(true);   // winner's number stays visible
-      setLeftRollup(false);    // not animating anymore
-      setRightItem(nextItem);
-      setRightRevealed(false);
-      setRightRollup(false);
-      setEnterAnim('right');
-      setDeckPos(p => p + 1);
-      setPickedSide(null);
-      setPhase('guess');
-      setTimeout(() => setEnterAnim(null), 500);
-    }, 250);
+    // Animation: the WINNER always ends up on the left.
+    //  - If right won: left card exits left, right card slides into left position.
+    //  - If left  won: right card exits right, new contender enters from right.
+    if (winnerSide === 'right') {
+      setLeftExit('left');
+      setRightSlideToLeft(true);
+      setTimeout(() => {
+        setLeftItem(winnerItem);
+        setLeftRevealed(true);
+        setLeftRollup(false);
+        setRightItem(nextItem);
+        setRightRevealed(false);
+        setRightRollup(false);
+        setLeftExit(null);
+        setRightSlideToLeft(false);
+        setEnterAnim('right');
+        setDeckPos(p => p + 1);
+        setPickedSide(null);
+        setPhase('guess');
+        setTimeout(() => setEnterAnim(null), 500);
+      }, 500);
+    } else {
+      setRightExit('right');
+      setTimeout(() => {
+        setLeftItem(winnerItem);
+        setLeftRevealed(true);
+        setLeftRollup(false);
+        setRightItem(nextItem);
+        setRightRevealed(false);
+        setRightRollup(false);
+        setRightExit(null);
+        setEnterAnim('right');
+        setDeckPos(p => p + 1);
+        setPickedSide(null);
+        setPhase('guess');
+        setTimeout(() => setEnterAnim(null), 500);
+      }, 350);
+    }
   };
 
   const goNextStage = () => {
@@ -322,6 +355,7 @@ export const MoreLess: React.FC = () => {
             onPick={() => pick('left')}
             disabled={phase !== 'guess'}
             enterAnim={null}
+            exitAnim={leftExit}
           />
         )}
         {rightItem && (
@@ -340,6 +374,8 @@ export const MoreLess: React.FC = () => {
             onPick={() => pick('right')}
             disabled={phase !== 'guess'}
             enterAnim={enterAnim}
+            exitAnim={rightExit}
+            slideToLeft={rightSlideToLeft}
           />
         )}
       </div>
@@ -399,6 +435,7 @@ const FinishedView: React.FC<{
             { value: stats.bestStreak, label: 'Best' },
           ]}
           shareText={shareText}
+          extras={<DailyRankCard rank={computeDailyRank('more-less', day.index, totalCorrect, { higherIsBetter: true, mean: 8, stdev: 4 })} metric="by streak total" />}
         />
       </div>
       <HelpModal open={showHelp} onClose={() => setShowHelp(false)} title="How to Play"><HelpBody /></HelpModal>
@@ -511,6 +548,12 @@ const hlInlineCSS = `
 @keyframes hlEnterRight { 0% { transform: translateX(110%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
 .hl-card--enter-left { animation: hlEnterLeft 480ms cubic-bezier(.34,1.4,.64,1) both; }
 @keyframes hlEnterLeft { 0% { transform: translateX(-110%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+.hl-card--exit-left  { animation: hlExitLeft  460ms cubic-bezier(.4,0,.7,.4) both; }
+@keyframes hlExitLeft  { 0% { transform: translateX(0); opacity: 1; } 100% { transform: translateX(-115%); opacity: 0; } }
+.hl-card--exit-right { animation: hlExitRight 380ms cubic-bezier(.4,0,.7,.4) both; }
+@keyframes hlExitRight { 0% { transform: translateX(0); opacity: 1; } 100% { transform: translateX(115%); opacity: 0; } }
+.hl-card--slide-to-left { animation: hlSlideToLeft 480ms cubic-bezier(.34,1.2,.64,1) both; z-index: 2; }
+@keyframes hlSlideToLeft { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100% - 14px)); } }
 
 .hl-card-img {
   position: relative; aspect-ratio: 1/1; width: 100%;

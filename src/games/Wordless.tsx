@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { getPuzzleDay, mulberry32, formatDate } from '../lib/daily';
 import { loadState, saveState, recordResult, loadStats } from '../lib/storage';
 import { ResultsScreen } from '../components/ResultsScreen';
+import { DailyRankCard } from '../components/DailyRankCard';
+import { computeDailyRank } from '../lib/dailyRank';
 import { Toast } from '../components/Toast';
 import { HelpModal, IconBtn } from '../components/HelpModal';
 import { isValidWord } from './data/wordless-words';
@@ -286,7 +288,10 @@ export const Wordless: React.FC = () => {
               distribution={dist}
               shareText={shareText}
               extras={
-                <p className="text-center text-xs text-gray-400 mt-3">Try a different length above ↑</p>
+                <>
+                  <DailyRankCard rank={computeDailyRank(`wordless-${length}`, day.index, status === 'won' ? guesses.length : MAX_GUESSES + 1, { higherIsBetter: false, mean: 4.2, stdev: 1.4 })} metric="by guesses used" />
+                  <p className="text-center text-xs text-gray-400 mt-3">Try a different length above ↑</p>
+                </>
               }
             />
           </div>

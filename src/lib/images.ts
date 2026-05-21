@@ -41,6 +41,9 @@ export async function fetchEntityImage(name: string, hint?: string): Promise<str
   if (c[key] && (c[key].url || Date.now() - c[key].t < NEG_TTL_MS)) return c[key].url;
   if (inflight.has(key)) return inflight.get(key)!;
 
+  // Wikipedia returns a 320px thumb by default — upgrade to 640px for retina.
+  const upscale = (url: string | null) => url ? url.replace(/\/\d+px-/, '/640px-') : null;
+
   const p = (async () => {
     // Try direct page summary first.
     const candidates = [hint || name, name].filter(Boolean) as string[];
@@ -50,7 +53,7 @@ export async function fetchEntityImage(name: string, hint?: string): Promise<str
         if (r.ok) {
           const d = await r.json();
           const url = d?.thumbnail?.source || d?.originalimage?.source || null;
-          if (url) return url as string;
+          if (url) return upscale(url) as string;
         }
       } catch {}
     }
@@ -65,7 +68,7 @@ export async function fetchEntityImage(name: string, hint?: string): Promise<str
           if (r2.ok) {
             const d2 = await r2.json();
             const url = d2?.thumbnail?.source || d2?.originalimage?.source || null;
-            if (url) return url as string;
+            if (url) return upscale(url) as string;
           }
         }
       }

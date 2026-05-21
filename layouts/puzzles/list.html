@@ -5,6 +5,7 @@
     (dict "slug" "more-less"     "name" "HighLow"    "tagline" "Pick the bigger number."     "color" "#55B725" "accent" "Four categories. One streak.")
     (dict "slug" "clueless"      "name" "ClueGuess"  "tagline" "Get warmer with every word." "color" "#DAC316" "accent" "Semantic distance, ranked.")
     (dict "slug" "songless"      "name" "SongGuess"  "tagline" "Name that tune in 6."         "color" "#55B725" "accent" "Snippets grow with every miss.")
+    (dict "slug" "letterpop"     "name" "LetterPop"  "tagline" "Build words. Clear the pool." "color" "#DAC316" "accent" "Power-ups + a go-out bonus.")
 }}
 <div class="puzzles-page">
   <header class="puzzles-hero">
@@ -112,6 +113,40 @@
                 </g>
                 <circle cx="80" cy="84" r="10" fill="#55B725"/>
                 <polygon points="77,79 86,84 77,89" fill="#fff"/>
+              </svg>
+            {{- else if eq $g.slug "letterpop" }}
+              <svg viewBox="0 0 160 100" class="pcard-svg" role="presentation">
+                <g>
+                  <rect x="6"   y="8"  width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="38"  y="8"  width="28" height="28" rx="5" fill="url(#lpPurple)"/>
+                  <rect x="70"  y="8"  width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="102" y="8"  width="28" height="28" rx="5" fill="url(#lpBlue)"/>
+                  <rect x="134" y="8"  width="20" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="6"   y="40" width="28" height="28" rx="5" fill="url(#lpYellow)"/>
+                  <rect x="38"  y="40" width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="70"  y="40" width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="102" y="40" width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="134" y="40" width="20" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                </g>
+                <defs>
+                  <linearGradient id="lpPurple" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#ec4899"/></linearGradient>
+                  <linearGradient id="lpBlue"   x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+                  <linearGradient id="lpYellow" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#facc15"/><stop offset="100%" stop-color="#f97316"/></linearGradient>
+                </defs>
+                <g font-family="Inter,system-ui" font-weight="900" font-size="14" fill="#fff" text-anchor="middle">
+                  <text x="20"  y="28">W</text>
+                  <text x="52"  y="28">O</text>
+                  <text x="84"  y="28">R</text>
+                  <text x="116" y="28">D</text>
+                  <text x="144" y="28">S</text>
+                  <text x="20"  y="60" fill="#1e2021">2W</text>
+                  <text x="52"  y="60">U</text>
+                  <text x="84"  y="60">P</text>
+                  <text x="116" y="60">!</text>
+                </g>
+                <text x="38"  y="14" font-family="Inter,system-ui" font-size="8" font-weight="900" fill="#fff" text-anchor="middle">★</text>
+                <text x="115" y="14" font-family="Inter,system-ui" font-size="7" font-weight="900" fill="#fff" text-anchor="middle">2L</text>
+                <text x="80"  y="92" font-family="Inter,system-ui" font-size="9" font-weight="700" fill="#9aa0a4" text-anchor="middle">+50 GO-OUT</text>
               </svg>
             {{- end }}
           </div>

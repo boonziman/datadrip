@@ -51,3 +51,11 @@ export const IconBtn: React.FC<IconBtnProps> = ({ onClick, ariaLabel, children }
     className="w-10 h-10 rounded-full bg-panel2 hover:bg-panel3 flex items-center justify-center text-gray-300 hover:text-white transition-colors active:scale-95"
   >{children}</button>
 );
+
+interface HelpItemProps { icon: React.ReactNode; children: React.ReactNode; }
+export const HelpItem: React.FC<HelpItemProps> = ({ icon, children }) => (
+  <div className="flex items-start gap-3 mb-3">
+    <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-panel2 flex items-center justify-center font-bold text-sm text-white">{icon}</span>
+    <span className="flex-1 text-gray-300 text-sm leading-relaxed">{children}</span>
+  </div>
+);

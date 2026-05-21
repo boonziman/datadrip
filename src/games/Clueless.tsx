@@ -3,6 +3,8 @@ import { getPuzzleDay, mulberry32, formatDate } from '../lib/daily';
 import { loadState, saveState, recordResult, loadStats } from '../lib/storage';
 import { PageHeader } from '../components/PageHeader';
 import { ResultsScreen } from '../components/ResultsScreen';
+import { DailyRankCard } from '../components/DailyRankCard';
+import { computeDailyRank } from '../lib/dailyRank';
 import { Toast } from '../components/Toast';
 import { CLUELESS_TARGETS } from './data/clueless-targets';
 
@@ -135,6 +137,7 @@ export const Clueless: React.FC = () => {
 
   if (status !== 'playing') {
     const shareText = `ClueGuess · ${day.key} · ${status === 'won' ? `${guesses.length} guesses${hintsUsed ? ` (${hintsUsed} hints)` : ''}` : 'gave up'}\nhttps://datadripco.com/puzzles/clueless/`;
+    const rank = computeDailyRank('clueless', day.index, status === 'won' ? guesses.length : 999, { higherIsBetter: false, mean: 22, stdev: 18 });
     return (
       <div className="dd-games min-h-screen pb-20">
         <PageHeader title="ClueGuess" dayLabel={`Daily · ${formatDate(day.date)}`} isDev={day.isDev} />
@@ -150,6 +153,7 @@ export const Clueless: React.FC = () => {
             { value: stats.bestStreak, label: 'Best' },
           ]}
           shareText={shareText}
+          extras={status === 'won' ? <DailyRankCard rank={rank} metric="by guesses used" /> : undefined}
         />
       </div>
     );

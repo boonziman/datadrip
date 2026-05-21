@@ -3,6 +3,8 @@ import { getPuzzleDay, mulberry32, formatDate } from '../lib/daily';
 import { loadState, saveState, recordResult, loadStats } from '../lib/storage';
 import { PageHeader } from '../components/PageHeader';
 import { ResultsScreen } from '../components/ResultsScreen';
+import { DailyRankCard } from '../components/DailyRankCard';
+import { computeDailyRank } from '../lib/dailyRank';
 import { Toast } from '../components/Toast';
 import { SONGS, Song } from './data/songless-songs';
 import {
@@ -156,6 +158,7 @@ export const Songless: React.FC = () => {
     const grid = guesses.map(g => g.correct ? '🟩' : g.partialArtist ? '🟧' : g.text === '(skipped)' ? '⬛' : '🟥').join('');
     const padded = grid.padEnd(MAX_GUESSES, '⬜');
     const shareText = `SongGuess · ${day.key} · ${status === 'won' ? `${guesses.length}/${MAX_GUESSES}` : 'X/' + MAX_GUESSES}\n${padded}\nhttps://datadripco.com/puzzles/songless/`;
+    const rank = computeDailyRank('songless', day.index, status === 'won' ? guesses.length : MAX_GUESSES + 1, { higherIsBetter: false, mean: 3.5, stdev: 1.5 });
     return (
       <div className="dd-games min-h-screen pb-20">
         <PageHeader title="SongGuess" dayLabel={`Daily · ${formatDate(day.date)}`} isDev={day.isDev} />
@@ -170,11 +173,14 @@ export const Songless: React.FC = () => {
             { value: stats.streak, label: 'Streak' },
             { value: stats.bestStreak, label: 'Best' },
           ]}
-          extras={preview && (
-            <button onClick={playFull} className="w-full bg-panel hover:bg-panel2 rounded-xl py-3 font-medium border border-line/40 flex items-center justify-center gap-2">
-              <IconPlay size={16}/> Play full 30s preview
-            </button>
-          )}
+          extras={<>
+            {status === 'won' && <DailyRankCard rank={rank} metric="by snippet level" />}
+            {preview && (
+              <button onClick={playFull} className="w-full bg-panel hover:bg-panel2 rounded-xl py-3 font-medium border border-line/40 flex items-center justify-center gap-2">
+                <IconPlay size={16}/> Play full 30s preview
+              </button>
+            )}
+          </>}
           shareText={shareText}
         />
       </div>

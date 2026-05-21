@@ -9,6 +9,7 @@ import { SpellingBee } from './games/SpellingBee';
 import { MoreLess } from './games/MoreLess';
 import { Clueless } from './games/Clueless';
 import { Songless } from './games/Songless';
+import { LetterPop } from './games/LetterPop';
 
 const REGISTRY: Record<string, React.FC> = {
   wordless: Wordless,
@@ -16,6 +17,7 @@ const REGISTRY: Record<string, React.FC> = {
   'more-less': MoreLess,
   clueless: Clueless,
   songless: Songless,
+  letterpop: LetterPop,
 };
 
 function boot() {
