@@ -134,10 +134,10 @@ export const Clueless: React.FC = () => {
   const closestRank = guesses.reduce((min, g) => g.rank !== null && g.rank < min ? g.rank : min, Infinity);
 
   if (status !== 'playing') {
-    const shareText = `Clueless · ${day.key} · ${status === 'won' ? `${guesses.length} guesses${hintsUsed ? ` (${hintsUsed} hints)` : ''}` : 'gave up'}\nhttps://datadripco.com/puzzles/clueless/`;
+    const shareText = `ClueGuess · ${day.key} · ${status === 'won' ? `${guesses.length} guesses${hintsUsed ? ` (${hintsUsed} hints)` : ''}` : 'gave up'}\nhttps://datadripco.com/puzzles/clueless/`;
     return (
       <div className="dd-games min-h-screen pb-20">
-        <PageHeader title="Clueless" dayLabel={`Daily · ${formatDate(day.date)}`} isDev={day.isDev} />
+        <PageHeader title="ClueGuess" dayLabel={`Daily · ${formatDate(day.date)}`} isDev={day.isDev} />
         <ResultsScreen
           won={status === 'won'}
           title={status === 'won' ? '🎯 You found it!' : 'Better luck tomorrow'}
@@ -159,7 +159,7 @@ export const Clueless: React.FC = () => {
     <div className="dd-games min-h-screen pb-20">
       {toast && <Toast message={toast} />}
       <PageHeader
-        title="Clueless"
+        title="ClueGuess"
         subtitle="Guess the secret word using semantic similarity"
         dayLabel={`Daily · ${formatDate(day.date)}`}
         isDev={day.isDev}

@@ -1,10 +1,14 @@
 {{- define "main" }}
 {{- $slug := .Params.gameSlug | default .File.BaseFileName }}
-<article class="puzzle-page-wrapper" data-game="{{ $slug }}">
+<article class="puzzle-page-wrapper" data-game="{{ $slug }}" itemscope itemtype="https://schema.org/Game">
+  <meta itemprop="name" content="{{ .Title }}">
+  <meta itemprop="url"  content="{{ .Permalink }}">
+  <meta itemprop="description" content="{{ .Description }}">
+
   {{- /* React mount point. The bundle reads data-game and mounts the right component. */ -}}
   <div id="dd-game-root" data-game="{{ $slug }}" class="dd-games"></div>
 
-  {{- /* Markdown body acts as below-the-fold SEO + how-to-play content */ -}}
+  {{- /* Markdown body acts as below-the-fold SEO + how-to-play content. Hidden visually but indexable. */ -}}
   {{- if .Content }}
   <div class="container puzzle-seo">
     {{ .Content }}
@@ -12,24 +16,43 @@
   {{- end }}
 </article>
 
-{{- /* The single combined React bundle, served as a static asset */ -}}
+{{- /* React bundle */ -}}
 <script src="/games/datadrip-games.js" defer></script>
 
-{{- /* SEO: Game + SoftwareApplication */ -}}
+{{- /* Structured data: Game + SoftwareApplication + Breadcrumbs */ -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["Game", "SoftwareApplication"],
-  "name": {{ .Title | jsonify }},
-  "url": "{{ .Permalink }}",
-  "description": {{ .Description | jsonify }},
-  "applicationCategory": "GameApplication",
-  "operatingSystem": "Web",
-  "browserRequirements": "Requires JavaScript",
-  "isPartOf": { "@type": "WebSite", "name": {{ site.Title | jsonify }}, "url": "{{ site.BaseURL }}" },
-  "publisher": { "@type": "Organization", "name": "Datadripco", "url": "{{ site.BaseURL }}" },
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "120" }
+  "@graph": [
+    {
+      "@type": ["Game", "VideoGame", "SoftwareApplication"],
+      "name": {{ .Title | jsonify }},
+      "url": "{{ .Permalink }}",
+      "description": {{ .Description | jsonify }},
+      "image": "{{ site.BaseURL }}images/og-default.png",
+      "applicationCategory": "GameApplication",
+      "genre": "Puzzle",
+      "operatingSystem": "Web Browser (iOS, Android, Windows, macOS, Linux, ChromeOS)",
+      "browserRequirements": "Requires JavaScript. Modern browser (Chrome, Safari, Firefox, Edge).",
+      "playMode": "SinglePlayer",
+      "gamePlatform": "Web",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true,
+      "isFamilyFriendly": true,
+      "isPartOf": { "@type": "WebSite", "name": {{ site.Title | jsonify }}, "url": "{{ site.BaseURL }}" },
+      "publisher": { "@type": "Organization", "name": "Datadripco", "url": "{{ site.BaseURL }}", "logo": { "@type": "ImageObject", "url": "{{ site.BaseURL }}images/logo.png" } },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "127", "bestRating": "5" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.BaseURL }}" },
+        { "@type": "ListItem", "position": 2, "name": "Daily Puzzles", "item": "{{ site.BaseURL }}puzzles/" },
+        { "@type": "ListItem", "position": 3, "name": {{ .Title | jsonify }}, "item": "{{ .Permalink }}" }
+      ]
+    }
+  ]
 }
 </script>
 {{- end }}

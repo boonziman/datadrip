@@ -5,13 +5,18 @@ import { PageHeader } from '../components/PageHeader';
 import { ResultsScreen } from '../components/ResultsScreen';
 import { Toast } from '../components/Toast';
 import { SONGS, Song } from './data/songless-songs';
+import {
+  IconPlay, IconPause, IconSkip, IconLoader, IconArrowRight,
+  IconCheck, IconX, IconMusic,
+} from '../components/Icons';
 
 const LEVELS_MS = [1000, 2000, 4000, 7000, 11000, 16000];
-const MAX_GUESSES = LEVELS_MS.length; // 6
+const MAX_GUESSES = LEVELS_MS.length;
+const TOTAL_MS = LEVELS_MS[LEVELS_MS.length - 1];
 
 interface SavedState {
   guesses: { text: string; correct: boolean; partialArtist: boolean }[];
-  level: number;          // current snippet level (0-5)
+  level: number;
   status: 'playing' | 'won' | 'lost';
 }
 
@@ -27,8 +32,6 @@ interface ITunesResult {
 }
 
 async function fetchPreview(song: Song): Promise<ITunesResult | null> {
-  // iTunes Search API: free, no key, returns 30s previewUrl MP3.
-  // We use the JSONP-style endpoint with `term=`. CORS is open for itunes.apple.com.
   const term = encodeURIComponent(`${song.artist} ${song.title}`);
   const url = `https://itunes.apple.com/search?term=${term}&entity=song&limit=5`;
   try {
@@ -36,7 +39,6 @@ async function fetchPreview(song: Song): Promise<ITunesResult | null> {
     if (!res.ok) return null;
     const data = await res.json();
     if (!data.results?.length) return null;
-    // Prefer exact title match
     const target = normalize(song.title);
     const best = data.results.find((r: any) => normalize(r.trackName).includes(target)) || data.results[0];
     if (!best.previewUrl) return null;
@@ -60,59 +62,53 @@ export const Songless: React.FC = () => {
   const [loadError, setLoadError] = useState(false);
   const [toast, setToast] = useState('');
   const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(0); // ms played in current snippet
+  const [currentMs, setCurrentMs] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const stopTimerRef = useRef<number | null>(null);
-  const tickRef = useRef<number | null>(null);
 
-  // Fetch preview
   useEffect(() => {
+    let alive = true;
     fetchPreview(song).then(p => {
+      if (!alive) return;
       if (!p) { setLoadError(true); return; }
       setPreview(p);
       const a = new Audio(p.previewUrl);
       a.preload = 'auto';
+      a.crossOrigin = 'anonymous';
+      a.ontimeupdate = () => { setCurrentMs(a.currentTime * 1000); };
+      a.onplay = () => setPlaying(true);
+      a.onpause = () => setPlaying(false);
+      a.onended = () => { setPlaying(false); setCurrentMs(0); };
       audioRef.current = a;
     });
     return () => {
+      alive = false;
       audioRef.current?.pause();
+      audioRef.current = null;
       if (stopTimerRef.current) clearTimeout(stopTimerRef.current);
-      if (tickRef.current) cancelAnimationFrame(tickRef.current);
     };
   }, [song]);
 
-  // Persist
-  useEffect(() => {
-    saveState<SavedState>('songless', day.key, { guesses, level, status });
-  }, [guesses, level, status, day.key]);
-
+  useEffect(() => { saveState<SavedState>('songless', day.key, { guesses, level, status }); }, [guesses, level, status, day.key]);
   useEffect(() => { if (!toast) return; const id = setTimeout(() => setToast(''), 1800); return () => clearTimeout(id); }, [toast]);
 
-  const stop = () => {
-    audioRef.current?.pause();
-    if (audioRef.current) audioRef.current.currentTime = 0;
+  const stopPlayback = () => {
+    const a = audioRef.current;
+    if (a) { a.pause(); a.currentTime = 0; }
     if (stopTimerRef.current) { clearTimeout(stopTimerRef.current); stopTimerRef.current = null; }
-    if (tickRef.current) { cancelAnimationFrame(tickRef.current); tickRef.current = null; }
     setPlaying(false);
-    setProgress(0);
+    setCurrentMs(0);
   };
 
   const playSnippet = (durationMs?: number) => {
-    if (!audioRef.current) return;
-    stop();
+    const a = audioRef.current;
+    if (!a) return;
+    if (playing) { stopPlayback(); return; }
     const dur = durationMs ?? LEVELS_MS[Math.min(level, LEVELS_MS.length - 1)];
-    audioRef.current.currentTime = 0;
-    audioRef.current.play().then(() => {
-      setPlaying(true);
-      const start = performance.now();
-      const tick = (t: number) => {
-        const elapsed = t - start;
-        setProgress(elapsed);
-        if (elapsed < dur) tickRef.current = requestAnimationFrame(tick);
-      };
-      tickRef.current = requestAnimationFrame(tick);
-      stopTimerRef.current = window.setTimeout(() => stop(), dur);
-    }).catch(() => setToast('Tap again to play'));
+    a.currentTime = 0;
+    a.play().catch(() => setToast('Tap play to start'));
+    if (stopTimerRef.current) clearTimeout(stopTimerRef.current);
+    stopTimerRef.current = window.setTimeout(() => stopPlayback(), dur + 30);
   };
 
   const playFull = () => playSnippet(30_000);
@@ -134,11 +130,9 @@ export const Songless: React.FC = () => {
     setInput('');
     if (g.correct) {
       setStatus('won');
-      stop();
+      stopPlayback();
       recordResult('songless', day.key, true, { totalGuesses: newGuesses.length });
-    } else {
-      advanceOrLose(newGuesses);
-    }
+    } else advanceOrLose(newGuesses);
   };
 
   const skip = () => {
@@ -149,13 +143,11 @@ export const Songless: React.FC = () => {
   };
 
   const advanceOrLose = (newGuesses: SavedState['guesses']) => {
+    stopPlayback();
     if (newGuesses.length >= MAX_GUESSES) {
       setStatus('lost');
-      stop();
       recordResult('songless', day.key, false);
-    } else {
-      setLevel(l => Math.min(l + 1, LEVELS_MS.length - 1));
-    }
+    } else setLevel(l => Math.min(l + 1, LEVELS_MS.length - 1));
   };
 
   const stats = loadStats('songless');
@@ -163,13 +155,13 @@ export const Songless: React.FC = () => {
   if (status !== 'playing') {
     const grid = guesses.map(g => g.correct ? '🟩' : g.partialArtist ? '🟧' : g.text === '(skipped)' ? '⬛' : '🟥').join('');
     const padded = grid.padEnd(MAX_GUESSES, '⬜');
-    const shareText = `Songless · ${day.key} · ${status === 'won' ? `${guesses.length}/${MAX_GUESSES}` : 'X/' + MAX_GUESSES}\n${padded}\nhttps://datadripco.com/puzzles/songless/`;
+    const shareText = `SongGuess · ${day.key} · ${status === 'won' ? `${guesses.length}/${MAX_GUESSES}` : 'X/' + MAX_GUESSES}\n${padded}\nhttps://datadripco.com/puzzles/songless/`;
     return (
       <div className="dd-games min-h-screen pb-20">
-        <PageHeader title="Songless" dayLabel={`Daily · ${formatDate(day.date)}`} isDev={day.isDev} />
+        <PageHeader title="SongGuess" dayLabel={`Daily · ${formatDate(day.date)}`} isDev={day.isDev} />
         <ResultsScreen
           won={status === 'won'}
-          title={status === 'won' ? '🎵 Got it!' : 'Tough one!'}
+          title={status === 'won' ? 'Got it!' : 'Tough one!'}
           answer={`"${song.title}" — ${song.artist}`}
           answerLabel="Today's Song"
           stats={[
@@ -179,8 +171,8 @@ export const Songless: React.FC = () => {
             { value: stats.bestStreak, label: 'Best' },
           ]}
           extras={preview && (
-            <button onClick={playFull} className="w-full bg-panel hover:bg-panel2 rounded-xl py-3 font-medium border border-line/40">
-              ▶ Play full 30s preview
+            <button onClick={playFull} className="w-full bg-panel hover:bg-panel2 rounded-xl py-3 font-medium border border-line/40 flex items-center justify-center gap-2">
+              <IconPlay size={16}/> Play full 30s preview
             </button>
           )}
           shareText={shareText}
@@ -189,29 +181,34 @@ export const Songless: React.FC = () => {
     );
   }
 
-  const currentDur = LEVELS_MS[Math.min(level, LEVELS_MS.length - 1)];
+  const currentMaxMs = LEVELS_MS[Math.min(level, LEVELS_MS.length - 1)];
+  const playedPct = Math.min(100, (currentMs / TOTAL_MS) * 100);
+  const unlockedPct = (currentMaxMs / TOTAL_MS) * 100;
 
   return (
     <div className="dd-games min-h-screen pb-20">
       {toast && <Toast message={toast} />}
-      <PageHeader title="Songless" subtitle={`Snippet ${level + 1}/${MAX_GUESSES} · ${(currentDur / 1000)}s`} dayLabel={`Daily · ${formatDate(day.date)}`} isDev={day.isDev} />
+      <PageHeader title="SongGuess" subtitle={`Snippet ${level + 1}/${MAX_GUESSES} · ${(currentMaxMs / 1000)}s`} dayLabel={`Daily · ${formatDate(day.date)}`} isDev={day.isDev} />
 
-      {/* Progress segments */}
+      {/* Single accurate progress bar */}
       <div className="max-w-md mx-auto px-4 mb-6">
-        <div className="flex gap-1">
-          {LEVELS_MS.map((ms, i) => {
-            const seg = ms - (i > 0 ? LEVELS_MS[i - 1] : 0);
-            const filled = i < level || (i === level && playing);
-            const fillPct = i === level && playing ? Math.min(1, (progress - (i > 0 ? LEVELS_MS[i - 1] : 0)) / seg) : (i < level ? 1 : 0);
-            return (
-              <div key={i} className="flex-1 h-2 bg-panel2 rounded-full overflow-hidden" style={{ flexGrow: seg }}>
-                <div className="h-full bg-accent transition-all" style={{ width: `${fillPct * 100}%` }} />
-              </div>
-            );
-          })}
+        <div className="relative h-3 bg-panel2 rounded-full overflow-hidden">
+          <div className="absolute inset-y-0 left-0 bg-accent/20" style={{ width: `${unlockedPct}%` }} />
+          <div className="absolute inset-y-0 left-0 bg-accent transition-[width] duration-100 ease-linear" style={{ width: `${playedPct}%` }} />
+          {LEVELS_MS.slice(0, -1).map((ms, i) => (
+            <div key={i}
+              className={`absolute top-0 bottom-0 w-px ${i < level ? 'bg-white/40' : 'bg-white/20'}`}
+              style={{ left: `${(ms / TOTAL_MS) * 100}%` }}
+            />
+          ))}
         </div>
-        <div className="flex justify-between mt-1 text-[10px] text-gray-500">
-          {LEVELS_MS.map((ms, i) => <span key={i}>{(ms / 1000)}s</span>)}
+        <div className="relative h-4 mt-1 text-[10px] text-gray-500">
+          {LEVELS_MS.map((ms, i) => (
+            <span key={i}
+              className={`absolute -translate-x-1/2 ${i === level ? 'text-accent font-bold' : ''}`}
+              style={{ left: `${(ms / TOTAL_MS) * 100}%` }}
+            >{(ms / 1000)}s</span>
+          ))}
         </div>
       </div>
 
@@ -220,10 +217,11 @@ export const Songless: React.FC = () => {
         <button
           onClick={() => playSnippet()}
           disabled={!preview && !loadError}
-          className="w-32 h-32 bg-accent hover:bg-accentDark text-black rounded-full flex flex-col items-center justify-center text-5xl active:scale-95 transition-transform shadow-lg shadow-accent/30 disabled:opacity-50"
+          className="w-32 h-32 bg-accent hover:bg-accentDark text-white rounded-full flex flex-col items-center justify-center active:scale-95 transition-transform shadow-lg shadow-accent/30 disabled:opacity-50"
+          aria-label={playing ? 'Pause' : 'Play snippet'}
         >
-          {!preview && !loadError ? '⋯' : playing ? '⏸' : '▶'}
-          <span className="text-xs font-semibold mt-1">{(currentDur / 1000).toFixed(0)}s</span>
+          {!preview && !loadError ? <IconLoader size={48}/> : playing ? <IconPause size={48}/> : <IconPlay size={48}/>}
+          <span className="text-xs font-semibold mt-2 tabular-nums">{(currentMaxMs / 1000).toFixed(0)}s</span>
         </button>
       </div>
 
@@ -231,7 +229,6 @@ export const Songless: React.FC = () => {
         <p className="text-center text-bad text-sm mb-4">No preview available — skip without penalty.</p>
       )}
 
-      {/* Guess input */}
       <div className="max-w-md mx-auto px-4 mb-3">
         <input
           value={input}
@@ -245,17 +242,25 @@ export const Songless: React.FC = () => {
       </div>
 
       <div className="max-w-md mx-auto px-4 grid grid-cols-2 gap-2 mb-6">
-        <button onClick={skip} className="bg-panel hover:bg-panel2 rounded-lg py-3 font-medium border border-line/40">⏭ Skip (+ time)</button>
-        <button onClick={submit} className="bg-accent hover:bg-accentDark text-black rounded-lg py-3 font-bold">Submit</button>
+        <button onClick={skip} className="bg-panel hover:bg-panel2 rounded-lg py-3 font-medium border border-line/40 flex items-center justify-center gap-2">
+          <IconSkip size={16}/> Skip (+ time)
+        </button>
+        <button onClick={submit} className="bg-accent hover:bg-accentDark text-white rounded-lg py-3 font-bold flex items-center justify-center gap-2">
+          Submit <IconArrowRight size={16}/>
+        </button>
       </div>
 
-      {/* History */}
       <div className="max-w-md mx-auto px-4 space-y-1.5">
         {guesses.map((g, i) => (
           <div key={i} className={`flex items-center gap-3 px-4 py-2.5 rounded-lg border ${g.correct ? 'bg-accent/10 border-accent/40' : g.partialArtist ? 'bg-warn/10 border-warn/40' : g.text === '(skipped)' ? 'bg-panel border-line/40' : 'bg-bad/10 border-bad/40'}`}>
             <span className="text-xs text-gray-500 tabular-nums">#{i + 1}</span>
             <span className="flex-1 text-sm">{g.text}</span>
-            <span className="text-xs">{g.correct ? '✓ song' : g.partialArtist ? '◐ artist' : g.text === '(skipped)' ? '↷' : '✗'}</span>
+            <span className="text-xs flex items-center">
+              {g.correct ? <span className="flex items-center gap-1 text-accent"><IconCheck size={14}/> song</span>
+                : g.partialArtist ? <span className="flex items-center gap-1 text-warn"><IconMusic size={14}/> artist</span>
+                : g.text === '(skipped)' ? <span className="text-gray-500"><IconSkip size={14}/></span>
+                : <IconX size={14} className="text-bad"/>}
+            </span>
           </div>
         ))}
       </div>

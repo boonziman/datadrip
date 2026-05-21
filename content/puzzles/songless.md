@@ -1,7 +1,7 @@
 ---
-title: "Songless — Daily Song-Guessing Game"
-description: "A daily song-guessing puzzle. Six snippets, getting longer each round. Identify the track in as few clips as possible."
-keywords: ["songless", "heardle alternative", "song guessing game", "music puzzle", "name that tune"]
+title: "SongGuess — Daily Song-Guessing Game (Free, Like Heardle)"
+description: "SongGuess is a free daily song-guessing game. Identify today's mystery track from a 1-second snippet. Wrong? Unlock a longer clip. Six tries, six lengths, one song for everyone."
+keywords: ["songguess", "songless", "heardle", "heardle alternative", "daily song guessing game", "name that tune online", "music puzzle", "song quiz daily", "guess the song from snippet", "free music game"]
 gameSlug: "songless"
 url: "/puzzles/songless/"
 ShowReadingTime: false

@@ -100,29 +100,46 @@
 .pcard:hover::after { opacity: 1; }
 
 .pcard-inner {
-  padding: 1.75rem 1.5rem 1.5rem;
+  padding: 0 0 1.5rem;
   display: flex; flex-direction: column; align-items: center;
   text-align: center;
-  min-height: 260px;
 }
 
 .pcard-name {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
   font-weight: 900; letter-spacing: -.035em; line-height: 1;
-  color: #fff; margin: 0 0 1.25rem;
+  color: #fff; margin: 1.5rem 0 .5rem;
 }
 
 .pcard-tagline {
-  margin: 1.25rem 0 0; font-size: .82rem; color: #8c9094;
-  letter-spacing: .04em; font-weight: 500;
+  margin: 0; font-size: .9rem; color: #8c9094;
+  letter-spacing: .01em; font-weight: 500;
+  padding: 0 1rem;
 }
 
 /* Card art (the visual) -------------------------------------------- */
 .pcard-art {
-  flex: 1; display: flex; align-items: center; justify-content: center;
-  width: 100%; min-height: 110px;
+  width: 100%; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, #1f2123 0%, #18191b 100%);
+  padding: 1.5rem 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  min-height: 140px;
 }
+.pcard-svg {
+  width: 100%; max-width: 220px; height: auto;
+  transition: transform .35s cubic-bezier(.34,1.4,.64,1);
+}
+.pcard:hover .pcard-svg { transform: scale(1.05); }
+
+.pcard-cta {
+  display: inline-block; margin-top: 1rem;
+  color: var(--tint, #55B725); font-size: .82rem; font-weight: 700;
+  letter-spacing: .04em;
+  opacity: 0; transform: translateY(4px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+.pcard:hover .pcard-cta { opacity: 1; transform: translateY(0); }
 
 /* Wordguess: tile grid */
 .art-tiles {

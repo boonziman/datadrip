@@ -6,6 +6,7 @@ import { Toast } from '../components/Toast';
 import { HelpModal, IconBtn } from '../components/HelpModal';
 import { SPELLING_BANK, SpellingRound } from './data/spelling-bank';
 import { sndType, sndDelete, sndReveal, sndWin, sndLose, sndError, sndBloop, sndPop } from '../lib/sound';
+import { IconSpeaker, IconLoader, IconCheck, IconX, IconArrowRight } from '../components/Icons';
 
 interface RoundResult {
   word: string;
@@ -295,7 +296,7 @@ export const SpellingBee: React.FC = () => {
           aria-label="Play word"
           style={{ animation: phase === 'typing' && !loading ? undefined : 'none' }}
         >
-          {loading ? '⋯' : '🔊'}
+          {loading ? <IconLoader size={44}/> : <IconSpeaker size={44}/>}
         </button>
       </div>
 
@@ -349,11 +350,11 @@ export const SpellingBee: React.FC = () => {
             <button
               onClick={() => { setShowHelpers(h => ({ ...h, definition: true })); playDefinition(); }}
               className="bg-gray-200 hover:bg-white text-black font-semibold rounded-lg py-3 text-sm flex items-center justify-center gap-2 active:scale-95"
-            ><span>🔊</span> Definition</button>
+            ><IconSpeaker size={16}/> Definition</button>
             <button
               onClick={() => { setShowHelpers(h => ({ ...h, example: true })); playExample(); }}
               className="bg-gray-200 hover:bg-white text-black font-semibold rounded-lg py-3 text-sm flex items-center justify-center gap-2 active:scale-95"
-            ><span>🔊</span> Sentence</button>
+            ><IconSpeaker size={16}/> Sentence</button>
           </div>
           <button
             onClick={submit}
@@ -405,7 +406,7 @@ const HelpBody: React.FC = () => (
       ))}
     </div>
     <ul className="space-y-3">
-      <li className="flex items-center gap-3"><span className="w-9 h-9 rounded-full bg-panel2 flex items-center justify-center">🔊</span><span>Click to listen</span></li>
+      <li className="flex items-center gap-3"><span className="w-9 h-9 rounded-full bg-panel2 flex items-center justify-center"><IconSpeaker size={18}/></span><span>Click to listen</span></li>
       <li className="flex items-center gap-3"><span className="px-3 h-9 rounded bg-gray-200 text-black flex items-center text-sm font-semibold">Definition</span><span>Show the meaning</span></li>
       <li className="flex items-center gap-3"><span className="px-3 h-9 rounded bg-gray-200 text-black flex items-center text-sm font-semibold">Sentence</span><span>Use it in a sentence</span></li>
     </ul>

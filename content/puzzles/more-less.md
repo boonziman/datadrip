@@ -1,7 +1,7 @@
 ---
-title: "HighLow — Daily Higher-or-Lower Trivia Game"
-description: "Compare two real-world data points — YouTube subscribers, Spotify streams, movie ratings, market caps. Build the longest streak across four categories. New comparisons every day at midnight Pacific."
-keywords: ["highlow", "higher or lower", "more or less", "trivia game", "comparison game", "daily quiz"]
+title: "HighLow — Free Daily Higher or Lower Game (4 Categories)"
+description: "HighLow is a free daily higher-or-lower trivia game. Compare YouTube subs, Spotify streams, market caps, populations and more. Four categories, four streaks, one day."
+keywords: ["highlow", "higher or lower game", "more or less", "higher lower google", "trivia comparison game", "daily quiz", "youtube higher or lower", "population game", "market cap game", "daily streak game"]
 gameSlug: "more-less"
 url: "/puzzles/more-less/"
 ShowReadingTime: false

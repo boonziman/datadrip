@@ -1,7 +1,7 @@
 ---
-title: "Clueless — Daily Semantic-Similarity Word Puzzle"
-description: "Guess the secret word using semantic similarity. Every guess gets a heat score — closer means hotter. Use hints if you stall."
-keywords: ["semantle", "clueless", "semantic word game", "word similarity puzzle", "daily word puzzle"]
+title: "ClueGuess — Daily Word-Association Puzzle (Semantle Alternative)"
+description: "ClueGuess is a free daily word puzzle. Find the secret word using semantic similarity — every guess ranked hot, warm or cold by meaning. Unlimited guesses, one word for everyone."
+keywords: ["clueguess", "clueless", "semantle", "semantle alternative", "semantic word game", "word association puzzle", "contexto", "contexto alternative", "daily word puzzle", "meaning guessing game"]
 gameSlug: "clueless"
 url: "/puzzles/clueless/"
 ShowReadingTime: false

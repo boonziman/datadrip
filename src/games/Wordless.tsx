@@ -7,6 +7,7 @@ import { HelpModal, IconBtn } from '../components/HelpModal';
 import { isValidWord } from './data/wordless-words';
 import { poolFor } from './data/wordguess-pool';
 import { sndType, sndDelete, sndReveal, sndWin, sndLose, sndError, sndBloop, sndPop } from '../lib/sound';
+import { IconStats } from '../components/Icons';
 
 type TileStatus = 'correct' | 'present' | 'absent' | 'empty';
 type GameStatus = 'playing' | 'won' | 'lost';
@@ -197,7 +198,7 @@ export const Wordless: React.FC = () => {
           disabled={status === 'playing'}
           className="wg-results-btn"
           aria-label="Results"
-        >📊</button>
+        ><IconStats size={18}/></button>
       </div>
 
       {/* Length selector — pills */}

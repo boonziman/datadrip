@@ -1,67 +1,132 @@
 {{- define "main" }}
 {{- $games := slice
-    (dict "slug" "wordless"      "name" "Wordguess"  "tagline" "Six tries. Your length.")
-    (dict "slug" "spelling-bee"  "name" "SpellIt"    "tagline" "Hear it. Spell it.")
-    (dict "slug" "more-less"     "name" "HighLow"    "tagline" "Higher or lower?")
-    (dict "slug" "clueless"      "name" "Clueless"   "tagline" "Closer is better.")
-    (dict "slug" "songless"      "name" "Songless"   "tagline" "Name that tune.")
+    (dict "slug" "wordless"      "name" "Wordguess"  "tagline" "Six tries. Your length."     "color" "#55B725" "accent" "Green tiles tell the story.")
+    (dict "slug" "spelling-bee"  "name" "SpellIt"    "tagline" "Hear it. Spell it."          "color" "#DAC316" "accent" "Five words a day. Same voice.")
+    (dict "slug" "more-less"     "name" "HighLow"    "tagline" "Pick the bigger number."     "color" "#55B725" "accent" "Four categories. One streak.")
+    (dict "slug" "clueless"      "name" "ClueGuess"  "tagline" "Get warmer with every word." "color" "#DAC316" "accent" "Semantic distance, ranked.")
+    (dict "slug" "songless"      "name" "SongGuess"  "tagline" "Name that tune in 6."         "color" "#55B725" "accent" "Snippets grow with every miss.")
 }}
 <div class="puzzles-page">
   <header class="puzzles-hero">
     <div class="puzzles-hero-inner">
       <p class="puzzles-eyebrow"><span class="dot"></span> Daily · resets at midnight PT</p>
       <h1 class="puzzles-title">Datadrip<span class="puzzles-title-accent">.games</span></h1>
-      <p class="puzzles-lead">Five small games. New every day. No accounts, no nags, no fluff &mdash; just something to think about with your morning coffee.</p>
+      <p class="puzzles-lead">Free, fast, ad-light daily puzzles. Wordguess, SpellIt, HighLow, ClueGuess and SongGuess &mdash; everyone gets the same puzzle, every day. Built for your morning coffee.</p>
     </div>
   </header>
 
   <section class="puzzles-grid-wrap">
     <div class="puzzles-grid">
       {{- range $i, $g := $games }}
-      <a class="pcard pcard--{{ $g.slug }}" href="/puzzles/{{ $g.slug }}/" style="--i: {{ $i }};">
+      <a class="pcard pcard--{{ $g.slug }}" href="/puzzles/{{ $g.slug }}/" style="--i: {{ $i }}; --tint: {{ $g.color }};" aria-label="Play {{ $g.name }}">
         <div class="pcard-inner">
-          <h2 class="pcard-name">{{ $g.name }}</h2>
           <div class="pcard-art" aria-hidden="true">
             {{- if eq $g.slug "wordless" }}
-              <div class="art-tiles">
-                <span class="t"></span><span class="t t-y"></span><span class="t"></span><span class="t t-g"></span>
-                <span class="t t-g"></span><span class="t"></span><span class="t t-y"></span><span class="t"></span>
-              </div>
+              <svg viewBox="0 0 160 100" class="pcard-svg" role="presentation">
+                <g>
+                  <rect x="2"   y="2"  width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="34"  y="2"  width="28" height="28" rx="5" fill="#DAC316"/>
+                  <rect x="66"  y="2"  width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="98"  y="2"  width="28" height="28" rx="5" fill="#55B725"/>
+                  <rect x="130" y="2"  width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="2"   y="36" width="28" height="28" rx="5" fill="#55B725"/>
+                  <rect x="34"  y="36" width="28" height="28" rx="5" fill="#55B725"/>
+                  <rect x="66"  y="36" width="28" height="28" rx="5" fill="#DAC316"/>
+                  <rect x="98"  y="36" width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="130" y="36" width="28" height="28" rx="5" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                  <rect x="2"   y="70" width="28" height="28" rx="5" fill="#55B725"/>
+                  <rect x="34"  y="70" width="28" height="28" rx="5" fill="#55B725"/>
+                  <rect x="66"  y="70" width="28" height="28" rx="5" fill="#55B725"/>
+                  <rect x="98"  y="70" width="28" height="28" rx="5" fill="#55B725"/>
+                  <rect x="130" y="70" width="28" height="28" rx="5" fill="#55B725"/>
+                  <text x="16"  y="22" font-family="Inter,system-ui" font-weight="900" font-size="18" fill="#9aa0a4" text-anchor="middle">P</text>
+                  <text x="48"  y="22" font-family="Inter,system-ui" font-weight="900" font-size="18" fill="#1e2021" text-anchor="middle">L</text>
+                  <text x="80"  y="22" font-family="Inter,system-ui" font-weight="900" font-size="18" fill="#9aa0a4" text-anchor="middle">A</text>
+                  <text x="112" y="22" font-family="Inter,system-ui" font-weight="900" font-size="18" fill="#fff" text-anchor="middle">N</text>
+                  <text x="144" y="22" font-family="Inter,system-ui" font-weight="900" font-size="18" fill="#9aa0a4" text-anchor="middle">T</text>
+                </g>
+              </svg>
             {{- else if eq $g.slug "spelling-bee" }}
-              <div class="art-spell">
-                <span class="art-spell-spk">🔊</span>
-                <span class="art-spell-blanks">_ _ _ _</span>
-              </div>
+              <svg viewBox="0 0 160 100" class="pcard-svg" role="presentation">
+                <circle cx="40" cy="50" r="32" fill="#DAC316"/>
+                <path d="M28 50 L40 40 V60 Z M40 40 H50 V60 H40 Z" fill="#1e2021"/>
+                <path d="M58 42 Q66 50 58 58" stroke="#1e2021" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <path d="M64 36 Q76 50 64 64" stroke="#1e2021" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".6"/>
+                <g font-family="Inter,system-ui" font-weight="900" font-size="22" fill="#fff" letter-spacing="3">
+                  <text x="92"  y="58">S</text>
+                  <text x="108" y="58">P</text>
+                  <text x="124" y="58" fill="#9aa0a4">_</text>
+                  <text x="140" y="58" fill="#9aa0a4">_</text>
+                </g>
+              </svg>
             {{- else if eq $g.slug "more-less" }}
-              <div class="art-arrows">
-                <span class="art-arrow art-arrow-up">▲</span>
-                <span class="art-arrow art-arrow-dn">▼</span>
-              </div>
+              <svg viewBox="0 0 160 100" class="pcard-svg" role="presentation">
+                <rect x="6"   y="14" width="62" height="72" rx="10" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                <rect x="92"  y="14" width="62" height="72" rx="10" fill="#27282a" stroke="#3a3d40" stroke-width="2"/>
+                <circle cx="37" cy="38" r="14" fill="#55B725"/>
+                <circle cx="123" cy="38" r="14" fill="#DAC316"/>
+                <text x="37"  y="72" font-family="Inter,system-ui" font-weight="900" font-size="14" fill="#fff" text-anchor="middle">2.1M</text>
+                <text x="123" y="72" font-family="Inter,system-ui" font-weight="900" font-size="14" fill="#fff" text-anchor="middle">540K</text>
+                <text x="80"  y="56" font-family="Inter,system-ui" font-weight="900" font-size="20" fill="#fff" text-anchor="middle">VS</text>
+              </svg>
             {{- else if eq $g.slug "clueless" }}
-              <div class="art-bars-clue">
-                <span style="--w:92%; --c:#55B725"></span>
-                <span style="--w:74%; --c:#55B725"></span>
-                <span style="--w:52%; --c:#DAC316"></span>
-                <span style="--w:26%; --c:#C62121"></span>
-              </div>
+              <svg viewBox="0 0 160 100" class="pcard-svg" role="presentation">
+                <g font-family="Inter,system-ui" font-weight="800" font-size="11" fill="#fff">
+                  <rect x="4"  y="6"  width="152" height="18" rx="5" fill="#1f2123"/>
+                  <rect x="4"  y="6"  width="146" height="18" rx="5" fill="#55B725"/>
+                  <text x="12" y="19">moon</text>
+                  <text x="138" y="19" text-anchor="end" fill="#1e2021">2</text>
+                  <rect x="4"  y="28" width="152" height="18" rx="5" fill="#1f2123"/>
+                  <rect x="4"  y="28" width="118" height="18" rx="5" fill="#7BC93A"/>
+                  <text x="12" y="41">stars</text>
+                  <text x="138" y="41" text-anchor="end">87</text>
+                  <rect x="4"  y="50" width="152" height="18" rx="5" fill="#1f2123"/>
+                  <rect x="4"  y="50" width="74"  height="18" rx="5" fill="#DAC316"/>
+                  <text x="12" y="63">ocean</text>
+                  <text x="138" y="63" text-anchor="end">412</text>
+                  <rect x="4"  y="72" width="152" height="18" rx="5" fill="#1f2123"/>
+                  <rect x="4"  y="72" width="32"  height="18" rx="5" fill="#C62121"/>
+                  <text x="12" y="85">pencil</text>
+                  <text x="138" y="85" text-anchor="end">9824</text>
+                </g>
+              </svg>
             {{- else if eq $g.slug "songless" }}
-              <div class="art-player">
-                <span class="art-player-bar"><span class="art-player-fill"></span></span>
-                <span class="art-player-btns">
-                  <span class="abtn">⏮</span><span class="abtn abtn-play">▶</span><span class="abtn">⏭</span>
-                </span>
-              </div>
+              <svg viewBox="0 0 160 100" class="pcard-svg" role="presentation">
+                <rect x="4" y="58" width="152" height="6" rx="3" fill="#1f2123"/>
+                <rect x="4" y="58" width="56"  height="6" rx="3" fill="#55B725"/>
+                <line x1="30"  y1="56" x2="30"  y2="68" stroke="#fff" opacity=".25" stroke-width="1.5"/>
+                <line x1="60"  y1="56" x2="60"  y2="68" stroke="#fff" opacity=".25" stroke-width="1.5"/>
+                <line x1="100" y1="56" x2="100" y2="68" stroke="#fff" opacity=".25" stroke-width="1.5"/>
+                <line x1="130" y1="56" x2="130" y2="68" stroke="#fff" opacity=".25" stroke-width="1.5"/>
+                <g>
+                  <rect x="22"  y="20" width="6"  height="28" rx="3" fill="#55B725"/>
+                  <rect x="34"  y="14" width="6"  height="36" rx="3" fill="#55B725"/>
+                  <rect x="46"  y="22" width="6"  height="22" rx="3" fill="#55B725"/>
+                  <rect x="58"  y="10" width="6"  height="38" rx="3" fill="#55B725"/>
+                  <rect x="70"  y="24" width="6"  height="22" rx="3" fill="#55B725"/>
+                  <rect x="82"  y="18" width="6"  height="30" rx="3" fill="#9aa0a4"/>
+                  <rect x="94"  y="22" width="6"  height="22" rx="3" fill="#9aa0a4"/>
+                  <rect x="106" y="14" width="6"  height="34" rx="3" fill="#9aa0a4"/>
+                  <rect x="118" y="20" width="6"  height="26" rx="3" fill="#9aa0a4"/>
+                  <rect x="130" y="16" width="6"  height="32" rx="3" fill="#9aa0a4"/>
+                </g>
+                <circle cx="80" cy="84" r="10" fill="#55B725"/>
+                <polygon points="77,79 86,84 77,89" fill="#fff"/>
+              </svg>
             {{- end }}
           </div>
+          <h2 class="pcard-name">{{ $g.name }}</h2>
           <p class="pcard-tagline">{{ $g.tagline }}</p>
+          <span class="pcard-cta">Play today &rarr;</span>
         </div>
       </a>
       {{- end }}
     </div>
-    <p class="puzzles-foot">Same puzzle for everyone, everywhere · <a href="/about/">about</a></p>
+    <p class="puzzles-foot">Same puzzle for everyone, everywhere &middot; <a href="/about/">about</a> &middot; <a href="/contact/">feedback</a></p>
   </section>
 </div>
 
+{{- /* SEO: CollectionPage + ItemList for richer search appearance */ -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -70,11 +135,22 @@
   "description": {{ .Description | jsonify }},
   "url": "{{ .Permalink }}",
   "isPartOf": { "@type": "WebSite", "name": {{ site.Title | jsonify }}, "url": "{{ site.BaseURL }}" },
-  "hasPart": [
-    {{- range $i, $g := $games }}{{ if $i }},{{ end }}
-    { "@type": "Game", "name": {{ $g.name | jsonify }}, "url": "{{ site.BaseURL }}puzzles/{{ $g.slug }}/", "description": {{ $g.tagline | jsonify }} }
-    {{- end }}
-  ]
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListOrder": "https://schema.org/ItemListOrderAscending",
+    "numberOfItems": {{ len $games }},
+    "itemListElement": [
+      {{- range $i, $g := $games }}{{ if $i }},{{ end }}
+      {
+        "@type": "ListItem",
+        "position": {{ add $i 1 }},
+        "url": "{{ site.BaseURL }}puzzles/{{ $g.slug }}/",
+        "name": {{ $g.name | jsonify }},
+        "description": {{ $g.tagline | jsonify }}
+      }
+      {{- end }}
+    ]
+  }
 }
 </script>
 {{- end }}
