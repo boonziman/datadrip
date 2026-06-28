@@ -1,0 +1,48 @@
+# {{ site.Title }}
+
+Base URL: {{ site.BaseURL }}
+
+> {{ site.Params.description | plainify }}
+
+Datadripco publishes daily original analysis on artificial intelligence, cryptocurrency, and emerging technology. Established February 28, 2026. Free to read. Editorial review on all articles. Also offers free daily puzzle games and a curated SaaS/AI tools directory.
+
+## Site
+
+- [Home]({{ site.BaseURL }}): Latest AI, crypto, and tech news with smart analysis.
+- [About]({{ "/about/" | absURL }}): Mission, editorial approach, and transparency about AI-assisted publishing.
+- [Editorial Standards]({{ "/editorial-standards/" | absURL }}): Accuracy, sourcing, and content quality guidelines.
+- [Contact]({{ "/contact/" | absURL }}): Tips, partnerships, and community feedback.
+- [Privacy Policy]({{ "/privacy/" | absURL }}): Data handling and privacy practices.
+- [Terms of Service]({{ "/terms/" | absURL }}): Site usage terms.
+
+## News Categories
+
+- [AI News]({{ "/categories/ai/" | absURL }}): Artificial intelligence, machine learning, and AI industry developments.
+- [Crypto Trends]({{ "/categories/crypto/" | absURL }}): Cryptocurrency, blockchain, DeFi, and digital asset markets.
+- [Tech Innovations]({{ "/categories/tech/" | absURL }}): Hardware, software, startups, and emerging technology.
+
+## Features
+
+- [Daily Puzzles]({{ "/puzzles/" | absURL }}): Five free daily games — Wordguess, SpellIt, HighLow, ClueGuess, and SongGuess.
+- [Tools Directory]({{ "/tools/" | absURL }}): Curated SaaS, AI apps, and developer products.
+
+## Feeds & Machine-Readable Data
+
+- [RSS Feed]({{ "/index.xml" | absURL }}): Full article feed for syndication and crawlers.
+- [JSON Search Index]({{ "/index.json" | absURL }}): Structured page index for on-site search and programmatic access.
+- [Sitemap]({{ "/sitemap.xml" | absURL }}): Complete URL list for search engines.
+- [Full LLM Content]({{ "/llms-full.txt" | absURL }}): Extended plain-text article summaries for large-context AI ingestion.
+
+## Social
+
+- X (Twitter): https://x.com/datadripco
+- GitHub: https://github.com/boonziman/datadrip
+
+## Latest Articles
+
+{{- $posts := where site.RegularPages "Section" "posts" }}
+{{- $posts = where $posts "Params.searchHidden" "!=" true }}
+{{- $posts = $posts.ByDate.Reverse | first 30 }}
+{{- range $posts }}
+- [{{ .Title | plainify }}]({{ .Permalink }}): {{ with .Description }}{{ . | plainify }}{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }}
+{{- end }}

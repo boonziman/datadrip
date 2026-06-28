@@ -1,3 +1,8 @@
+{{- if .IsHome }}
+<link rel="alternate" type="text/plain" href="{{ "llms.txt" | absURL }}" title="LLM site index">
+<link rel="alternate" type="text/plain" href="{{ "llms-full.txt" | absURL }}" title="LLM full content index">
+{{- end }}
+
 <!-- Noindex thin/low-value pages to focus Google's crawl budget on real content -->
 {{- if eq .Section "tags" }}
 <meta name="robots" content="noindex, follow">

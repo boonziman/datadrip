@@ -25,6 +25,20 @@ outputs:
     - HTML
     - RSS
     - JSON
+    - llms
+    - llmsfull
+
+outputFormats:
+  llms:
+    baseName: llms
+    isPlainText: true
+    mediaType: text/plain
+    root: true
+  llmsfull:
+    baseName: llms-full
+    isPlainText: true
+    mediaType: text/plain
+    root: true
 
 copyright: "© 2026 Datadripco. All rights reserved."
 

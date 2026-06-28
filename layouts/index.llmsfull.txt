@@ -1,0 +1,56 @@
+# {{ site.Title }} — Full Content Index
+
+Base URL: {{ site.BaseURL }}
+
+> {{ site.Params.description | plainify }}
+
+This file provides extended plain-text content for AI systems with large context windows. For a concise site map, see {{ "/llms.txt" | absURL }}.
+
+---
+
+## About Datadripco
+
+URL: {{ "/about/" | absURL }}
+
+{{ with site.GetPage "/about" }}{{ .Plain | plainify }}{{ end }}
+
+---
+
+## Editorial Standards
+
+URL: {{ "/editorial-standards/" | absURL }}
+
+{{ with site.GetPage "/editorial-standards" }}{{ .Plain | plainify }}{{ end }}
+
+---
+
+## Contact
+
+URL: {{ "/contact/" | absURL }}
+
+{{ with site.GetPage "/contact" }}{{ .Plain | plainify }}{{ end }}
+
+---
+
+# ARTICLES
+
+{{- $posts := where site.RegularPages "Section" "posts" }}
+{{- $posts = where $posts "Params.searchHidden" "!=" true }}
+{{- $posts = $posts.ByDate.Reverse | first 50 }}
+{{- range $posts }}
+
+--------------------------------------------------------------------------------
+title: {{ .Title | plainify }}
+url: {{ .Permalink }}
+date: {{ .Date.Format "2006-01-02" }}
+{{- with .Params.categories }}
+categories: {{ delimit . ", " }}
+{{- end }}
+{{- with .Description }}
+description: {{ . | plainify }}
+{{- end }}
+--------------------------------------------------------------------------------
+
+{{ .Plain | plainify }}
+
+{{- end }}
